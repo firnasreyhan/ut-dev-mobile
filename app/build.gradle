@@ -48,4 +48,7 @@ dependencies {
 
     //ZNavigator
     implementation 'com.zach.znavigator:znavigator:1.0.0'
+
+    //ExpandableLayout
+    implementation "com.github.skydoves:expandablelayout:1.0.6"
 }

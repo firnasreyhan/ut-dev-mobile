@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".view.activity.SignInActivity">
 
     <LinearLayout
@@ -16,6 +17,8 @@
         android:layout_marginRight="16dp"
         android:gravity="center"
         android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +52,6 @@
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
             app:boxCornerRadiusTopStart="@dimen/_7sdp"
-            app:boxStrokeColor="@color/box_stroke"
             app:hintEnabled="false"
             app:startIconDrawable="@drawable/ic_username"
             app:startIconTint="@color/hint_color">
@@ -75,7 +77,6 @@
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
             app:boxCornerRadiusTopStart="@dimen/_7sdp"
-            app:boxStrokeColor="@color/box_stroke"
             app:endIconMode="password_toggle"
             app:endIconTint="@color/hint_color"
             app:hintEnabled="false"
