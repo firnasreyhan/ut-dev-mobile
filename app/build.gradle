@@ -51,4 +51,7 @@ dependencies {
 
     //ExpandableLayout
     implementation "com.github.skydoves:expandablelayout:1.0.6"
+
+    //android-prefix-suffix-edit-text
+    implementation 'com.github.tobiasschuerg:android-prefix-suffix-edit-text:1.3.1'
 }

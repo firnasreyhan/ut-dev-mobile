@@ -8,7 +8,8 @@
     app:cardElevation="0dp"
     app:cardBackgroundColor="@android:color/white"
     app:cardCornerRadius="@dimen/_7sdp"
-    app:strokeColor="@color/box_stroke">
+    app:strokeColor="@color/box_stroke"
+    app:strokeWidth="@dimen/_1sdp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -50,6 +51,7 @@
             android:visibility="gone">
 
             <EditText
+                android:id="@+id/editTextNamaBarang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
@@ -61,6 +63,7 @@
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextAlasanFungsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
@@ -72,6 +75,7 @@
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextManfaatBagiPerusahaan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
@@ -87,20 +91,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <EditText
+                <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
+                    android:id="@+id/prefixSuffixEditTextQuantity"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/_3sdp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/hint_color"
                     android:fontFamily="@font/montserrat_medium"
-                    android:hint="Quantity"
+                    android:hint="0"
                     android:inputType="number"
                     android:textColor="@color/text_color"
-                    android:textColorHint="@color/hint_color"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textColorHint="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    app:suffix=" Barang"/>
 
                 <EditText
+                    android:id="@+id/editTextTanggal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_3sdp"
@@ -113,7 +120,9 @@
                     android:inputType="date"
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/hint_color"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textSize="@dimen/_8sdp"
+                    android:clickable="true"
+                    android:focusable="false"/>
 
             </LinearLayout>
 

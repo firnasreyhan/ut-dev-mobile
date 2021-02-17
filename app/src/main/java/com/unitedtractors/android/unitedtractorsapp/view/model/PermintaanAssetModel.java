@@ -1,5 +1,7 @@
 package com.unitedtractors.android.unitedtractorsapp.view.model;
 
+import java.lang.reflect.Field;
+
 public class PermintaanAssetModel {
     private String namaBarang;
     private String alasanFungsi;
@@ -53,5 +55,13 @@ public class PermintaanAssetModel {
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
+    }
+
+    public boolean checkData()  {
+        if (!getNamaBarang().isEmpty() && !getAlasanFungsi().isEmpty() && !getManfaatBagiPerusahaan().isEmpty() && !getQuantity().isEmpty() && !getTanggal().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
