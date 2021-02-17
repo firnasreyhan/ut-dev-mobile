@@ -22,6 +22,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), MainActivity.class));
+                finish();
             }
         });
     }
