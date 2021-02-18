@@ -11,10 +11,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListPermintaanAssetBinding;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.PermintaanAssetAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanAssetModel;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 

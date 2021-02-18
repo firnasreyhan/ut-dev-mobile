@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanAssetBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.PermintaanAssetAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

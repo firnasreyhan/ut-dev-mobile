@@ -1,4 +1,4 @@
-package com.unitedtractors.android.unitedtractorsapp.view.adapter;
+package com.unitedtractors.android.unitedtractorsapp.adapter;
 
 import android.app.DatePickerDialog;
 import android.text.Editable;
@@ -17,11 +17,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText;
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanAssetModel;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
