@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.PermintaanAssetActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 
 public class BerandaFragment extends Fragment {
     private FragmentBerandaBinding binding;
@@ -26,6 +27,13 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), PermintaanAssetActivity.class));
+            }
+        });
+
+        binding.cardViewPermintaanMobilDinas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), PermintaanMobilDinasActivity.class));
             }
         });
 

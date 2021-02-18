@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.ScreenFeedbackActivity"></activity>
+        <activity android:name=".view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity"></activity>
+        <activity android:name=".view.activity.form.permintaan_mobil_dinas.TujuanKeperluanActivity" />
+        <activity android:name=".view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity" />
+        <activity android:name=".view.activity.ScreenFeedbackActivity" />
         <activity android:name=".view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity" />
         <activity android:name=".view.activity.form.permintaan_asset.ListPermintaanAssetActivity" />
         <activity android:name=".view.activity.form.usulan_penjualan.UsulanPenjualanActivity" />
