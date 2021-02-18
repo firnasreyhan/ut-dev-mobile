@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.unitedtractors.android.unitedtractorsapp.R;
+
 public class TujuanKeperluanActivity extends AppCompatActivity {
 
     @Override
