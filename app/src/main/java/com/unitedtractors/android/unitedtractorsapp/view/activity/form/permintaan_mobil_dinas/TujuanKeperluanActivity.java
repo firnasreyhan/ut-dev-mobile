@@ -20,8 +20,11 @@ import com.unitedtractors.android.unitedtractorsapp.view.model.TujuanMobilDinasM
 
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< Updated upstream
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+=======
+>>>>>>> Stashed changes
 
 public class TujuanKeperluanActivity extends AppCompatActivity {
     private ActivityTujuanKeperluanBinding binding;
