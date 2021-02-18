@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanAssetModel;
 import com.unitedtractors.android.unitedtractorsapp.view.model.TujuanMobilDinasModel;
 
 import java.util.List;

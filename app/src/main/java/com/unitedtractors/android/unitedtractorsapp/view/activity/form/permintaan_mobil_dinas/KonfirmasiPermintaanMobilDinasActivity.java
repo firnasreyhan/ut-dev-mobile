@@ -10,15 +10,9 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPermintaanMobilDinasBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.PermintaanAssetAdapter;
 import com.unitedtractors.android.unitedtractorsapp.view.adapter.TujuanPermintaanMobilDinasAdapter;
-<<<<<<< Updated upstream
 
-import com.unitedtractors.android.unitedtractorsapp.R;
-=======
->>>>>>> Stashed changes
 
 public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityKonfirmasiPermintaanMobilDinasBinding binding;

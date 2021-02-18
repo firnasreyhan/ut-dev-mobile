@@ -11,20 +11,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTujuanKeperluanBinding;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.PermintaanAssetAdapter;
 import com.unitedtractors.android.unitedtractorsapp.view.adapter.TujuanPermintaanMobilDinasAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanAssetModel;
 import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanMobilDinasModel;
 import com.unitedtractors.android.unitedtractorsapp.view.model.TujuanMobilDinasModel;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< Updated upstream
-
-import com.unitedtractors.android.unitedtractorsapp.R;
-=======
->>>>>>> Stashed changes
 
 public class TujuanKeperluanActivity extends AppCompatActivity {
     private ActivityTujuanKeperluanBinding binding;

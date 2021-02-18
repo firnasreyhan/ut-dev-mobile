@@ -15,18 +15,11 @@ import android.widget.TimePicker;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPermintaanMobilDinasBinding;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.ListPermintaanAssetActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-<<<<<<< Updated upstream
-
-import com.unitedtractors.android.unitedtractorsapp.R;
-=======
->>>>>>> Stashed changes
 
 public class PermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityPermintaanMobilDinasBinding binding;
