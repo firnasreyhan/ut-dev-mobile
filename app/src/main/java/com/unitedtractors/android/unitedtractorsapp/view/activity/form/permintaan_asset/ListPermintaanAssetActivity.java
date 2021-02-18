@@ -103,14 +103,6 @@ public class ListPermintaanAssetActivity extends AppCompatActivity {
         return true;
     }
 
-//    private boolean checkData() {
-//        for (int i = 0; i < PermintaanAssetAdapter.getList().size(); i++) {
-//            for (int j = 0; j < 5; j++) {
-//
-//            }
-//        }
-//        return true;
-//    }
     private boolean checkData() {
         for (PermintaanAssetModel model : PermintaanAssetAdapter.getList()) {
             if (model.checkData() == false) {

@@ -101,6 +101,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
                         android:text="-"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />
@@ -113,6 +115,8 @@
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:layout_marginEnd="@dimen/_3sdp"
                         android:layout_marginRight="@dimen/_3sdp"
+                        android:backgroundTint="@color/hint_color"
+                        android:enabled="false"
                         android:fontFamily="@font/montserrat_medium"
                         android:gravity="center"
                         android:inputType="number"
@@ -127,6 +131,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
                         android:text="+"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />
@@ -184,6 +190,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
                         android:text="-"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />
@@ -196,6 +204,8 @@
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:layout_marginEnd="@dimen/_3sdp"
                         android:layout_marginRight="@dimen/_3sdp"
+                        android:backgroundTint="@color/hint_color"
+                        android:enabled="false"
                         android:fontFamily="@font/montserrat_medium"
                         android:gravity="center"
                         android:inputType="number"
@@ -210,6 +220,8 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
                         android:text="+"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />

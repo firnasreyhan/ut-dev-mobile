@@ -106,7 +106,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, monthOfYear);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd/M/yyyy", Locale.getDefault());
+                    SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
                     editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
                 }
             };

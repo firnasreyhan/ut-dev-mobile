@@ -616,6 +616,9 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewPembelianSnack"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_80sdp"
                     android:layout_marginLeft="@dimen/_3sdp"

@@ -1,54 +1,52 @@
-package com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset;
+package com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PembelianSnackAdapter;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanAssetBinding;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPembelianSnackBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
 
-public class KonfirmasiPermintaanAssetActivity extends AppCompatActivity {
-    private ActivityKonfirmasiPermintaanAssetBinding binding;
+public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
+    private ActivityKonfirmasiPembelianSnackBinding binding;
 
-    private String jenisPermintaan;
+    private String divisi, keperluan, serverTime, viewTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityKonfirmasiPermintaanAssetBinding.inflate(getLayoutInflater());
+        binding = ActivityKonfirmasiPembelianSnackBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-        jenisPermintaan = getIntent().getStringExtra("JENIS_PERMINTAAN");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        PembelianSnackAdapter adapter = new PembelianSnackAdapter(PembelianSnackAdapter.getList(), false);
+        divisi = getIntent().getStringExtra("DIVISI");
+        keperluan = getIntent().getStringExtra("KEPERLUAN");
+        serverTime = getIntent().getStringExtra("SERVER_TIME");
+        viewTime = getIntent().getStringExtra("VIEW_TIME");
+
+        binding.textViewDivisi.setText(divisi);
+        binding.textViewKeperluan.setText(keperluan);
+        binding.textViewTanggal.setText(viewTime);
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adapter);
-
-        Date date = Calendar.getInstance().getTime();
-        SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-        SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
-
-        binding.textViewTanggal.setText(simpleDateFormatView.format(date));
-        binding.textViewJenisPermintaan.setText(jenisPermintaan);
+        binding.recyclerView.setAdapter(new PembelianSnackAdapter(getData(PembelianSnackAdapter.getList()), true));
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -75,5 +73,17 @@ public class KonfirmasiPermintaanAssetActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private List<PembelianSnackModel> getData(List<PembelianSnackModel> list) {
+        List<PembelianSnackModel> data = new ArrayList<>();
+
+        for (PembelianSnackModel model : list) {
+            if (model.checkData()) {
+              data.add(model);
+            }
+        }
+
+        return data;
     }
 }
