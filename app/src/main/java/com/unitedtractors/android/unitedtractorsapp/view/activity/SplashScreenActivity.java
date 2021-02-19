@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.BuildConfig;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivitySplashScreenBinding;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private ActivitySplashScreenBinding binding;
@@ -22,14 +23,20 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         binding.textViewVersion.setText("Ver " + BuildConfig.VERSION_NAME);
 
+
         toMainActivity();
     }
 
     private void toMainActivity() {
         int loadingTime = 3000;
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashScreenActivity.this, SignInActivity.class));
-            finish();
+            if (AppPreference.getUser(this) != null) {
+                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                finish();
+            } else {
+                startActivity(new Intent(SplashScreenActivity.this, SignInActivity.class));
+                finish();
+            }
         }, loadingTime);
     }
 }
