@@ -64,7 +64,7 @@ public class SignInActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 } else {
-                    new AlertDialog.Builder(getApplicationContext())
+                    new AlertDialog.Builder(SignInActivity.this)
                             .setTitle("Pesan")
                             .setMessage(signInResponse.getMessage())
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -73,6 +73,7 @@ public class SignInActivity extends AppCompatActivity {
                                     dialog.dismiss();
                                 }
                             })
+                            .create()
                             .show();
                 }
             }

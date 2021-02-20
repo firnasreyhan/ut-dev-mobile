@@ -60,6 +60,9 @@ public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAd
             materialButtonKurang = itemView.findViewById(R.id.materialButtonKurang);
             materialButtonTambah = itemView.findViewById(R.id.materialButtonTambah);
 
+            editTextJumlah.setEnabled(isView);
+            editTextJenisSnack.setEnabled(isView);
+
             if (isView) {
                 materialButtonKurang.setVisibility(View.GONE);
                 materialButtonTambah.setVisibility(View.GONE);

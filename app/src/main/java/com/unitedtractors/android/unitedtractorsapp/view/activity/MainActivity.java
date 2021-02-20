@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityMainBinding;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.fragment.BerandaFragment;
+import com.unitedtractors.android.unitedtractorsapp.view.fragment.BerandaPICFragment;
 import com.unitedtractors.android.unitedtractorsapp.view.fragment.ProfileFragment;
 import com.unitedtractors.android.unitedtractorsapp.view.fragment.ProgressFragment;
 import com.unitedtractors.android.unitedtractorsapp.view.fragment.TaskFragment;
@@ -26,7 +28,11 @@ public class MainActivity extends NavigationActivity {
         setContentView(view);
 
         LinkedHashMap<Integer, Fragment> rootFragment = new LinkedHashMap<>();
-        rootFragment.put(R.id.menu_beranda, new BerandaFragment());
+        if (AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("staff")) {
+            rootFragment.put(R.id.menu_beranda, new BerandaFragment());
+        } else {
+            rootFragment.put(R.id.menu_beranda, new BerandaPICFragment());
+        }
         rootFragment.put(R.id.menu_task, new TaskFragment());
         rootFragment.put(R.id.menu_progress, new ProgressFragment());
         rootFragment.put(R.id.menu_profile, new ProfileFragment());

@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaBinding;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.PermintaanAssetActivity;
 
@@ -22,6 +23,8 @@ public class BerandaFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentBerandaBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
+
+        binding.textViewNamaUser.setText(AppPreference.getUser(getActivity()).getNamaUsers());
 
         binding.cardViewPermintaanAsset.setOnClickListener(new View.OnClickListener() {
             @Override

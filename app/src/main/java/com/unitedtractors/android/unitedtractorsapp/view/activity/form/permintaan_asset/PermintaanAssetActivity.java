@@ -36,7 +36,7 @@ public class PermintaanAssetActivity extends AppCompatActivity {
                 binding.editTextJumlahPermintaanBarangBaru.setText(String.valueOf(jumlahBarangBaru));
                 if (jumlahBarangBaru > 0) {
                     binding.materialButtonTambahJumlahPenggantiAssetLama.setEnabled(false);
-                    binding.materialButtonKurangJumlahPenggantiAssetLama.setSaveEnabled(false);
+                    binding.materialButtonKurangJumlahPenggantiAssetLama.setEnabled(false);
 
                     binding.materialButtonTambahJumlahPenggantiAssetLama.setBackgroundColor(getResources().getColor(R.color.button_disable));
                     binding.materialButtonKurangJumlahPenggantiAssetLama.setBackgroundColor(getResources().getColor(R.color.button_disable));
@@ -55,7 +55,7 @@ public class PermintaanAssetActivity extends AppCompatActivity {
                     binding.editTextJumlahPermintaanBarangBaru.setText(String.valueOf(jumlahBarangBaru));
                     if (jumlahBarangBaru == 0) {
                         binding.materialButtonTambahJumlahPenggantiAssetLama.setEnabled(true);
-                        binding.materialButtonKurangJumlahPenggantiAssetLama.setSaveEnabled(true);
+                        binding.materialButtonKurangJumlahPenggantiAssetLama.setEnabled(true);
 
                         binding.materialButtonTambahJumlahPenggantiAssetLama.setBackgroundColor(getResources().getColor(R.color.primary));
                         binding.materialButtonKurangJumlahPenggantiAssetLama.setBackgroundColor(getResources().getColor(R.color.primary));

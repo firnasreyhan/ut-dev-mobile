@@ -31,6 +31,7 @@ public class Repository {
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
+                    Log.e("login", "masuk");
                 }
             }
 

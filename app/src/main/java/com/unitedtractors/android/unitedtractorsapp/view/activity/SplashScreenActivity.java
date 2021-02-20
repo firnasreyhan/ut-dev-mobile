@@ -23,7 +23,6 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         binding.textViewVersion.setText("Ver " + BuildConfig.VERSION_NAME);
 
-
         toMainActivity();
     }
 

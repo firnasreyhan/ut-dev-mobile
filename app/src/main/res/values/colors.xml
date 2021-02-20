@@ -14,4 +14,8 @@
     <color name="button_disable">#DBDBDB</color>
     <color name="box_stroke">#F0F0F0</color>
     <color name="background">#F7F7F7</color>
+    <color name="reject">#F06641</color>
+    <color name="approve">#149654</color>
+    <color name="bgApprove">#E1FFF0</color>
+    <color name="bgReject">#FFF0F0</color>
 </resources>

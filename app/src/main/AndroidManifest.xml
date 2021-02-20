@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.unitedtractors.android.unitedtractorsapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity"/>
+        <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity"></activity>
+        <activity android:name=".view.activity.ApprovalListActivity" />
+        <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
+        <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.PembelianSnackActivity" />
         <activity android:name=".view.activity.ScreenFeedbackActivity" />
         <activity android:name=".view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity" />

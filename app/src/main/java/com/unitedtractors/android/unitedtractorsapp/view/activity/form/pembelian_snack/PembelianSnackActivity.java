@@ -17,11 +17,13 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PembelianSnackAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPembelianSnackBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.ListPermintaanAssetActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,9 +33,8 @@ import java.util.Locale;
 
 public class PembelianSnackActivity extends AppCompatActivity {
     private ActivityPembelianSnackBinding binding;
-    private PembelianSnackAdapter adapter;
-    private Calendar calendar;
-    private String serverDate;
+
+    private int jumlahPembelianSnack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,121 +43,45 @@ public class PembelianSnackActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        calendar = Calendar.getInstance();
-
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        List<PembelianSnackModel> list = new ArrayList<>();
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
-        list.add(new PembelianSnackModel("",""));
+        jumlahPembelianSnack = Integer.parseInt(binding.editTextJumlahPermintaanPembelianSnack.getText().toString());
 
-        adapter = new PembelianSnackAdapter(list, false);
-
-        binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adapter);
-
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                // TODO Auto-generated method stub
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, monthOfYear);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
-                SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
-                binding.editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
-                serverDate = simpleDateFormatServer.format(calendar.getTime());
-            }
-        };
-
-        binding.editTextTanggal.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonTambahJumlahPembelianSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(v.getContext(), date, calendar
-                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+                jumlahPembelianSnack++;
+                binding.editTextJumlahPermintaanPembelianSnack.setText(String.valueOf(jumlahPembelianSnack));
+                if (jumlahPembelianSnack > 0) {
+                    binding.materialButtonSelanjutnya.setEnabled(true);
+                    binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
+                }
             }
         });
 
-        binding.textViewTambahData.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonKurangJumlahPembelianSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final EditText input = new EditText(v.getContext());
-                input.setInputType(InputType.TYPE_CLASS_NUMBER);
-                input.setHint("0");
-
-                LinearLayout linearLayout = new LinearLayout(v.getContext());
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                input.setLayoutParams(layoutParams);
-                linearLayout.addView(input);
-                linearLayout.setPadding(60, 0, 60, 0);
-
-                new AlertDialog.Builder(v.getContext())
-                        .setTitle("Pesan")
-                        .setMessage("Masukkan jumlah data yang ingin ditambahkan.")
-                        .setView(linearLayout)
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                adapter.addData(Integer.parseInt(input.getText().toString()));
-                            }
-                        })
-                        .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                        .create()
-                        .show();
+                if (jumlahPembelianSnack > 0) {
+                    jumlahPembelianSnack--;
+                    binding.editTextJumlahPermintaanPembelianSnack.setText(String.valueOf(jumlahPembelianSnack));
+                    if (jumlahPembelianSnack == 0) {
+                        binding.materialButtonSelanjutnya.setEnabled(false);
+                        binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.button_disable));
+                    }
+                }
             }
         });
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.editTextDivisi.getText().toString().isEmpty()) {
-                    binding.editTextDivisi.setError("Mohon isi data berikut.");
-                }
-
-                if (binding.editTextTanggal.getText().toString().isEmpty()) {
-                    binding.editTextTanggal.setError("Mohon isi data berikut.");
-                }
-
-                if (binding.editTextKeperluan.getText().toString().isEmpty()) {
-                    binding.editTextKeperluan.setError("Mohon isi data berikut.");
-                }
-
-                if (checkData() && !binding.editTextDivisi.getText().toString().isEmpty() && !binding.editTextTanggal.getText().toString().isEmpty() && !binding.editTextKeperluan.getText().toString().isEmpty()) {
-                    Intent intent = new Intent(v.getContext(), KonfirmasiPembelianSnackActivity.class);
-                    intent.putExtra("DIVISI", binding.editTextDivisi.getText().toString());
-                    intent.putExtra("KEPERLUAN", binding.editTextKeperluan.getText().toString());
-                    intent.putExtra("SERVER_TIME", serverDate);
-                    intent.putExtra("VIEW_TIME", binding.editTextTanggal.getText().toString());
-                    startActivity(intent);
-                } else {
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Mohon untuk mengisi data dengan benar.")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
-                }
+                Intent intent = new Intent(v.getContext(), ListPembelianSnackActivity.class);
+                intent.putExtra("JUMLAH_PEMBELIAN_SNACK", jumlahPembelianSnack);
+                startActivity(intent);
             }
         });
     }
@@ -165,29 +90,5 @@ public class PembelianSnackActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        List<PembelianSnackModel> list = new ArrayList<>();
-        list.addAll(PembelianSnackAdapter.getList());
-
-        for (int i = list.size(); i < 8; i++) {
-            list.add(new PembelianSnackModel("",""));
-        }
-
-        binding.recyclerView.setAdapter(new PembelianSnackAdapter(list, false));
-    }
-
-    private boolean checkData() {
-        int i = 0;
-        for (PembelianSnackModel model : PembelianSnackAdapter.getList()) {
-            if (model.checkData()) {
-                i++;
-            }
-        }
-
-        return i > 0;
     }
 }
