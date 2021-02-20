@@ -1,9 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                android:text="Syarat Legalitas Catering"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_12sdp"
+                android:text="Survei Kondisi Catering"
+                android:layout_marginBottom="@dimen/_10sdp"/>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Dapur bersih"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupDapurBersih"
+                            android:checkedButton="@+id/rb_1_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_1_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bagus"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_1_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Perlengkapan Alat Dapur mampu melayani minimal 5000 porsi"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupPerlengkapanAlatDapur"
+                            android:checkedButton="@+id/rb_2_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_2_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bagus"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_2_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Dapur pisah dengan rumah tinggal"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupDapurPisah"
+                            android:checkedButton="@+id/rb_3_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_3_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bagus"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_3_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Memiliki kendaraan terutama mobil box"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupMemilikiKendaraan"
+                            android:checkedButton="@+id/rb_4_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_4_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Iya"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_4_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Jarak dapur ke – UT"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupJarakDapur"
+                            android:checkedButton="@+id/rb_5_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_5_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Iya"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_5_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Kedapur catering harus bisa masuk mobil"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupBisaMasukMobil"
+                            android:checkedButton="@+id/rb_6_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_6_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bagus"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_6_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_10sdp"
+                            android:text="Memiliki karyawan"/>
+
+                        <RadioGroup
+                            android:orientation="horizontal"
+                            android:id="@+id/radioGroupMemilikiKaryawan"
+                            android:checkedButton="@+id/rb_7_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RadioButton
+                                android:id="@+id/rb_7_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bagus"
+                                android:layout_marginRight="@dimen/_13sdp"/>
+
+                            <RadioButton
+                                android:id="@+id/rb_7_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tidak"/>
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonAjukan"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:paddingTop="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_11sdp"
+                android:text="Ajukan"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10sdp"
+                app:cornerRadius="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

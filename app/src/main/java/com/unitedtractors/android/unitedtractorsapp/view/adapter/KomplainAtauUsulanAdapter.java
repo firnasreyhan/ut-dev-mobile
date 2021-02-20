@@ -14,18 +14,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.view.model.KomplainAtauUsulanModel;
 import com.unitedtractors.android.unitedtractorsapp.view.model.TujuanMobilDinasModel;
 
 import java.util.List;
 
-public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<TujuanPermintaanMobilDinasAdapter.ViewHolder> {
+public class KomplainAtauUsulanAdapter extends RecyclerView.Adapter<KomplainAtauUsulanAdapter.ViewHolder> {
 
-    private static List<TujuanMobilDinasModel> list;
+    private static List<KomplainAtauUsulanModel> list;
     private static boolean isEditable;
 
-    public TujuanPermintaanMobilDinasAdapter(List<TujuanMobilDinasModel> list, boolean isEditable) {
-        TujuanPermintaanMobilDinasAdapter.list = list;
-        TujuanPermintaanMobilDinasAdapter.isEditable = isEditable;
+    public KomplainAtauUsulanAdapter(List<KomplainAtauUsulanModel> list, boolean isEditable) {
+        KomplainAtauUsulanAdapter.list = list;
+        KomplainAtauUsulanAdapter.isEditable = isEditable;
     }
 
     @Override
@@ -35,16 +36,16 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
 
     @NonNull
     @Override
-    public TujuanPermintaanMobilDinasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       return new TujuanPermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tujuan_permintaan_mobil_dinas, parent, false));
+    public KomplainAtauUsulanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       return new KomplainAtauUsulanAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_komplain_atau_usulan, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TujuanPermintaanMobilDinasAdapter.ViewHolder holder, int position) {
-        holder.textViewUrutan.setText("Tujuan " + (position + 1));
-        holder.editTextTujuan.setText(list.get(position).getTujuan());
-        holder.editTextKeperluan.setText(list.get(position).getKeperluan());
-        holder.editTextCatatan.setText(list.get(position).getCatatan());
+    public void onBindViewHolder(@NonNull KomplainAtauUsulanAdapter.ViewHolder holder, int position) {
+        holder.textViewUrutan.setText("Komplain atau Usulan " + (position + 1));
+        holder.editTextNama.setText(list.get(position).getNama());
+        holder.editTextDivisi.setText(list.get(position).getDivisi());
+        holder.editTextKomplainAtauUsulan.setText(list.get(position).getKomplainAtauUsulan());
     }
 
     @Override
@@ -57,7 +58,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
         private final ImageView imageViewExpand;
         private final LinearLayout linearLayoutForm;
         private final TextView textViewUrutan;
-        private final EditText editTextTujuan, editTextKeperluan, editTextCatatan;
+        private final EditText editTextNama, editTextDivisi, editTextKomplainAtauUsulan;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -66,13 +67,13 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
             imageViewExpand = itemView.findViewById(R.id.imageViewExpand);
             linearLayoutForm = itemView.findViewById(R.id.linearLayoutForm);
             textViewUrutan = itemView.findViewById(R.id.textViewUrutan);
-            editTextTujuan = itemView.findViewById(R.id.editTextTujuan);
-            editTextKeperluan = itemView.findViewById(R.id.editTextKeperluan);
-            editTextCatatan = itemView.findViewById(R.id.editTextCatatan);
+            editTextNama = itemView.findViewById(R.id.editTextNama);
+            editTextDivisi = itemView.findViewById(R.id.editTextDivisi);
+            editTextKomplainAtauUsulan = itemView.findViewById(R.id.editTextKomplainAtauUsulan);
 
-            editTextTujuan.setEnabled(isEditable);
-            editTextKeperluan.setEnabled(isEditable);
-            editTextCatatan.setEnabled(isEditable);
+            editTextNama.setEnabled(isEditable);
+            editTextDivisi.setEnabled(isEditable);
+            editTextKomplainAtauUsulan.setEnabled(isEditable);
 
             imageViewExpand.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -87,7 +88,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
                 }
             });
 
-            editTextTujuan.addTextChangedListener(new TextWatcher() {
+            editTextNama.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -95,7 +96,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setTujuan(editTextTujuan.getText().toString());
+                    list.get(getAdapterPosition()).setNama(editTextNama.getText().toString());
                 }
 
                 @Override
@@ -104,7 +105,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
                 }
             });
 
-            editTextKeperluan.addTextChangedListener(new TextWatcher() {
+            editTextDivisi.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -112,7 +113,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setKeperluan(editTextKeperluan.getText().toString());
+                    list.get(getAdapterPosition()).setDivisi(editTextDivisi.getText().toString());
                 }
 
                 @Override
@@ -121,7 +122,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
                 }
             });
 
-            editTextCatatan.addTextChangedListener(new TextWatcher() {
+            editTextKomplainAtauUsulan.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -129,7 +130,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setCatatan(editTextCatatan.getText().toString());
+                    list.get(getAdapterPosition()).setKomplainAtauUsulan(editTextKomplainAtauUsulan.getText().toString());
                 }
 
                 @Override
@@ -140,7 +141,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
         }
     }
 
-    public static List<TujuanMobilDinasModel> getList() {
+    public static List<KomplainAtauUsulanModel> getList() {
         return list;
     }
 }

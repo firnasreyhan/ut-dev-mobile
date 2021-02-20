@@ -10,8 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaBinding;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.PermintaanAssetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
 
 public class BerandaFragment extends Fragment {
     private FragmentBerandaBinding binding;
@@ -33,7 +37,7 @@ public class BerandaFragment extends Fragment {
         binding.cardViewPermintaanMobilDinas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), PermintaanMobilDinasActivity.class));
+                startActivity(new Intent(v.getContext(), SyaratLegalitasCateringActivity.class));
             }
         });
 

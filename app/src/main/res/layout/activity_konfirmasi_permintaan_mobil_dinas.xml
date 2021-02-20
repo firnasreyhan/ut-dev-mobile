@@ -266,6 +266,7 @@
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
+                    android:layout_marginBottom="@dimen/_13sdp"
                     android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."/>
 
             </LinearLayout>

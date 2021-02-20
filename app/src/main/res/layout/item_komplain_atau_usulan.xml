@@ -31,7 +31,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp"
-                android:text="Tujuan 1"/>
+                android:text="Komplain atau Usulan 1"/>
 
             <ImageView
                 android:id="@+id/imageViewExpand"
@@ -51,36 +51,36 @@
             android:visibility="gone">
 
             <EditText
-                android:id="@+id/editTextTujuan"
+                android:id="@+id/editTextNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Tujuan"
+                android:hint="Nama"
                 android:inputType="text"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
-                android:id="@+id/editTextKeperluan"
+                android:id="@+id/editTextDivisi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Keperluan"
+                android:hint="Divisi"
                 android:inputType="text"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
-                android:id="@+id/editTextCatatan"
+                android:id="@+id/editTextKomplainAtauUsulan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Catatan"
+                android:hint="Komplain atau Usulan"
                 android:inputType="textMultiLine"
                 android:maxLines="3"
                 android:textColor="@color/text_color"

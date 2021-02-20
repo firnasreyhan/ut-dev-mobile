@@ -31,7 +31,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp"
-                android:text="Komplain atau Usulan 1"/>
+                android:text="Catering 1"/>
 
             <ImageView
                 android:id="@+id/imageViewExpand"
@@ -47,45 +47,216 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_19sdp"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
             <EditText
-                android:id="@+id/editTextNama"
+                android:id="@+id/editTextNamaCatering"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Nama"
+                android:hint="Nama Catering"
                 android:inputType="text"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
-            <EditText
-                android:id="@+id/editTextDivisi"
+            <LinearLayout
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Divisi"
-                android:inputType="text"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/editTextKomplainAtauUsulan"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Rasa"/>
+
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroupRasa"
+                    android:checkedButton="@+id/rb_1_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_1_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik sekali"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_1_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_1_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cukup"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_1_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kurang"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Komplain atau Usulan"
-                android:inputType="textMultiLine"
-                android:maxLines="3"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Aroma"/>
+
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroupAroma"
+                    android:checkedButton="@+id/rb_2_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_2_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik sekali"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cukup"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_2_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kurang"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Kebersihan"/>
+
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroupKebersihan"
+                    android:checkedButton="@+id/rb_3_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_3_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik sekali"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_3_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_3_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cukup"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_3_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kurang"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Kualitas"/>
+
+                <RadioGroup
+                    android:orientation="horizontal"
+                    android:id="@+id/radioGroupKualitas"
+                    android:checkedButton="@+id/rb_4_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/rb_4_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik sekali"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_4_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baik"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_4_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cukup"
+                        android:layout_weight="1"/>
+                    <RadioButton
+                        android:id="@+id/rb_4_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kurang"
+                        android:layout_weight="1"/>
+                </RadioGroup>
+
+            </LinearLayout>
 
         </LinearLayout>
 

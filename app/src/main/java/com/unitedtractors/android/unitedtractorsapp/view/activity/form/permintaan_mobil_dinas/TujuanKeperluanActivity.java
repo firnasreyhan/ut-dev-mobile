@@ -21,7 +21,6 @@ import java.util.List;
 public class TujuanKeperluanActivity extends AppCompatActivity {
     private ActivityTujuanKeperluanBinding binding;
 
-    PermintaanMobilDinasModel permintaanMobilDinasModel;
     List<TujuanMobilDinasModel> list;
     int jumlahTujuan;
 
