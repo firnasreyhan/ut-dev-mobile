@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiClient {
     private static ApiInterface apiInterface;
@@ -29,9 +30,10 @@ public class ApiClient {
             Gson builder = new GsonBuilder().setLenient().create();
 
             retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
                     .client(okHttpClient)
                     .baseUrl("https://ut-dev.bgskr-project.my.id/api/")
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(builder))
                     .build();
 
             apiInterface = retrofit.create(ApiInterface.class);

@@ -32,7 +32,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
     private Calendar calendar;
     private String serverDate;
 
-    private List<PembelianSnackModel> list;
+    private List<PembelianSnackModel.DetailPembelianSnackModel> list;
     private int jumlahPembelianSnack;
 
     @Override
@@ -53,7 +53,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
         for (int i = 0; i < jumlahPembelianSnack; i++) {
-            list.add(new PembelianSnackModel("",""));
+            list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
         }
 
 //        List<PembelianSnackModel> list = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
-                SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());
+                SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 binding.editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
                 serverDate = simpleDateFormatServer.format(calendar.getTime());
             }
@@ -189,7 +189,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
 
     private boolean checkData() {
         int i = 0;
-        for (PembelianSnackModel model : PembelianSnackAdapter.getList()) {
+        for (PembelianSnackModel.DetailPembelianSnackModel model : PembelianSnackAdapter.getList()) {
             if (model.checkData()) {
                 i++;
             }

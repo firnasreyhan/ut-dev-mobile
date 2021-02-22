@@ -17,10 +17,10 @@ import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 import java.util.List;
 
 public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAdapter.ViewHolder> {
-    private static List<PembelianSnackModel> list;
+    private static List<PembelianSnackModel.DetailPembelianSnackModel> list;
     private static boolean isEnable;
 
-    public PembelianSnackAdapter(List<PembelianSnackModel> list, boolean isEnable) {
+    public PembelianSnackAdapter(List<PembelianSnackModel.DetailPembelianSnackModel> list, boolean isEnable) {
         PembelianSnackAdapter.list = list;
         PembelianSnackAdapter.isEnable = isEnable;
     }
@@ -126,13 +126,13 @@ public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAd
         }
     }
 
-    public static List<PembelianSnackModel> getList() {
+    public static List<PembelianSnackModel.DetailPembelianSnackModel> getList() {
         return list;
     }
 
     public void addData(int jumlah) {
         for (int i = 0; i < jumlah; i++) {
-            list.add(new PembelianSnackModel("",""));
+            list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
         }
         notifyDataSetChanged();
     }

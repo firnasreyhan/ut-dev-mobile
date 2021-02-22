@@ -3,11 +3,15 @@ package com.unitedtractors.android.unitedtractorsapp.api;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.ListFormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
+import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 
@@ -32,6 +36,12 @@ public interface ApiInterface {
     Call<BaseResponse> postTransaction(
             @Field("idUser") String idUser,
             @Field("idMapping") String idMapping
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formSnack")
+    Call<BaseResponse> postPembelianSnack(
+            @Body String model
     );
 
     @GET("form")
