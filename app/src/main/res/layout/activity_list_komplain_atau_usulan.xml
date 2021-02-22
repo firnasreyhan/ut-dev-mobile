@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.form.permintaan_mobil_dinas.TujuanKeperluanActivity">
+    tools:context=".view.activity.form.komplain_atau_usulan.ListKomplainAtauUsulanActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,7 +24,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Peminjaman Kendaraan Dinas"/>
+                android:text="Komplain atau Usulan"/>
 
         </FrameLayout>
 
@@ -36,14 +36,6 @@
         android:orientation="vertical"
         android:padding="@dimen/_13sdp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/_10sdp"
-            android:text="Tujuan dan Keperluan"/>
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
@@ -53,8 +45,20 @@
             android:layout_marginBottom="@dimen/_10sdp"
             android:overScrollMode="never"/>
 
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/montserrat_medium"
+            android:textColor="@color/hint_color2"
+            android:textSize="@dimen/_8sdp"
+            android:gravity="left|top"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."/>
+
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonSelanjutnya"
+            android:id="@+id/materialButtonAjukan"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,10 +66,11 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Selanjutnya"
+            android:text="Ajukan"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/primary"
+            android:enabled="false"
+            app:backgroundTint="@color/button_disable"
             app:cornerRadius="@dimen/_11sdp" />
 
     </LinearLayout>
