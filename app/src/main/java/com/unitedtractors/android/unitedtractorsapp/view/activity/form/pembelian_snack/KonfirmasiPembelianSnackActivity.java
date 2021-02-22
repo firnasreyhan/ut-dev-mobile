@@ -46,7 +46,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new PembelianSnackAdapter(getData(PembelianSnackAdapter.getList()), true));
+        binding.recyclerView.setAdapter(new PembelianSnackAdapter(getData(PembelianSnackAdapter.getList()), false));
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

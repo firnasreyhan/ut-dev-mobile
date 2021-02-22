@@ -12,13 +12,10 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListKomplainAtauUsulanBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.KomplainAtauUsulanAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.model.KomplainAtauUsulanModel;
+import com.unitedtractors.android.unitedtractorsapp.adapter.KomplainAtauUsulanAdapter;
+import com.unitedtractors.android.unitedtractorsapp.model.KomplainAtauUsulanModel;
 
 import java.util.ArrayList;
 import java.util.List;

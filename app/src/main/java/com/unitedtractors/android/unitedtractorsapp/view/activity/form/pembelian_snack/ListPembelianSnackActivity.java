@@ -70,7 +70,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new PembelianSnackAdapter(list, false));
+        binding.recyclerView.setAdapter(new PembelianSnackAdapter(list, true));
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override

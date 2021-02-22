@@ -26,11 +26,11 @@ import java.util.Locale;
 
 public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAssetAdapter.ViewHolder> {
     private static List<PermintaanAssetModel> list;
-    private static boolean isView;
+    private static boolean isEnable;
 
-    public PermintaanAssetAdapter(List<PermintaanAssetModel> list, boolean isView) {
+    public PermintaanAssetAdapter(List<PermintaanAssetModel> list, boolean isEnable) {
         PermintaanAssetAdapter.list = list;
-        PermintaanAssetAdapter.isView = isView;
+        PermintaanAssetAdapter.isEnable = isEnable;
     }
 
     @Override
@@ -80,11 +80,11 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
             prefixSuffixEditTextQuantity = itemView.findViewById(R.id.prefixSuffixEditTextQuantity);
             editTextTanggal = itemView.findViewById(R.id.editTextTanggal);
 
-            editTextNamaBarang.setEnabled(isView);
-            editTextAlasanFungsi.setEnabled(isView);
-            editTextManfaatBagiPerusahaan.setEnabled(isView);
-            prefixSuffixEditTextQuantity.setEnabled(isView);
-            editTextTanggal.setEnabled(isView);
+            editTextNamaBarang.setEnabled(isEnable);
+            editTextAlasanFungsi.setEnabled(isEnable);
+            editTextManfaatBagiPerusahaan.setEnabled(isEnable);
+            prefixSuffixEditTextQuantity.setEnabled(isEnable);
+            editTextTanggal.setEnabled(isEnable);
 
             imageViewExpand.setOnClickListener(new View.OnClickListener() {
                 @Override

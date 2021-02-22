@@ -18,11 +18,11 @@ import java.util.List;
 
 public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAdapter.ViewHolder> {
     private static List<PembelianSnackModel> list;
-    private static boolean isView;
+    private static boolean isEnable;
 
-    public PembelianSnackAdapter(List<PembelianSnackModel> list, boolean isView) {
+    public PembelianSnackAdapter(List<PembelianSnackModel> list, boolean isEnable) {
         PembelianSnackAdapter.list = list;
-        PembelianSnackAdapter.isView = isView;
+        PembelianSnackAdapter.isEnable = isEnable;
     }
 
     @Override
@@ -60,13 +60,9 @@ public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAd
             materialButtonKurang = itemView.findViewById(R.id.materialButtonKurang);
             materialButtonTambah = itemView.findViewById(R.id.materialButtonTambah);
 
-            editTextJumlah.setEnabled(isView);
-            editTextJenisSnack.setEnabled(isView);
+            editTextJenisSnack.setEnabled(isEnable);
 
-            if (isView) {
-                materialButtonKurang.setVisibility(View.GONE);
-                materialButtonTambah.setVisibility(View.GONE);
-            } else {
+            if (isEnable) {
                 materialButtonKurang.setVisibility(View.VISIBLE);
                 materialButtonTambah.setVisibility(View.VISIBLE);
 
@@ -123,6 +119,9 @@ public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAd
 
                     }
                 });
+            } else {
+                materialButtonKurang.setVisibility(View.GONE);
+                materialButtonTambah.setVisibility(View.GONE);
             }
         }
     }

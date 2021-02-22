@@ -14,10 +14,8 @@ import android.widget.CompoundButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListHasilTestFoodCateringBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.HasilTestFoodCateringAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.KomplainAtauUsulanAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.model.HasilTestFoodCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.view.model.KomplainAtauUsulanModel;
+import com.unitedtractors.android.unitedtractorsapp.adapter.HasilTestFoodCateringAdapter;
+import com.unitedtractors.android.unitedtractorsapp.model.HasilTestFoodCateringModel;
 
 import java.util.ArrayList;
 import java.util.List;

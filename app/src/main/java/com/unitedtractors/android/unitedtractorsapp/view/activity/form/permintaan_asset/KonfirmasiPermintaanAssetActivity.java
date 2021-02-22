@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PembelianSnackAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanAssetBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 
@@ -37,11 +38,9 @@ public class KonfirmasiPermintaanAssetActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        PembelianSnackAdapter adapter = new PembelianSnackAdapter(PembelianSnackAdapter.getList(), false);
-
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setAdapter(new PermintaanAssetAdapter(PermintaanAssetAdapter.getList(), false));
 
         Date date = Calendar.getInstance().getTime();
         SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault());

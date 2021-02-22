@@ -1,4 +1,4 @@
-package com.unitedtractors.android.unitedtractorsapp.view.adapter;
+package com.unitedtractors.android.unitedtractorsapp.adapter;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,8 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.view.model.HasilTestFoodCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.view.model.KomplainAtauUsulanModel;
+import com.unitedtractors.android.unitedtractorsapp.model.HasilTestFoodCateringModel;
 
 import java.util.List;
 

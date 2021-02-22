@@ -11,9 +11,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTujuanKeperluanBinding;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.TujuanPermintaanMobilDinasAdapter;
-import com.unitedtractors.android.unitedtractorsapp.view.model.PermintaanMobilDinasModel;
-import com.unitedtractors.android.unitedtractorsapp.view.model.TujuanMobilDinasModel;
+import com.unitedtractors.android.unitedtractorsapp.adapter.TujuanPermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.model.TujuanMobilDinasModel;
 
 import java.util.ArrayList;
 import java.util.List;

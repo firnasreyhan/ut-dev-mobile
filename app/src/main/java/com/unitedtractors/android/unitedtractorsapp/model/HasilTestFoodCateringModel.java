@@ -1,4 +1,4 @@
-package com.unitedtractors.android.unitedtractorsapp.view.model;
+package com.unitedtractors.android.unitedtractorsapp.model;
 
 public class HasilTestFoodCateringModel {
 

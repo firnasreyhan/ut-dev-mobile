@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.adapter.TujuanPermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.TujuanPermintaanMobilDinasAdapter;
 
 
 public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
