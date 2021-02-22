@@ -33,6 +33,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
     private String serverDate;
 
     private List<PembelianSnackModel.DetailPembelianSnackModel> list;
+    private String idMapping;
     private int jumlahPembelianSnack;
 
     @Override
@@ -42,6 +43,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
         jumlahPembelianSnack = getIntent().getIntExtra("JUMLAH_PEMBELIAN_SNACK", 0);
 
         calendar = Calendar.getInstance();
@@ -150,6 +152,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
                     intent.putExtra("KEPERLUAN", binding.editTextKeperluan.getText().toString());
                     intent.putExtra("SERVER_TIME", serverDate);
                     intent.putExtra("VIEW_TIME", binding.editTextTanggal.getText().toString());
+                    intent.putExtra("ID_MAPPING", idMapping);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())

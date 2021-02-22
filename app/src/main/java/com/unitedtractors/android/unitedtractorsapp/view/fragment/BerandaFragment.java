@@ -7,17 +7,29 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.FormAdapter;
+import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ApprovalListActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.PermintaanAssetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.BerandaViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BerandaFragment extends Fragment {
     private FragmentBerandaBinding binding;
+    private BerandaViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,7 +38,38 @@ public class BerandaFragment extends Fragment {
         binding = FragmentBerandaBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+        viewModel = ViewModelProviders.of(getActivity()).get(BerandaViewModel.class);
+
         binding.textViewNamaUser.setText(AppPreference.getUser(getActivity()).getNamaUsers());
+        binding.recyclerViewApproval.setHasFixedSize(true);
+        binding.recyclerViewApproval.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerViewForm.setHasFixedSize(true);
+        binding.recyclerViewForm.setLayoutManager(new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false));
+
+        viewModel.getTransaction(
+                AppPreference.getUser(getActivity()).getUserUsers(),
+                1
+        ).observe(getActivity(), new Observer<TransactionResponse>() {
+            @Override
+            public void onChanged(TransactionResponse transactionResponse) {
+                if (transactionResponse.isStatus()) {
+                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
+                }
+            }
+        });
+
+        viewModel.getForm(
+                AppPreference.getUser(getActivity()).getDivUsers()
+        ).observe(getActivity(), new Observer<FormResponse>() {
+            @Override
+            public void onChanged(FormResponse formResponse) {
+                if (formResponse.isStatus()) {
+                    List<FormResponse.FormModel> list = formResponse.getData();
+                    list.add(new FormResponse.FormModel("MAPP_e3afa323d691d218559593b2dd1d5935","","","Pembelian Snack",""));
+                    binding.recyclerViewForm.setAdapter(new FormAdapter(list));
+                }
+            }
+        });
 
         binding.cardViewPermintaanAsset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +89,13 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), PermintaanMobilDinasActivity.class));
+            }
+        });
+
+        binding.textViewAllApproval.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), ApprovalListActivity.class));
             }
         });
 

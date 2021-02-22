@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity"></activity>
+        <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity"/>
         <activity android:name=".view.activity.ApprovalListActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.PembelianSnackActivity" />
-        <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity"></activity>
+        <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity"/>
         <activity android:name=".view.activity.form.hasil_test_food_catering.ListHasilTestFoodCateringActivity" />
         <activity android:name=".view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity" />
         <activity android:name=".view.activity.form.kontrol_harian.KontrolHarianActivity" />
@@ -40,6 +40,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".utils.notif.MyFireBaseMessagingService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".utils.notif.MyFirebaseIdService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_logo" />
+
     </application>
 
 </manifest>

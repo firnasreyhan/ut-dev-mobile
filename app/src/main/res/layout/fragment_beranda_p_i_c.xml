@@ -106,6 +106,7 @@
                         android:text="Jumlah Formulir Masuk"/>
 
                     <TextView
+                        android:id="@+id/textViewJumlahForm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
@@ -135,6 +136,9 @@
                     android:text="Approval List"/>
 
                 <TextView
+                    android:id="@+id/textViewAllApproval"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_medium"

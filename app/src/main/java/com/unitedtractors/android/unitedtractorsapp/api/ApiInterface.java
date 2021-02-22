@@ -1,11 +1,10 @@
 package com.unitedtractors.android.unitedtractorsapp.api;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.ListFormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
+import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -13,6 +12,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -31,11 +32,10 @@ public interface ApiInterface {
             @Field("idUser") String idUser
     );
 
-    @POST("transaction")
-    @FormUrlEncoded
-    Call<BaseResponse> postTransaction(
-            @Field("idUser") String idUser,
-            @Field("idMapping") String idMapping
+    @GET("transaction/{username}")
+    Call<TransactionResponse> getTransaction(
+            @Path("username") String username,
+            @Query("limit") int limit
     );
 
     @Headers("Content-Type: application/json")
@@ -45,7 +45,15 @@ public interface ApiInterface {
     );
 
     @GET("form")
-    Call<ListFormResponse> getListForm(
+    Call<FormResponse> getListForm(
             @Query("divisi") String divisi
+    );
+
+    @PUT("transaction/confirm")
+    @FormUrlEncoded
+    Call<BaseResponse> putConfirm(
+            @Field("username") String username,
+            @Field("idTrans") String idTrans,
+            @Field("isApprove") boolean isApprove
     );
 }

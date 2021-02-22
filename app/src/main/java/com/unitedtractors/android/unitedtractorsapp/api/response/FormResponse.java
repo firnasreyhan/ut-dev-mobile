@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ListFormResponse extends BaseResponse{
+public class FormResponse extends BaseResponse {
     @SerializedName("data")
-    private List<ListFormModel> data;
+    private List<FormModel> data;
 
-    public List<ListFormModel> getData() {
+    public List<FormModel> getData() {
         return data;
     }
 
-    public static class ListFormModel {
+    public static class FormModel {
         @SerializedName("ID_MAPPING")
         private String idMapping;
 
@@ -27,6 +27,14 @@ public class ListFormResponse extends BaseResponse{
 
         @SerializedName("SECTION_FORM")
         private String sectionForm;
+
+        public FormModel(String idMapping, String namaTabel, String noDoc, String namaForm, String sectionForm) {
+            this.idMapping = idMapping;
+            this.namaTabel = namaTabel;
+            this.noDoc = noDoc;
+            this.namaForm = namaForm;
+            this.sectionForm = sectionForm;
+        }
 
         public String getIdMapping() {
             return idMapping;

@@ -7,11 +7,10 @@ import androidx.lifecycle.MutableLiveData;
 import com.unitedtractors.android.unitedtractorsapp.api.ApiClient;
 import com.unitedtractors.android.unitedtractorsapp.api.ApiInterface;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.ListFormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
+import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
-import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,42 +67,42 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postTransaction(String idUser, String idMapping) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
-        apiInterface.postTransaction(
-                idUser,
-                idMapping
-        ).enqueue(new Callback<BaseResponse>() {
+    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit) {
+        MutableLiveData<TransactionResponse> data = new MutableLiveData<>();
+        apiInterface.getTransaction(
+                username,
+                limit
+        ).enqueue(new Callback<TransactionResponse>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+            public void onResponse(Call<TransactionResponse> call, Response<TransactionResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("postTransaction", t.getMessage());
+            public void onFailure(Call<TransactionResponse> call, Throwable t) {
+                Log.e("getTransaction", t.getMessage());
                 data.postValue(null);
             }
         });
         return data;
     }
 
-    public MutableLiveData<ListFormResponse> getListForm(String divisi) {
-        MutableLiveData<ListFormResponse> data = new MutableLiveData<>();
+    public MutableLiveData<FormResponse> getListForm(String divisi) {
+        MutableLiveData<FormResponse> data = new MutableLiveData<>();
         apiInterface.getListForm(
                 divisi
-        ).enqueue(new Callback<ListFormResponse>() {
+        ).enqueue(new Callback<FormResponse>() {
             @Override
-            public void onResponse(Call<ListFormResponse> call, Response<ListFormResponse> response) {
+            public void onResponse(Call<FormResponse> call, Response<FormResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<ListFormResponse> call, Throwable t) {
+            public void onFailure(Call<FormResponse> call, Throwable t) {
                 Log.e("getListForm", t.getMessage());
                 data.postValue(null);
             }
@@ -125,7 +124,30 @@ public class Repository {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("getListForm", t.getMessage());
+                Log.e("postPembelianSnack", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, boolean isApprove) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.putConfirm(
+                username,
+                idTrans,
+                isApprove
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postPembelianSnack", t.getMessage());
                 data.postValue(null);
             }
         });

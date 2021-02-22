@@ -34,6 +34,7 @@ import java.util.Locale;
 public class PembelianSnackActivity extends AppCompatActivity {
     private ActivityPembelianSnackBinding binding;
 
+    private String idMapping;
     private int jumlahPembelianSnack;
 
     @Override
@@ -42,6 +43,8 @@ public class PembelianSnackActivity extends AppCompatActivity {
         binding = ActivityPembelianSnackBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -81,6 +84,7 @@ public class PembelianSnackActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPembelianSnackActivity.class);
                 intent.putExtra("JUMLAH_PEMBELIAN_SNACK", jumlahPembelianSnack);
+                intent.putExtra("ID_MAPPING", idMapping);
                 startActivity(intent);
             }
         });

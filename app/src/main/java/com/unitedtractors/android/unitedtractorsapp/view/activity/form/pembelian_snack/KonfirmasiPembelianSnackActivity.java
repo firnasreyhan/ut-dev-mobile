@@ -31,7 +31,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
     private KonfirmasiPembelianSnackViewModel viewModel;
     private ProgressDialog progressDialog;
 
-    private String divisi, keperluan, serverTime, viewTime;
+    private String divisi, keperluan, serverTime, viewTime, idMapping;;
     private PembelianSnackModel model;
 
     @Override
@@ -53,6 +53,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         keperluan = getIntent().getStringExtra("KEPERLUAN");
         serverTime = getIntent().getStringExtra("SERVER_TIME");
         viewTime = getIntent().getStringExtra("VIEW_TIME");
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         binding.textViewDivisi.setText(divisi);
         binding.textViewKeperluan.setText(keperluan);
@@ -66,7 +67,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
 
         model = new PembelianSnackModel();
         model.setIdUser(AppPreference.getUser(this).getIdUsers());
-        model.setIdMapping("MAPP_e3afa323d691d218559593b2dd1d5935");
+        model.setIdMapping(idMapping);
         model.setTglSnack(serverTime);
         model.setDivisiSnack(divisi);
         model.setKeperluanSnack(keperluan);
