@@ -2,6 +2,7 @@ package com.unitedtractors.android.unitedtractorsapp.api;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
@@ -55,5 +56,10 @@ public interface ApiInterface {
             @Field("username") String username,
             @Field("idTrans") String idTrans,
             @Field("isApprove") boolean isApprove
+    );
+
+    @GET("formSnack")
+    Call<PembelianSnackResponse> getPembelianSnack(
+            @Query("idTrans") String idTrans
     );
 }

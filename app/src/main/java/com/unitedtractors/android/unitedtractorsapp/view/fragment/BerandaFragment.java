@@ -14,11 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.FormAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.TaskAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.TaskModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.ApprovalListActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.PermintaanAssetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
@@ -43,6 +45,8 @@ public class BerandaFragment extends Fragment {
         binding.textViewNamaUser.setText(AppPreference.getUser(getActivity()).getNamaUsers());
         binding.recyclerViewApproval.setHasFixedSize(true);
         binding.recyclerViewApproval.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerViewTask.setHasFixedSize(true);
+        binding.recyclerViewTask.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerViewForm.setHasFixedSize(true);
         binding.recyclerViewForm.setLayoutManager(new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false));
 
@@ -57,6 +61,12 @@ public class BerandaFragment extends Fragment {
                 }
             }
         });
+
+        List<TaskModel> list = new ArrayList<>();
+        list.add(new TaskModel("40"));
+        list.add(new TaskModel("20"));
+
+        binding.recyclerViewTask.setAdapter(new TaskAdapter(list));
 
         viewModel.getForm(
                 AppPreference.getUser(getActivity()).getDivUsers()
@@ -95,7 +105,7 @@ public class BerandaFragment extends Fragment {
         binding.textViewAllApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), ApprovalListActivity.class));
+                startActivity(new Intent(v.getContext(), ListApprovalActivity.class));
             }
         });
 

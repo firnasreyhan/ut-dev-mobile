@@ -12,11 +12,16 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.TaskAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaPICBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.TaskModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.ApprovalListActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.BerandaPICViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BerandaPICFragment extends Fragment {
     private FragmentBerandaPICBinding binding;
@@ -60,10 +65,16 @@ public class BerandaPICFragment extends Fragment {
             }
         });
 
+        List<TaskModel> list = new ArrayList<>();
+        list.add(new TaskModel("40"));
+        list.add(new TaskModel("20"));
+
+        binding.recyclerViewTask.setAdapter(new TaskAdapter(list));
+
         binding.textViewAllApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), ApprovalListActivity.class));
+                startActivity(new Intent(v.getContext(), ListApprovalActivity.class));
             }
         });
 

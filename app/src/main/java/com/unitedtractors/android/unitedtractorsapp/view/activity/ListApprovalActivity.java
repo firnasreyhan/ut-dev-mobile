@@ -1,27 +1,27 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity;
 
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.os.Bundle;
-import android.view.View;
-
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityApprovalListBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListApprovalBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.ApprovalListViewModel;
 
-public class ApprovalListActivity extends AppCompatActivity {
-    private ActivityApprovalListBinding binding;
+public class ListApprovalActivity extends AppCompatActivity {
+    private ActivityListApprovalBinding binding;
     private ApprovalListViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityApprovalListBinding.inflate(getLayoutInflater());
+        binding = ActivityListApprovalBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 

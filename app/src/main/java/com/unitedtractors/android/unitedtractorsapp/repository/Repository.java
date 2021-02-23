@@ -8,6 +8,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.ApiClient;
 import com.unitedtractors.android.unitedtractorsapp.api.ApiInterface;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
@@ -147,7 +148,28 @@ public class Repository {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("postPembelianSnack", t.getMessage());
+                Log.e("putConfirm", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PembelianSnackResponse> getPembelianSnack(String idTrans) {
+        MutableLiveData<PembelianSnackResponse> data = new MutableLiveData<>();
+        apiInterface.getPembelianSnack(
+                idTrans
+        ).enqueue(new Callback<PembelianSnackResponse>() {
+            @Override
+            public void onResponse(Call<PembelianSnackResponse> call, Response<PembelianSnackResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PembelianSnackResponse> call, Throwable t) {
+                Log.e("getPembelianSnack", t.getMessage());
                 data.postValue(null);
             }
         });

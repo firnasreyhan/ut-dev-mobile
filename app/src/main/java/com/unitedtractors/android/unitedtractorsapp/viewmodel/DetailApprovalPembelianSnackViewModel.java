@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
 
@@ -20,6 +21,10 @@ public class DetailApprovalPembelianSnackViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, boolean isApprove) {
-        return repository.putConfirm(username, idTrans,isApprove);
+        return repository.putConfirm(username, idTrans, isApprove);
+    }
+
+    public MutableLiveData<PembelianSnackResponse> getPembelianSnack(String idTrans) {
+        return repository.getPembelianSnack(idTrans);
     }
 }

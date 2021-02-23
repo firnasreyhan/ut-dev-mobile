@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
         <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity"/>
-        <activity android:name=".view.activity.ApprovalListActivity" />
+        <activity android:name=".view.activity.ListApprovalActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.PembelianSnackActivity" />

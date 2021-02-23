@@ -6,23 +6,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class PembelianSnackModel {
-    @SerializedName("idUser")
-    @Expose
     private String idUser;
-    @SerializedName("idMapping")
-    @Expose
     private String idMapping;
-    @SerializedName("tglSnack")
-    @Expose
     private String tglSnack;
-    @SerializedName("divisiSnack")
-    @Expose
     private String divisiSnack;
-    @SerializedName("keperluanSnack")
-    @Expose
     private String keperluanSnack;
-    @SerializedName("detSnack")
-    @Expose
     private List<DetailPembelianSnackModel> detSnack;
 
     public String getIdUser() {
@@ -74,11 +62,7 @@ public class PembelianSnackModel {
     }
 
     public static class DetailPembelianSnackModel {
-        @SerializedName("jenisSnack")
-        @Expose
         private String jenisSnack;
-        @SerializedName("jmlSnack")
-        @Expose
         private String jumlah;
 
         public DetailPembelianSnackModel(String jenisSnack, String jumlah) {
