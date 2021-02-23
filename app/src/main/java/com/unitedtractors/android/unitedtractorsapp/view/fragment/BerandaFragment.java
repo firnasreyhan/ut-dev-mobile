@@ -74,9 +74,10 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onChanged(FormResponse formResponse) {
                 if (formResponse.isStatus()) {
-                    List<FormResponse.FormModel> list = formResponse.getData();
-                    list.add(new FormResponse.FormModel("MAPP_e3afa323d691d218559593b2dd1d5935","","","Pembelian Snack",""));
-                    binding.recyclerViewForm.setAdapter(new FormAdapter(list));
+//                    List<FormResponse.FormModel> list = formResponse.getData();
+//                    list.add(new FormResponse.FormModel("MAPP_e3afa323d691d218559593b2dd1d5935","","","Pembelian Snack",""));
+//                    binding.recyclerViewForm.setAdapter(new FormAdapter(list));
+                    binding.recyclerViewForm.setAdapter(new FormAdapter(formResponse.getData()));
                 }
             }
         });
