@@ -4,6 +4,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
 import retrofit2.Call;
@@ -55,11 +56,18 @@ public interface ApiInterface {
     Call<BaseResponse> putConfirm(
             @Field("username") String username,
             @Field("idTrans") String idTrans,
-            @Field("isApprove") boolean isApprove
+            @Field("isApprove") int isApprove,
+            @Field("keterangan") String keterangan
     );
 
     @GET("formSnack")
     Call<PembelianSnackResponse> getPembelianSnack(
+            @Query("idTrans") String idTrans
+    );
+
+    @GET("transaction/detail")
+    Call<TransactionDetailResponse> getTransactionDetail(
+            @Query("username") String username,
             @Query("idTrans") String idTrans
     );
 }

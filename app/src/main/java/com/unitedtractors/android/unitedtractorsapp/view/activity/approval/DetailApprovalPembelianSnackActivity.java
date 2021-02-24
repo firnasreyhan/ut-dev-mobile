@@ -5,9 +5,15 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
@@ -17,6 +23,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackR
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityDetailApprovalPembelianSnackBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.DetailApprovalPembelianSnackViewModel;
 
 import java.text.DateFormat;
@@ -41,6 +48,7 @@ public class DetailApprovalPembelianSnackActivity extends AppCompatActivity {
         setContentView(view);
 
         idTrans = getIntent().getStringExtra("ID_TRANS");
+        Log.e("idTans", idTrans);
 
         viewModel = ViewModelProviders.of(this).get(DetailApprovalPembelianSnackViewModel.class);
 
@@ -58,23 +66,56 @@ public class DetailApprovalPembelianSnackActivity extends AppCompatActivity {
             @Override
             public void onChanged(PembelianSnackResponse pembelianSnackResponse) {
                 if (pembelianSnackResponse.isStatus()) {
-                    if (pembelianSnackResponse.getData().getStatTrans() == 0) {
-                        binding.textViewStatus.setText("Menunggu Konfirmasi");
-                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
-                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
-                    } else if (pembelianSnackResponse.getData().getStatTrans() == 1) {
-                        binding.textViewStatus.setText("Sedang Diproses");
-                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
-                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
-                    } else if (pembelianSnackResponse.getData().getStatTrans() == 2) {
-                        binding.textViewStatus.setText("Approved");
-                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
-                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
-                    } else if (pembelianSnackResponse.getData().getStatTrans() == 3) {
-                        binding.textViewStatus.setText("Rejected");
-                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
-                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
+                    if (AppPreference.getUser(DetailApprovalPembelianSnackActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true) {
+                        if (pembelianSnackResponse.getData().getStatTrans() == null) {
+                            binding.textViewStatus.setText("Menunggu Konfirmasi");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                        } else if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("1")) {
+                            binding.textViewStatus.setText("Approved");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
+                        } else if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
+                            binding.textViewStatus.setText("Rejected");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
+                        }
+                    } else {
+                        if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
+                            binding.textViewStatus.setText("Menunggu Konfirmasi");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                        } else if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("1")) {
+                            binding.textViewStatus.setText("Sedang Diproses");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                        } else if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("2")) {
+                            binding.textViewStatus.setText("Approved");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                        } else if (pembelianSnackResponse.getData().getStatTrans().equalsIgnoreCase("3")) {
+                            binding.textViewStatus.setText("Rejected");
+                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                        }
                     }
+//                    if (pembelianSnackResponse.getData().getStatTrans() == 0) {
+//                        binding.textViewStatus.setText("Menunggu Konfirmasi");
+//                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+//                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+//                    } else if (pembelianSnackResponse.getData().getStatTrans() == 1) {
+//                        binding.textViewStatus.setText("Sedang Diproses");
+//                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
+//                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+//                    } else if (pembelianSnackResponse.getData().getStatTrans() == 2) {
+//                        binding.textViewStatus.setText("Approved");
+//                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
+//                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
+//                    } else if (pembelianSnackResponse.getData().getStatTrans() == 3) {
+//                        binding.textViewStatus.setText("Rejected");
+//                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
+//                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
+//                    }
 
                     String nmyFormat = "dd MMMM yyyy"; //In which you need put here
                     SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
@@ -105,7 +146,8 @@ public class DetailApprovalPembelianSnackActivity extends AppCompatActivity {
                     viewModel.putConfirm(
                             AppPreference.getUser(v.getContext()).getUserUsers(),
                             idTrans,
-                            true
+                            1,
+                            "-"
                     ).observe(DetailApprovalPembelianSnackActivity.this, new Observer<BaseResponse>() {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {
@@ -123,21 +165,54 @@ public class DetailApprovalPembelianSnackActivity extends AppCompatActivity {
             binding.materialButtonReject.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    viewModel.putConfirm(
-                            AppPreference.getUser(v.getContext()).getUserUsers(),
-                            "",
-                            false
-                    ).observe(DetailApprovalPembelianSnackActivity.this, new Observer<BaseResponse>() {
-                        @Override
-                        public void onChanged(BaseResponse baseResponse) {
-                            binding.linearLayoutButton.setVisibility(View.GONE);
+                    final EditText input = new EditText(v.getContext());
+                    input.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                    input.setHint("Keterangan");
 
-                            binding.linearLayoutStatus.setVisibility(View.VISIBLE);
-                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
-                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
-                            binding.textViewStatus.setText("Rejected");
-                        }
-                    });
+                    LinearLayout linearLayout = new LinearLayout(v.getContext());
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(layoutParams);
+                    linearLayout.addView(input);
+                    linearLayout.setPadding(60, 0, 60, 0);
+
+                    new AlertDialog.Builder(v.getContext())
+                            .setTitle("Pesan")
+                            .setMessage("Masukkan keterangan/alasan.")
+                            .setView(linearLayout)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (input.getText().toString().isEmpty()) {
+                                        input.setError("Mohon isi data berikut.");
+                                    } else {
+                                        viewModel.putConfirm(
+                                                AppPreference.getUser(v.getContext()).getUserUsers(),
+                                                "",
+                                                2,
+                                                input.getText().toString()
+                                                ).observe(DetailApprovalPembelianSnackActivity.this, new Observer<BaseResponse>() {
+                                            @Override
+                                            public void onChanged(BaseResponse baseResponse) {
+                                                binding.linearLayoutButton.setVisibility(View.GONE);
+
+                                                binding.linearLayoutStatus.setVisibility(View.VISIBLE);
+                                                binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
+                                                binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
+                                                binding.textViewStatus.setText("Rejected");
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                    }
+                                }
+                            })
+                            .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
                 }
             });
         }

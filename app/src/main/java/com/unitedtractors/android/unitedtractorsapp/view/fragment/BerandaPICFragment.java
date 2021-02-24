@@ -48,7 +48,7 @@ public class BerandaPICFragment extends Fragment {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse.isStatus()) {
-                    binding.textViewJumlahForm.setText("Form " + transactionResponse.getData().size());
+                    binding.textViewJumlahForm.setText(transactionResponse.getData().size() + " Form");
                 }
             }
         });
@@ -60,7 +60,7 @@ public class BerandaPICFragment extends Fragment {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse.isStatus()) {
-                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
+                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
                 }
             }
         });

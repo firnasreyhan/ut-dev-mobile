@@ -57,7 +57,7 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse.isStatus()) {
-                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
+                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
                 }
             }
         });

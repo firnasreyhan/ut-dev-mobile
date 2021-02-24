@@ -10,6 +10,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
 import retrofit2.Call;
@@ -132,12 +133,13 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, boolean isApprove) {
+    public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, int isApprove, String keterangan) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.putConfirm(
                 username,
                 idTrans,
-                isApprove
+                isApprove,
+                keterangan
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -170,6 +172,28 @@ public class Repository {
             @Override
             public void onFailure(Call<PembelianSnackResponse> call, Throwable t) {
                 Log.e("getPembelianSnack", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<TransactionDetailResponse> getTransactionDetail(String username, String idTrans) {
+        MutableLiveData<TransactionDetailResponse> data = new MutableLiveData<>();
+        apiInterface.getTransactionDetail(
+                username,
+                idTrans
+        ).enqueue(new Callback<TransactionDetailResponse>() {
+            @Override
+            public void onResponse(Call<TransactionDetailResponse> call, Response<TransactionDetailResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TransactionDetailResponse> call, Throwable t) {
+                Log.e("getTransactionDetail", t.getMessage());
                 data.postValue(null);
             }
         });

@@ -14,6 +14,7 @@ import com.google.android.material.button.MaterialButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.approval.DetailApprovalPembelianSnackActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.approval.TransactionDetailActivity;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -24,9 +25,11 @@ import java.util.Locale;
 
 public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHolder> {
     private static List<TransactionResponse.TransactionModel> list;
+    private static boolean isPIC;
 
-    public ApprovalAdapter(List<TransactionResponse.TransactionModel> list) {
+    public ApprovalAdapter(List<TransactionResponse.TransactionModel> list, boolean isPIC) {
         ApprovalAdapter.list = list;
+        ApprovalAdapter.isPIC = isPIC;
     }
 
     @Override
@@ -44,22 +47,38 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNamaForm.setText(list.get(position).getNamaForm());
 
-        if (list.get(position).getStatTrans() == 0) {
-            holder.textViewStatusForm.setText("Menunggu Konfirmasi");
-            holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
-            holder.imageViewStatus.setImageResource(R.drawable.ic_process);
-        } else if (list.get(position).getStatTrans() == 1) {
-            holder.textViewStatusForm.setText("Sedang Diproses");
-            holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
-            holder.imageViewStatus.setImageResource(R.drawable.ic_process);
-        } else if (list.get(position).getStatTrans() == 2) {
-            holder.textViewStatusForm.setText("Approved");
-            holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
-            holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
-        } else if (list.get(position).getStatTrans() == 3) {
-            holder.textViewStatusForm.setText("Rejected");
-            holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
-            holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
+        if (isPIC) {
+            if (list.get(position).getStatTrans() == null) {
+                holder.textViewStatusForm.setText("Menunggu Konfirmasi");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_process);
+            } else if (list.get(position).getStatTrans().equalsIgnoreCase("1")) {
+                holder.textViewStatusForm.setText("Approved");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
+            } else if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
+                holder.textViewStatusForm.setText("Rejected");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
+            }
+        } else {
+            if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
+                holder.textViewStatusForm.setText("Menunggu Konfirmasi");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_process);
+            } else if (list.get(position).getStatTrans().equalsIgnoreCase("1")) {
+                holder.textViewStatusForm.setText("Sedang Diproses");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_process);
+            } else if (list.get(position).getStatTrans().equalsIgnoreCase("2")) {
+                holder.textViewStatusForm.setText("Approved");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
+            } else if (list.get(position).getStatTrans().equalsIgnoreCase("3")) {
+                holder.textViewStatusForm.setText("Rejected");
+                holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
+                holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
+            }
         }
 
         String nmyFormat = "dd MMMM yyyy"; //In which you need put here
@@ -95,22 +114,28 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e3afa323d691d218559593b2dd1d5935")) {
-                        Intent intent = new Intent(itemView.getContext(), DetailApprovalPembelianSnackActivity.class);
-                        intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
-                        itemView.getContext().startActivity(intent);
-                    }
+//                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e3afa323d691d218559593b2dd1d5935")) {
+//                        Intent intent = new Intent(itemView.getContext(), DetailApprovalPembelianSnackActivity.class);
+//                        intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+//                        itemView.getContext().startActivity(intent);
+//                    }
+                    Intent intent = new Intent(itemView.getContext(), TransactionDetailActivity.class);
+                    intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+                    itemView.getContext().startActivity(intent);
                 }
             });
 
             materialButtonDetailForm.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e3afa323d691d218559593b2dd1d5935")) {
-                        Intent intent = new Intent(itemView.getContext(), DetailApprovalPembelianSnackActivity.class);
-                        intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
-                        itemView.getContext().startActivity(intent);
-                    }
+//                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e3afa323d691d218559593b2dd1d5935")) {
+//                        Intent intent = new Intent(itemView.getContext(), DetailApprovalPembelianSnackActivity.class);
+//                        intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+//                        itemView.getContext().startActivity(intent);
+//                    }
+                    Intent intent = new Intent(itemView.getContext(), TransactionDetailActivity.class);
+                    intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }

@@ -11,12 +11,13 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity"/>
+        <activity android:name=".view.activity.approval.TransactionDetailActivity"></activity>
+        <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity" />
         <activity android:name=".view.activity.ListApprovalActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.PembelianSnackActivity" />
-        <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity"/>
+        <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity" />
         <activity android:name=".view.activity.form.hasil_test_food_catering.ListHasilTestFoodCateringActivity" />
         <activity android:name=".view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity" />
         <activity android:name=".view.activity.form.kontrol_harian.KontrolHarianActivity" />
@@ -61,7 +62,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_logo" />
-
     </application>
 
 </manifest>

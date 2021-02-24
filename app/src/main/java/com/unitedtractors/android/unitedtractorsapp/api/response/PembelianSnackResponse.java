@@ -48,7 +48,7 @@ public class PembelianSnackResponse extends BaseResponse{
         private String flagTrans;
 
         @SerializedName("STAT_TRANS")
-        private int statTrans;
+        private String statTrans;
 
         @SerializedName("DETAIL_SNACK")
         private List<DetailSnack> dteailSnack;
@@ -97,7 +97,7 @@ public class PembelianSnackResponse extends BaseResponse{
             return flagTrans;
         }
 
-        public int getStatTrans() {
+        public String getStatTrans() {
             return statTrans;
         }
 

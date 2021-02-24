@@ -42,7 +42,7 @@ public class ListApprovalActivity extends AppCompatActivity {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse.isStatus()) {
-                    binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
+                    binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
                 }
             }
         });

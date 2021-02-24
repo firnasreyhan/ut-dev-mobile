@@ -2,13 +2,11 @@ package com.unitedtractors.android.unitedtractorsapp.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
-public class TransactionResponse extends BaseResponse{
+public class TransactionDetailResponse extends BaseResponse{
     @SerializedName("data")
-    private List<TransactionModel> data;
+    private TransactionModel data;
 
-    public List<TransactionModel> getData() {
+    public TransactionModel getData() {
         return data;
     }
 
@@ -16,39 +14,38 @@ public class TransactionResponse extends BaseResponse{
         @SerializedName("ID_TRANS")
         private String idTrans;
 
-        @SerializedName("ID_MAPPING")
-        private String idMapping;
-
         @SerializedName("ID_USERS")
         private String idUsers;
 
         @SerializedName("NAMA_USERS")
         private String namaUsers;
 
+        @SerializedName("ROLE_APP")
+        private String roleApp;
+
+        @SerializedName("ID_MAPPING")
+        private String idMapping;
+
         @SerializedName("NAMA_FORM")
         private String namaForm;
-
-        @SerializedName("PATH_TRANS")
-        private String pathTrans;
 
         @SerializedName("TS_TRANS")
         private String tsTrans;
 
+        @SerializedName("PATH_TRANS")
+        private String pathTrans;
+
         @SerializedName("FLAG_TRANS")
         private String flagTrans;
-
-        @SerializedName("CONFIRM_STAT_TRANS")
-        private int confirmStatTrans;
 
         @SerializedName("STAT_TRANS")
         private String statTrans;
 
+        @SerializedName("KETERANGAN_TRANS")
+        private String keteranganTrans;
+
         public String getIdTrans() {
             return idTrans;
-        }
-
-        public String getIdMapping() {
-            return idMapping;
         }
 
         public String getIdUsers() {
@@ -59,28 +56,36 @@ public class TransactionResponse extends BaseResponse{
             return namaUsers;
         }
 
-        public String getNamaForm() {
-            return namaForm;
+        public String getRoleApp() {
+            return roleApp;
         }
 
-        public String getPathTrans() {
-            return pathTrans;
+        public String getIdMapping() {
+            return idMapping;
+        }
+
+        public String getNamaForm() {
+            return namaForm;
         }
 
         public String getTsTrans() {
             return tsTrans;
         }
 
+        public String getPathTrans() {
+            return pathTrans;
+        }
+
         public String getFlagTrans() {
             return flagTrans;
         }
 
-        public int getConfirmStatTrans() {
-            return confirmStatTrans;
-        }
-
         public String getStatTrans() {
             return statTrans;
+        }
+
+        public String getKeteranganTrans() {
+            return keteranganTrans;
         }
     }
 }
