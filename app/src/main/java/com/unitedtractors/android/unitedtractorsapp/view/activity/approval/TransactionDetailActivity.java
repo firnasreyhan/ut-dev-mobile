@@ -5,12 +5,18 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.graphics.Bitmap;
+import android.net.http.SslError;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -42,13 +48,37 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(TransactionDetailViewModel.class);
 
+        ProgressDialog progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon Tunggu Sebentar...");
+        progressDialog.setCancelable(false);
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        binding.webView.getSettings().setJavaScriptEnabled(true);
-        binding.webView.getSettings().setBuiltInZoomControls(true);
+//        binding.webView.getSettings().setJavaScriptEnabled(true);
+//        binding.webView.getSettings().setBuiltInZoomControls(true);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            // chromium, enable hardware acceleration
+//            binding.webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+//        } else {
+//            // older android version, disable hardware acceleration
+//            binding.webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//        }
+//        binding.webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+//        binding.webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+//        binding.webView.setWebChromeClient(new WebChromeClient() {
+//            @Override
+//            public void onProgressChanged(WebView view, int newProgress) {
+//                if (newProgress < 100) {
+//                    progressDialog.show();
+//                }
+//                if (newProgress == 100) {
+//                    progressDialog.dismiss();
+//                }
+//            }
+//        });
 
         viewModel.getTransactionDetail(
                 AppPreference.getUser(this).getUserUsers(),
@@ -62,19 +92,20 @@ public class TransactionDetailActivity extends AppCompatActivity {
                             binding.textViewStatus.setText("Menunggu Konfirmasi");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
+                            binding.linearLayoutButton.setVisibility(View.VISIBLE);
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("1")) {
                             binding.textViewStatus.setText("Approved");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
-                            binding.linearLayoutButton.setVisibility(View.GONE);
+                            binding.linearLayoutButton.setVisibility(View.INVISIBLE);
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
                             binding.textViewStatus.setText("Rejected");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
-                            binding.linearLayoutButton.setVisibility(View.GONE);
+                            binding.linearLayoutButton.setVisibility(View.INVISIBLE);
                         }
                     } else {
-                        binding.linearLayoutButton.setVisibility(View.GONE);
+                        binding.linearLayoutButton.setVisibility(View.INVISIBLE);
                         if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
                             binding.textViewStatus.setText("Menunggu Konfirmasi");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
@@ -94,9 +125,66 @@ public class TransactionDetailActivity extends AppCompatActivity {
                         }
                     }
 
-                    String url = "https://drive.google.com/viewerng/viewer?embedded=true&url=" + transactionDetailResponse.getData().getPathTrans();
-                    String doc = "<iframe src='"+url+"' width='100%' height='100%' style='border: none;'></iframe>";
-                    binding.webView.loadData(doc, "text/html", "UTF-8");
+                    if (transactionDetailResponse.getData().getKeteranganTrans() != null) {
+                        if (!transactionDetailResponse.getData().getKeteranganTrans().isEmpty()) {
+                            binding.linearLayoutKeterangan.setVisibility(View.VISIBLE);
+                            binding.textViewKeterangan.setText(transactionDetailResponse.getData().getKeteranganTrans());
+                        }
+                    }
+
+                    pdfView(transactionDetailResponse.getData().getPathTrans());
+
+//                    binding.webView.invalidate();
+//                    binding.webView.getSettings().setJavaScriptEnabled(true);
+//                    binding.webView.getSettings().setBuiltInZoomControls(true);
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                        // chromium, enable hardware acceleration
+//                        binding.webView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+//                    } else {
+//                        // older android version, disable hardware acceleration
+//                        binding.webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
+//                    }
+//                    binding.webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+//                    binding.webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+//                    binding.webView.setWebChromeClient(new WebChromeClient() {
+//                        @Override
+//                        public void onProgressChanged(WebView view, int newProgress) {
+//                            if (newProgress < 100) {
+//                                progressDialog.show();
+//                            }
+//                            if (newProgress == 100) {
+//                                progressDialog.dismiss();
+//                            }
+//                        }
+//                    });
+//                    String url = "https://drive.google.com/viewerng/viewer?embedded=true&url=" + transactionDetailResponse.getData().getPathTrans();
+//                    String doc = "<iframe src='"+url+"' width='100%' height='100%' style='border: none;'></iframe>";
+////                    binding.webView.loadData(doc, "text/html", "UTF-8");
+//                    binding.webView.loadUrl(url);
+//                    binding.webView.setWebViewClient(new WebViewClient() {
+//                        boolean checkhasOnPageStarted = false;
+//
+//                        @Override
+//                        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+//                            checkhasOnPageStarted = true;
+//                        }
+//
+//                        @Override
+//                        public void onPageFinished(WebView view, String url) {
+//                            if (checkhasOnPageStarted) {
+//                                binding.webView.loadUrl(url);
+//                            } else {
+//
+//                            }
+//                        }
+//                    });
+//                    Log.e("url", transactionDetailResponse.getData().getPathTrans());
+//                    binding.webView.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            binding.webView.loadData(doc, "text/html", "UTF-8");
+//                        }
+//                    }, 3000);
 
 //                    binding.webView.getSettings().setJavaScriptEnabled(true);
 //                    binding.webView.getSettings().setBuiltInZoomControls(true);
@@ -204,4 +292,38 @@ public class TransactionDetailActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
+    private void pdfView(String responseURL) {
+        binding.webView.invalidate();
+        binding.webView.getSettings().setJavaScriptEnabled(true);
+        binding.webView.getSettings().setBuiltInZoomControls(true);
+        binding.webView.getSettings().setAllowFileAccessFromFileURLs(true);
+        binding.webView.getSettings().setAllowUniversalAccessFromFileURLs(true);
+        binding.webView.getSettings().setPluginState(WebSettings.PluginState.ON);
+        binding.webView.getSettings().setDomStorageEnabled(true);
+        binding.webView.getSettings().setLoadWithOverviewMode(true);
+//        binding.webView.getSettings().setUseWideViewPort(true);
+        String newUrl = "https://drive.google.com/viewerng/viewer?embedded=true&url=" + responseURL;
+        binding.webView.loadUrl(newUrl);
+        binding.webView.setWebChromeClient(new WebChromeClient());
+
+        binding.webView.setWebViewClient(new WebViewClient() {
+            boolean checkhasOnPageStarted = false;
+
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                checkhasOnPageStarted = true;
+            }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                if (checkhasOnPageStarted) {
+//                    binding.webView.loadUrl(url);
+                } else {
+                    pdfView(responseURL);
+                }
+            }
+        });
+    }
+
 }

@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:textColor="@color/primary"
+            android:textColor="@color/text_color"
             android:textSize="@dimen/_11sdp"
             android:text="-"/>
 
@@ -78,45 +78,78 @@
     </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
-        android:id="@+id/linearLayoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_13sdp"
-        android:layout_marginBottom="@dimen/_13sdp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:padding="@dimen/_13sdp"
+        android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonReject"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="@dimen/_87sdp"
+        <LinearLayout
+            android:id="@+id/linearLayoutKeterangan"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:minHeight="0dp"
-            android:fontFamily="@font/montserrat_semi_bold"
-            android:paddingTop="@dimen/_11sdp"
-            android:paddingBottom="@dimen/_11sdp"
-            android:text="Reject"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/reject"
-            app:cornerRadius="@dimen/_11sdp" />
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonApprove"
-            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-            android:layout_width="@dimen/_87sdp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_13sdp"
+                android:text="Keterangan:"/>
+
+            <TextView
+                android:id="@+id/textViewKeterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10sdp"
+                android:text="-"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutButton"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:minHeight="0dp"
-            android:fontFamily="@font/montserrat_semi_bold"
-            android:paddingTop="@dimen/_11sdp"
-            android:paddingBottom="@dimen/_11sdp"
-            android:text="Approve"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/approve"
-            app:cornerRadius="@dimen/_11sdp" />
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:visibility="invisible">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonReject"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="@dimen/_87sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:minHeight="0dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:paddingTop="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_11sdp"
+                android:text="Reject"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10sdp"
+                app:backgroundTint="@color/reject"
+                app:cornerRadius="@dimen/_11sdp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonApprove"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="@dimen/_87sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:minHeight="0dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:paddingTop="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_11sdp"
+                android:text="Approve"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10sdp"
+                app:backgroundTint="@color/approve"
+                app:cornerRadius="@dimen/_11sdp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

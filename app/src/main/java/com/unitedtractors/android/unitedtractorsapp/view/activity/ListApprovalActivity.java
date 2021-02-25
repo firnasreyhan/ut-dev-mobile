@@ -34,6 +34,18 @@ public class ListApprovalActivity extends AppCompatActivity {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.shimmerFrameLayout.startShimmer();
 
         viewModel.getTransaction(
                 AppPreference.getUser(this).getUserUsers(),
@@ -41,18 +53,25 @@ public class ListApprovalActivity extends AppCompatActivity {
         ).observe(this, new Observer<TransactionResponse>() {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
+                binding.shimmerFrameLayout.stopShimmer();
+                binding.shimmerFrameLayout.setVisibility(View.GONE);
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
+                        binding.recyclerView.setVisibility(View.VISIBLE);
                         binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                    } else {
+                        binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
+                } else {
+                    binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    public void onPause() {
+        binding.shimmerFrameLayout.stopShimmer();
+        super.onPause();
     }
 }
