@@ -4,18 +4,21 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.SignUpResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -29,16 +32,16 @@ public interface ApiInterface {
             @Field("token") String token
     );
 
-    @POST("user/signup")
-    @FormUrlEncoded
-    Call<SignUpResponse> postSignUp(
-            @Field("namaLengkap") String namaLengkap,
-            @Field("role") String role,
-            @Field("departemen") String departemen,
-            @Field("divisi") String divisi,
-            @Field("username") String username,
-            @Field("password") String password,
-            @Field("token") String token
+    @POST("user/register")
+    @Multipart
+    Call<BaseResponse> postSignUp(
+            @Part("username") RequestBody username,
+            @Part("namaLengkap") RequestBody namaLengkap,
+            @Part("role") RequestBody role,
+            @Part("departement") RequestBody departemen,
+            @Part("division") RequestBody divisi,
+            @Part("password") RequestBody password,
+            @Part MultipartBody.Part signature
     );
 
     @POST("user/logout")

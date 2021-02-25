@@ -10,10 +10,11 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.SignUpResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -49,27 +50,26 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<SignUpResponse> postSignUp(String namaLengkap, String username, String role, String departemen, String divisi, String password, String token) {
-        MutableLiveData<SignUpResponse> data = new MutableLiveData<>();
+    public MutableLiveData<BaseResponse> postSignUp(RequestBody username, RequestBody namaLengkap, RequestBody role, RequestBody departement, RequestBody division, RequestBody password, MultipartBody.Part signature) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postSignUp(
-                namaLengkap,
                 username,
+                namaLengkap,
                 role,
-                departemen,
-                divisi,
+                departement,
+                division,
                 password,
-                token
-        ).enqueue(new Callback<SignUpResponse>() {
+                signature
+        ).enqueue(new Callback<BaseResponse>() {
             @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
-                    Log.e("signup", "daftar");
                 }
             }
 
             @Override
-            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postSignUp", t.getMessage());
                 data.postValue(null);
             }

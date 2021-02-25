@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,10 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:padding="@dimen/_13sdp"
         android:focusable="true"
         android:focusableInTouchMode="true"
         android:gravity="center"
@@ -59,7 +56,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -83,7 +80,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -107,7 +104,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -131,7 +128,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -155,7 +152,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -181,7 +178,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
             app:boxCornerRadiusBottomStart="@dimen/_7sdp"
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
@@ -203,6 +200,62 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Tanda Tangan"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:cardBackgroundColor="@android:color/white"
+                app:strokeColor="@android:color/darker_gray"
+                app:strokeWidth="@dimen/_1sdp"
+                app:cardCornerRadius="@dimen/_7sdp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.rm.freedrawview.FreeDrawView
+                        android:id="@+id/freeDrawView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:background="@android:color/transparent"
+                        app:paintAlpha="255"
+                        app:paintColor="@color/black"
+                        app:paintWidth="4dp"
+                        app:resizeBehaviour="crop"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButtonHapus"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top|right"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textAllCaps="false"
+                        android:text="Hapus"/>
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonSignUp"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
@@ -220,4 +273,4 @@
 
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
