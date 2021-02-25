@@ -10,6 +10,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.SignUpResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
@@ -42,6 +43,34 @@ public class Repository {
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
                 Log.e("postSignIn", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<SignUpResponse> postSignUp(String namaLengkap, String username, String role, String departemen, String divisi, String password, String token) {
+        MutableLiveData<SignUpResponse> data = new MutableLiveData<>();
+        apiInterface.postSignUp(
+                namaLengkap,
+                username,
+                role,
+                departemen,
+                divisi,
+                password,
+                token
+        ).enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                    Log.e("signup", "daftar");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                Log.e("postSignUp", t.getMessage());
                 data.postValue(null);
             }
         });
