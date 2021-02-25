@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.approval.TransactionDetailActivity"></activity>
+        <activity android:name=".view.activity.approval.TransactionDetailActivity"/>
         <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity" />
         <activity android:name=".view.activity.ListApprovalActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
@@ -61,7 +61,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_logo" />
+            android:resource="@drawable/ic_notification" />
     </application>
 
 </manifest>

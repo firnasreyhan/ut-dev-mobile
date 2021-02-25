@@ -54,7 +54,7 @@
                     android:fontFamily="@font/montserrat_semi_bold"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp"
-                    android:text="Darrell Steward"/>
+                    android:text="-"/>
 
             </LinearLayout>
 
@@ -112,7 +112,7 @@
                         android:fontFamily="@font/montserrat_bold"
                         android:textColor="@color/primary"
                         android:textSize="@dimen/_11sdp"
-                        android:text="5 Form"/>
+                        android:text="0 Form"/>
 
                 </LinearLayout>
 
@@ -148,11 +148,66 @@
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewApproval"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:overScrollMode="never"/>
+                android:orientation="vertical">
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerFrameLayoutApproval"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    app:duration="800">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                        <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                    </LinearLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewApproval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutNoDataApproval"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@color/background"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="@dimen/_80sdp"
+                        android:layout_height="@dimen/_80sdp"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_no_data"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/text_color"
+                        android:text="Tidak Ada Data"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"

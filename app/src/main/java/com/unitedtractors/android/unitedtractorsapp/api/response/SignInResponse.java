@@ -40,6 +40,15 @@ public class SignInResponse extends BaseResponse {
         @SerializedName("TOKEN_USERS")
         private String tokenUsers;
 
+        @SerializedName("PATH_TTD")
+        private String pathTTD;
+
+        @SerializedName("STAT_USERS")
+        private int statUsers;
+
+        @SerializedName("TS_USERS")
+        private String tsUsers;
+
         public String getIdUsers() {
             return idUsers;
         }
@@ -74,6 +83,18 @@ public class SignInResponse extends BaseResponse {
 
         public String getTokenUsers() {
             return tokenUsers;
+        }
+
+        public String getPathTTD() {
+            return pathTTD;
+        }
+
+        public int getStatUsers() {
+            return statUsers;
+        }
+
+        public String getTsUsers() {
+            return tsUsers;
         }
     }
 }

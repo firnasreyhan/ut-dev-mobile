@@ -18,14 +18,14 @@ import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaP
 import com.unitedtractors.android.unitedtractorsapp.model.TaskModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.BerandaPICViewModel;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BerandaPICFragment extends Fragment {
     private FragmentBerandaPICBinding binding;
-    private BerandaPICViewModel viewModel;
+    private MainViewModel viewModel;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,36 +34,14 @@ public class BerandaPICFragment extends Fragment {
         binding = FragmentBerandaPICBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
-        viewModel = ViewModelProviders.of(getActivity()).get(BerandaPICViewModel.class);
+        viewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
 
         binding.textViewNamaUser.setText(AppPreference.getUser(getActivity()).getNamaUsers());
 
         binding.recyclerViewApproval.setHasFixedSize(true);
         binding.recyclerViewApproval.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        viewModel.getTransaction(
-                AppPreference.getUser(getActivity()).getUserUsers(),
-                -1
-        ).observe(getActivity(), new Observer<TransactionResponse>() {
-            @Override
-            public void onChanged(TransactionResponse transactionResponse) {
-                if (transactionResponse.isStatus()) {
-                    binding.textViewJumlahForm.setText(transactionResponse.getData().size() + " Form");
-                }
-            }
-        });
-
-        viewModel.getTransaction(
-                AppPreference.getUser(getActivity()).getUserUsers(),
-                2
-        ).observe(getActivity(), new Observer<TransactionResponse>() {
-            @Override
-            public void onChanged(TransactionResponse transactionResponse) {
-                if (transactionResponse.isStatus()) {
-                    binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
-                }
-            }
-        });
+        binding.recyclerViewTask.setHasFixedSize(true);
+        binding.recyclerViewTask.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         List<TaskModel> list = new ArrayList<>();
         list.add(new TaskModel("40"));
@@ -85,5 +63,52 @@ public class BerandaPICFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        binding.shimmerFrameLayoutApproval.startShimmer();
+
+        viewModel.getTransaction(
+                AppPreference.getUser(getActivity()).getUserUsers(),
+                -1
+        ).observe(getActivity(), new Observer<TransactionResponse>() {
+            @Override
+            public void onChanged(TransactionResponse transactionResponse) {
+                if (transactionResponse != null) {
+                    if (transactionResponse.isStatus()) {
+                        binding.textViewJumlahForm.setText(transactionResponse.getData().size() + " Form");
+                    }
+                }
+            }
+        });
+
+        viewModel.getTransaction(
+                AppPreference.getUser(getActivity()).getUserUsers(),
+                2
+        ).observe(getActivity(), new Observer<TransactionResponse>() {
+            @Override
+            public void onChanged(TransactionResponse transactionResponse) {
+                binding.shimmerFrameLayoutApproval.stopShimmer();
+                binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
+                if (transactionResponse != null) {
+                    if (transactionResponse.isStatus()) {
+                        binding.recyclerViewApproval.setVisibility(View.VISIBLE);
+                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
+                    } else {
+                        binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onPause() {
+        binding.shimmerFrameLayoutApproval.stopShimmer();
+        super.onPause();
     }
 }

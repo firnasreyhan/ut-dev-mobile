@@ -61,6 +61,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
             }
+            holder.textViewApplicantForm.setText("Applicant: " + list.get(position).getNamaUsers());
         } else {
             if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
                 holder.textViewStatusForm.setText("Menunggu Konfirmasi");
@@ -79,6 +80,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
             }
+            holder.textViewApplicantForm.setVisibility(View.GONE);
         }
 
         String nmyFormat = "dd MMMM yyyy"; //In which you need put here
@@ -101,6 +103,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
         private final TextView textViewNamaForm;
         private final TextView textViewTanggalForm;
         private final TextView textViewStatusForm;
+        private final TextView textViewApplicantForm;
         private final ImageView imageViewStatus;
         private final MaterialButton materialButtonDetailForm;
         public ViewHolder(@NonNull View itemView) {
@@ -108,6 +111,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
             textViewNamaForm = itemView.findViewById(R.id.textViewNamaForm);
             textViewTanggalForm = itemView.findViewById(R.id.textViewTanggalForm);
             textViewStatusForm = itemView.findViewById(R.id.textViewStatusForm);
+            textViewApplicantForm = itemView.findViewById(R.id.textViewApplicantForm);
             imageViewStatus = itemView.findViewById(R.id.imageViewStatus);
             materialButtonDetailForm = itemView.findViewById(R.id.materialButtonDetailForm);
 

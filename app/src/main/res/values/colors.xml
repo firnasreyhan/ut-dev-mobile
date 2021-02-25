@@ -19,4 +19,5 @@
     <color name="bgApprove">#E1FFF0</color>
     <color name="bgReject">#FFF0F0</color>
     <color name="bgPrimary">#FFFFF0</color>
+    <color name="placeholder">#dddddd</color>
 </resources>

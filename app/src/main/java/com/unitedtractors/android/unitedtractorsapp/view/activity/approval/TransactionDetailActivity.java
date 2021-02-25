@@ -17,6 +17,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
@@ -45,6 +46,9 @@ public class TransactionDetailActivity extends AppCompatActivity {
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        binding.webView.getSettings().setJavaScriptEnabled(true);
+        binding.webView.getSettings().setBuiltInZoomControls(true);
 
         viewModel.getTransactionDetail(
                 AppPreference.getUser(this).getUserUsers(),
@@ -90,7 +94,11 @@ public class TransactionDetailActivity extends AppCompatActivity {
                         }
                     }
 
-                    binding.webView.getSettings().setJavaScriptEnabled(true);
+                    String url = "https://drive.google.com/viewerng/viewer?embedded=true&url=" + transactionDetailResponse.getData().getPathTrans();
+                    String doc = "<iframe src='"+url+"' width='100%' height='100%' style='border: none;'></iframe>";
+                    binding.webView.loadData(doc, "text/html", "UTF-8");
+
+//                    binding.webView.getSettings().setJavaScriptEnabled(true);
 //                    binding.webView.getSettings().setBuiltInZoomControls(true);
 //                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 //                        // chromium, enable hardware acceleration
@@ -100,16 +108,16 @@ public class TransactionDetailActivity extends AppCompatActivity {
 //                        binding.webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 //                    }
 //                    binding.webView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-                    binding.webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
-                    binding.webView.setWebViewClient(new WebViewClient() {
-                        @Override
-                        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                            view.loadUrl(url);
-                            return false;
-                        }
-                    });
-
-                    binding.webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=http://www.pdf995.com/samples/pdf.pdf");
+//                    binding.webView.getSettings().setRenderPriority(WebSettings.RenderPriority.HIGH);
+//                    binding.webView.setWebViewClient(new WebViewClient() {
+//                        @Override
+//                        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                            view.loadUrl(url);
+//                            return false;
+//                        }
+//                    });
+//
+//                    binding.webView.loadUrl("https://drive.google.com/viewerng/viewer?embedded=true&url=http://www.pdf995.com/samples/pdf.pdf");
                 }
             }
         });

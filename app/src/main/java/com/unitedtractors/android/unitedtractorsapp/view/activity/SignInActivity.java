@@ -59,10 +59,24 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onChanged(SignInResponse signInResponse) {
                 if (signInResponse.isStatus()) {
-                    AppPreference.saveUser(getApplicationContext(), signInResponse.getData());
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    if (signInResponse.getData().getStatUsers() == 0) {
+                        new AlertDialog.Builder(SignInActivity.this)
+                                .setTitle("Pesan")
+                                .setMessage("Akun anda sedang dalam proses validasi oleh Admin, segera hubungi Admin.")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create()
+                                .show();
+                    } else {
+                        AppPreference.saveUser(getApplicationContext(), signInResponse.getData());
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
                 } else {
                     new AlertDialog.Builder(SignInActivity.this)
                             .setTitle("Pesan")
