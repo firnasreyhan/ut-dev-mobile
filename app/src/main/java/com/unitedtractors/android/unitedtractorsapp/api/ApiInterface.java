@@ -4,6 +4,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.SignUpResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 
@@ -23,6 +24,18 @@ public interface ApiInterface {
     @POST("user/login")
     @FormUrlEncoded
     Call<SignInResponse> postSignIn(
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("token") String token
+    );
+
+    @POST("user/signup")
+    @FormUrlEncoded
+    Call<SignUpResponse> postSignUp(
+            @Field("namaLengkap") String namaLengkap,
+            @Field("role") String role,
+            @Field("departemen") String departemen,
+            @Field("divisi") String divisi,
             @Field("username") String username,
             @Field("password") String password,
             @Field("token") String token

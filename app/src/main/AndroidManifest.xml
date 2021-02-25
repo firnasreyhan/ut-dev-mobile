@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
         <activity android:name=".view.activity.approval.TransactionDetailActivity"/>
+        <activity android:name=".view.activity.SignUpActivity"/>
+        <activity android:name=".view.activity.approval.TransactionDetailActivity" />
         <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity" />
         <activity android:name=".view.activity.ListApprovalActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />

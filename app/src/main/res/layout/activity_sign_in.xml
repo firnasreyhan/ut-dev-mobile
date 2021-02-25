@@ -110,6 +110,32 @@
             app:backgroundTint="@color/primary"
             app:cornerRadius="@dimen/_11sdp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Belum punya akun?"
+                android:textColor="@color/black"
+                android:fontFamily="@font/montserrat_medium"
+                android:layout_marginRight="@dimen/_5sdp"/>
+
+            <TextView
+                android:id="@+id/textViewSignUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daftar disini."
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="@color/primary"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
