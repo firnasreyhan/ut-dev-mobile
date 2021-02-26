@@ -45,6 +45,7 @@ public class SignUpViewModel extends AndroidViewModel {
         RequestBody departement_ = RequestBody.create(MediaType.parse("text/plain"), departement);
         RequestBody division_ = RequestBody.create(MediaType.parse("text/plain"), division);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
+        RequestBody token_ = RequestBody.create(MediaType.parse("text/plain"), updateToken(username));
         return repository.postSignUp(
                 username_,
                 namaLengkap_,
@@ -52,7 +53,8 @@ public class SignUpViewModel extends AndroidViewModel {
                 departement_,
                 division_,
                 password_,
-                compressFile(signature, "signature")
+                compressFile(signature, "signature"),
+                token_
         );
     }
 

@@ -50,7 +50,7 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postSignUp(RequestBody username, RequestBody namaLengkap, RequestBody role, RequestBody departement, RequestBody division, RequestBody password, MultipartBody.Part signature) {
+    public MutableLiveData<BaseResponse> postSignUp(RequestBody username, RequestBody namaLengkap, RequestBody role, RequestBody departement, RequestBody division, RequestBody password, MultipartBody.Part signature, RequestBody token) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postSignUp(
                 username,
@@ -59,7 +59,8 @@ public class Repository {
                 departement,
                 division,
                 password,
-                signature
+                signature,
+                token
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
@@ -120,10 +121,10 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<FormResponse> getListForm(String divisi) {
+    public MutableLiveData<FormResponse> getListForm(String department) {
         MutableLiveData<FormResponse> data = new MutableLiveData<>();
         apiInterface.getListForm(
-                divisi
+                department
         ).enqueue(new Callback<FormResponse>() {
             @Override
             public void onResponse(Call<FormResponse> call, Response<FormResponse> response) {

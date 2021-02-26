@@ -57,7 +57,7 @@
 
                 <LinearLayout
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_13sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -66,21 +66,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/peminjam"/>
 
                         <TextView
-                            android:id="@+id/namaPeminjamTv"
+                            android:id="@+id/textViewPeminjam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/peminjam"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -88,21 +93,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/pengemudi"/>
 
                         <TextView
-                            android:id="@+id/namaPengemudiTv"
+                            android:id="@+id/textViewPengemudi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/pengemudi"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -110,21 +120,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/tgl_peminjaman"/>
 
                         <TextView
-                            android:id="@+id/tglPeminjamanTv"
+                            android:id="@+id/textViewTanggalPeminjaman"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/tgl_peminjaman"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -132,21 +147,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/tgl_pengembalian"/>
 
                         <TextView
-                            android:id="@+id/tglPengembalianTv"
+                            android:id="@+id/textViewTanggalPengembalian"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/tgl_pengembalian"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -154,21 +174,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/divisi"/>
 
                         <TextView
-                            android:id="@+id/divisiTv"
+                            android:id="@+id/textViewDivisiDepartement"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/divisi"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -176,21 +201,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/no_pol"/>
 
                         <TextView
-                            android:id="@+id/noPolTv"
+                            android:id="@+id/textViewNoPolisi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/no_pol"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -198,43 +228,53 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/jam_berangkat"/>
 
                         <TextView
-                            android:id="@+id/jamBerangkatTv"
+                            android:id="@+id/textViewJamBerangkat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/jam_berangkat"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="@dimen/_5sdp">
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
                             android:text="@string/jam_pulang"/>
 
                         <TextView
-                            android:id="@+id/jamPulangTv"
+                            android:id="@+id/textVIewJamPulang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
                             android:layout_weight="1"
                             android:gravity="right"
-                            android:text="@string/jam_pulang"/>
+                            android:text="-"/>
 
                     </LinearLayout>
 
@@ -249,13 +289,21 @@
                     android:text="@string/tujuan"/>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/recyclerView"
                     android:layout_weight="1"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_13sdp"
                     android:overScrollMode="never"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
 
                 <CheckBox
                     android:id="@+id/checkBox"

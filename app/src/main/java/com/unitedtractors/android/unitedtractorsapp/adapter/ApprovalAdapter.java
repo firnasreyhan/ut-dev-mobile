@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,16 +21,19 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.approval.Trans
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHolder> {
+public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHolder> implements Filterable {
     private static List<TransactionResponse.TransactionModel> list;
+    private static List<TransactionResponse.TransactionModel> listFiltered;
     private static boolean isPIC;
 
     public ApprovalAdapter(List<TransactionResponse.TransactionModel> list, boolean isPIC) {
         ApprovalAdapter.list = list;
+        ApprovalAdapter.listFiltered = list;
         ApprovalAdapter.isPIC = isPIC;
     }
 
@@ -97,6 +102,37 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String s = constraint.toString();
+                if (s.isEmpty()) {
+                    listFiltered = list;
+                } else {
+                    List<TransactionResponse.TransactionModel> filterList = new ArrayList<>();
+                    for (TransactionResponse.TransactionModel model : list) {
+                        if (model.getNamaForm().toLowerCase().contains(s.toLowerCase()) || model.getNamaUsers().toLowerCase().contains(s.toLowerCase())) {
+                            filterList.add(model);
+                        }
+                    }
+                    listFiltered = filterList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = listFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                listFiltered = (List<TransactionResponse.TransactionModel>) results.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

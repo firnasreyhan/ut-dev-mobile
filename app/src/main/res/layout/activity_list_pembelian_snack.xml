@@ -98,7 +98,7 @@
                                 android:backgroundTint="@color/hint_color"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:hint="Divisi"
-                                android:inputType="text"
+                                android:inputType="textCapWords"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
                                 android:textSize="@dimen/_8sdp"/>
@@ -114,7 +114,6 @@
                                 android:drawableRight="@drawable/ic_outline_calendar"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:hint="Tanggal"
-                                android:inputType="date"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
                                 android:textSize="@dimen/_8sdp"

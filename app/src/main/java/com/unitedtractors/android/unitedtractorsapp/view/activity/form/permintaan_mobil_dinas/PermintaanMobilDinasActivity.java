@@ -8,7 +8,6 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -18,7 +17,6 @@ import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPerminta
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
 
 public class PermintaanMobilDinasActivity extends AppCompatActivity {
@@ -26,14 +24,10 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
     private Calendar calendar;
 
-    private String namaPeminjam;
-    private String namaPengemudi;
-    private String tglPeminjaman;
-    private String tglPengembalian;
-    private String divisi;
-    private String noPolisi;
-    private String jamBerangkat;
-    private String jamPulang;
+    private String tglPeminjamanView;
+    private String tglPeminjamanServer;
+    private String tglPengembalianView;
+    private String tglPengembalianServer;
     private int jumlahTujuan;
 
     @Override
@@ -50,6 +44,9 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
         calendar = Calendar.getInstance();
 
+        SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
+        SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -57,8 +54,9 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd/M/yyyy", Locale.getDefault());
                 binding.editTextTanggalPeminjaman.setText(simpleDateFormatView.format(calendar.getTime()));
+                tglPeminjamanView = simpleDateFormatView.format(calendar.getTime());
+                tglPeminjamanServer = simpleDateFormatServer.format(calendar.getTime());
             }
         };
 
@@ -78,8 +76,9 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd/M/yyyy", Locale.getDefault());
                 binding.editTextTanggalPengembalian.setText(simpleDateFormatView.format(calendar.getTime()));
+                tglPengembalianView = simpleDateFormatView.format(calendar.getTime());
+                tglPengembalianServer = simpleDateFormatServer.format(calendar.getTime());
             }
         };
 
@@ -101,7 +100,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time1 = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+                        String time1 = String.valueOf(hourOfDay) + "." + String.valueOf(minute);
                         binding.editTextJamBerangkat.setText(time1);
                     }
                 }, hour, min, true);
@@ -119,7 +118,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time1 = String.valueOf(hourOfDay) + ":" + String.valueOf(minute);
+                        String time1 = String.valueOf(hourOfDay) + "." + String.valueOf(minute);
                         binding.editTextJamPulang.setText(time1);
                     }
                 }, hour, min, true);
@@ -127,22 +126,8 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 timePicker.show();
             }
         });
-        jumlahTujuan = 0;
 
-        if (jumlahTujuan == 0) {
-            binding.materialButtonSelanjutnya.setEnabled(false);
-            binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.button_disable));
-        }
-
-        namaPeminjam = "John Wick";
-        namaPengemudi = binding.editTextNamaPengemudi.getText().toString().trim();
-        tglPeminjaman = binding.editTextTanggalPeminjaman.getText().toString().trim();
-        tglPengembalian = binding.editTextTanggalPengembalian.getText().toString().trim();
-        divisi = binding.editTextDivisi.getText().toString().trim();
-        noPolisi = binding.editTextNoPolisi.getText().toString().trim();
-        jamBerangkat = binding.editTextJamBerangkat.getText().toString().trim();
-        jamPulang = binding.editTextJamPulang.getText().toString().trim();
-        jumlahTujuan = Integer.parseInt(binding.editTextJumlahTujuan.getText().toString());
+        jumlahTujuan = Integer.parseInt(String.valueOf(binding.editTextJumlahTujuan.getText().toString()));
 
         binding.materialButtonTambahJumlahTujuan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,30 +160,31 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), TujuanKeperluanActivity.class);
-                    intent.putExtra("nama_pengemudi", namaPengemudi);
-                    intent.putExtra("nama_peminjam", namaPeminjam);
-                    intent.putExtra("tgl_peminjaman", tglPeminjaman);
-                    intent.putExtra("tgl_pengembalian", tglPengembalian);
-                    intent.putExtra("divisi", divisi);
-                    intent.putExtra("no_polisi", noPolisi);
-                    intent.putExtra("jam_berangkat", jamBerangkat);
-                    intent.putExtra("jam_pulang", jamPulang);
-                    intent.putExtra("jumlah_tujuan", jumlahTujuan);
+                    Intent intent = new Intent(v.getContext(), ListPermintaanMobilDinasActivity.class);
+                    intent.putExtra("PENGEMUDI", binding.editTextNamaPengemudi.getText().toString());
+                    intent.putExtra("TGL_PEMINJAMAN_VIEW", tglPeminjamanView);
+                    intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);
+                    intent.putExtra("TGL_PENGEMBALIAN_VIEW", tglPengembalianView);
+                    intent.putExtra("TGL_PENGEMBALIAN_SERVER", tglPengembalianServer);
+                    intent.putExtra("DIVISI_DEPARTEMENT", binding.editTextDivisiDepartement.getText().toString());
+                    intent.putExtra("NO_POLISI", binding.editTextNoPolisi.getText().toString());
+                    intent.putExtra("JAM_BERANGKAT", binding.editTextJamBerangkat.getText().toString());
+                    intent.putExtra("JAM_PULANG", binding.editTextJamPulang.getText().toString());
+                    intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
                     startActivity(intent);
                 } else {
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
+//                    new AlertDialog.Builder(v.getContext())
+//                            .setTitle("Pesan")
+//                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
+//                            .setCancelable(false)
+//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            })
+//                            .create()
+//                            .show();
                 }
 
             }
@@ -206,12 +192,55 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
     }
 
-    boolean checkData() {
-        if (namaPeminjam.isEmpty()) {
-            return false;
+    private boolean checkData() {
+        boolean cek1 = true;
+        boolean cek2 = true;
+        boolean cek3 = true;
+        boolean cek4 = true;
+        boolean cek5 = true;
+        boolean cek6 = true;
+        boolean cek7 = true;
+
+        if (binding.editTextNamaPengemudi.getText().toString().isEmpty()) {
+            binding.editTextNamaPengemudi.setError("Mohon isi data berikut.");
+            cek1 = false;
         }
 
-        return true;
+        if (binding.editTextTanggalPeminjaman.getText().toString().isEmpty()) {
+            binding.editTextTanggalPeminjaman.setError("Mohon isi data berikut.");
+            cek2 = false;
+        }
+
+        if (binding.editTextTanggalPengembalian.getText().toString().isEmpty()) {
+            binding.editTextTanggalPengembalian.setError("Mohon isi data berikut.");
+            cek3 = false;
+        }
+
+        if (binding.editTextDivisiDepartement.getText().toString().isEmpty()) {
+            binding.editTextDivisiDepartement.setError("Mohon isi data berikut.");
+            cek4 = false;
+        }
+
+        if (binding.editTextNoPolisi.getText().toString().isEmpty()) {
+            binding.editTextNoPolisi.setError("Mohon isi data berikut.");
+            cek5 = false;
+        }
+
+        if (binding.editTextJamBerangkat.getText().toString().isEmpty()) {
+            binding.editTextJamBerangkat.setError("Mohon isi data berikut.");
+            cek6= false;
+        }
+
+        if (binding.editTextJamPulang.getText().toString().isEmpty()) {
+            binding.editTextJamPulang.setError("Mohon isi data berikut.");
+            cek7 = false;
+        }
+
+        if (cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

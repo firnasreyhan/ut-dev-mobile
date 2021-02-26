@@ -36,7 +36,7 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
     @NonNull
     @Override
     public TujuanPermintaanMobilDinasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       return new TujuanPermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tujuan_permintaan_mobil_dinas, parent, false));
+       return new TujuanPermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_mobil_dinas_form_input, parent, false));
     }
 
     @Override

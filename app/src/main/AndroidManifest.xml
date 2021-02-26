@@ -26,7 +26,7 @@
         <activity android:name=".view.activity.form.komplain_atau_usulan.ListKomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity" />
-        <activity android:name=".view.activity.form.permintaan_mobil_dinas.TujuanKeperluanActivity" />
+        <activity android:name=".view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity" />
         <activity android:name=".view.activity.ScreenFeedbackActivity" />
         <activity android:name=".view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity" />

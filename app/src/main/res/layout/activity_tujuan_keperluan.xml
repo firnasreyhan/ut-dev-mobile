@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.form.permintaan_mobil_dinas.TujuanKeperluanActivity">
+    tools:context=".view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -42,7 +42,7 @@
             android:fontFamily="@font/montserrat_medium"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_10sdp"
-            android:text="Tujuan dan Keperluan"/>
+            android:text="Tujuan &amp; Keperluan"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

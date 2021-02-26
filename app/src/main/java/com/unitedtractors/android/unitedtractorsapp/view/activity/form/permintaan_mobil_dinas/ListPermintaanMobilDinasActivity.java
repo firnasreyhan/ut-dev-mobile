@@ -17,20 +17,10 @@ import com.unitedtractors.android.unitedtractorsapp.model.TujuanMobilDinasModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TujuanKeperluanActivity extends AppCompatActivity {
+public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityTujuanKeperluanBinding binding;
 
-    List<TujuanMobilDinasModel> list;
-    int jumlahTujuan;
-
-    private String namaPeminjam;
-    private String namaPengemudi;
-    private String tglPeminjaman;
-    private String tglPengembalian;
-    private String divisi;
-    private String noPolisi;
-    private String jamBerangkat;
-    private String jamPulang;
+    private List<TujuanMobilDinasModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +35,16 @@ public class TujuanKeperluanActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        jumlahTujuan = getIntent().getIntExtra("jumlah_tujuan",0);
-        namaPeminjam = getIntent().getStringExtra("nama_peminjam");
-        namaPengemudi = getIntent().getStringExtra("nama_pengemudi");
-        tglPeminjaman = getIntent().getStringExtra("tgl_peminjaman");
-        tglPengembalian = getIntent().getStringExtra("tgl_pengembalian");
-        divisi = getIntent().getStringExtra("divisi");
-        noPolisi = getIntent().getStringExtra("no_pol");
-        jamBerangkat = getIntent().getStringExtra("jam_berangkat");
-        jamPulang = getIntent().getStringExtra("jam_pulang");
+        String pengemudi = getIntent().getStringExtra("PENGEMUDI");
+        String tglPeminjamanView = getIntent().getStringExtra("TGL_PEMINJAMAN_VIEW");
+        String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
+        String tglPengembalianView = getIntent().getStringExtra("TGL_PENGEMBALIAN_VIEW");
+        String tglPengembalianServer = getIntent().getStringExtra("TGL_PENGEMBALIAN_SERVER");
+        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
+        String noPolisi = getIntent().getStringExtra("NO_POLISI");
+        String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
+        String jamPulang = getIntent().getStringExtra("JAM_PULANG");
+        int jumlahTujuan = getIntent().getIntExtra("JUMLAH_TUJUAN",0);
 
         list = new ArrayList<>();
 
@@ -73,9 +64,18 @@ public class TujuanKeperluanActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("checkData", String.valueOf(checkData()));
                 if (checkData()) {
                     Intent intent = new Intent(v.getContext(), KonfirmasiPermintaanMobilDinasActivity.class);
+                    intent.putExtra("PENGEMUDI", pengemudi);
+                    intent.putExtra("TGL_PEMINJAMAN_VIEW", tglPeminjamanView);
+                    intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);
+                    intent.putExtra("TGL_PENGEMBALIAN_VIEW", tglPengembalianView);
+                    intent.putExtra("TGL_PENGEMBALIAN_SERVER", tglPengembalianServer);
+                    intent.putExtra("DIVISI_DEPARTEMENT", divisiDepartement);
+                    intent.putExtra("NO_POLISI", noPolisi);
+                    intent.putExtra("JAM_BERANGKAT", jamBerangkat);
+                    intent.putExtra("JAM_PULANG", jamPulang);
+                    intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())

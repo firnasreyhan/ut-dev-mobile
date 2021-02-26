@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import com.unitedtractors.android.unitedtractorsapp.viewmodel.SignInViewModel;
 public class SignInActivity extends AppCompatActivity {
     private ActivitySignInBinding binding;
     private SignInViewModel viewModel;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,10 @@ public class SignInActivity extends AppCompatActivity {
         binding = ActivitySignInBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(true);
+        progressDialog.setMessage("Mohon Tunggu Sebentar...");
 
         viewModel = ViewModelProviders.of(this).get(SignInViewModel.class);
 
@@ -59,17 +65,41 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void signIn() {
+        progressDialog.show();
         viewModel.signIn(
                 binding.textInputEditTextUsername.getText().toString(),
                 binding.textInputEditTextPassword.getText().toString()
         ).observe(this, new Observer<SignInResponse>() {
             @Override
             public void onChanged(SignInResponse signInResponse) {
-                if (signInResponse.isStatus()) {
-                    if (signInResponse.getData().getStatUsers() == 0) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+
+                if (signInResponse != null) {
+                    if (signInResponse.isStatus()) {
+                        if (signInResponse.getData().getStatUsers() == 0) {
+                            new AlertDialog.Builder(SignInActivity.this)
+                                    .setTitle("Pesan")
+                                    .setMessage("Akun anda sedang dalam proses validasi oleh Admin, segera hubungi Admin.")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                        } else {
+                            AppPreference.saveUser(getApplicationContext(), signInResponse.getData());
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        }
+                    } else {
                         new AlertDialog.Builder(SignInActivity.this)
                                 .setTitle("Pesan")
-                                .setMessage("Akun anda sedang dalam proses validasi oleh Admin, segera hubungi Admin.")
+                                .setMessage(signInResponse.getMessage())
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
@@ -78,16 +108,11 @@ public class SignInActivity extends AppCompatActivity {
                                 })
                                 .create()
                                 .show();
-                    } else {
-                        AppPreference.saveUser(getApplicationContext(), signInResponse.getData());
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
                     }
                 } else {
                     new AlertDialog.Builder(SignInActivity.this)
                             .setTitle("Pesan")
-                            .setMessage(signInResponse.getMessage())
+                            .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi.")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

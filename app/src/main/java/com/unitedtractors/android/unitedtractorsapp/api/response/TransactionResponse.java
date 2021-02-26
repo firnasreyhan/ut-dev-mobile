@@ -82,5 +82,9 @@ public class TransactionResponse extends BaseResponse{
         public String getStatTrans() {
             return statTrans;
         }
+
+        public void setStatTrans(String statTrans) {
+            this.statTrans = statTrans;
+        }
     }
 }

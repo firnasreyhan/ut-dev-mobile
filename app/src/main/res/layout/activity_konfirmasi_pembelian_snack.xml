@@ -85,7 +85,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_8sdp"
-                        android:text="16/01/21"/>
+                        android:text="-"/>
 
                 </LinearLayout>
 
@@ -112,7 +112,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_8sdp"
-                        android:text="Desain"/>
+                        android:text="-"/>
 
                 </LinearLayout>
 
@@ -139,7 +139,7 @@
                         android:fontFamily="@font/montserrat_medium"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_8sdp"
-                        android:text="Acara Syukuran Divisi"/>
+                        android:text="-"/>
 
                 </LinearLayout>
 

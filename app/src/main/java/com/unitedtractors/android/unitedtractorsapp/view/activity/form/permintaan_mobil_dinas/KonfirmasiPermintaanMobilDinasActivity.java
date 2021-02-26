@@ -10,6 +10,7 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.adapter.TujuanPermintaanMobilDinasAdapter;
 
@@ -29,6 +30,25 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        String pengemudi = getIntent().getStringExtra("PENGEMUDI");
+        String tglPeminjamanView = getIntent().getStringExtra("TGL_PEMINJAMAN_VIEW");
+        String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
+        String tglPengembalianView = getIntent().getStringExtra("TGL_PENGEMBALIAN_VIEW");
+        String tglPengembalianServer = getIntent().getStringExtra("TGL_PENGEMBALIAN_SERVER");
+        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
+        String noPolisi = getIntent().getStringExtra("NO_POLISI");
+        String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
+        String jamPulang = getIntent().getStringExtra("JAM_PULANG");
+
+        binding.textViewPeminjam.setText(AppPreference.getUser(this).getNamaUsers());
+        binding.textViewPengemudi.setText(pengemudi);
+        binding.textViewTanggalPeminjaman.setText(tglPeminjamanView);
+        binding.textViewTanggalPengembalian.setText(tglPengembalianView);
+        binding.textViewDivisiDepartement.setText(divisiDepartement);
+        binding.textViewNoPolisi.setText(noPolisi);
+        binding.textViewJamBerangkat.setText(jamBerangkat);
+        binding.textVIewJamPulang.setText(jamPulang);
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -53,5 +73,11 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                 startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

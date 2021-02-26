@@ -41,7 +41,8 @@ public interface ApiInterface {
             @Part("departement") RequestBody departemen,
             @Part("division") RequestBody divisi,
             @Part("password") RequestBody password,
-            @Part MultipartBody.Part signature
+            @Part MultipartBody.Part signature,
+            @Part("token") RequestBody token
     );
 
     @POST("user/logout")
@@ -64,7 +65,7 @@ public interface ApiInterface {
 
     @GET("form")
     Call<FormResponse> getListForm(
-            @Query("divisi") String divisi
+            @Query("department") String department
     );
 
     @PUT("transaction/confirm")

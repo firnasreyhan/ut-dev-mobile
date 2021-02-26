@@ -26,6 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTransactionDetailBinding;

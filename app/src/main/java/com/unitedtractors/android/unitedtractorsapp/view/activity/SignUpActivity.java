@@ -36,15 +36,15 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        String[] roles = new String[] {"Head", "Section head", "Staff"};
+        String[] roles = new String[] {"Staff", "Section Head", "Department Head"};
         ArrayAdapter<String> roleAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, roles);
         binding.dropdownRole.setAdapter(roleAdapter);
 
-        String[] departments = new String[] {"General", "Affairs", "Staff"};
+        String[] departments = new String[] {"General Affairs", "Others"};
         ArrayAdapter<String> departmentAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, departments);
         binding.dropdownDepartment.setAdapter(departmentAdapter);
 
-        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management"};
+        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
         ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, divisons);
         binding.dropdownDivision.setAdapter(divisionAdapter);
 
@@ -119,15 +119,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 binding.textInputEditTextConfirmPassword.setError("Password tidak sama");
                                 return;
                             }
-                            signUp(
-                                    binding.textInputEditTextUsername.getText().toString(),
-                                    binding.textInputEditTexNamaLengkap.getText().toString(),
-                                    binding.dropdownRole.getText().toString(),
-                                    binding.dropdownDepartment.getText().toString(),
-                                    binding.dropdownDivision.getText().toString(),
-                                    binding.textInputEditTextPassword.getText().toString(),
-                                    bitmap
-                            );
+                            signUp();
                         }
                     }
 
@@ -140,27 +132,19 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void signUp(
-            String username,
-            String namaLengkap,
-            String role,
-            String departement,
-            String division,
-            String password,
-            Bitmap signature
-    ) {
+    private void signUp() {
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
         progressDialog.show();
 
         viewModel.signUp(
-                username,
-                namaLengkap,
-                role,
-                departement,
-                division,
-                password,
-                signature
+                binding.textInputEditTextUsername.getText().toString(),
+                binding.textInputEditTexNamaLengkap.getText().toString(),
+                binding.dropdownRole.getText().toString(),
+                binding.dropdownDepartment.getText().toString(),
+                binding.dropdownDivision.getText().toString(),
+                binding.textInputEditTextPassword.getText().toString(),
+                bitmap
         ).observe(this, new Observer<BaseResponse>() {
             @Override
             public void onChanged(BaseResponse baseResponse) {

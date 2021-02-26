@@ -50,27 +50,6 @@ public class BerandaFragment extends Fragment {
         binding.recyclerViewForm.setHasFixedSize(true);
         binding.recyclerViewForm.setLayoutManager(new GridLayoutManager(getActivity(), 3, GridLayoutManager.VERTICAL, false));
 
-        viewModel.getTransaction(
-                AppPreference.getUser(getActivity()).getUserUsers(),
-                1
-        ).observe(getActivity(), new Observer<TransactionResponse>() {
-            @Override
-            public void onChanged(TransactionResponse transactionResponse) {
-                binding.shimmerFrameLayoutApproval.stopShimmer();
-                binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
-                if (transactionResponse != null) {
-                    if (transactionResponse.isStatus()) {
-                        binding.recyclerViewApproval.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
-                    } else {
-                        binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
         List<TaskModel> list = new ArrayList<>();
         list.add(new TaskModel("40"));
         list.add(new TaskModel("20"));
@@ -78,7 +57,7 @@ public class BerandaFragment extends Fragment {
         binding.recyclerViewTask.setAdapter(new TaskAdapter(list));
 
         viewModel.getForm(
-                AppPreference.getUser(getActivity()).getDivUsers()
+                AppPreference.getUser(getActivity()).getDeptUsers()
         ).observe(getActivity(), new Observer<FormResponse>() {
             @Override
             public void onChanged(FormResponse formResponse) {
@@ -142,6 +121,27 @@ public class BerandaFragment extends Fragment {
         super.onResume();
         binding.shimmerFrameLayoutApproval.startShimmer();
         binding.shimmerFrameLayoutForm.startShimmer();
+
+        viewModel.getTransaction(
+                AppPreference.getUser(getActivity()).getUserUsers(),
+                1
+        ).observe(getActivity(), new Observer<TransactionResponse>() {
+            @Override
+            public void onChanged(TransactionResponse transactionResponse) {
+                binding.shimmerFrameLayoutApproval.stopShimmer();
+                binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
+                if (transactionResponse != null) {
+                    if (transactionResponse.isStatus()) {
+                        binding.recyclerViewApproval.setVisibility(View.VISIBLE);
+                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
+                    } else {
+                        binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     @Override

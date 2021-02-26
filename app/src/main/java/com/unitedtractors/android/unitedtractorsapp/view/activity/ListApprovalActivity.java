@@ -1,7 +1,10 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -14,9 +17,13 @@ import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListAppr
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.ApprovalListViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ListApprovalActivity extends AppCompatActivity {
     private ActivityListApprovalBinding binding;
     private ApprovalListViewModel viewModel;
+    private boolean cekSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +41,28 @@ public class ListApprovalActivity extends AppCompatActivity {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        binding.textInputEditTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    filterData(binding.textInputEditTextSearch.getText().toString());
+                    cekSearch = true;
+                }
+                return false;
+            }
+        });
+
+        binding.textInputLayoutSearch.setEndIconOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                binding.textInputEditTextSearch.getText().clear();
+                if (cekSearch) {
+                    getData();
+                    cekSearch = false;
+                }
+            }
+        });
     }
 
     @Override
@@ -45,8 +74,19 @@ public class ListApprovalActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        binding.shimmerFrameLayout.startShimmer();
+        if (!cekSearch) {
+            getData();
+        }
+    }
 
+    @Override
+    public void onPause() {
+        binding.shimmerFrameLayout.stopShimmer();
+        super.onPause();
+    }
+
+    public void getData() {
+        binding.shimmerFrameLayout.startShimmer();
         viewModel.getTransaction(
                 AppPreference.getUser(this).getUserUsers(),
                 -1
@@ -55,6 +95,7 @@ public class ListApprovalActivity extends AppCompatActivity {
             public void onChanged(TransactionResponse transactionResponse) {
                 binding.shimmerFrameLayout.stopShimmer();
                 binding.shimmerFrameLayout.setVisibility(View.GONE);
+                binding.linearLayoutNoData.setVisibility(View.GONE);
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
@@ -69,9 +110,38 @@ public class ListApprovalActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void onPause() {
-        binding.shimmerFrameLayout.stopShimmer();
-        super.onPause();
+    public void filterData(String filter) {
+        binding.shimmerFrameLayout.startShimmer();
+        viewModel.getTransaction(
+                AppPreference.getUser(this).getUserUsers(),
+                -1
+        ).observe(this, new Observer<TransactionResponse>() {
+            @Override
+            public void onChanged(TransactionResponse transactionResponse) {
+                binding.shimmerFrameLayout.stopShimmer();
+                binding.shimmerFrameLayout.setVisibility(View.GONE);
+                binding.linearLayoutNoData.setVisibility(View.GONE);
+                if (transactionResponse != null) {
+                    if (transactionResponse.isStatus()) {
+                        List<TransactionResponse.TransactionModel> filterList = new ArrayList<>();
+                        for (TransactionResponse.TransactionModel model : transactionResponse.getData()) {
+                            if (model.getNamaForm().toLowerCase().contains(filter.toLowerCase()) || model.getNamaUsers().toLowerCase().contains(filter.toLowerCase())) {
+                                filterList.add(model);
+                            }
+                        }
+                        binding.recyclerView.setVisibility(View.VISIBLE);
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+
+                        if (filterList.isEmpty()) {
+                            binding.linearLayoutNoData.setVisibility(View.VISIBLE);
+                        }
+                    } else {
+                        binding.linearLayoutNoData.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    binding.linearLayoutNoData.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 }
