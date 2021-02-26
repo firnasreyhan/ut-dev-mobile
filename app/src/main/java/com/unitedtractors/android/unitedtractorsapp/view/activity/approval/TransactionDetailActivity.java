@@ -37,6 +37,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
     private ActivityTransactionDetailBinding binding;
     private TransactionDetailViewModel viewModel;
     private String idTrans;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,10 @@ public class TransactionDetailActivity extends AppCompatActivity {
         idTrans = getIntent().getStringExtra("ID_TRANS");
 
         viewModel = ViewModelProviders.of(this).get(TransactionDetailViewModel.class);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon Tunggu Sebentar...");
+        progressDialog.setCancelable(false);
 
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
@@ -214,6 +219,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
         binding.materialButtonApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.isShowing();
                 viewModel.putConfirm(
                         AppPreference.getUser(v.getContext()).getUserUsers(),
                         idTrans,
@@ -222,12 +228,44 @@ public class TransactionDetailActivity extends AppCompatActivity {
                 ).observe(TransactionDetailActivity.this, new Observer<BaseResponse>() {
                     @Override
                     public void onChanged(BaseResponse baseResponse) {
-                        binding.linearLayoutButton.setVisibility(View.GONE);
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+                        if (baseResponse != null) {
+                            if (baseResponse.isStatus()) {
+                                binding.linearLayoutButton.setVisibility(View.GONE);
 
-                        binding.linearLayoutStatus.setVisibility(View.VISIBLE);
-                        binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
-                        binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
-                        binding.textViewStatus.setText("Approved");
+                                binding.linearLayoutStatus.setVisibility(View.VISIBLE);
+                                binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
+                                binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
+                                binding.textViewStatus.setText("Approved");
+
+                                new AlertDialog.Builder(TransactionDetailActivity.this)
+                                        .setTitle("Pesan")
+                                        .setMessage("Terima kasih telah melakukan konfirmasi form.")
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                                onBackPressed();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            } else {
+                                new AlertDialog.Builder(TransactionDetailActivity.this)
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            }
+                        }
                     }
                 });
             }
@@ -256,6 +294,8 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                 if (input.getText().toString().isEmpty()) {
                                     input.setError("Mohon isi data berikut.");
                                 } else {
+                                    dialog.dismiss();
+                                    progressDialog.isShowing();
                                     viewModel.putConfirm(
                                             AppPreference.getUser(v.getContext()).getUserUsers(),
                                             "",
@@ -264,13 +304,45 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                     ).observe(TransactionDetailActivity.this, new Observer<BaseResponse>() {
                                         @Override
                                         public void onChanged(BaseResponse baseResponse) {
-                                            binding.linearLayoutButton.setVisibility(View.GONE);
+                                            if (progressDialog.isShowing()) {
+                                                progressDialog.dismiss();
+                                            }
 
-                                            binding.linearLayoutStatus.setVisibility(View.VISIBLE);
-                                            binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
-                                            binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
-                                            binding.textViewStatus.setText("Rejected");
-                                            dialog.dismiss();
+                                            if (baseResponse != null) {
+                                                if (baseResponse.isStatus()) {
+                                                    binding.linearLayoutButton.setVisibility(View.GONE);
+
+                                                    binding.linearLayoutStatus.setVisibility(View.VISIBLE);
+                                                    binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
+                                                    binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
+                                                    binding.textViewStatus.setText("Rejected");
+
+                                                    new AlertDialog.Builder(TransactionDetailActivity.this)
+                                                            .setTitle("Pesan")
+                                                            .setMessage("Terima kasih telah melakukan konfirmasi form.")
+                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    dialog.dismiss();
+                                                                    onBackPressed();
+                                                                }
+                                                            })
+                                                            .create()
+                                                            .show();
+                                                } else {
+                                                    new AlertDialog.Builder(TransactionDetailActivity.this)
+                                                            .setTitle("Pesan")
+                                                            .setMessage(baseResponse.getMessage())
+                                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                                @Override
+                                                                public void onClick(DialogInterface dialog, int which) {
+                                                                    dialog.dismiss();
+                                                                }
+                                                            })
+                                                            .create()
+                                                            .show();
+                                                }
+                                            }
                                         }
                                     });
                                 }

@@ -56,29 +56,6 @@ public class BerandaFragment extends Fragment {
 
         binding.recyclerViewTask.setAdapter(new TaskAdapter(list));
 
-        viewModel.getForm(
-                AppPreference.getUser(getActivity()).getDeptUsers()
-        ).observe(getActivity(), new Observer<FormResponse>() {
-            @Override
-            public void onChanged(FormResponse formResponse) {
-                binding.shimmerFrameLayoutForm.stopShimmer();
-                binding.shimmerFrameLayoutForm.setVisibility(View.GONE);
-                if (formResponse != null) {
-                    if (formResponse.isStatus()) {
-//                    List<FormResponse.FormModel> list = formResponse.getData();
-//                    list.add(new FormResponse.FormModel("MAPP_e3afa323d691d218559593b2dd1d5935","","","Pembelian Snack",""));
-//                    binding.recyclerViewForm.setAdapter(new FormAdapter(list));
-                        binding.recyclerViewForm.setVisibility(View.VISIBLE);
-                        binding.recyclerViewForm.setAdapter(new FormAdapter(formResponse.getData()));
-                    } else {
-                        binding.linearLayoutNoDataForm.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    binding.linearLayoutNoDataForm.setVisibility(View.VISIBLE);
-                }
-            }
-        });
-
 //        binding.cardViewPermintaanAsset.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -130,6 +107,7 @@ public class BerandaFragment extends Fragment {
             public void onChanged(TransactionResponse transactionResponse) {
                 binding.shimmerFrameLayoutApproval.stopShimmer();
                 binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
+                binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
@@ -139,6 +117,27 @@ public class BerandaFragment extends Fragment {
                     }
                 } else {
                     binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        viewModel.getForm(
+                AppPreference.getUser(getActivity()).getDeptUsers()
+        ).observe(getActivity(), new Observer<FormResponse>() {
+            @Override
+            public void onChanged(FormResponse formResponse) {
+                binding.shimmerFrameLayoutForm.stopShimmer();
+                binding.shimmerFrameLayoutForm.setVisibility(View.GONE);
+                binding.linearLayoutNoDataForm.setVisibility(View.GONE);
+                if (formResponse != null) {
+                    if (formResponse.isStatus()) {
+                        binding.recyclerViewForm.setVisibility(View.VISIBLE);
+                        binding.recyclerViewForm.setAdapter(new FormAdapter(formResponse.getData()));
+                    } else {
+                        binding.linearLayoutNoDataForm.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    binding.linearLayoutNoDataForm.setVisibility(View.VISIBLE);
                 }
             }
         });

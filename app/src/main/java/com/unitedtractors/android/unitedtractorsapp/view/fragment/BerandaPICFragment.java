@@ -93,6 +93,7 @@ public class BerandaPICFragment extends Fragment {
             public void onChanged(TransactionResponse transactionResponse) {
                 binding.shimmerFrameLayoutApproval.stopShimmer();
                 binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
+                binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
