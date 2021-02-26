@@ -12,9 +12,12 @@ public class PermintaanMobilDinasModel {
     private String noPolisi;
     private String jamBerangkat;
     private String jamPulang;
+    private String kmAwal;
+    private String kmAkhir;
+    private String catatan;
     private List<TujuanMobilDinasModel> tujuan;
 
-    public PermintaanMobilDinasModel(String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, List<TujuanMobilDinasModel> tujuan) {
+    public PermintaanMobilDinasModel(String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, String kmAwal, String kmAkhir, String catatan, List<TujuanMobilDinasModel> tujuan) {
         this.namaPeminjam = namaPeminjam;
         this.namaPengemudi = namaPengemudi;
         this.tglPeminjaman = tglPeminjaman;
@@ -23,14 +26,9 @@ public class PermintaanMobilDinasModel {
         this.noPolisi = noPolisi;
         this.jamBerangkat = jamBerangkat;
         this.jamPulang = jamPulang;
-        this.tujuan = tujuan;
-    }
-
-    public List<TujuanMobilDinasModel> getTujuan() {
-        return tujuan;
-    }
-
-    public void setTujuan(List<TujuanMobilDinasModel> tujuan) {
+        this.kmAwal = kmAwal;
+        this.kmAkhir = kmAkhir;
+        this.catatan = catatan;
         this.tujuan = tujuan;
     }
 
@@ -98,12 +96,70 @@ public class PermintaanMobilDinasModel {
         this.jamPulang = jamPulang;
     }
 
-    public boolean checkData()  {
-        if (!getNamaPeminjam().isEmpty() && !getNamaPengemudi().isEmpty() && !getTglPeminjaman().isEmpty() && !getTglPengembalian().isEmpty() && !getDivisi().isEmpty() && !getNoPolisi().isEmpty() && !getJamPulang().isEmpty() && !getJamBerangkat().isEmpty() && !getTujuan().isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
+    public String getKmAwal() {
+        return kmAwal;
     }
 
+    public void setKmAwal(String kmAwal) {
+        this.kmAwal = kmAwal;
+    }
+
+    public String getKmAkhir() {
+        return kmAkhir;
+    }
+
+    public void setKmAkhir(String kmAkhir) {
+        this.kmAkhir = kmAkhir;
+    }
+
+    public String getCatatan() {
+        return catatan;
+    }
+
+    public void setCatatan(String catatan) {
+        this.catatan = catatan;
+    }
+
+    public List<TujuanMobilDinasModel> getTujuan() {
+        return tujuan;
+    }
+
+    public void setTujuan(List<TujuanMobilDinasModel> tujuan) {
+        this.tujuan = tujuan;
+    }
+
+    public static class TujuanMobilDinasModel {
+
+        private String tujuan;
+        private String keperluan;
+
+        public TujuanMobilDinasModel(String tujuan, String keperluan) {
+            this.tujuan = tujuan;
+            this.keperluan = keperluan;
+        }
+
+        public String getTujuan() {
+            return tujuan;
+        }
+
+        public void setTujuan(String tujuan) {
+            this.tujuan = tujuan;
+        }
+
+        public String getKeperluan() {
+            return keperluan;
+        }
+
+        public void setKeperluan(String keperluan) {
+            this.keperluan = keperluan;
+        }
+
+        public boolean checkData()  {
+            if (!getTujuan().isEmpty() && !getKeperluan().isEmpty()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 }

@@ -100,8 +100,10 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time1 = String.valueOf(hourOfDay) + "." + String.valueOf(minute);
-                        binding.editTextJamBerangkat.setText(time1);
+                        String hour = hourOfDay < 10 ? ("0"+ hourOfDay) : String.valueOf(hourOfDay);
+                        String sMinute = minute < 10 ? ("0"+ minute) : String.valueOf(minute);
+                        String time = hour + ":" + sMinute;
+                        binding.editTextJamBerangkat.setText(time);
                     }
                 }, hour, min, true);
 
@@ -118,8 +120,10 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                 TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String time1 = String.valueOf(hourOfDay) + "." + String.valueOf(minute);
-                        binding.editTextJamPulang.setText(time1);
+                        String hour = hourOfDay < 10 ? ("0"+ hourOfDay) : String.valueOf(hourOfDay);
+                        String sMinute = minute < 10 ? ("0"+ minute) : String.valueOf(minute);
+                        String time = hour + ":" + sMinute;
+                        binding.editTextJamPulang.setText(time);
                     }
                 }, hour, min, true);
 
@@ -170,6 +174,8 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                     intent.putExtra("NO_POLISI", binding.editTextNoPolisi.getText().toString());
                     intent.putExtra("JAM_BERANGKAT", binding.editTextJamBerangkat.getText().toString());
                     intent.putExtra("JAM_PULANG", binding.editTextJamPulang.getText().toString());
+                    intent.putExtra("KM_AWAL", binding.prefixSuffixEditTextKMAwal.getText().toString());
+                    intent.putExtra("KM_AKHIR", binding.prefixSuffixEditTextKMAkhir.getText().toString());
                     intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
                     startActivity(intent);
                 } else {
@@ -236,11 +242,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             cek7 = false;
         }
 
-        if (cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7) {
-            return true;
-        } else {
-            return false;
-        }
+        return cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7;
     }
 
     @Override

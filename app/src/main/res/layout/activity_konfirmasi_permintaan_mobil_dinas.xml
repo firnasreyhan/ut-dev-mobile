@@ -266,7 +266,61 @@
                             android:text="@string/jam_pulang"/>
 
                         <TextView
-                            android:id="@+id/textVIewJamPulang"
+                            android:id="@+id/textViewJamPulang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="-"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
+                            android:text="Km. Awal"/>
+
+                        <TextView
+                            android:id="@+id/textViewKMAwal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textSize="@dimen/_8sdp"
+                            android:textColor="@color/text_color"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="-"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/_8sdp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:textColor="@color/hint_color2"
+                            android:text="Km. Akhir"/>
+
+                        <TextView
+                            android:id="@+id/textViewKMAkhir"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -283,6 +337,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Catatan"/>
+
+                <TextView
+                    android:id="@+id/textViewCatatan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textSize="@dimen/_8sdp"
+                    android:textColor="@color/text_color"
+                    android:text="-"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp"

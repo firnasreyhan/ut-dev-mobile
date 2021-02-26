@@ -1,32 +1,31 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTujuanKeperluanBinding;
-import com.unitedtractors.android.unitedtractorsapp.adapter.TujuanPermintaanMobilDinasAdapter;
-import com.unitedtractors.android.unitedtractorsapp.model.TujuanMobilDinasModel;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListPermintaanMobilDinasBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
-    private ActivityTujuanKeperluanBinding binding;
+    private ActivityListPermintaanMobilDinasBinding binding;
 
-    private List<TujuanMobilDinasModel> list;
+    private List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityTujuanKeperluanBinding.inflate(getLayoutInflater());
+        binding = ActivityListPermintaanMobilDinasBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -44,22 +43,21 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
         String noPolisi = getIntent().getStringExtra("NO_POLISI");
         String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
         String jamPulang = getIntent().getStringExtra("JAM_PULANG");
+        String kmAwal = getIntent().getStringExtra("KM_AWAL");
+        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
         int jumlahTujuan = getIntent().getIntExtra("JUMLAH_TUJUAN",0);
 
         list = new ArrayList<>();
 
-        if (jumlahTujuan > 0) {
-            for (int i = 0; i < jumlahTujuan; i++) {
-                list.add(new TujuanMobilDinasModel(
-                        "",
-                        "",
-                        ""));
-            }
+        for (int i = 0; i < jumlahTujuan; i++) {
+            list.add(new PermintaanMobilDinasModel.TujuanMobilDinasModel(
+                    "",
+                    ""));
         }
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new TujuanPermintaanMobilDinasAdapter(list, true));
+        binding.recyclerView.setAdapter(new PermintaanMobilDinasAdapter(list, true));
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +73,10 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
                     intent.putExtra("NO_POLISI", noPolisi);
                     intent.putExtra("JAM_BERANGKAT", jamBerangkat);
                     intent.putExtra("JAM_PULANG", jamPulang);
+                    intent.putExtra("KM_AWAL", kmAwal);
+                    intent.putExtra("KM_AKHIR", kmAkhir);
                     intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
+                    intent.putExtra("CATATAN", binding.editTextCatatan.getText().toString());
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())
@@ -102,7 +103,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (TujuanMobilDinasModel model : TujuanPermintaanMobilDinasAdapter.getList()) {
+        for (PermintaanMobilDinasModel.TujuanMobilDinasModel model : PermintaanMobilDinasAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

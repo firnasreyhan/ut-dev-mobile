@@ -14,18 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.model.TujuanMobilDinasModel;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
 
 import java.util.List;
 
-public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<TujuanPermintaanMobilDinasAdapter.ViewHolder> {
+public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<PermintaanMobilDinasAdapter.ViewHolder> {
 
-    private static List<TujuanMobilDinasModel> list;
+    private static List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list;
     private static boolean isEditable;
 
-    public TujuanPermintaanMobilDinasAdapter(List<TujuanMobilDinasModel> list, boolean isEditable) {
-        TujuanPermintaanMobilDinasAdapter.list = list;
-        TujuanPermintaanMobilDinasAdapter.isEditable = isEditable;
+    public PermintaanMobilDinasAdapter(List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list, boolean isEditable) {
+        PermintaanMobilDinasAdapter.list = list;
+        PermintaanMobilDinasAdapter.isEditable = isEditable;
     }
 
     @Override
@@ -35,16 +35,16 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
 
     @NonNull
     @Override
-    public TujuanPermintaanMobilDinasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       return new TujuanPermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_mobil_dinas_form_input, parent, false));
+    public PermintaanMobilDinasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       return new PermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_mobil_dinas_form_input, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TujuanPermintaanMobilDinasAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PermintaanMobilDinasAdapter.ViewHolder holder, int position) {
         holder.textViewUrutan.setText("Tujuan " + (position + 1));
         holder.editTextTujuan.setText(list.get(position).getTujuan());
         holder.editTextKeperluan.setText(list.get(position).getKeperluan());
-        holder.editTextCatatan.setText(list.get(position).getCatatan());
+//        holder.editTextCatatan.setText(list.get(position).getCatatan());
     }
 
     @Override
@@ -121,26 +121,26 @@ public class TujuanPermintaanMobilDinasAdapter extends RecyclerView.Adapter<Tuju
                 }
             });
 
-            editTextCatatan.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setCatatan(editTextCatatan.getText().toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
+//            editTextCatatan.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                    list.get(getAdapterPosition()).setCatatan(editTextCatatan.getText().toString());
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//
+//                }
+//            });
         }
     }
 
-    public static List<TujuanMobilDinasModel> getList() {
+    public static List<PermintaanMobilDinasModel.TujuanMobilDinasModel> getList() {
         return list;
     }
 }

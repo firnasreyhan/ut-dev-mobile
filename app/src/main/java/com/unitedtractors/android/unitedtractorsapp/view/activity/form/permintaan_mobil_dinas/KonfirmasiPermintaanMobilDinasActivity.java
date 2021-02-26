@@ -12,7 +12,7 @@ import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.adapter.TujuanPermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
 
 
 public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
@@ -40,6 +40,12 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         String noPolisi = getIntent().getStringExtra("NO_POLISI");
         String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
         String jamPulang = getIntent().getStringExtra("JAM_PULANG");
+        String kmAwal = getIntent().getStringExtra("KM_AWAL");
+        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
+        String catatan = getIntent().getStringExtra("CATATAN");
+        if (catatan.isEmpty()) {
+            catatan = "-";
+        }
 
         binding.textViewPeminjam.setText(AppPreference.getUser(this).getNamaUsers());
         binding.textViewPengemudi.setText(pengemudi);
@@ -48,11 +54,14 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         binding.textViewDivisiDepartement.setText(divisiDepartement);
         binding.textViewNoPolisi.setText(noPolisi);
         binding.textViewJamBerangkat.setText(jamBerangkat);
-        binding.textVIewJamPulang.setText(jamPulang);
+        binding.textViewJamPulang.setText(jamPulang);
+        binding.textViewKMAwal.setText(kmAwal + " KM");
+        binding.textViewKMAkhir.setText(kmAkhir + " KM");
+        binding.textViewCatatan.setText(catatan);
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new TujuanPermintaanMobilDinasAdapter(TujuanPermintaanMobilDinasAdapter.getList(), false));
+        binding.recyclerView.setAdapter(new PermintaanMobilDinasAdapter(PermintaanMobilDinasAdapter.getList(), false));
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
