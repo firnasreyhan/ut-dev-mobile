@@ -2,6 +2,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.FormAdapter;
@@ -55,32 +57,27 @@ public class BerandaFragment extends Fragment {
         list.add(new TaskModel("20"));
 
         binding.recyclerViewTask.setAdapter(new TaskAdapter(list));
-
-//        binding.cardViewPermintaanAsset.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(v.getContext(), PermintaanAssetActivity.class));
-//            }
-//        });
-//
-//        binding.cardViewPembelianSnack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(v.getContext(), PembelianSnackActivity.class));
-//            }
-//        });
-//
-//        binding.cardViewPermintaanMobilDinas.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(v.getContext(), PermintaanMobilDinasActivity.class));
-//            }
-//        });
-
         binding.textViewAllApproval.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), ListApprovalActivity.class));
+            }
+        });
+
+        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                binding.recyclerViewApproval.setVisibility(View.GONE);
+                binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+                binding.recyclerViewForm.setVisibility(View.GONE);
+                binding.linearLayoutNoDataForm.setVisibility(View.GONE);
+                getApprovalData();
+                getFormData();
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        binding.swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 3000);
             }
         });
 
@@ -96,9 +93,14 @@ public class BerandaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        binding.shimmerFrameLayoutApproval.startShimmer();
-        binding.shimmerFrameLayoutForm.startShimmer();
 
+        getApprovalData();
+        getFormData();
+    }
+
+    public void getApprovalData() {
+        binding.shimmerFrameLayoutApproval.startShimmer();
+        binding.shimmerFrameLayoutApproval.setVisibility(View.VISIBLE);
         viewModel.getTransaction(
                 AppPreference.getUser(getActivity()).getUserUsers(),
                 1
@@ -108,6 +110,7 @@ public class BerandaFragment extends Fragment {
                 binding.shimmerFrameLayoutApproval.stopShimmer();
                 binding.shimmerFrameLayoutApproval.setVisibility(View.GONE);
                 binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+                binding.recyclerViewApproval.setVisibility(View.GONE);
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
@@ -120,6 +123,11 @@ public class BerandaFragment extends Fragment {
                 }
             }
         });
+    }
+
+    public void getFormData() {
+        binding.shimmerFrameLayoutForm.startShimmer();
+        binding.shimmerFrameLayoutForm.setVisibility(View.VISIBLE);
 
         viewModel.getForm(
                 AppPreference.getUser(getActivity()).getDeptUsers()
@@ -129,6 +137,7 @@ public class BerandaFragment extends Fragment {
                 binding.shimmerFrameLayoutForm.stopShimmer();
                 binding.shimmerFrameLayoutForm.setVisibility(View.GONE);
                 binding.linearLayoutNoDataForm.setVisibility(View.GONE);
+                binding.recyclerViewForm.setVisibility(View.GONE);
                 if (formResponse != null) {
                     if (formResponse.isStatus()) {
                         binding.recyclerViewForm.setVisibility(View.VISIBLE);

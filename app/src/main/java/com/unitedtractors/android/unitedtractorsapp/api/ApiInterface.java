@@ -60,7 +60,13 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("formSnack")
     Call<BaseResponse> postPembelianSnack(
-            @Body String model
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formMobdin")
+    Call<BaseResponse> postPermintaanMobilDinas(
+            @Body String body
     );
 
     @GET("form")

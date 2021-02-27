@@ -3,7 +3,8 @@ package com.unitedtractors.android.unitedtractorsapp.model;
 import java.util.List;
 
 public class PermintaanMobilDinasModel {
-
+    private String idUser;
+    private String idMapping;
     private String namaPeminjam;
     private String namaPengemudi;
     private String tglPeminjaman;
@@ -17,7 +18,9 @@ public class PermintaanMobilDinasModel {
     private String catatan;
     private List<TujuanMobilDinasModel> tujuan;
 
-    public PermintaanMobilDinasModel(String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, String kmAwal, String kmAkhir, String catatan, List<TujuanMobilDinasModel> tujuan) {
+    public PermintaanMobilDinasModel(String idUser, String idMapping, String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, String kmAwal, String kmAkhir, String catatan, List<TujuanMobilDinasModel> tujuan) {
+        this.idUser = idUser;
+        this.idMapping = idMapping;
         this.namaPeminjam = namaPeminjam;
         this.namaPengemudi = namaPengemudi;
         this.tglPeminjaman = tglPeminjaman;
@@ -30,6 +33,22 @@ public class PermintaanMobilDinasModel {
         this.kmAkhir = kmAkhir;
         this.catatan = catatan;
         this.tujuan = tujuan;
+    }
+
+    public String getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
+    }
+
+    public String getIdMapping() {
+        return idMapping;
+    }
+
+    public void setIdMapping(String idMapping) {
+        this.idMapping = idMapping;
     }
 
     public String getNamaPeminjam() {

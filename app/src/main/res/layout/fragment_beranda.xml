@@ -69,292 +69,299 @@
 
     </androidx.cardview.widget.CardView>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingRight="@dimen/_13sdp"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_semi_bold"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_11sdp"
-                    android:text="Progress Layanan Anda"/>
-
-                <TextView
-                    android:id="@+id/textViewAllApproval"
-                    android:clickable="true"
-                    android:foreground="?selectableItemBackground"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Lihat Semua >"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_13sdp"
+                android:paddingRight="@dimen/_13sdp"
                 android:orientation="vertical">
 
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmerFrameLayoutApproval"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    app:duration="800">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <include layout="@layout/item_shimmer_approval_list_pic" />
-
-                    </LinearLayout>
-
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewApproval"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:overScrollMode="never"
-                    android:visibility="gone"/>
-
                 <LinearLayout
-                    android:id="@+id/linearLayoutNoDataApproval"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@color/background"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_no_data"/>
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
                     <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="Progress Layanan Anda"/>
+
+                    <TextView
+                        android:id="@+id/textViewAllApproval"
+                        android:clickable="true"
+                        android:foreground="?selectableItemBackground"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/primary"
                         android:textSize="@dimen/_10sdp"
-                        android:textColor="@color/text_color"
-                        android:text="Tidak Ada Data"/>
+                        android:text="Lihat Semua >"/>
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_semi_bold"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_11sdp"
-                    android:text="Task Anda"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Lihat Semua >"/>
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:overScrollMode="never"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:orientation="horizontal"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_semi_bold"
-                    android:text="Form"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_11sdp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/primary"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Lihat Semua >"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_13sdp"
-                android:orientation="vertical">
-
-                <com.facebook.shimmer.ShimmerFrameLayout
-                    android:id="@+id/shimmerFrameLayoutForm"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:orientation="vertical"
-                    app:duration="800">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmerFrameLayoutApproval"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        app:duration="800">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
-
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
-
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
+                            <include layout="@layout/item_shimmer_approval_list_pic" />
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewApproval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutNoDataApproval"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/background"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_no_data"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_13sdp"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
-
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
-
-                            <include
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_80sdp"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                layout="@layout/item_shimmer_form" />
-
-                        </LinearLayout>
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/text_color"
+                            android:text="Tidak Ada Data"/>
 
                     </LinearLayout>
 
-                </com.facebook.shimmer.ShimmerFrameLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewForm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:overScrollMode="never"
-                    android:visibility="gone"/>
+                </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutNoDataForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:background="@color/background"
-                    android:visibility="gone">
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                    <ImageView
-                        android:layout_width="@dimen/_80sdp"
-                        android:layout_height="@dimen/_80sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_no_data"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_11sdp"
+                        android:text="Task Anda"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/primary"
                         android:textSize="@dimen/_10sdp"
+                        android:text="Lihat Semua >"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:text="Form"
                         android:textColor="@color/text_color"
-                        android:text="Tidak Ada Data"/>
+                        android:textSize="@dimen/_11sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/primary"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Lihat Semua >"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:orientation="vertical">
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmerFrameLayoutForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        app:duration="800">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_13sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
+                                android:gravity="center"
+                                android:orientation="horizontal">
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                                <include
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_80sdp"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    layout="@layout/item_shimmer_form" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerViewForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayoutNoDataForm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/background"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_no_data"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:textSize="@dimen/_10sdp"
+                            android:textColor="@color/text_color"
+                            android:text="Tidak Ada Data"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

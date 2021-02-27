@@ -34,6 +34,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
         String pengemudi = getIntent().getStringExtra("PENGEMUDI");
         String tglPeminjamanView = getIntent().getStringExtra("TGL_PEMINJAMAN_VIEW");
         String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
@@ -64,6 +65,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkData()) {
                     Intent intent = new Intent(v.getContext(), KonfirmasiPermintaanMobilDinasActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
                     intent.putExtra("PENGEMUDI", pengemudi);
                     intent.putExtra("TGL_PEMINJAMAN_VIEW", tglPeminjamanView);
                     intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);

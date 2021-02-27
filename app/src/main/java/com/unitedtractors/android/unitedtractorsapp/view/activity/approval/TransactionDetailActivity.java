@@ -298,7 +298,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                     progressDialog.isShowing();
                                     viewModel.putConfirm(
                                             AppPreference.getUser(v.getContext()).getUserUsers(),
-                                            "",
+                                            idTrans,
                                             2,
                                             input.getText().toString()
                                     ).observe(TransactionDetailActivity.this, new Observer<BaseResponse>() {

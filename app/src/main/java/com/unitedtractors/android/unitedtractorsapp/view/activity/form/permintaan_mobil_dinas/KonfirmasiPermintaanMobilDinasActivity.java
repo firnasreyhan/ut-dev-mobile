@@ -1,22 +1,33 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDInasViewModel;
 
 
 public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityKonfirmasiPermintaanMobilDinasBinding binding;
+    private KonfirmasiPermintaanMobilDInasViewModel viewModel;
+    private PermintaanMobilDinasModel model;
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +37,18 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        viewModel = ViewModelProviders.of(this).get(KonfirmasiPermintaanMobilDInasViewModel.class);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon Tunggu Sebentar...");
+        progressDialog.setCancelable(false);
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
         String pengemudi = getIntent().getStringExtra("PENGEMUDI");
         String tglPeminjamanView = getIntent().getStringExtra("TGL_PEMINJAMAN_VIEW");
         String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
@@ -46,6 +64,23 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         if (catatan.isEmpty()) {
             catatan = "-";
         }
+
+        model = new PermintaanMobilDinasModel(
+                AppPreference.getUser(this).getIdUsers(),
+                idMapping,
+                AppPreference.getUser(this).getNamaUsers(),
+                pengemudi,
+                tglPeminjamanServer,
+                tglPengembalianServer,
+                divisiDepartement,
+                noPolisi,
+                jamBerangkat,
+                jamPulang,
+                kmAwal,
+                kmAkhir,
+                catatan,
+                PermintaanMobilDinasAdapter.getList()
+        );
 
         binding.textViewPeminjam.setText(AppPreference.getUser(this).getNamaUsers());
         binding.textViewPengemudi.setText(pengemudi);
@@ -79,6 +114,47 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
+                viewModel.postPermintaanMobilDinas(
+                        model
+                ).observe(KonfirmasiPermintaanMobilDinasActivity.this, new Observer<BaseResponse>() {
+                    @Override
+                    public void onChanged(BaseResponse baseResponse) {
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
+
+                        if (baseResponse != null) {
+                            if (baseResponse.isStatus()) {
+                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                            } else {
+                                new AlertDialog.Builder(v.getContext())
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            }
+                        } else {
+                            new AlertDialog.Builder(v.getContext())
+                                    .setTitle("Pesan")
+                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi.")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                        }
+                    }
+                });
                 startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
             }
         });

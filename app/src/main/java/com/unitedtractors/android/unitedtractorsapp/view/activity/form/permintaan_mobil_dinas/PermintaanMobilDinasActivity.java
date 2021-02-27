@@ -24,6 +24,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
     private Calendar calendar;
 
+    private String idMapping;
     private String tglPeminjamanView;
     private String tglPeminjamanServer;
     private String tglPengembalianView;
@@ -36,6 +37,8 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         binding = ActivityPermintaanMobilDinasBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -165,6 +168,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkData()) {
                     Intent intent = new Intent(v.getContext(), ListPermintaanMobilDinasActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
                     intent.putExtra("PENGEMUDI", binding.editTextNamaPengemudi.getText().toString());
                     intent.putExtra("TGL_PEMINJAMAN_VIEW", tglPeminjamanView);
                     intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);

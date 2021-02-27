@@ -13,10 +13,9 @@
         android:theme="@style/Theme.UnitedTractorsApp">
         <activity android:name=".view.activity.approval.TransactionDetailActivity"/>
         <activity android:name=".view.activity.SignUpActivity"/>
-        <activity android:name=".view.activity.approval.TransactionDetailActivity" />
         <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity" />
         <activity android:name=".view.activity.ListApprovalActivity" />
-        <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" />
+        <activity android:name=".view.activity.form.pembelian_snack.ListPembelianSnackActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity" />
         <activity android:name=".view.activity.form.pembelian_snack.PembelianSnackActivity" />
         <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity" />
@@ -26,7 +25,7 @@
         <activity android:name=".view.activity.form.komplain_atau_usulan.ListKomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity" />
-        <activity android:name=".view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity" />
+        <activity android:name=".view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity" />
         <activity android:name=".view.activity.ScreenFeedbackActivity" />
         <activity android:name=".view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity" />

@@ -31,7 +31,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
     private KonfirmasiPembelianSnackViewModel viewModel;
     private ProgressDialog progressDialog;
 
-    private String divisi, keperluan, serverTime, viewTime, idMapping;;
+    ;
     private PembelianSnackModel model;
 
     @Override
@@ -49,11 +49,11 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        divisi = getIntent().getStringExtra("DIVISI");
-        keperluan = getIntent().getStringExtra("KEPERLUAN");
-        serverTime = getIntent().getStringExtra("SERVER_TIME");
-        viewTime = getIntent().getStringExtra("VIEW_TIME");
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String divisi = getIntent().getStringExtra("DIVISI");
+        String keperluan = getIntent().getStringExtra("KEPERLUAN");
+        String serverTime = getIntent().getStringExtra("SERVER_TIME");
+        String viewTime = getIntent().getStringExtra("VIEW_TIME");
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         binding.textViewDivisi.setText(divisi);
         binding.textViewKeperluan.setText(keperluan);
@@ -101,12 +101,26 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                         }
 
-                        if (baseResponse.isStatus()) {
-                            startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                        if (baseResponse != null) {
+                            if (baseResponse.isStatus()) {
+                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                            } else {
+                                new AlertDialog.Builder(v.getContext())
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            }
                         } else {
                             new AlertDialog.Builder(v.getContext())
                                     .setTitle("Pesan")
-                                    .setMessage(baseResponse.getMessage())
+                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi.")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

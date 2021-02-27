@@ -32,9 +32,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
     private Calendar calendar;
     private String serverDate;
 
-    private List<PembelianSnackModel.DetailPembelianSnackModel> list;
     private String idMapping;
-    private int jumlahPembelianSnack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
         setContentView(view);
 
         idMapping = getIntent().getStringExtra("ID_MAPPING");
-        jumlahPembelianSnack = getIntent().getIntExtra("JUMLAH_PEMBELIAN_SNACK", 0);
+        int jumlahPembelianSnack = getIntent().getIntExtra("JUMLAH_PEMBELIAN_SNACK", 0);
 
         calendar = Calendar.getInstance();
 
@@ -53,7 +51,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        list = new ArrayList<>();
+        List<PembelianSnackModel.DetailPembelianSnackModel> list = new ArrayList<>();
         for (int i = 0; i < jumlahPembelianSnack; i++) {
             list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
         }
