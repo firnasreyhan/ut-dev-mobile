@@ -93,12 +93,12 @@ public class TransactionDetailActivity extends AppCompatActivity {
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
                             binding.linearLayoutButton.setVisibility(View.VISIBLE);
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("1")) {
-                            binding.textViewStatus.setText("Approved");
+                            binding.textViewStatus.setText("Distujui");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
                             binding.linearLayoutButton.setVisibility(View.INVISIBLE);
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
-                            binding.textViewStatus.setText("Rejected");
+                            binding.textViewStatus.setText("Ditoklak");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
                             binding.linearLayoutButton.setVisibility(View.INVISIBLE);
@@ -114,11 +114,11 @@ public class TransactionDetailActivity extends AppCompatActivity {
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("2")) {
-                            binding.textViewStatus.setText("Approved");
+                            binding.textViewStatus.setText("Disetujui");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("3")) {
-                            binding.textViewStatus.setText("Rejected");
+                            binding.textViewStatus.setText("Ditolak");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
                         }
@@ -235,7 +235,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
                                 new AlertDialog.Builder(TransactionDetailActivity.this)
                                         .setTitle("Pesan")
-                                        .setMessage("Terima kasih telah melakukan konfirmasi form.")
+                                        .setMessage("Terima kasih telah melakukan konfirmasi form")
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -279,13 +279,13 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
                 new AlertDialog.Builder(v.getContext())
                         .setTitle("Pesan")
-                        .setMessage("Masukkan keterangan/alasan.")
+                        .setMessage("Masukkan keterangan/alasan")
                         .setView(linearLayout)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 if (input.getText().toString().isEmpty()) {
-                                    input.setError("Mohon isi data berikut.");
+                                    input.setError("Mohon isi data berikut");
                                 } else {
                                     dialog.dismiss();
                                     progressDialog.show();
@@ -312,7 +312,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
                                                     new AlertDialog.Builder(TransactionDetailActivity.this)
                                                             .setTitle("Pesan")
-                                                            .setMessage("Terima kasih telah melakukan konfirmasi form.")
+                                                            .setMessage("Terima kasih telah melakukan konfirmasi form")
                                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                                 @Override
                                                                 public void onClick(DialogInterface dialog, int which) {
