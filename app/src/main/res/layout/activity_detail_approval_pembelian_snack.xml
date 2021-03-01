@@ -22,11 +22,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Details"/>
+                android:text="Detail"/>
 
         </FrameLayout>
 
@@ -220,7 +221,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:paddingTop="@dimen/_11sdp"
                 android:paddingBottom="@dimen/_11sdp"
-                android:text="Reject"
+                android:text="Tolak"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_10sdp"
                 app:backgroundTint="@color/reject"
@@ -236,7 +237,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:paddingTop="@dimen/_11sdp"
                 android:paddingBottom="@dimen/_11sdp"
-                android:text="Approve"
+                android:text="Setuju"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_10sdp"
                 app:backgroundTint="@color/approve"

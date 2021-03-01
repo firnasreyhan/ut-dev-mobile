@@ -61,7 +61,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
-                    android:text="Role User"/>
+                    android:text="Jabatan"/>
 
                 <TextView
                     android:id="@+id/textViewRoleuser"
@@ -86,7 +86,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
-                    android:text="Departement User"/>
+                    android:text="Departemen"/>
 
                 <TextView
                     android:id="@+id/textViewDepartementUser"
@@ -111,7 +111,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
-                    android:text="Divisi User"/>
+                    android:text="Divisi"/>
 
                 <TextView
                     android:id="@+id/textViewDivisiUser"
@@ -139,7 +139,7 @@
         android:fontFamily="@font/montserrat_semi_bold"
         android:paddingTop="@dimen/_11sdp"
         android:paddingBottom="@dimen/_11sdp"
-        android:text="Logout"
+        android:text="Keluar"
         android:textAllCaps="false"
         android:textSize="@dimen/_10sdp"
         app:backgroundTint="@color/primary"

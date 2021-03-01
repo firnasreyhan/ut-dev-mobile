@@ -50,7 +50,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
         holder.editTextNamaBarang.setText(list.get(position).getNamaBarang());
         holder.editTextAlasanFungsi.setText(list.get(position).getAlasanFungsi());
         holder.editTextManfaatBagiPerusahaan.setText(list.get(position).getManfaatBagiPerusahaan());
-        holder.prefixSuffixEditTextQuantity.setText(list.get(position).getQuantity());
+        holder.editTextJumlahBarang.setText(list.get(position).getQuantity());
         holder.editTextTanggal.setText(list.get(position).getTanggal());
     }
 
@@ -63,8 +63,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
         private final ImageView imageViewExpand;
         private final LinearLayout linearLayoutForm;
         private final TextView textViewUrutan;
-        private final EditText editTextNamaBarang, editTextAlasanFungsi, editTextManfaatBagiPerusahaan, editTextTanggal;
-        private final PrefixSuffixEditText prefixSuffixEditTextQuantity;
+        private final EditText editTextNamaBarang, editTextAlasanFungsi, editTextManfaatBagiPerusahaan, editTextTanggal, editTextJumlahBarang;
         private final Calendar calendar;
 
         public ViewHolder(@NonNull View itemView) {
@@ -77,13 +76,13 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
             editTextNamaBarang = itemView.findViewById(R.id.editTextNamaBarang);
             editTextAlasanFungsi = itemView.findViewById(R.id.editTextAlasanFungsi);
             editTextManfaatBagiPerusahaan = itemView.findViewById(R.id.editTextManfaatBagiPerusahaan);
-            prefixSuffixEditTextQuantity = itemView.findViewById(R.id.prefixSuffixEditTextQuantity);
+            editTextJumlahBarang = itemView.findViewById(R.id.editTextJumlahBarang);
             editTextTanggal = itemView.findViewById(R.id.editTextTanggal);
 
             editTextNamaBarang.setEnabled(isEnable);
             editTextAlasanFungsi.setEnabled(isEnable);
             editTextManfaatBagiPerusahaan.setEnabled(isEnable);
-            prefixSuffixEditTextQuantity.setEnabled(isEnable);
+            editTextJumlahBarang.setEnabled(isEnable);
             editTextTanggal.setEnabled(isEnable);
 
             imageViewExpand.setOnClickListener(new View.OnClickListener() {
@@ -171,7 +170,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
-            prefixSuffixEditTextQuantity.addTextChangedListener(new TextWatcher() {
+            editTextJumlahBarang.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -179,7 +178,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setQuantity(prefixSuffixEditTextQuantity.getText().toString());
+                    list.get(getAdapterPosition()).setQuantity(editTextJumlahBarang.getText().toString());
                 }
 
                 @Override

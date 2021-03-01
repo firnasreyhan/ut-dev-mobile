@@ -1,32 +1,25 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.approval;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
-import android.net.http.SslError;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTransactionDetailBinding;
@@ -219,7 +212,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
         binding.materialButtonApprove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.isShowing();
+                progressDialog.show();
                 viewModel.putConfirm(
                         AppPreference.getUser(v.getContext()).getUserUsers(),
                         idTrans,
@@ -295,7 +288,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                     input.setError("Mohon isi data berikut.");
                                 } else {
                                     dialog.dismiss();
-                                    progressDialog.isShowing();
+                                    progressDialog.show();
                                     viewModel.putConfirm(
                                             AppPreference.getUser(v.getContext()).getUserUsers(),
                                             idTrans,

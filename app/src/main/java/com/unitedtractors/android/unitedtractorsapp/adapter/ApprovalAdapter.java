@@ -58,15 +58,15 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_process);
             } else if (list.get(position).getStatTrans().equalsIgnoreCase("1")) {
-                holder.textViewStatusForm.setText("Approved");
+                holder.textViewStatusForm.setText("Disetujui");
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
             } else if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
-                holder.textViewStatusForm.setText("Rejected");
+                holder.textViewStatusForm.setText("Ditolak");
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
             }
-            holder.textViewApplicantForm.setText("Applicant: " + list.get(position).getNamaUsers());
+            holder.textViewApplicantForm.setText("Pemohon: " + list.get(position).getNamaUsers());
         } else {
             if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
                 holder.textViewStatusForm.setText("Menunggu Konfirmasi");
@@ -77,11 +77,11 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_process);
             } else if (list.get(position).getStatTrans().equalsIgnoreCase("2")) {
-                holder.textViewStatusForm.setText("Approved");
+                holder.textViewStatusForm.setText("Disetujui");
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
             } else if (list.get(position).getStatTrans().equalsIgnoreCase("3")) {
-                holder.textViewStatusForm.setText("Rejected");
+                holder.textViewStatusForm.setText("Ditolak");
                 holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
                 holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
             }

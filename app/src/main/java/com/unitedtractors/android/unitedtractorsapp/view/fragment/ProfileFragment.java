@@ -48,7 +48,7 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
                         .setTitle("Pesan")
-                        .setMessage("Yakin ingin keluar dari aplikasi?")
+                        .setMessage("Apakah anda yakin ingin keluar dari aplikasi?")
                         .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

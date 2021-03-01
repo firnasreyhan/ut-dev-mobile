@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_7sdp"
-    app:cardBackgroundColor="@android:color/white"
+    app:cardBackgroundColor="@color/button_disable"
     app:cardCornerRadius="@dimen/_7sdp"
     app:cardElevation="0dp"
     app:strokeColor="@color/box_stroke"

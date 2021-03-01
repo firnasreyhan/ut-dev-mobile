@@ -23,6 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
@@ -75,8 +76,6 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardViewForm"
                 android:layout_below="@+id/linearLayoutKeterangan"
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
@@ -106,6 +105,8 @@
                             android:fontFamily="@font/montserrat_medium"
                             android:hint="Pengemudi"
                             android:inputType="textCapWords"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:textColor="@color/text_color"
                             android:textColorHint="@color/hint_color"
                             android:textSize="@dimen/_8sdp" />
@@ -122,15 +123,17 @@
                                 android:layout_marginRight="@dimen/_3sdp"
                                 android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
+                                android:clickable="true"
                                 android:drawableEnd="@drawable/ic_outline_calendar"
                                 android:drawableRight="@drawable/ic_outline_calendar"
+                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:hint="Tanggal Peminjaman"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:clickable="true"
-                                android:focusable="false"/>
+                                android:textSize="@dimen/_8sdp" />
 
                             <EditText
                                 android:id="@+id/editTextTanggalPengembalian"
@@ -139,19 +142,51 @@
                                 android:layout_marginLeft="@dimen/_3sdp"
                                 android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
+                                android:clickable="true"
                                 android:drawableEnd="@drawable/ic_outline_calendar"
                                 android:drawableRight="@drawable/ic_outline_calendar"
+                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
                                 android:hint="Tanggal Pengembalian"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:clickable="true"
-                                android:focusable="false"/>
+                                android:textSize="@dimen/_8sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginRight="3dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Divisi"
+                                android:textColor="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <Spinner
+                                android:id="@+id/spinnerDivision"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/_3sdp"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/hint_color"/>
 
                         </LinearLayout>
 
                         <EditText
+                            android:visibility="gone"
                             android:id="@+id/editTextDivisiDepartement"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -167,10 +202,13 @@
                             android:id="@+id/editTextNoPolisi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:backgroundTint="@color/hint_color"
                             android:fontFamily="@font/montserrat_medium"
                             android:hint="No Polisi"
                             android:inputType="textCapCharacters"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
                             android:textAllCaps="true"
                             android:textColor="@color/text_color"
                             android:textColorHint="@color/hint_color"
@@ -188,13 +226,15 @@
                                 android:layout_marginRight="@dimen/_3sdp"
                                 android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
-                                android:hint="Jam Berangkat"
+                                android:clickable="true"
+                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
+                                android:hint="Jam Berangkat"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:clickable="true"
-                                android:focusable="false"/>
+                                android:textSize="@dimen/_8sdp" />
 
                             <EditText
                                 android:id="@+id/editTextJamPulang"
@@ -203,13 +243,15 @@
                                 android:layout_marginLeft="@dimen/_3sdp"
                                 android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
-                                android:hint="Jam Pulang"
+                                android:clickable="true"
+                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
+                                android:hint="Jam Pulang"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:clickable="true"
-                                android:focusable="false"/>
+                                android:textSize="@dimen/_8sdp" />
 
                         </LinearLayout>
 
@@ -226,7 +268,7 @@
                                 android:layout_weight="1"
                                 android:text="Km. Awal"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/hint_color2"
+                                android:textColor="@color/hint_color"
                                 android:textSize="@dimen/_8sdp"/>
 
                             <TextView
@@ -236,7 +278,7 @@
                                 android:layout_weight="1"
                                 android:text="Km. Akhir"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/hint_color2"
+                                android:textColor="@color/hint_color"
                                 android:textSize="@dimen/_8sdp"/>
 
                         </LinearLayout>
@@ -246,35 +288,71 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
-                                android:id="@+id/prefixSuffixEditTextKMAwal"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/_3sdp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:hint="0"
-                                android:inputType="number"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/text_color"
-                                android:textSize="@dimen/_8sdp"
-                                app:suffix=" KM"/>
+                                android:orientation="horizontal"
+                                android:gravity="center">
 
-                            <com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText
-                                android:id="@+id/prefixSuffixEditTextKMAkhir"
+                                <EditText
+                                    android:id="@+id/editTextKMAwal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="0"
+                                    android:inputType="number"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/text_color"
+                                    android:textSize="@dimen/_8sdp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="KM"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_8sdp"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_3sdp"
                                 android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:hint="0"
-                                android:inputType="number"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/text_color"
-                                android:textSize="@dimen/_8sdp"
-                                app:suffix=" KM"/>
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                <EditText
+                                    android:id="@+id/editTextKMAkhir"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="0"
+                                    android:inputType="number"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/text_color"
+                                    android:textSize="@dimen/_8sdp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="KM"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_8sdp"/>
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -319,7 +397,7 @@
                                 <EditText
                                     android:id="@+id/editTextJumlahTujuan"
                                     android:layout_width="@dimen/_25sdp"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="@dimen/_25sdp"
                                     android:layout_marginStart="@dimen/_3sdp"
                                     android:layout_marginLeft="@dimen/_3sdp"
                                     android:layout_marginEnd="@dimen/_3sdp"

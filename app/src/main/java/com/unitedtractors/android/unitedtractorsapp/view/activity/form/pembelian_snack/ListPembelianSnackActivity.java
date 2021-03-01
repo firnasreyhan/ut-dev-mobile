@@ -11,10 +11,12 @@ import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PembelianSnackAdapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListPembelianSnackBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
@@ -55,6 +57,11 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
         for (int i = 0; i < jumlahPembelianSnack; i++) {
             list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
         }
+
+        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
+        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
+
+        binding.spinnerDivision.setAdapter(divisionAdapter);
 
 //        List<PembelianSnackModel> list = new ArrayList<>();
 //        list.add(new PembelianSnackModel("",""));
@@ -132,21 +139,18 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (binding.editTextDivisi.getText().toString().isEmpty()) {
-                    binding.editTextDivisi.setError("Mohon isi data berikut.");
-                }
 
                 if (binding.editTextTanggal.getText().toString().isEmpty()) {
-                    binding.editTextTanggal.setError("Mohon isi data berikut.");
+                    binding.editTextTanggal.setError("Mohon isi data berikut");
                 }
 
                 if (binding.editTextKeperluan.getText().toString().isEmpty()) {
-                    binding.editTextKeperluan.setError("Mohon isi data berikut.");
+                    binding.editTextKeperluan.setError("Mohon isi data berikut");
                 }
 
-                if (checkData() && !binding.editTextDivisi.getText().toString().isEmpty() && !binding.editTextTanggal.getText().toString().isEmpty() && !binding.editTextKeperluan.getText().toString().isEmpty()) {
+                if (checkData() && !binding.editTextTanggal.getText().toString().isEmpty() && !binding.editTextKeperluan.getText().toString().isEmpty()) {
                     Intent intent = new Intent(v.getContext(), KonfirmasiPembelianSnackActivity.class);
-                    intent.putExtra("DIVISI", binding.editTextDivisi.getText().toString());
+                    intent.putExtra("DIVISI", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
                     intent.putExtra("KEPERLUAN", binding.editTextKeperluan.getText().toString());
                     intent.putExtra("SERVER_TIME", serverDate);
                     intent.putExtra("VIEW_TIME", binding.editTextTanggal.getText().toString());
@@ -155,7 +159,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
                 } else {
                     new AlertDialog.Builder(v.getContext())
                             .setTitle("Pesan")
-                            .setMessage("Mohon untuk mengisi data dengan benar.")
+                            .setMessage("Mohon untuk mengisi data dengan benar")
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

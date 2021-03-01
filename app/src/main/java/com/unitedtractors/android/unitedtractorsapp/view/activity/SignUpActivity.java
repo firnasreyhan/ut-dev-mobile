@@ -2,8 +2,11 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -35,6 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
 
         progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon Tunggu Sebentar...");
+        progressDialog.setCancelable(false);
 
         String[] roles = new String[] {"Staff", "Section Head", "Department Head"};
         ArrayAdapter<String> roleAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, roles);
@@ -119,7 +124,9 @@ public class SignUpActivity extends AppCompatActivity {
                                 binding.textInputEditTextConfirmPassword.setError("Password tidak sama");
                                 return;
                             }
-                            signUp();
+                            if (isConnectingToInternet()) {
+                                signUp();
+                            }
                         }
                     }
 
@@ -133,8 +140,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void signUp() {
-        progressDialog.setMessage("Mohon Tunggu Sebentar...");
-        progressDialog.setCancelable(false);
         progressDialog.show();
 
         viewModel.signUp(
@@ -155,7 +160,7 @@ public class SignUpActivity extends AppCompatActivity {
                     new AlertDialog.Builder(SignUpActivity.this)
                             .setTitle("Pesan")
                             .setMessage(baseResponse.getMessage())
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -167,5 +172,26 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean isConnectingToInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Tidak Ada Koneksi Internet")
+                    .setMessage("Mohon periksa koneksi internet anda dan coba lagi")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create()
+                    .show();
+            return false;
+        }
     }
 }

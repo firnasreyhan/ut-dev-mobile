@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Login"
+            android:text="Masuk"
             android:textColor="@color/primary"
             android:textSize="@dimen/_19sdp" />
 
@@ -104,7 +104,7 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Login"
+            android:text="Masuk"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
             app:backgroundTint="@color/primary"

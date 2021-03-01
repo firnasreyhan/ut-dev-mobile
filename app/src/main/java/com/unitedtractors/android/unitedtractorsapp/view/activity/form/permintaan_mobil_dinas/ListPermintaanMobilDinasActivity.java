@@ -83,7 +83,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
                 } else {
                     new AlertDialog.Builder(v.getContext())
                             .setTitle("Pesan")
-                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
+                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override

@@ -100,7 +100,7 @@
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_11sdp"
-                        android:text="Progress Layanan Anda"/>
+                        android:text="Progres Layanan Anda"/>
 
                     <TextView
                         android:id="@+id/textViewAllApproval"
@@ -189,7 +189,7 @@
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_11sdp"
-                        android:text="Task Anda"/>
+                        android:text="Tugas Anda"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/montserrat_semi_bold"
-                        android:text="Form"
+                        android:text="Formulir"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_11sdp" />
 

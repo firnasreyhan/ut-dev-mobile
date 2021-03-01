@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
@@ -49,6 +50,10 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
         SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
         SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
+        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
+        binding.spinnerDivision.setAdapter(divisionAdapter);
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -174,12 +179,12 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                     intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);
                     intent.putExtra("TGL_PENGEMBALIAN_VIEW", tglPengembalianView);
                     intent.putExtra("TGL_PENGEMBALIAN_SERVER", tglPengembalianServer);
-                    intent.putExtra("DIVISI_DEPARTEMENT", binding.editTextDivisiDepartement.getText().toString());
+                    intent.putExtra("DIVISI_DEPARTEMENT", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
                     intent.putExtra("NO_POLISI", binding.editTextNoPolisi.getText().toString());
                     intent.putExtra("JAM_BERANGKAT", binding.editTextJamBerangkat.getText().toString());
                     intent.putExtra("JAM_PULANG", binding.editTextJamPulang.getText().toString());
-                    intent.putExtra("KM_AWAL", binding.prefixSuffixEditTextKMAwal.getText().toString());
-                    intent.putExtra("KM_AKHIR", binding.prefixSuffixEditTextKMAkhir.getText().toString());
+                    intent.putExtra("KM_AWAL", binding.editTextKMAwal.getText().toString());
+                    intent.putExtra("KM_AKHIR", binding.editTextKMAkhir.getText().toString());
                     intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
                     startActivity(intent);
                 } else {
@@ -206,47 +211,53 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         boolean cek1 = true;
         boolean cek2 = true;
         boolean cek3 = true;
-        boolean cek4 = true;
         boolean cek5 = true;
         boolean cek6 = true;
         boolean cek7 = true;
+        boolean cek8 = true;
+        boolean cek9 = true;
 
         if (binding.editTextNamaPengemudi.getText().toString().isEmpty()) {
-            binding.editTextNamaPengemudi.setError("Mohon isi data berikut.");
+            binding.editTextNamaPengemudi.setError("Mohon isi data berikut");
             cek1 = false;
         }
 
         if (binding.editTextTanggalPeminjaman.getText().toString().isEmpty()) {
-            binding.editTextTanggalPeminjaman.setError("Mohon isi data berikut.");
+            binding.editTextTanggalPeminjaman.setError("Mohon isi data berikut");
             cek2 = false;
         }
 
         if (binding.editTextTanggalPengembalian.getText().toString().isEmpty()) {
-            binding.editTextTanggalPengembalian.setError("Mohon isi data berikut.");
+            binding.editTextTanggalPengembalian.setError("Mohon isi data berikut");
             cek3 = false;
         }
 
-        if (binding.editTextDivisiDepartement.getText().toString().isEmpty()) {
-            binding.editTextDivisiDepartement.setError("Mohon isi data berikut.");
-            cek4 = false;
-        }
-
         if (binding.editTextNoPolisi.getText().toString().isEmpty()) {
-            binding.editTextNoPolisi.setError("Mohon isi data berikut.");
+            binding.editTextNoPolisi.setError("Mohon isi data berikut");
             cek5 = false;
         }
 
         if (binding.editTextJamBerangkat.getText().toString().isEmpty()) {
-            binding.editTextJamBerangkat.setError("Mohon isi data berikut.");
-            cek6= false;
+            binding.editTextJamBerangkat.setError("Mohon isi data berikut");
+            cek6 = false;
         }
 
         if (binding.editTextJamPulang.getText().toString().isEmpty()) {
-            binding.editTextJamPulang.setError("Mohon isi data berikut.");
+            binding.editTextJamPulang.setError("Mohon isi data berikut");
             cek7 = false;
         }
 
-        return cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7;
+        if (binding.editTextKMAwal.getText().toString().isEmpty()) {
+            binding.editTextKMAwal.setError("Mohon isi data berikut");
+            cek8 = false;
+        }
+
+        if (binding.editTextKMAkhir.getText().toString().isEmpty()) {
+            binding.editTextKMAkhir.setError("Mohon isi data berikut");
+            cek9 = false;
+        }
+
+        return cek1 && cek2 && cek3 && cek5 && cek6 && cek7 && cek8 && cek9;
     }
 
     @Override

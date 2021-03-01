@@ -138,7 +138,7 @@
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_11sdp"
-                        android:text="Approval List"/>
+                        android:text="Daftar Persetujuan"/>
 
                     <TextView
                         android:id="@+id/textViewAllApproval"
@@ -229,7 +229,7 @@
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:textColor="@color/text_color"
                         android:textSize="@dimen/_11sdp"
-                        android:text="Task Employee"/>
+                        android:text="Tugas Karyawan"/>
 
                     <TextView
                         android:layout_width="wrap_content"

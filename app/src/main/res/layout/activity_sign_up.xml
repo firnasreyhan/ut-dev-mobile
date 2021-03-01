@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_bold"
-            android:text="Sign Up"
+            android:text="Daftar"
             android:textColor="@color/primary"
             android:textSize="@dimen/_19sdp" />
 
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Role"
+                android:hint="Jabatan"
                 android:inputType="none"
                 android:textColor="#333333"
                 android:textSize="@dimen/_8sdp" />
@@ -265,7 +265,7 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Sign up"
+            android:text="Daftar"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
             app:backgroundTint="@color/primary"

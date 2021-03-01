@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -51,7 +54,9 @@ public class SignInActivity extends AppCompatActivity {
                 }
 
                 if (cekUsername && cekPassword) {
-                    signIn();
+                    if (isConnectingToInternet()) {
+                        signIn();
+                    }
                 }
             }
         });
@@ -81,7 +86,7 @@ public class SignInActivity extends AppCompatActivity {
                         if (signInResponse.getData().getStatUsers() == 0) {
                             new AlertDialog.Builder(SignInActivity.this)
                                     .setTitle("Pesan")
-                                    .setMessage("Akun anda sedang dalam proses validasi oleh Admin, segera hubungi Admin.")
+                                    .setMessage("Akun anda sedang dalam proses validasi oleh Admin, segera hubungi Admin")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -100,7 +105,7 @@ public class SignInActivity extends AppCompatActivity {
                         new AlertDialog.Builder(SignInActivity.this)
                                 .setTitle("Pesan")
                                 .setMessage(signInResponse.getMessage())
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
@@ -112,8 +117,8 @@ public class SignInActivity extends AppCompatActivity {
                 } else {
                     new AlertDialog.Builder(SignInActivity.this)
                             .setTitle("Pesan")
-                            .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi.")
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
+                            .setPositiveButton("Oke", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.dismiss();
@@ -124,5 +129,26 @@ public class SignInActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private boolean isConnectingToInternet() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        } else {
+            new AlertDialog.Builder(this)
+                    .setTitle("Tidak Ada Koneksi Internet")
+                    .setMessage("Mohon periksa koneksi internet anda dan coba lagi")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create()
+                    .show();
+            return false;
+        }
     }
 }
