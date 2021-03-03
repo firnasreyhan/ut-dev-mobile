@@ -72,10 +72,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/peminjam"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/peminjam"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewPeminjam"
@@ -99,10 +101,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/pengemudi"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/pengemudi"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewPengemudi"
@@ -126,10 +130,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/tgl_peminjaman"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/tgl_peminjaman"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewTanggalPeminjaman"
@@ -153,10 +159,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/tgl_pengembalian"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/tgl_pengembalian"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewTanggalPengembalian"
@@ -180,10 +188,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/divisi"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/divisi"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewDivisiDepartement"
@@ -207,10 +217,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/no_pol"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/no_pol"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewNoPolisi"
@@ -234,10 +246,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/jam_berangkat"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/jam_berangkat"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewJamBerangkat"
@@ -261,10 +275,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="@string/jam_pulang"
                             android:textColor="@color/hint_color2"
-                            android:text="@string/jam_pulang"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewJamPulang"
@@ -288,10 +304,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="Km. Awal"
                             android:textColor="@color/hint_color2"
-                            android:text="Km. Awal"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewKMAwal"
@@ -315,10 +333,12 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_13sdp"
+                            android:layout_marginRight="@dimen/_13sdp"
                             android:fontFamily="@font/montserrat_medium"
+                            android:text="Km. Akhir"
                             android:textColor="@color/hint_color2"
-                            android:text="Km. Akhir"/>
+                            android:textSize="@dimen/_8sdp" />
 
                         <TextView
                             android:id="@+id/textViewKMAkhir"
@@ -377,6 +397,23 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp"
+                    android:text="Upload SIM"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardViewSIM"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp">
+
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
                     android:text="Persetujuan"/>
 
                 <CheckBox
@@ -389,7 +426,7 @@
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
                     android:layout_marginBottom="@dimen/_13sdp"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan."/>
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan dan saya akan mematuhi beberapa peraturan berikut:\n\n1. Batas kecepatan tidak melibihi 120 Km/Jam\n2. Mematuhi rambu lalu lintas yang berlaku\n3. Menerapkan safety driving\n4. Dilarang menggunakan kendaraan dengan tidak tertib dan boros bahhan bakar"/>
 
             </LinearLayout>
 
