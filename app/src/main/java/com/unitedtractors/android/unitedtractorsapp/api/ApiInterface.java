@@ -58,6 +58,24 @@ public interface ApiInterface {
     );
 
     @Headers("Content-Type: application/json")
+    @POST("formChecklistRuangMeeting")
+    Call<BaseResponse> postChecklistRuangMeeting(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formPermintaanCateringReguler")
+    Call<BaseResponse> postPermintaanCateringReguler(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formOrderCatering")
+    Call<BaseResponse> postOrderCatering(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
     @POST("formSnack")
     Call<BaseResponse> postPembelianSnack(
             @Body String body
