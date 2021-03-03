@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_13sdp"
             android:fontFamily="@font/roboto_medium"
-            android:text="United Tractor"
+            android:text="United Tractors"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_19sdp" />
 
