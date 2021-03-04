@@ -15,8 +15,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tobiasschuerg.prefixsuffix.PrefixSuffixEditText;
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.model.IdentifikasiModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
 
 import java.text.SimpleDateFormat;
@@ -24,13 +24,13 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAssetAdapter.ViewHolder> {
-    private static List<PermintaanAssetModel> list;
+public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapter.ViewHolder> {
+    private static List<IdentifikasiModel> list;
     private static boolean isEnable;
 
-    public PermintaanAssetAdapter(List<PermintaanAssetModel> list, boolean isEnable) {
-        PermintaanAssetAdapter.list = list;
-        PermintaanAssetAdapter.isEnable = isEnable;
+    public IdentifikasiAdapter(List<IdentifikasiModel> list, boolean isEnable) {
+        IdentifikasiAdapter.list = list;
+        IdentifikasiAdapter.isEnable = isEnable;
     }
 
     @Override
@@ -41,17 +41,17 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_asset_form_input, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_identifikasi_form_input, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewUrutan.setText("Barang " + (position + 1));
-        holder.editTextNamaBarang.setText(list.get(position).getNamaBarang());
-        holder.editTextAlasanFungsi.setText(list.get(position).getAlasanFungsi());
-        holder.editTextManfaatBagiPerusahaan.setText(list.get(position).getManfaatBagiPerusahaan());
-        holder.editTextJumlahBarang.setText(list.get(position).getQuantity());
-        holder.editTextTanggal.setText(list.get(position).getTanggal());
+        holder.textViewUrutan.setText("Temuan Lapangan " + (position + 1));
+        holder.editTextTemuanLapangan.setText(list.get(position).getTemuanLapangan());
+        holder.editTextTanggal.setText(list.get(position).getTanggalView());
+        holder.editTextKategoriTemuan.setText(list.get(position).getKatergoriTemuan());
+        holder.editTextLokasi.setText(list.get(position).getLokasi());
+        holder.editTextUser.setText(list.get(position).getUser());
     }
 
     @Override
@@ -60,30 +60,29 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ImageView imageViewExpand;
         private final LinearLayout linearLayoutForm;
         private final TextView textViewUrutan;
-        private final EditText editTextNamaBarang, editTextAlasanFungsi, editTextManfaatBagiPerusahaan, editTextTanggal, editTextJumlahBarang;
+        private final ImageView imageViewExpand;
+        private final EditText editTextTemuanLapangan, editTextTanggal, editTextKategoriTemuan, editTextLokasi, editTextUser;
         private final Calendar calendar;
-
+        private String tanggal;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             calendar = Calendar.getInstance();
-
-            imageViewExpand = itemView.findViewById(R.id.imageViewExpand);
             linearLayoutForm = itemView.findViewById(R.id.linearLayoutForm);
+            imageViewExpand = itemView.findViewById(R.id.imageViewExpand);
             textViewUrutan = itemView.findViewById(R.id.textViewUrutan);
-            editTextNamaBarang = itemView.findViewById(R.id.editTextNamaBarang);
-            editTextAlasanFungsi = itemView.findViewById(R.id.editTextAlasanFungsi);
-            editTextManfaatBagiPerusahaan = itemView.findViewById(R.id.editTextManfaatBagiPerusahaan);
-            editTextJumlahBarang = itemView.findViewById(R.id.editTextJumlahBarang);
+            editTextTemuanLapangan = itemView.findViewById(R.id.editTextTemuanLapangan);
             editTextTanggal = itemView.findViewById(R.id.editTextTanggal);
+            editTextKategoriTemuan = itemView.findViewById(R.id.editTextKategoriTemuan);
+            editTextLokasi = itemView.findViewById(R.id.editTextLokasi);
+            editTextUser = itemView.findViewById(R.id.editTextUser);
 
-            editTextNamaBarang.setEnabled(isEnable);
-            editTextAlasanFungsi.setEnabled(isEnable);
-            editTextManfaatBagiPerusahaan.setEnabled(isEnable);
-            editTextJumlahBarang.setEnabled(isEnable);
+            editTextTemuanLapangan.setEnabled(isEnable);
             editTextTanggal.setEnabled(isEnable);
+            editTextKategoriTemuan.setEnabled(isEnable);
+            editTextLokasi.setEnabled(isEnable);
+            editTextUser.setEnabled(isEnable);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -98,6 +97,10 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
+            SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
+            SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -105,7 +108,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, monthOfYear);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
+                    tanggal = simpleDateFormatServer.format(calendar.getTime());
                     editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
                 }
             };
@@ -119,7 +122,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
-            editTextNamaBarang.addTextChangedListener(new TextWatcher() {
+            editTextKategoriTemuan.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -127,7 +130,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setNamaBarang(editTextNamaBarang.getText().toString());
+                    list.get(getAdapterPosition()).setTemuanLapangan(editTextTemuanLapangan.getText().toString());
                 }
 
                 @Override
@@ -136,7 +139,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
-            editTextAlasanFungsi.addTextChangedListener(new TextWatcher() {
+            editTextKategoriTemuan.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -144,7 +147,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setAlasanFungsi(editTextAlasanFungsi.getText().toString());
+                    list.get(getAdapterPosition()).setKatergoriTemuan(editTextKategoriTemuan.getText().toString());
                 }
 
                 @Override
@@ -153,7 +156,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
-            editTextManfaatBagiPerusahaan.addTextChangedListener(new TextWatcher() {
+            editTextLokasi.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -161,7 +164,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setManfaatBagiPerusahaan(editTextManfaatBagiPerusahaan.getText().toString());
+                    list.get(getAdapterPosition()).setLokasi(editTextLokasi.getText().toString());
                 }
 
                 @Override
@@ -170,7 +173,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
                 }
             });
 
-            editTextJumlahBarang.addTextChangedListener(new TextWatcher() {
+            editTextUser.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -178,7 +181,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setQuantity(editTextJumlahBarang.getText().toString());
+                    list.get(getAdapterPosition()).setUser(editTextUser.getText().toString());
                 }
 
                 @Override
@@ -195,7 +198,8 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setTanggal(editTextTanggal.getText().toString());
+                    list.get(getAdapterPosition()).setTanggal(tanggal);
+                    list.get(getAdapterPosition()).setTanggalView(simpleDateFormatView.format(calendar.getTime()));
                 }
 
                 @Override
@@ -206,7 +210,7 @@ public class PermintaanAssetAdapter extends RecyclerView.Adapter<PermintaanAsset
         }
     }
 
-    public static List<PermintaanAssetModel> getList() {
+    public static List<IdentifikasiModel> getList() {
         return list;
     }
 }

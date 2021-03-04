@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.permintaan_mobil_pribadi.KonfirmasiPermintaanMobilPribadiActivity"/>
+        <activity android:name=".view.activity.form.identifikasi.KonfirmasiIdentifikasiActivity"></activity>
+        <activity android:name=".view.activity.form.identifikasi.ListIdentifikasiActivity" />
+        <activity android:name=".view.activity.form.identifikasi.IdentifikasiActivity" />
+        <activity android:name=".view.activity.form.permintaan_mobil_pribadi.KonfirmasiPermintaanMobilPribadiActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity" />
         <activity android:name=".view.activity.approval.TransactionDetailActivity" />
         <activity android:name=".view.activity.SignUpActivity" />
