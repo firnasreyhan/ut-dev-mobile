@@ -1,4 +1,4 @@
-package com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset;
+package com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,32 +7,35 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListPermintaanAssetBinding;
-import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ExternalWorkOrderAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.IdentifikasiAdapter;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListExternalWorkOrderBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.ExternalWorkOrderModel;
+import com.unitedtractors.android.unitedtractorsapp.model.IdentifikasiModel;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListPermintaanAssetActivity extends AppCompatActivity {
-    private ActivityListPermintaanAssetBinding binding;
+public class ListExternalWorkOrderActivity extends AppCompatActivity {
+    private ActivityListExternalWorkOrderBinding binding;
 
-    private List<PermintaanAssetModel> list;
-    private int jumlahBarangBaru, jumlahBarangLama;
-    private String jenisPermintaan;
+    private List<ExternalWorkOrderModel> list;
+    private int jumlahPekerjaan;
+    private String idMapping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityListPermintaanAssetBinding.inflate(getLayoutInflater());
+        binding = ActivityListExternalWorkOrderBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        jumlahBarangBaru = getIntent().getIntExtra("JUMLAH_BARANG_BARU",0);
-        jumlahBarangLama = getIntent().getIntExtra("JUMLAH_BARANG_LAMA",0);
+        jumlahPekerjaan = getIntent().getIntExtra("JUMLAH_PEKERJAAN",0);
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -41,48 +44,33 @@ public class ListPermintaanAssetActivity extends AppCompatActivity {
 
         list = new ArrayList<>();
 
-        if (jumlahBarangBaru > 0) {
-            jenisPermintaan = "Baru";
-            binding.textViewKeterangan.setText("Permintaan Barang Baru");
-            for (int i = 0; i < jumlahBarangBaru; i++) {
-                list.add(new PermintaanAssetModel(
+        if (jumlahPekerjaan > 0) {
+            for (int i = 0; i < jumlahPekerjaan; i++) {
+                list.add(new ExternalWorkOrderModel(
                         "",
                         "",
                         "",
                         "",
-                        ""));
-            }
-        }
-
-        if (jumlahBarangLama > 0) {
-            jenisPermintaan = "Lama";
-            binding.textViewKeterangan.setText("Pengganti Asset Lama");
-            for (int i = 0; i < jumlahBarangLama; i++) {
-                list.add(new PermintaanAssetModel(
                         "",
-                        "",
-                        "",
-                        "",
-                        ""));
+                        ""
+                ));
             }
         }
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new PermintaanAssetAdapter(list, true));
+        binding.recyclerView.setAdapter(new ExternalWorkOrderAdapter(list));
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("checkData", String.valueOf(checkData()));
                 if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), KonfirmasiPermintaanAssetActivity.class);
-                    intent.putExtra("JENIS_PERMINTAAN", jenisPermintaan);
+                    Intent intent = new Intent(v.getContext(), ScreenFeedbackActivity.class);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())
                             .setTitle("Pesan")
-                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
+                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
                             .setCancelable(false)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
@@ -104,7 +92,7 @@ public class ListPermintaanAssetActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (PermintaanAssetModel model : PermintaanAssetAdapter.getList()) {
+        for (ExternalWorkOrderModel model : ExternalWorkOrderAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }
