@@ -62,7 +62,6 @@
                     android:text="Masukkan Detail"/>
 
                 <TextView
-                    android:id="@+id/textViewKeterangan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"

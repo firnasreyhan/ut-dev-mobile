@@ -71,7 +71,7 @@ public interface ApiInterface {
 
     @GET("form")
     Call<FormResponse> getListForm(
-            @Query("department") String department
+            @Query("role") String role
     );
 
     @PUT("transaction/confirm")

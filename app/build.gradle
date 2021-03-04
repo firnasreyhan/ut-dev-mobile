@@ -10,7 +10,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "com.unitedtractors.android.unitedtractorsapp"
-        minSdkVersion 16
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0.0 (Beta)"
@@ -87,4 +87,7 @@ dependencies {
 
     //multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //Image Picker Library for Android
+    implementation 'com.github.dhaval2404:imagepicker:1.8'
 }

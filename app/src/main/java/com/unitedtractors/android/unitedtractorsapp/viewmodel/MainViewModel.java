@@ -31,7 +31,7 @@ public class MainViewModel extends AndroidViewModel {
         return repository.getTransaction(username, limit);
     }
 
-    public MutableLiveData<FormResponse> getForm(String department) {
-        return repository.getListForm(department);
+    public MutableLiveData<FormResponse> getForm(String role) {
+        return repository.getListForm(role);
     }
 }

@@ -121,10 +121,10 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<FormResponse> getListForm(String department) {
+    public MutableLiveData<FormResponse> getListForm(String role) {
         MutableLiveData<FormResponse> data = new MutableLiveData<>();
         apiInterface.getListForm(
-                department
+                role
         ).enqueue(new Callback<FormResponse>() {
             @Override
             public void onResponse(Call<FormResponse> call, Response<FormResponse> response) {

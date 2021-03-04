@@ -130,7 +130,7 @@ public class BerandaFragment extends Fragment {
         binding.shimmerFrameLayoutForm.setVisibility(View.VISIBLE);
 
         viewModel.getForm(
-                AppPreference.getUser(getActivity()).getDeptUsers()
+                AppPreference.getUser(getActivity()).getRoleUsers()
         ).observe(getActivity(), new Observer<FormResponse>() {
             @Override
             public void onChanged(FormResponse formResponse) {
