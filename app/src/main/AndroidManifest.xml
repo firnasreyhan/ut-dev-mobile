@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.sidak_catering.KonfirmasiSidakCateringActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_for_genset.TroublesInformationActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_for_genset.K5Activity" />
+        <activity android:name=".view.activity.form.checklist_for_genset.ControlSystemActivity" />
+        <activity android:name=".view.activity.form.checklist_for_genset.UnitEngineActivity" />
+        <activity android:name=".view.activity.form.checklist_for_genset.ChecklistForGensetActivity" />
+        <activity android:name=".view.activity.form.sidak_catering.KonfirmasiSidakCateringActivity" />
         <activity android:name=".view.activity.form.sidak_catering.SanitasiLingkunganDanFasilitasPengolahMakananActivity" />
         <activity android:name=".view.activity.form.sidak_catering.KesehatanBahanDanPenyimpananMakananActivity" />
         <activity android:name=".view.activity.form.sidak_catering.PersyaratanTenagaKerjaActivity" />
