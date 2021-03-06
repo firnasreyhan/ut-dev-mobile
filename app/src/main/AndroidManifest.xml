@@ -17,7 +17,12 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.permintaan_layout_acara.KonfirmasiPermintaanLayoutAcaraActivity"/>
+        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondDActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondCActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondBActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondAActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity" />
+        <activity android:name=".view.activity.form.permintaan_layout_acara.KonfirmasiPermintaanLayoutAcaraActivity" />
         <activity android:name=".view.activity.form.permintaan_layout_acara.PermintaanLayoutAcaraActivity" />
         <activity android:name=".view.activity.form.monitoring_lapangan.KonfirmasiMonitoringLapanganActivity" />
         <activity android:name=".view.activity.form.monitoring_lapangan.ListMonitoringLapanganActivity" />
@@ -48,7 +53,7 @@
         <activity android:name=".view.activity.form.identifikasi.IdentifikasiActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_pribadi.KonfirmasiPermintaanMobilPribadiActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity" />
-        <activity android:name=".view.activity.form.order_catering.KonfrimasiOrderCateringActivity"/>
+        <activity android:name=".view.activity.form.order_catering.KonfrimasiOrderCateringActivity" />
         <activity android:name=".view.activity.form.order_catering.ListOrderCateringActivity" />
         <activity android:name=".view.activity.form.order_catering.OrderCateringActivity" />
         <activity android:name=".view.activity.form.permintaan_catering_reguler.KonfirmasiPermintaanCateringRegulerActivity" />

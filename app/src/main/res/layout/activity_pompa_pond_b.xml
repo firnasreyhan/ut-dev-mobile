@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    tools:context=".view.activity.form.checklist_pompa_pond.PompaPondBActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                android:text="Checklist For Pompa POND"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Pompa POND B"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_13sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:text="Lokasi SAMPING IPAL"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_8sdp"
+                            android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_14sdp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:text="OK"
+                                android:checked="true"/>
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_14sdp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:text="Perbaikan"/>
+
+                            <RadioButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:text="Rusak"/>
+
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_13sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:text="Checking"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_8sdp"
+                            android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Fungsi Panel"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Fungsi Valve"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Kondisi Instalasi Kabel"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Flow Meter"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Kondisi Pipa-pipa"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_13sdp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:fontFamily="@font/montserrat_semi_bold"
+                            android:text="Running Test"
+                            android:textColor="@color/text_color"
+                            android:textSize="@dimen/_8sdp"
+                            android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="SWITCH Harus Pada Posisi AUTO"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Power Supply"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="a. Atur Switch pada posisi AUTO\nb. Tekan Tombol ON, max 30 detik\nc. Kemudian Tekan Tombol OFF\nd. Selanjutnya atur Switch ke posisi AUTO kembali\ne. Angkat satu persatu Pelampung Pompa (Elektroda) maks 30 detik"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="Check Pintu Air Pond, Tambahkan ‘GREASE’ Bila Perlu"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:lineSpacingExtra="@dimen/_3sdp"/>
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="OK"
+                                    android:checked="true"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_14sdp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Perbaikan"/>
+
+                                <RadioButton
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp"
+                                    android:text="Rusak"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_13sdp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_75sdp"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Catatan"
+                            android:gravity="left|top"
+                            android:inputType="textMultiLine"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButtonSelanjutnya"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:paddingTop="@dimen/_11sdp"
+            android:paddingBottom="@dimen/_11sdp"
+            android:text="Selanjutnya"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10sdp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="@dimen/_11sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>
