@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.checklist_for_hydrant.PanelHydrantActivity"></activity>
+        <activity android:name=".view.activity.form.monitoring_lapangan.KonfirmasiMonitoringLapanganActivity"></activity>
+        <activity android:name=".view.activity.form.monitoring_lapangan.ListMonitoringLapanganActivity" />
+        <activity android:name=".view.activity.form.monitoring_lapangan.MonitoringLapanganActivity" />
+        <activity android:name=".view.activity.form.checklist_for_hydrant.PanelHydrantActivity" />
         <activity android:name=".view.activity.form.checklist_for_hydrant.DieselHydrantPumpActivity" />
         <activity android:name=".view.activity.form.checklist_for_hydrant.ElectricPumpActivity" />
         <activity android:name=".view.activity.form.checklist_for_hydrant.JockeyPumpActivity" />

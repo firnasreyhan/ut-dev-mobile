@@ -31,7 +31,6 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
     private KonfirmasiPembelianSnackViewModel viewModel;
     private ProgressDialog progressDialog;
 
-    ;
     private PembelianSnackModel model;
 
     @Override
