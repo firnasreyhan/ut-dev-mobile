@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.permintaan_layout_acara.KonfirmasiPermintaanLayoutAcaraActivity"></activity>
+        <activity android:name=".view.activity.form.permintaan_layout_acara.KonfirmasiPermintaanLayoutAcaraActivity"/>
         <activity android:name=".view.activity.form.permintaan_layout_acara.PermintaanLayoutAcaraActivity" />
         <activity android:name=".view.activity.form.monitoring_lapangan.KonfirmasiMonitoringLapanganActivity" />
         <activity android:name=".view.activity.form.monitoring_lapangan.ListMonitoringLapanganActivity" />
@@ -48,6 +48,13 @@
         <activity android:name=".view.activity.form.identifikasi.IdentifikasiActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_pribadi.KonfirmasiPermintaanMobilPribadiActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity" />
+        <activity android:name=".view.activity.form.order_catering.KonfrimasiOrderCateringActivity"/>
+        <activity android:name=".view.activity.form.order_catering.ListOrderCateringActivity" />
+        <activity android:name=".view.activity.form.order_catering.OrderCateringActivity" />
+        <activity android:name=".view.activity.form.permintaan_catering_reguler.KonfirmasiPermintaanCateringRegulerActivity" />
+        <activity android:name=".view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity" />
+        <activity android:name=".view.activity.form.checklist_ruang_meeting.ListCheckRuangMeetingActivity" />
+        <activity android:name=".view.activity.form.checklist_ruang_meeting.ChecklistRuangMeetingActivity" />
         <activity android:name=".view.activity.approval.TransactionDetailActivity" />
         <activity android:name=".view.activity.SignUpActivity" />
         <activity android:name=".view.activity.approval.DetailApprovalPembelianSnackActivity" />

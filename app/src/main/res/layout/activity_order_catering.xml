@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    tools:context=".view.activity.form.identifikasi.IdentifikasiActivity">
+    tools:context=".view.activity.form.order_catering.OrderCateringActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -24,12 +20,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="24dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Identifikasi "/>
+                android:text="Order Catering"/>
 
         </FrameLayout>
 
@@ -85,7 +80,7 @@
                     android:layout_marginRight="@dimen/_50sdp"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="Jumlah Temuan Lapangan"
+                    android:text="Jumlah Order"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_8sdp" />
 
@@ -96,28 +91,24 @@
                     android:orientation="horizontal">
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButtonKurangJumlahTemuanLapangan"
+                        android:id="@+id/materialButtonKurangJumlahOrder"
                         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="@dimen/_14sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
                         android:text="-"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />
 
                     <EditText
-                        android:id="@+id/editTextJumlahPermintaanPembelianSnack"
+                        android:id="@+id/editTextJumlahOrder"
                         android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_3sdp"
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:layout_marginEnd="@dimen/_3sdp"
                         android:layout_marginRight="@dimen/_3sdp"
-                        android:backgroundTint="@color/hint_color"
-                        android:enabled="false"
                         android:fontFamily="@font/montserrat_medium"
                         android:gravity="center"
                         android:inputType="number"
@@ -126,14 +117,12 @@
                         android:textSize="@dimen/_8sdp" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButtonTambahJumlahTemuanLapangan"
+                        android:id="@+id/materialButtonTambahJumlahOrder"
                         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="@dimen/_14sdp"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="0dp"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
                         android:text="+"
                         android:textColor="@android:color/white"
                         android:textSize="@dimen/_10sdp" />

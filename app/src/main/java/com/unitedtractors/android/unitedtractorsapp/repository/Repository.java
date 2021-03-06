@@ -163,6 +163,69 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postChecklistRuangMeeting(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postChecklistRuangMeeting(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postCheckRuangMeeting", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postOrderCatering(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postOrderCatering(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postOrderCatering", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postPermintaanCateringReguler(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postPermintaanCateringReguler(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postPermintaanCatReg", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> postPermintaanMobilDinas(String body) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilDinas(

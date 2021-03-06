@@ -30,13 +30,13 @@ public class IdentifikasiActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        jumlahTemuanLapangan = Integer.parseInt(binding.editTextJumlahPermintaanPembelianSnack.getText().toString());
+        jumlahTemuanLapangan = Integer.parseInt(binding.editTextJumlahTemuanLapangan.getText().toString());
 
-        binding.materialButtonTambahJumlahPembelianSnack.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonTambahJumlahTemuanLapangan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jumlahTemuanLapangan++;
-                binding.editTextJumlahPermintaanPembelianSnack.setText(String.valueOf(jumlahTemuanLapangan));
+                binding.editTextJumlahTemuanLapangan.setText(String.valueOf(jumlahTemuanLapangan));
                 if (jumlahTemuanLapangan > 0) {
                     binding.materialButtonSelanjutnya.setEnabled(true);
                     binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
@@ -44,12 +44,12 @@ public class IdentifikasiActivity extends AppCompatActivity {
             }
         });
 
-        binding.materialButtonKurangJumlahPembelianSnack.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonKurangJumlahTemuanLapangan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (jumlahTemuanLapangan > 0) {
                     jumlahTemuanLapangan--;
-                    binding.editTextJumlahPermintaanPembelianSnack.setText(String.valueOf(jumlahTemuanLapangan));
+                    binding.editTextJumlahTemuanLapangan.setText(String.valueOf(jumlahTemuanLapangan));
                     if (jumlahTemuanLapangan == 0) {
                         binding.materialButtonSelanjutnya.setEnabled(false);
                         binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.button_disable));
