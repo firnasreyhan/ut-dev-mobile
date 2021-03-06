@@ -17,7 +17,13 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.checklist_for_genset.TroublesInformationActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_for_hydrant.PanelHydrantActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_for_hydrant.DieselHydrantPumpActivity" />
+        <activity android:name=".view.activity.form.checklist_for_hydrant.ElectricPumpActivity" />
+        <activity android:name=".view.activity.form.checklist_for_hydrant.JockeyPumpActivity" />
+        <activity android:name=".view.activity.form.checklist_for_hydrant.SystemPemipaanActivity" />
+        <activity android:name=".view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity" />
+        <activity android:name=".view.activity.form.checklist_for_genset.TroublesInformationActivity" />
         <activity android:name=".view.activity.form.checklist_for_genset.K5Activity" />
         <activity android:name=".view.activity.form.checklist_for_genset.ControlSystemActivity" />
         <activity android:name=".view.activity.form.checklist_for_genset.UnitEngineActivity" />
