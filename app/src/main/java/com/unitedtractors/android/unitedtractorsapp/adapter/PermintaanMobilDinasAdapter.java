@@ -36,7 +36,7 @@ public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<Permintaan
     @NonNull
     @Override
     public PermintaanMobilDinasAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-       return new PermintaanMobilDinasAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_mobil_dinas_form_input, parent, false));
+       return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permintaan_mobil_dinas_form_input, parent, false));
     }
 
     @Override
