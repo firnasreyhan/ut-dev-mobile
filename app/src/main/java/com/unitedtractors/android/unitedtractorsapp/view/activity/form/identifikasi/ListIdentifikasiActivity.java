@@ -23,10 +23,6 @@ import java.util.List;
 public class ListIdentifikasiActivity extends AppCompatActivity {
     private ActivityListIdentifikasiBinding binding;
 
-    private List<IdentifikasiModel> list;
-    private int jumlahTemuanLapangan;
-    private String idMapping;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +30,19 @@ public class ListIdentifikasiActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        jumlahTemuanLapangan = getIntent().getIntExtra("JUMLAH_TEMUAN_LAPANGAN",0);
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
+        int jumlahTemuanLapangan = getIntent().getIntExtra("JUMLAH_TEMUAN_LAPANGAN", 0);
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        list = new ArrayList<>();
+        List<IdentifikasiModel.DetailIdentifikasi> list = new ArrayList<>();
 
         if (jumlahTemuanLapangan > 0) {
             for (int i = 0; i < jumlahTemuanLapangan; i++) {
-                list.add(new IdentifikasiModel(
+                list.add(new IdentifikasiModel.DetailIdentifikasi(
                         "",
                         "",
                         "",
@@ -67,6 +63,7 @@ public class ListIdentifikasiActivity extends AppCompatActivity {
                 Log.e("checkData", String.valueOf(checkData()));
                 if (checkData()) {
                     Intent intent = new Intent(v.getContext(), KonfirmasiIdentifikasiActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())
@@ -93,7 +90,7 @@ public class ListIdentifikasiActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (IdentifikasiModel model : IdentifikasiAdapter.getList()) {
+        for (IdentifikasiModel.DetailIdentifikasi model : IdentifikasiAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

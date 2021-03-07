@@ -25,10 +25,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapter.ViewHolder> {
-    private static List<IdentifikasiModel> list;
+    private static List<IdentifikasiModel.DetailIdentifikasi> list;
     private static boolean isEnable;
 
-    public IdentifikasiAdapter(List<IdentifikasiModel> list, boolean isEnable) {
+    public IdentifikasiAdapter(List<IdentifikasiModel.DetailIdentifikasi> list, boolean isEnable) {
         IdentifikasiAdapter.list = list;
         IdentifikasiAdapter.isEnable = isEnable;
     }
@@ -210,7 +210,7 @@ public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapte
         }
     }
 
-    public static List<IdentifikasiModel> getList() {
+    public static List<IdentifikasiModel.DetailIdentifikasi> getList() {
         return list;
     }
 }

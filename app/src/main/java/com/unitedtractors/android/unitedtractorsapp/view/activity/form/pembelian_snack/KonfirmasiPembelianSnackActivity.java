@@ -40,8 +40,10 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        progressDialog = new ProgressDialog(this);
         viewModel = ViewModelProviders.of(this).get(KonfirmasiPembelianSnackViewModel.class);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon tunggu sebentar...");
+        progressDialog.setCancelable(false);
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -88,9 +90,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Mohon tunggu sebentar...");
                 progressDialog.show();
-
                 viewModel.postPembelianSnack(
                         model
                 ).observe(KonfirmasiPembelianSnackActivity.this, new Observer<BaseResponse>() {

@@ -13,7 +13,6 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian
 public class IdentifikasiActivity extends AppCompatActivity {
     private ActivityIdentifikasiBinding binding;
 
-    private String idMapping;
     private int jumlahTemuanLapangan;
 
     @Override
@@ -23,7 +22,7 @@ public class IdentifikasiActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
