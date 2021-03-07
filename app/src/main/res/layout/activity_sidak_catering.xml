@@ -87,6 +87,7 @@
                         android:orientation="vertical">
 
                         <EditText
+                            android:id="@+id/editTextNamaPerusahaan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -100,11 +101,12 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextNamaPemilik"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
                             android:fontFamily="@font/montserrat_medium"
-                            android:hint="Nama Pemilih"
+                            android:hint="Nama Pemilik"
                             android:inputType="textPersonName"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
@@ -113,12 +115,13 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextNamaPengurus"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
                             android:fontFamily="@font/montserrat_medium"
                             android:hint="Nama Pengurus"
-                            android:inputType="textCapWords"
+                            android:inputType="textPersonName"
                             android:paddingLeft="8dp"
                             android:paddingRight="8dp"
                             android:textColor="@color/text_color"
@@ -126,6 +129,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextAlamat"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
                             android:backgroundTint="@color/hint_color"
@@ -143,6 +147,7 @@
                             android:orientation="horizontal">
 
                             <EditText
+                                android:id="@+id/editTextTelepon"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginRight="@dimen/_3sdp"
@@ -158,6 +163,7 @@
                                 android:textSize="@dimen/_8sdp" />
 
                             <EditText
+                                android:id="@+id/editTextFax"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_3sdp"
@@ -175,6 +181,21 @@
                         </LinearLayout>
 
                         <EditText
+                            android:id="@+id/editTextJumlahTenagaKerja"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Jumlah Tenaga Kerja"
+                            android:inputType="number"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextPerusahaanYangDilayani"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -188,6 +209,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextKandepnaker"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -201,6 +223,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextKanwil"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"

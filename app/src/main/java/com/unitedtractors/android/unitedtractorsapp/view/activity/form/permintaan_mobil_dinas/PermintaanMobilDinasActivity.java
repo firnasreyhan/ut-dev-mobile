@@ -207,6 +207,12 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private boolean checkData() {
         boolean cek1 = true;
         boolean cek2 = true;
@@ -258,11 +264,5 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         }
 
         return cek1 && cek2 && cek3 && cek5 && cek6 && cek7 && cek8 && cek9;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }

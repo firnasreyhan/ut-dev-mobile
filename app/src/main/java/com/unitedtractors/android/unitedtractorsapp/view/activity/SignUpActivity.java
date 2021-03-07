@@ -64,7 +64,6 @@ public class SignUpActivity extends AppCompatActivity {
         binding.materialButtonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 binding.freeDrawView.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
                     @Override
                     public void onDrawCreated(Bitmap draw) {

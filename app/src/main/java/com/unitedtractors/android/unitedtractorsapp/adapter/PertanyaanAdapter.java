@@ -70,4 +70,8 @@ public class PertanyaanAdapter extends RecyclerView.Adapter<PertanyaanAdapter.Vi
             });
         }
     }
+
+    public static List<PertanyaanModel> getList() {
+        return list;
+    }
 }
