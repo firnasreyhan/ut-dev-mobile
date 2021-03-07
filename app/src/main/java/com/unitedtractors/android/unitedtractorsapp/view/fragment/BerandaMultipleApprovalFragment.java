@@ -179,7 +179,7 @@ public class BerandaMultipleApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApprovalProgress.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApprovalProgress.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
+                        binding.recyclerViewApprovalProgress.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
                     } else {
                         binding.linearLayoutNoDataApprovalProgress.setVisibility(View.VISIBLE);
                     }

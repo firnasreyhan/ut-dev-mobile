@@ -65,7 +65,6 @@ public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapte
         private final ImageView imageViewExpand;
         private final EditText editTextTemuanLapangan, editTextTanggal, editTextKategoriTemuan, editTextLokasi, editTextUser;
         private final Calendar calendar;
-        private String tanggal;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             calendar = Calendar.getInstance();
@@ -108,7 +107,6 @@ public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapte
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, monthOfYear);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    tanggal = simpleDateFormatServer.format(calendar.getTime());
                     editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
                 }
             };
@@ -198,8 +196,8 @@ public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapte
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setTanggal(tanggal);
                     list.get(getAdapterPosition()).setTanggalView(simpleDateFormatView.format(calendar.getTime()));
+                    list.get(getAdapterPosition()).setTanggal(simpleDateFormatServer.format(calendar.getTime()));
                 }
 
                 @Override

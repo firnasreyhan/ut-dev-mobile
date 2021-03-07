@@ -1,6 +1,7 @@
 package com.unitedtractors.android.unitedtractorsapp.viewmodel;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -34,6 +35,7 @@ public class IdentifikasiViewModel extends AndroidViewModel {
                 JSONObject detailSnack = new JSONObject();
                 detailSnack.put("temuan", detailIdentifikasi.getTemuanLapangan());
                 detailSnack.put("tgl", detailIdentifikasi.getTanggal());
+                Log.e("tanggal", detailIdentifikasi.getTanggalView());
                 detailSnack.put("kategori", detailIdentifikasi.getKatergoriTemuan());
                 detailSnack.put("lokasi", detailIdentifikasi.getLokasi());
                 detailSnack.put("user", detailIdentifikasi.getUser());

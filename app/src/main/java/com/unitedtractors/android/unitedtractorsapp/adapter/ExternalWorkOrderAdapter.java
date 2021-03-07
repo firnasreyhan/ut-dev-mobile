@@ -64,7 +64,6 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
         private final ImageView imageViewExpand;
         private final EditText editTextItemPekerjaan, editTextLokasiDiv, editTextTanggalDiminta, editTextTroubleTicket, editTextKeterangan;
         private final Calendar calendar;
-        private String tanggal;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             calendar = Calendar.getInstance();
@@ -106,7 +105,6 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, monthOfYear);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    tanggal = simpleDateFormatServer.format(calendar.getTime());
                     editTextTanggalDiminta.setText(simpleDateFormatView.format(calendar.getTime()));
                 }
             };
@@ -162,7 +160,7 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setTanggalDimintaServer(tanggal);
+                    list.get(getAdapterPosition()).setTanggalDimintaServer(simpleDateFormatServer.format(calendar.getTime()));
                     list.get(getAdapterPosition()).setTanggalDimintaView(simpleDateFormatView.format(calendar.getTime()));
                 }
 
