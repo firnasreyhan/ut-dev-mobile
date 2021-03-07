@@ -1,48 +1,47 @@
-package com.unitedtractors.android.unitedtractorsapp.view.activity;
+package com.unitedtractors.android.unitedtractorsapp.view.fragment;
 
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
+
+import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListApprovalBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentApprovalBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentProgressBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.ApprovalListViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListApprovalActivity extends AppCompatActivity {
-    private ActivityListApprovalBinding binding;
+public class ApprovalFragment extends Fragment {
+    private FragmentApprovalBinding binding;
     private ApprovalListViewModel viewModel;
-    private boolean cekSearch, isApproval;
+    private boolean cekSearch;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityListApprovalBinding.inflate(getLayoutInflater());
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        binding = FragmentApprovalBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
-        setContentView(view);
-
-        isApproval = getIntent().getBooleanExtra("IS_APPROVAL", false);
 
         viewModel = ViewModelProviders.of(this).get(ApprovalListViewModel.class);
 
-        setSupportActionBar(binding.toolbar);
-        setTitle("");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         binding.textInputEditTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -65,12 +64,14 @@ public class ListApprovalActivity extends AppCompatActivity {
                 }
             }
         });
+
+        return view;
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 
     @Override
@@ -90,9 +91,9 @@ public class ListApprovalActivity extends AppCompatActivity {
     public void getData() {
         binding.shimmerFrameLayout.startShimmer();
         viewModel.getTransaction(
-                AppPreference.getUser(this).getUserUsers(),
+                AppPreference.getUser(getActivity()).getUserUsers(),
                 -1,
-                isApproval
+                true
         ).observe(this, new Observer<TransactionResponse>() {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
@@ -102,7 +103,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(getActivity()).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -116,9 +117,9 @@ public class ListApprovalActivity extends AppCompatActivity {
     public void filterData(String filter) {
         binding.shimmerFrameLayout.startShimmer();
         viewModel.getTransaction(
-                AppPreference.getUser(this).getUserUsers(),
+                AppPreference.getUser(getActivity()).getUserUsers(),
                 -1,
-                isApproval
+                true
         ).observe(this, new Observer<TransactionResponse>() {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
@@ -134,7 +135,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, AppPreference.getUser(getActivity()).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);

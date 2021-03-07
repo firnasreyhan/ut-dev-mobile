@@ -2,7 +2,7 @@ package com.unitedtractors.android.unitedtractorsapp.model;
 
 import java.util.List;
 
-public class PermintaanMobilDinasModel {
+public class PermintaanMobilModel {
     private String idUser;
     private String idMapping;
     private String namaPeminjam;
@@ -18,7 +18,7 @@ public class PermintaanMobilDinasModel {
     private String catatan;
     private List<TujuanMobilDinasModel> tujuan;
 
-    public PermintaanMobilDinasModel(String idUser, String idMapping, String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, String kmAwal, String kmAkhir, String catatan, List<TujuanMobilDinasModel> tujuan) {
+    public PermintaanMobilModel(String idUser, String idMapping, String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang, String kmAwal, String kmAkhir, String catatan, List<TujuanMobilDinasModel> tujuan) {
         this.idUser = idUser;
         this.idMapping = idMapping;
         this.namaPeminjam = namaPeminjam;
@@ -33,6 +33,19 @@ public class PermintaanMobilDinasModel {
         this.kmAkhir = kmAkhir;
         this.catatan = catatan;
         this.tujuan = tujuan;
+    }
+
+    public PermintaanMobilModel(String idUser, String idMapping, String namaPeminjam, String namaPengemudi, String tglPeminjaman, String tglPengembalian, String divisi, String noPolisi, String jamBerangkat, String jamPulang) {
+        this.idUser = idUser;
+        this.idMapping = idMapping;
+        this.namaPeminjam = namaPeminjam;
+        this.namaPengemudi = namaPengemudi;
+        this.tglPeminjaman = tglPeminjaman;
+        this.tglPengembalian = tglPengembalian;
+        this.divisi = divisi;
+        this.noPolisi = noPolisi;
+        this.jamBerangkat = jamBerangkat;
+        this.jamPulang = jamPulang;
     }
 
     public String getIdUser() {

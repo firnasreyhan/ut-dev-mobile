@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".view.fragment.BerandaPICFragment">
+    tools:context=".view.fragment.BerandaSingleApprovalFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

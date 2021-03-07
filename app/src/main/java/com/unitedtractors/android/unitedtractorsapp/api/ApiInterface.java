@@ -54,7 +54,8 @@ public interface ApiInterface {
     @GET("transaction/{username}")
     Call<TransactionResponse> getTransaction(
             @Path("username") String username,
-            @Query("limit") int limit
+            @Query("limit") int limit,
+            @Query("isApproval") boolean isApproval
     );
 
     @Headers("Content-Type: application/json")
@@ -84,6 +85,12 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("formMobdin")
     Call<BaseResponse> postPermintaanMobilDinas(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formMobpri")
+    Call<BaseResponse> postPermintaanMobilPribadi(
             @Body String body
     );
 

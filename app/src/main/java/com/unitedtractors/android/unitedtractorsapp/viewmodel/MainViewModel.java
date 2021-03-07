@@ -27,8 +27,8 @@ public class MainViewModel extends AndroidViewModel {
         return repository.postSignOut(AppPreference.getUser(getApplication().getApplicationContext()).getIdUsers());
     }
 
-    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit) {
-        return repository.getTransaction(username, limit);
+    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit, boolean isApproval) {
+        return repository.getTransaction(username, limit, isApproval);
     }
 
     public MutableLiveData<FormResponse> getForm(String role) {

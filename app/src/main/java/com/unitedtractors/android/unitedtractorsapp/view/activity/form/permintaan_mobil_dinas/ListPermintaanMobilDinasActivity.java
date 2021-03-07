@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListPermintaanMobilDinasBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityListPermintaanMobilDinasBinding binding;
 
-    private List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list;
+    private List<PermintaanMobilModel.TujuanMobilDinasModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
         list = new ArrayList<>();
 
         for (int i = 0; i < jumlahTujuan; i++) {
-            list.add(new PermintaanMobilDinasModel.TujuanMobilDinasModel(
+            list.add(new PermintaanMobilModel.TujuanMobilDinasModel(
                     "",
                     ""));
         }
@@ -105,7 +105,7 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (PermintaanMobilDinasModel.TujuanMobilDinasModel model : PermintaanMobilDinasAdapter.getList()) {
+        for (PermintaanMobilModel.TujuanMobilDinasModel model : PermintaanMobilDinasAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

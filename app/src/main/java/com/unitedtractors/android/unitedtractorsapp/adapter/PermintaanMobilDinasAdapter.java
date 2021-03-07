@@ -14,16 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 
 import java.util.List;
 
 public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<PermintaanMobilDinasAdapter.ViewHolder> {
 
-    private static List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list;
+    private static List<PermintaanMobilModel.TujuanMobilDinasModel> list;
     private static boolean isEditable;
 
-    public PermintaanMobilDinasAdapter(List<PermintaanMobilDinasModel.TujuanMobilDinasModel> list, boolean isEditable) {
+    public PermintaanMobilDinasAdapter(List<PermintaanMobilModel.TujuanMobilDinasModel> list, boolean isEditable) {
         PermintaanMobilDinasAdapter.list = list;
         PermintaanMobilDinasAdapter.isEditable = isEditable;
     }
@@ -140,7 +140,7 @@ public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<Permintaan
         }
     }
 
-    public static List<PermintaanMobilDinasModel.TujuanMobilDinasModel> getList() {
+    public static List<PermintaanMobilModel.TujuanMobilDinasModel> getList() {
         return list;
     }
 }

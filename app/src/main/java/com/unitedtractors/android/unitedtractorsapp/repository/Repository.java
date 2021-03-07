@@ -99,11 +99,12 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit) {
+    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit, boolean isApproval) {
         MutableLiveData<TransactionResponse> data = new MutableLiveData<>();
         apiInterface.getTransaction(
                 username,
-                limit
+                limit,
+                isApproval
         ).enqueue(new Callback<TransactionResponse>() {
             @Override
             public void onResponse(Call<TransactionResponse> call, Response<TransactionResponse> response) {
@@ -241,6 +242,27 @@ public class Repository {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postPermintaanMobDin", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postPermintaanMobilPribadi(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postPermintaanMobilPribadi(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postPermintaanMobPri", t.getMessage());
                 data.postValue(null);
             }
         });

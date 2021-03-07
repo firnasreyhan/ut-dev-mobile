@@ -19,17 +19,17 @@ import android.widget.CompoundButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
+import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDInasViewModel;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDinasViewModel;
 
 
 public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
     private ActivityKonfirmasiPermintaanMobilDinasBinding binding;
-    private KonfirmasiPermintaanMobilDInasViewModel viewModel;
-    private PermintaanMobilDinasModel model;
+    private KonfirmasiPermintaanMobilDinasViewModel viewModel;
+    private PermintaanMobilModel model;
     private ProgressDialog progressDialog;
 
     private final int REQUEST_IMAGE_CAPTURE = 0;
@@ -42,7 +42,7 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        viewModel = ViewModelProviders.of(this).get(KonfirmasiPermintaanMobilDInasViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(KonfirmasiPermintaanMobilDinasViewModel.class);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
@@ -70,7 +70,7 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
             catatan = "-";
         }
 
-        model = new PermintaanMobilDinasModel(
+        model = new PermintaanMobilModel(
                 AppPreference.getUser(this).getIdUsers(),
                 idMapping,
                 AppPreference.getUser(this).getNamaUsers(),
@@ -171,7 +171,6 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                         }
                     }
                 });
-                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
             }
         });
     }

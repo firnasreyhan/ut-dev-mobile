@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@android:color/white"
+    android:padding="@dimen/_13sdp"
+    android:orientation="vertical"
+    tools:context=".view.fragment.ApprovalProgresFragment">
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:id="@+id/textInputLayoutSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:hintEnabled="false"
+        app:endIconMode="clear_text"
+        app:startIconDrawable="@drawable/ic_search"
+        app:boxBackgroundColor="@color/background"
+        app:boxCornerRadiusTopStart="@dimen/_10sdp"
+        app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+        app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+        app:boxCornerRadiusBottomEnd="@dimen/_10sdp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:hint="Cari..."
+            android:inputType="text"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/text_color"
+            android:imeOptions="actionSearch"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_9sdp"
+        android:orientation="vertical">
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmerFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:duration="800">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+                <include layout="@layout/item_shimmer_approval_list_pic" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutNoData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_no_data"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textSize="@dimen/_10sdp"
+                android:textColor="@color/text_color"
+                android:text="Tidak Ada Data"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

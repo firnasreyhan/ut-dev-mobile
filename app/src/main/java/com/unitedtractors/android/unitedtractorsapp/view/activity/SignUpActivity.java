@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
@@ -41,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
 
-        String[] roles = new String[] {"Staff", "Section Head", "Department Head"};
+        String[] roles = new String[] {"Staff", "PIC Admin", "PIC Gudang", "PIC Kendaraan", "PIC Maintenance", "Section Head", "Department Head", "Division Head"};
         ArrayAdapter<String> roleAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, roles);
         binding.dropdownRole.setAdapter(roleAdapter);
 
@@ -63,6 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.materialButtonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 binding.freeDrawView.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
                     @Override
                     public void onDrawCreated(Bitmap draw) {
@@ -142,10 +144,29 @@ public class SignUpActivity extends AppCompatActivity {
     private void signUp() {
         progressDialog.show();
 
+        String role = "";
+        if (binding.dropdownRole.getText().toString().equalsIgnoreCase("Staff")) {
+            role = "Staff";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("PIC Admin")) {
+            role = "PICA";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("PIC Gudang")) {
+            role = "PICG";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("PIC Kendaraan")) {
+            role = "PICK";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("PIC Maintenance")) {
+            role = "PICM";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("Section Head")) {
+            role = "Section Head";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("Department Head")) {
+            role = "Department Head";
+        } else if (binding.dropdownRole.getText().toString().equalsIgnoreCase("Division Head")) {
+            role = "Division Head";
+        }
+
         viewModel.signUp(
                 binding.textInputEditTextUsername.getText().toString(),
                 binding.textInputEditTexNamaLengkap.getText().toString(),
-                binding.dropdownRole.getText().toString(),
+                role,
                 binding.dropdownDepartment.getText().toString(),
                 binding.dropdownDivision.getText().toString(),
                 binding.textInputEditTextPassword.getText().toString(),

@@ -10,22 +10,16 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.OrderCateringAdapter;
-import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfrimasiOrderCateringBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.OrderCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilDinasModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDInasViewModel;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.OrderCateringViewModel;
 
 public class KonfrimasiOrderCateringActivity extends AppCompatActivity {

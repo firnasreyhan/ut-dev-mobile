@@ -17,7 +17,7 @@ public class ApprovalListViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
-    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit) {
-        return repository.getTransaction(username, limit);
+    public MutableLiveData<TransactionResponse> getTransaction(String username, int limit, boolean isApproval) {
+        return repository.getTransaction(username, limit, isApproval);
     }
 }

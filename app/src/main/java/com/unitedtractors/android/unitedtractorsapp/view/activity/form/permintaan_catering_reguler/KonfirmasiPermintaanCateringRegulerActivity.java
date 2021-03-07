@@ -14,16 +14,10 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPembelianSnackBinding;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanCateringRegulerBinding;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListCheckRuangMeetingBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanCateringRegulerModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting.ListCheckRuangMeetingActivity;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPembelianSnackViewModel;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDInasViewModel;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.PermintaanCateringRegulerViewModel;
 
 public class KonfirmasiPermintaanCateringRegulerActivity extends AppCompatActivity {
