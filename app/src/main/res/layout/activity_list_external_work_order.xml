@@ -64,6 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
                     android:fontFamily="@font/montserrat_medium"
                     android:text="Detail Informasi"
                     android:textColor="@color/hint_color2"
@@ -73,7 +74,6 @@
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
                     android:overScrollMode="never"/>
 
             </LinearLayout>
@@ -89,7 +89,7 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Ajukan"
+            android:text="Selanjutnya"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
             app:backgroundTint="@color/primary"

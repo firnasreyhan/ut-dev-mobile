@@ -23,10 +23,6 @@ import java.util.List;
 public class ListExternalWorkOrderActivity extends AppCompatActivity {
     private ActivityListExternalWorkOrderBinding binding;
 
-    private List<ExternalWorkOrderModel> list;
-    private int jumlahPekerjaan;
-    private String idMapping;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +30,27 @@ public class ListExternalWorkOrderActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        jumlahPekerjaan = getIntent().getIntExtra("JUMLAH_PEKERJAAN",0);
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String diintruksikanKepada = getIntent().getStringExtra("DIINTRUKSIKAN_KEPADA");
+        String intruksiDari = getIntent().getStringExtra("INTRUKSI_DARI");
+        String pekerjaan = getIntent().getStringExtra("PEKERJAAN");
+        String regNo = getIntent().getStringExtra("REG_NO");
+        String requestDateView = getIntent().getStringExtra("REQUEST_DATE_VIEW");
+        String requestDateServer = getIntent().getStringExtra("REQUEST_DATE_SERVER");
+        String pages = getIntent().getStringExtra("PAGES");
+        String cc = getIntent().getStringExtra("CC");
+        int jumlahPekerjaan = getIntent().getIntExtra("JUMLAH_PEKERJAAN", 0);
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        list = new ArrayList<>();
+        List<ExternalWorkOrderModel.DetailExternalWorkOrder> list = new ArrayList<>();
 
         if (jumlahPekerjaan > 0) {
             for (int i = 0; i < jumlahPekerjaan; i++) {
-                list.add(new ExternalWorkOrderModel(
+                list.add(new ExternalWorkOrderModel.DetailExternalWorkOrder(
                         "",
                         "",
                         "",
@@ -59,13 +63,22 @@ public class ListExternalWorkOrderActivity extends AppCompatActivity {
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new ExternalWorkOrderAdapter(list));
+        binding.recyclerView.setAdapter(new ExternalWorkOrderAdapter(list, true));
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), ScreenFeedbackActivity.class);
+                    Intent intent = new Intent(v.getContext(), KonfirmasiExternalWorkOrderActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
+                    intent.putExtra("DIINTRUKSIKAN_KEPADA", diintruksikanKepada);
+                    intent.putExtra("INTRUKSI_DARI", intruksiDari);
+                    intent.putExtra("PEKERJAAN", pekerjaan);
+                    intent.putExtra("REG_NO", regNo);
+                    intent.putExtra("REQUEST_DATE_VIEW", requestDateView);
+                    intent.putExtra("REQUEST_DATE_SERVER", requestDateServer);
+                    intent.putExtra("PAGES", pages);
+                    intent.putExtra("CC", cc);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())
@@ -92,7 +105,7 @@ public class ListExternalWorkOrderActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (ExternalWorkOrderModel model : ExternalWorkOrderAdapter.getList()) {
+        for (ExternalWorkOrderModel.DetailExternalWorkOrder model : ExternalWorkOrderAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

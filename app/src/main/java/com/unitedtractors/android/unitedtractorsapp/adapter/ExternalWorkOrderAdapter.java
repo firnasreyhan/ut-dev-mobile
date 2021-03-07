@@ -24,10 +24,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkOrderAdapter.ViewHolder> {
-    private static List<ExternalWorkOrderModel> list;
+    private static List<ExternalWorkOrderModel.DetailExternalWorkOrder> list;
+    private static boolean isEnable;
 
-    public ExternalWorkOrderAdapter(List<ExternalWorkOrderModel> list) {
+    public ExternalWorkOrderAdapter(List<ExternalWorkOrderModel.DetailExternalWorkOrder> list, boolean isEnable) {
         ExternalWorkOrderAdapter.list = list;
+        ExternalWorkOrderAdapter.isEnable = isEnable;
     }
 
     @Override
@@ -43,6 +45,7 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.textViewUrutan.setText("Temuan Pekerjaan " + (position + 1));
         holder.editTextItemPekerjaan.setText(list.get(position).getItemPekerjaan());
         holder.editTextLokasiDiv.setText(list.get(position).getLokasiDiv());
         holder.editTextTanggalDiminta.setText(list.get(position).getTanggalDimintaView());
@@ -87,9 +90,14 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
                 }
             });
 
+            editTextItemPekerjaan.setEnabled(isEnable);
+            editTextLokasiDiv.setEnabled(isEnable);
+            editTextTanggalDiminta.setEnabled(isEnable);
+            editTextTroubleTicket.setEnabled(isEnable);
+            editTextKeterangan.setEnabled(isEnable);
+
             SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
             SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-
 
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
                 @Override
@@ -200,7 +208,7 @@ public class ExternalWorkOrderAdapter extends RecyclerView.Adapter<ExternalWorkO
         }
     }
 
-    public static List<ExternalWorkOrderModel> getList() {
+    public static List<ExternalWorkOrderModel.DetailExternalWorkOrder> getList() {
         return list;
     }
 }

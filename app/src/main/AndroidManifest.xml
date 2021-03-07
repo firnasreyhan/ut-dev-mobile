@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.ListMultipleApprovalActivity"></activity>
+        <activity android:name=".view.activity.form.external_work_order.KonfirmasiExternalWorkOrderActivity"></activity>
+        <activity android:name=".view.activity.ListMultipleApprovalActivity" />
         <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondDActivity" />
         <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondCActivity" />
         <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondBActivity" />
