@@ -38,11 +38,13 @@ public class KonfirmasiPermintaanMobilPribadiViewModel extends AndroidViewModel 
             paramObject.put("nopol", model.getNoPolisi());
             paramObject.put("jamBerangkat", model.getJamBerangkat());
             paramObject.put("jamPulang", model.getJamPulang());
+
+            return repository.postPermintaanMobilPribadi(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postPermintaanMobilPribadi(paramObject.toString());
+        return repository.postPermintaanMobilPribadi(null);
     }
 
 //    private File createTempFile(Bitmap bitmap) {

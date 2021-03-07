@@ -269,6 +269,27 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postControlHarian(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postControlHarian(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postControlHarian", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, int isApprove, String keterangan) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.putConfirm(
