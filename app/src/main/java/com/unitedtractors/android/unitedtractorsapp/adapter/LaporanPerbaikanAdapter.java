@@ -74,6 +74,14 @@ public class LaporanPerbaikanAdapter extends RecyclerView.Adapter<LaporanPerbaik
             editTextDurasi = itemView.findViewById(R.id.editTextDurasi);
             editTextStatus = itemView.findViewById(R.id.editTextStatus);
 
+            editTextLaporanPerbaikan.setEnabled(isEnable);
+            editTextKategori.setEnabled(isEnable);
+            editTextLokasi.setEnabled(isEnable);
+            editTextUser.setEnabled(isEnable);
+            editTextPIC.setEnabled(isEnable);
+            editTextDurasi.setEnabled(isEnable);
+            editTextStatus.setEnabled(isEnable);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
