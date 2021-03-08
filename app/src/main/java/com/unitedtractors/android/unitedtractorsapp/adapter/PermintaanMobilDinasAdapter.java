@@ -74,7 +74,7 @@ public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<Permintaan
             editTextKeperluan.setEnabled(isEditable);
             editTextCatatan.setEnabled(isEditable);
 
-            imageViewExpand.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (linearLayoutForm.getVisibility() == View.GONE) {

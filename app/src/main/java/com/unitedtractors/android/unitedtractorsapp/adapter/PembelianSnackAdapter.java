@@ -129,11 +129,4 @@ public class PembelianSnackAdapter extends RecyclerView.Adapter<PembelianSnackAd
     public static List<PembelianSnackModel.DetailPembelianSnackModel> getList() {
         return list;
     }
-
-    public void addData(int jumlah) {
-        for (int i = 0; i < jumlah; i++) {
-            list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
-        }
-        notifyDataSetChanged();
-    }
 }
