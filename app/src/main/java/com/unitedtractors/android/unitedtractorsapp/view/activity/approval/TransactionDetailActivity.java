@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
@@ -29,7 +30,7 @@ import com.unitedtractors.android.unitedtractorsapp.viewmodel.TransactionDetailV
 public class TransactionDetailActivity extends AppCompatActivity {
     private ActivityTransactionDetailBinding binding;
     private TransactionDetailViewModel viewModel;
-    private String idTrans;
+    private String idTrans, idUsers;
     private ProgressDialog progressDialog;
 
     @Override
@@ -40,6 +41,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
         setContentView(view);
 
         idTrans = getIntent().getStringExtra("ID_TRANS");
+        idUsers = getIntent().getStringExtra("ID_USERS");
 
         viewModel = ViewModelProviders.of(this).get(TransactionDetailViewModel.class);
 
@@ -81,12 +83,13 @@ public class TransactionDetailActivity extends AppCompatActivity {
 
         viewModel.getTransactionDetail(
                 AppPreference.getUser(this).getUserUsers(),
-                idTrans
+                idTrans,
+                AppPreference.getUser(TransactionDetailActivity.this).getIdUsers().equalsIgnoreCase(idUsers) ? false : true
         ).observe(this, new Observer<TransactionDetailResponse>() {
             @Override
             public void onChanged(TransactionDetailResponse transactionDetailResponse) {
                 if (transactionDetailResponse.isStatus()) {
-                    if (AppPreference.getUser(TransactionDetailActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true) {
+                    if (AppPreference.getUser(TransactionDetailActivity.this).getIdUsers().equalsIgnoreCase(idUsers) ? false : true) {
                         if (transactionDetailResponse.getData().getStatTrans() == null) {
                             binding.textViewStatus.setText("Menunggu Konfirmasi");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.primary));

@@ -23,6 +23,7 @@ import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaN
 import com.unitedtractors.android.unitedtractorsapp.model.TaskModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListFormActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
@@ -77,6 +78,13 @@ public class BerandaNoApprovalFragment extends Fragment {
                         binding.swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 3000);
+            }
+        });
+
+        binding.textViewAllForm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), ListFormActivity.class));
             }
         });
 
@@ -141,7 +149,15 @@ public class BerandaNoApprovalFragment extends Fragment {
                 if (formResponse != null) {
                     if (formResponse.isStatus()) {
                         binding.recyclerViewForm.setVisibility(View.VISIBLE);
-                        binding.recyclerViewForm.setAdapter(new FormAdapter(formResponse.getData()));
+                        if (formResponse.getData().size() > 6) {
+                            List<FormResponse.FormModel> list = new ArrayList<>();
+                            for (int i = 0; i < 6; i++) {
+                                list.add(formResponse.getData().get(i));
+                            }
+                            binding.recyclerViewForm.setAdapter(new FormAdapter(list));
+                        } else {
+                            binding.recyclerViewForm.setAdapter(new FormAdapter(formResponse.getData()));
+                        }
                     } else {
                         binding.linearLayoutNoDataForm.setVisibility(View.VISIBLE);
                     }

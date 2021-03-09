@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity.form.perminta
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -40,12 +41,13 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
         String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
         String tglPengembalianView = getIntent().getStringExtra("TGL_PENGEMBALIAN_VIEW");
         String tglPengembalianServer = getIntent().getStringExtra("TGL_PENGEMBALIAN_SERVER");
-        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
-        String noPolisi = getIntent().getStringExtra("NO_POLISI");
+//        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
+//        String noPolisi = getIntent().getStringExtra("NO_POLISI");
         String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
         String jamPulang = getIntent().getStringExtra("JAM_PULANG");
-        String kmAwal = getIntent().getStringExtra("KM_AWAL");
-        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
+//        String kmAwal = getIntent().getStringExtra("KM_AWAL");
+//        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
+        Uri imgSIM = Uri.parse(getIntent().getStringExtra("IMG_SIM"));
         int jumlahTujuan = getIntent().getIntExtra("JUMLAH_TUJUAN",0);
 
         list = new ArrayList<>();
@@ -71,13 +73,15 @@ public class ListPermintaanMobilDinasActivity extends AppCompatActivity {
                     intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);
                     intent.putExtra("TGL_PENGEMBALIAN_VIEW", tglPengembalianView);
                     intent.putExtra("TGL_PENGEMBALIAN_SERVER", tglPengembalianServer);
-                    intent.putExtra("DIVISI_DEPARTEMENT", divisiDepartement);
-                    intent.putExtra("NO_POLISI", noPolisi);
+//                    intent.putExtra("DIVISI_DEPARTEMENT", divisiDepartement);
+//                    intent.putExtra("NO_POLISI", noPolisi);
                     intent.putExtra("JAM_BERANGKAT", jamBerangkat);
                     intent.putExtra("JAM_PULANG", jamPulang);
-                    intent.putExtra("KM_AWAL", kmAwal);
-                    intent.putExtra("KM_AKHIR", kmAkhir);
+//                    intent.putExtra("KM_AWAL", kmAwal);
+//                    intent.putExtra("KM_AKHIR", kmAkhir);
                     intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
+                    intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
+                    intent.putExtra("IMG_SIM", imgSIM.toString());
                     intent.putExtra("CATATAN", binding.editTextCatatan.getText().toString());
                     startActivity(intent);
                 } else {

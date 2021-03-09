@@ -1,20 +1,26 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
+import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPermintaanMobilDinasBinding;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -31,6 +37,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
     private String tglPengembalianView;
     private String tglPengembalianServer;
     private int jumlahTujuan;
+    private Uri imgSIM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +58,9 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
         SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
-        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
-        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
-        binding.spinnerDivision.setAdapter(divisionAdapter);
+//        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
+//        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
+//        binding.spinnerDivision.setAdapter(divisionAdapter);
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -167,6 +174,15 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             }
         });
 
+        binding.materialCardViewSIM.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.Companion.with(PermintaanMobilDinasActivity.this)
+                        .crop()
+                        .cameraOnly()
+                        .start();
+            }
+        });
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,29 +195,16 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
                     intent.putExtra("TGL_PEMINJAMAN_SERVER", tglPeminjamanServer);
                     intent.putExtra("TGL_PENGEMBALIAN_VIEW", tglPengembalianView);
                     intent.putExtra("TGL_PENGEMBALIAN_SERVER", tglPengembalianServer);
-                    intent.putExtra("DIVISI_DEPARTEMENT", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
-                    intent.putExtra("NO_POLISI", binding.editTextNoPolisi.getText().toString());
+//                    intent.putExtra("DIVISI_DEPARTEMENT", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
+//                    intent.putExtra("NO_POLISI", binding.editTextNoPolisi.getText().toString());
                     intent.putExtra("JAM_BERANGKAT", binding.editTextJamBerangkat.getText().toString());
                     intent.putExtra("JAM_PULANG", binding.editTextJamPulang.getText().toString());
-                    intent.putExtra("KM_AWAL", binding.editTextKMAwal.getText().toString());
-                    intent.putExtra("KM_AKHIR", binding.editTextKMAkhir.getText().toString());
+//                    intent.putExtra("KM_AWAL", binding.editTextKMAwal.getText().toString());
+//                    intent.putExtra("KM_AKHIR", binding.editTextKMAkhir.getText().toString());
+                    intent.putExtra("IMG_SIM", imgSIM.toString());
                     intent.putExtra("JUMLAH_TUJUAN", jumlahTujuan);
                     startActivity(intent);
-                } else {
-//                    new AlertDialog.Builder(v.getContext())
-//                            .setTitle("Pesan")
-//                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
-//                            .setCancelable(false)
-//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            })
-//                            .create()
-//                            .show();
                 }
-
             }
         });
 
@@ -213,6 +216,17 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
+            //Image Uri will not be null for RESULT_OK
+            Uri fileUri = data.getData();
+            imgSIM = fileUri;
+            binding.imageViewSIM.setImageURI(fileUri);
+        }
+    }
+
     private boolean checkData() {
         boolean cek1 = true;
         boolean cek2 = true;
@@ -222,6 +236,7 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
         boolean cek7 = true;
         boolean cek8 = true;
         boolean cek9 = true;
+        boolean cek10 = true;
 
         if (binding.editTextNamaPengemudi.getText().toString().isEmpty()) {
             binding.editTextNamaPengemudi.setError("Mohon isi data berikut");
@@ -238,10 +253,10 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             cek3 = false;
         }
 
-        if (binding.editTextNoPolisi.getText().toString().isEmpty()) {
-            binding.editTextNoPolisi.setError("Mohon isi data berikut");
-            cek5 = false;
-        }
+//        if (binding.editTextNoPolisi.getText().toString().isEmpty()) {
+//            binding.editTextNoPolisi.setError("Mohon isi data berikut");
+//            cek5 = false;
+//        }
 
         if (binding.editTextJamBerangkat.getText().toString().isEmpty()) {
             binding.editTextJamBerangkat.setError("Mohon isi data berikut");
@@ -253,16 +268,21 @@ public class PermintaanMobilDinasActivity extends AppCompatActivity {
             cek7 = false;
         }
 
-        if (binding.editTextKMAwal.getText().toString().isEmpty()) {
-            binding.editTextKMAwal.setError("Mohon isi data berikut");
-            cek8 = false;
+//        if (binding.editTextKMAwal.getText().toString().isEmpty()) {
+//            binding.editTextKMAwal.setError("Mohon isi data berikut");
+//            cek8 = false;
+//        }
+//
+//        if (binding.editTextKMAkhir.getText().toString().isEmpty()) {
+//            binding.editTextKMAkhir.setError("Mohon isi data berikut");
+//            cek9 = false;
+//        }
+
+        if (imgSIM == null) {
+            Toast.makeText(this, "Mohon upload foto SIM anda", Toast.LENGTH_SHORT).show();
+            cek10 = false;
         }
 
-        if (binding.editTextKMAkhir.getText().toString().isEmpty()) {
-            binding.editTextKMAkhir.setError("Mohon isi data berikut");
-            cek9 = false;
-        }
-
-        return cek1 && cek2 && cek3 && cek5 && cek6 && cek7 && cek8 && cek9;
+        return cek1 && cek2 && cek3 && cek6 && cek7 && cek10;
     }
 }

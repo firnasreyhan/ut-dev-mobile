@@ -9,6 +9,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.ApiInterface;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
@@ -227,20 +228,20 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postPermintaanMobilDinas(String body) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+    public MutableLiveData<PostMobilResponse> postPermintaanMobilDinas(String body) {
+        MutableLiveData<PostMobilResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilDinas(
                 body
-        ).enqueue(new Callback<BaseResponse>() {
+        ).enqueue(new Callback<PostMobilResponse>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+            public void onResponse(Call<PostMobilResponse> call, Response<PostMobilResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<PostMobilResponse> call, Throwable t) {
                 Log.e("postPermintaanMobDin", t.getMessage());
                 data.postValue(null);
             }
@@ -248,20 +249,20 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postPermintaanMobilPribadi(String body) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+    public MutableLiveData<PostMobilResponse> postPermintaanMobilPribadi(String body) {
+        MutableLiveData<PostMobilResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilPribadi(
                 body
-        ).enqueue(new Callback<BaseResponse>() {
+        ).enqueue(new Callback<PostMobilResponse>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+            public void onResponse(Call<PostMobilResponse> call, Response<PostMobilResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<PostMobilResponse> call, Throwable t) {
                 Log.e("postPermintaanMobPri", t.getMessage());
                 data.postValue(null);
             }
@@ -416,6 +417,52 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postSimMobilDinas(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postSimMobilDinas(
+                idUser,
+                idTrans,
+                file
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postSimMobilDinas", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postSimMobilPribadi(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postSimMobilPribadi(
+                idUser,
+                idTrans,
+                file
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postSimMobilPribadi", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, int isApprove, String keterangan) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.putConfirm(
@@ -461,11 +508,12 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<TransactionDetailResponse> getTransactionDetail(String username, String idTrans) {
+    public MutableLiveData<TransactionDetailResponse> getTransactionDetail(String username, String idTrans, boolean isApproval) {
         MutableLiveData<TransactionDetailResponse> data = new MutableLiveData<>();
         apiInterface.getTransactionDetail(
                 username,
-                idTrans
+                idTrans,
+                isApproval
         ).enqueue(new Callback<TransactionDetailResponse>() {
             @Override
             public void onResponse(Call<TransactionDetailResponse> call, Response<TransactionDetailResponse> response) {

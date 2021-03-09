@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.api;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
@@ -84,14 +85,30 @@ public interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("formMobdin")
-    Call<BaseResponse> postPermintaanMobilDinas(
+    Call<PostMobilResponse> postPermintaanMobilDinas(
             @Body String body
+    );
+
+    @Multipart
+    @POST("formMobdin/upload")
+    Call<BaseResponse> postSimMobilDinas(
+            @Part("idUser") RequestBody idUser,
+            @Part("idTrans") RequestBody idTrans,
+            @Part MultipartBody.Part file
     );
 
     @Headers("Content-Type: application/json")
     @POST("formMobpri")
-    Call<BaseResponse> postPermintaanMobilPribadi(
+    Call<PostMobilResponse> postPermintaanMobilPribadi(
             @Body String body
+    );
+
+    @Multipart
+    @POST("formMobpri/upload")
+    Call<BaseResponse> postSimMobilPribadi(
+            @Part("idUser") RequestBody idUser,
+            @Part("idTrans") RequestBody idTrans,
+            @Part MultipartBody.Part file
     );
 
     @Headers("Content-Type: application/json")
@@ -158,6 +175,7 @@ public interface ApiInterface {
     @GET("transaction/detail")
     Call<TransactionDetailResponse> getTransactionDetail(
             @Query("username") String username,
-            @Query("idTrans") String idTrans
+            @Query("idTrans") String idTrans,
+            @Query("isApproval") boolean isApproval
     );
 }

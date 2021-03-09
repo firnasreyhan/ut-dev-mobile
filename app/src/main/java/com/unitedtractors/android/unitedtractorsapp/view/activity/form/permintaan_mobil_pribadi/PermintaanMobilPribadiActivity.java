@@ -180,8 +180,6 @@ public class PermintaanMobilPribadiActivity extends AppCompatActivity {
             Uri fileUri = data.getData();
             imgSIM = fileUri;
             binding.imageViewSIM.setImageURI(fileUri);
-            binding.linearLayoutEmptySIM.setVisibility(View.GONE);
-            binding.imageViewSIM.setVisibility(View.VISIBLE);
         }
     }
 

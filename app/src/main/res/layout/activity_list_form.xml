@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context=".view.activity.ListFormActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                android:text="Daftar Form"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="@color/box_stroke"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/textInputLayoutSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="false"
+            app:endIconMode="clear_text"
+            app:startIconDrawable="@drawable/ic_search"
+            app:boxBackgroundColor="@color/background"
+            app:boxCornerRadiusTopStart="@dimen/_10sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_10sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_10sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_10sdp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:hint="Cari..."
+                android:inputType="text"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/text_color"
+                android:imeOptions="actionSearch"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:orientation="vertical">
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerFrameLayoutForm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                app:duration="800">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_13sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                        <include
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:layout_weight="1"
+                            layout="@layout/item_shimmer_form" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:id="@+id/linearLayoutNoDataForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@color/background"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_80sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_no_data"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/text_color"
+                    android:text="Tidak Ada Data"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

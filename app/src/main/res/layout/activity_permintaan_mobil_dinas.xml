@@ -40,387 +40,235 @@
         android:orientation="vertical"
         android:padding="@dimen/_13sdp">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_10sdp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:overScrollMode="never">
 
             <LinearLayout
-                android:id="@+id/linearLayoutKeterangan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Masukkan Detail"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Peminjam Kendaraan Dinas"
-                    android:textColor="@color/hint_color2"
-                    android:textSize="@dimen/_8sdp" />
-
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardViewForm"
-                android:layout_below="@+id/linearLayoutKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:strokeColor="@color/box_stroke"
-                app:strokeWidth="@dimen/_1sdp">
-
                 <LinearLayout
+                    android:id="@+id/linearLayoutKeterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Masukkan Detail"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Peminjam Kendaraan Dinas"
+                        android:textColor="@color/hint_color2"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewForm"
+                    android:layout_below="@+id/linearLayoutKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutForm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <EditText
-                            android:id="@+id/editTextNamaPengemudi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="Pengemudi"
-                            android:inputType="textCapWords"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
 
                         <LinearLayout
+                            android:id="@+id/linearLayoutForm"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/editTextTanggalPeminjaman"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:drawableEnd="@drawable/ic_outline_calendar"
-                                android:drawableRight="@drawable/ic_outline_calendar"
-                                android:focusable="false"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:hint="Tanggal Peminjaman"
-                                android:paddingLeft="8dp"
-                                android:paddingRight="8dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                            <EditText
-                                android:id="@+id/editTextTanggalPengembalian"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:drawableEnd="@drawable/ic_outline_calendar"
-                                android:drawableRight="@drawable/ic_outline_calendar"
-                                android:focusable="false"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:hint="Tanggal Pengembalian"
-                                android:paddingLeft="8dp"
-                                android:paddingRight="8dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:layout_marginLeft="3dp"
-                            android:layout_marginRight="3dp"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:text="Divisi"
-                                android:textColor="@color/hint_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                            <Spinner
-                                android:id="@+id/spinnerDivision"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginTop="@dimen/_3sdp"/>
-
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="1dp"
-                                android:background="@color/hint_color"/>
-
-                        </LinearLayout>
-
-                        <EditText
-                            android:visibility="gone"
-                            android:id="@+id/editTextDivisiDepartement"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="Divisi / Departemen"
-                            android:inputType="textCapWords"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
-
-                        <EditText
-                            android:id="@+id/editTextNoPolisi"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="No Polisi"
-                            android:inputType="textCapCharacters"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:textAllCaps="true"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
                             <EditText
-                                android:id="@+id/editTextJamBerangkat"
+                                android:id="@+id/editTextNamaPengemudi"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:hint="Jam Berangkat"
+                                android:hint="Pengemudi"
+                                android:inputType="textCapWords"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
                                 android:textSize="@dimen/_8sdp" />
 
-                            <EditText
-                                android:id="@+id/editTextJamPulang"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:hint="Jam Pulang"
-                                android:paddingLeft="8dp"
-                                android:paddingRight="8dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_6sdp"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:text="Km. Awal"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"/>
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:text="Km. Akhir"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:textColor="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"/>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:gravity="center">
-
-                                <EditText
-                                    android:id="@+id/editTextKMAwal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:backgroundTint="@color/hint_color"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:hint="0"
-                                    android:inputType="number"
-                                    android:paddingLeft="8dp"
-                                    android:paddingRight="8dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/text_color"
-                                    android:textSize="@dimen/_8sdp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="KM"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:textColor="@color/text_color"
-                                    android:textSize="@dimen/_8sdp"/>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal"
-                                android:gravity="center">
-
-                                <EditText
-                                    android:id="@+id/editTextKMAkhir"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:backgroundTint="@color/hint_color"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:hint="0"
-                                    android:inputType="number"
-                                    android:paddingLeft="8dp"
-                                    android:paddingRight="8dp"
-                                    android:textColor="@color/text_color"
-                                    android:textColorHint="@color/text_color"
-                                    android:textSize="@dimen/_8sdp"/>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="KM"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:textColor="@color/text_color"
-                                    android:textSize="@dimen/_8sdp"/>
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_13sdp"
-                            android:background="@android:color/white"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_50sdp"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:text="Jumlah Tujuan dan Keperluan"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:gravity="center"
                                 android:orientation="horizontal">
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/materialButtonKurangJumlahTujuan"
-                                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                                    android:layout_width="@dimen/_14sdp"
+                                <EditText
+                                    android:id="@+id/editTextTanggalPeminjaman"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:minWidth="0dp"
-                                    android:minHeight="0dp"
-                                    android:fontFamily="@font/montserrat_semi_bold"
-                                    android:padding="0dp"
-                                    android:text="-"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Tanggal Peminjaman"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
 
                                 <EditText
-                                    android:id="@+id/editTextJumlahTujuan"
-                                    android:layout_width="@dimen/_25sdp"
-                                    android:layout_height="@dimen/_25sdp"
-                                    android:layout_marginStart="@dimen/_3sdp"
+                                    android:id="@+id/editTextTanggalPengembalian"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginLeft="@dimen/_3sdp"
-                                    android:layout_marginEnd="@dimen/_3sdp"
-                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:gravity="center"
-                                    android:inputType="number"
-                                    android:enabled="false"
-                                    android:text="0"
+                                    android:hint="Tanggal Pengembalian"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTextJamBerangkat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Jam Berangkat"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <EditText
+                                    android:id="@+id/editTextJamPulang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Jam Pulang"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/_13sdp"
+                                android:background="@android:color/white"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_50sdp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Jumlah Tujuan dan Keperluan"
                                     android:textColor="@color/text_color"
                                     android:textSize="@dimen/_8sdp" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/materialButtonTambahJumlahTujuan"
-                                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                                    android:layout_width="@dimen/_14sdp"
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:minWidth="0dp"
-                                    android:minHeight="0dp"
-                                    android:fontFamily="@font/montserrat_semi_bold"
-                                    android:padding="0dp"
-                                    android:text="+"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/materialButtonKurangJumlahTujuan"
+                                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="wrap_content"
+                                        android:minWidth="0dp"
+                                        android:minHeight="0dp"
+                                        android:fontFamily="@font/montserrat_semi_bold"
+                                        android:padding="0dp"
+                                        android:text="-"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="@dimen/_10sdp" />
+
+                                    <EditText
+                                        android:id="@+id/editTextJumlahTujuan"
+                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_height="@dimen/_25sdp"
+                                        android:layout_marginStart="@dimen/_3sdp"
+                                        android:layout_marginLeft="@dimen/_3sdp"
+                                        android:layout_marginEnd="@dimen/_3sdp"
+                                        android:layout_marginRight="@dimen/_3sdp"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:gravity="center"
+                                        android:inputType="number"
+                                        android:enabled="false"
+                                        android:text="0"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/_8sdp" />
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/materialButtonTambahJumlahTujuan"
+                                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="wrap_content"
+                                        android:minWidth="0dp"
+                                        android:minHeight="0dp"
+                                        android:fontFamily="@font/montserrat_semi_bold"
+                                        android:padding="0dp"
+                                        android:text="+"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="@dimen/_10sdp" />
+
+                                </LinearLayout>
 
                             </LinearLayout>
 
@@ -428,11 +276,50 @@
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Upload Foto SIM"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp" />
 
-        </LinearLayout>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardViewSIM"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/imageViewSIM"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_no_image"/>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonSelanjutnya"

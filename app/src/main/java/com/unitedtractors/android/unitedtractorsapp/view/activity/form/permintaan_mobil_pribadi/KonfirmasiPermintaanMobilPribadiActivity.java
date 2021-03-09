@@ -17,6 +17,7 @@ import android.widget.CompoundButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilPribadiBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -78,7 +79,7 @@ public class KonfirmasiPermintaanMobilPribadiActivity extends AppCompatActivity 
                 tglPeminjamanServer,
                 tglPengembalianServer,
                 AppPreference.getUser(this).getDivUsers(),
-                "TES",
+                "-",
                 jamBerangkat,
                 jamPulang
         );
@@ -102,16 +103,52 @@ public class KonfirmasiPermintaanMobilPribadiActivity extends AppCompatActivity 
                 progressDialog.show();
                 viewModel.postPermintaanMobilPribadi(
                         model
-                ).observe(KonfirmasiPermintaanMobilPribadiActivity.this, new Observer<BaseResponse>() {
+                ).observe(KonfirmasiPermintaanMobilPribadiActivity.this, new Observer<PostMobilResponse>() {
                     @Override
-                    public void onChanged(BaseResponse baseResponse) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-
+                    public void onChanged(PostMobilResponse baseResponse) {
                         if (baseResponse != null) {
                             if (baseResponse.isStatus()) {
-                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                viewModel.postUploadSim(
+                                        AppPreference.getUser(KonfirmasiPermintaanMobilPribadiActivity.this).getIdUsers(),
+                                        baseResponse.getIdTrans(),
+                                        imgSIM
+                                ).observe(KonfirmasiPermintaanMobilPribadiActivity.this, new Observer<BaseResponse>() {
+                                    @Override
+                                    public void onChanged(BaseResponse baseResponse) {
+                                        if (progressDialog.isShowing()) {
+                                            progressDialog.dismiss();
+                                        }
+                                        if (baseResponse != null) {
+                                            if (baseResponse.isStatus()) {
+                                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                            } else {
+                                                new AlertDialog.Builder(v.getContext())
+                                                        .setTitle("Pesan")
+                                                        .setMessage(baseResponse.getMessage())
+                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        })
+                                                        .create()
+                                                        .show();
+                                            }
+                                        } else {
+                                            new AlertDialog.Builder(v.getContext())
+                                                    .setTitle("Pesan")
+                                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                        }
+                                                    })
+                                                    .create()
+                                                    .show();
+                                        }
+                                    }
+                                });
                             } else {
                                 new AlertDialog.Builder(v.getContext())
                                         .setTitle("Pesan")

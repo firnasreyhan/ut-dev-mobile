@@ -225,6 +225,7 @@
                         android:textSize="@dimen/_11sdp" />
 
                     <TextView
+                        android:id="@+id/textViewAllForm"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"

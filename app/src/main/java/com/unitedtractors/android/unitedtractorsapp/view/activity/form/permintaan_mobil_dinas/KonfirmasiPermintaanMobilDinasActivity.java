@@ -11,6 +11,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
@@ -18,11 +19,13 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilDinasBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.KonfirmasiPermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilDinasViewModel;
 
 
@@ -59,13 +62,14 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         String tglPeminjamanServer = getIntent().getStringExtra("TGL_PEMINJAMAN_SERVER");
         String tglPengembalianView = getIntent().getStringExtra("TGL_PENGEMBALIAN_VIEW");
         String tglPengembalianServer = getIntent().getStringExtra("TGL_PENGEMBALIAN_SERVER");
-        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
-        String noPolisi = getIntent().getStringExtra("NO_POLISI");
+//        String divisiDepartement = getIntent().getStringExtra("DIVISI_DEPARTEMENT");
+//        String noPolisi = getIntent().getStringExtra("NO_POLISI");
         String jamBerangkat = getIntent().getStringExtra("JAM_BERANGKAT");
         String jamPulang = getIntent().getStringExtra("JAM_PULANG");
-        String kmAwal = getIntent().getStringExtra("KM_AWAL");
-        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
+//        String kmAwal = getIntent().getStringExtra("KM_AWAL");
+//        String kmAkhir = getIntent().getStringExtra("KM_AKHIR");
         String catatan = getIntent().getStringExtra("CATATAN");
+        Uri imgSIM = Uri.parse(getIntent().getStringExtra("IMG_SIM"));
         if (catatan.isEmpty()) {
             catatan = "-";
         }
@@ -77,12 +81,12 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                 pengemudi,
                 tglPeminjamanServer,
                 tglPengembalianServer,
-                divisiDepartement,
-                noPolisi,
+                AppPreference.getUser(this).getDivUsers(),
+                "-",
                 jamBerangkat,
                 jamPulang,
-                kmAwal,
-                kmAkhir,
+                "-",
+                "-",
                 catatan,
                 PermintaanMobilDinasAdapter.getList()
         );
@@ -91,28 +95,18 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
         binding.textViewPengemudi.setText(pengemudi);
         binding.textViewTanggalPeminjaman.setText(tglPeminjamanView);
         binding.textViewTanggalPengembalian.setText(tglPengembalianView);
-        binding.textViewDivisiDepartement.setText(divisiDepartement);
-        binding.textViewNoPolisi.setText(noPolisi);
+//        binding.textViewDivisiDepartement.setText(divisiDepartement);
+//        binding.textViewNoPolisi.setText(noPolisi);
         binding.textViewJamBerangkat.setText(jamBerangkat);
         binding.textViewJamPulang.setText(jamPulang);
-        binding.textViewKMAwal.setText(kmAwal + " KM");
-        binding.textViewKMAkhir.setText(kmAkhir + " KM");
+//        binding.textViewKMAwal.setText(kmAwal + " KM");
+//        binding.textViewKMAkhir.setText(kmAkhir + " KM");
         binding.textViewCatatan.setText(catatan);
+        binding.imageViewSIM.setImageURI(imgSIM);
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(new PermintaanMobilDinasAdapter(PermintaanMobilDinasAdapter.getList(), false));
-
-        binding.materialCardViewSIM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                }
-
-            }
-        });
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -133,16 +127,52 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                 progressDialog.show();
                 viewModel.postPermintaanMobilDinas(
                         model
-                ).observe(KonfirmasiPermintaanMobilDinasActivity.this, new Observer<BaseResponse>() {
+                ).observe(KonfirmasiPermintaanMobilDinasActivity.this, new Observer<PostMobilResponse>() {
                     @Override
-                    public void onChanged(BaseResponse baseResponse) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-
+                    public void onChanged(PostMobilResponse baseResponse) {
                         if (baseResponse != null) {
                             if (baseResponse.isStatus()) {
-                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                viewModel.postUploadSim(
+                                        AppPreference.getUser(KonfirmasiPermintaanMobilDinasActivity.this).getIdUsers(),
+                                        baseResponse.getIdTrans(),
+                                        imgSIM
+                                ).observe(KonfirmasiPermintaanMobilDinasActivity.this, new Observer<BaseResponse>() {
+                                    @Override
+                                    public void onChanged(BaseResponse baseResponse) {
+                                        if (progressDialog.isShowing()) {
+                                            progressDialog.dismiss();
+                                        }
+                                        if (baseResponse != null) {
+                                            if (baseResponse.isStatus()) {
+                                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                            } else {
+                                                new AlertDialog.Builder(v.getContext())
+                                                        .setTitle("Pesan")
+                                                        .setMessage(baseResponse.getMessage())
+                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                            }
+                                                        })
+                                                        .create()
+                                                        .show();
+                                            }
+                                        } else {
+                                            new AlertDialog.Builder(v.getContext())
+                                                    .setTitle("Pesan")
+                                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                        }
+                                                    })
+                                                    .create()
+                                                    .show();
+                                        }
+                                    }
+                                });
                             } else {
                                 new AlertDialog.Builder(v.getContext())
                                         .setTitle("Pesan")
@@ -179,16 +209,5 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            imageView.setImageBitmap(imageBitmap);
-        }
-
     }
 }
