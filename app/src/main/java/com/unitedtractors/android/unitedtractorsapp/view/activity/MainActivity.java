@@ -2,6 +2,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -20,6 +21,7 @@ import java.util.LinkedHashMap;
 
 public class MainActivity extends NavigationActivity {
     private ActivityMainBinding binding;
+    private boolean doubleBackToExit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +55,15 @@ public class MainActivity extends NavigationActivity {
     @Override
     public void tabChanged(int id) {
         binding.bottomNavigationViewMenu.getMenu().findItem(id).setChecked(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExit) {
+            super.onBackPressed();
+            return;
+        }
+        this.doubleBackToExit = true;
+        Toast.makeText(this, "Tekan sekali lagi untuk keluar", Toast.LENGTH_SHORT).show();
     }
 }
