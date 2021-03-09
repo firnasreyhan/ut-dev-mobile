@@ -35,11 +35,6 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_2sdp"
-        android:background="@color/box_stroke"/>
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
@@ -50,6 +45,12 @@
         app:tabIndicatorHeight="4dp"
         android:background="@color/white"
         app:tabMode="fixed"/>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="@color/box_stroke"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

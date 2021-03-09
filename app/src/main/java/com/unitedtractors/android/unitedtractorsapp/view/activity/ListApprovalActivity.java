@@ -48,6 +48,9 @@ public class ListApprovalActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    binding.recyclerView.setVisibility(View.GONE);
+                    binding.linearLayoutNoData.setVisibility(View.GONE);
+
                     filterData(binding.textInputEditTextSearch.getText().toString());
                     cekSearch = true;
                 }
@@ -89,6 +92,8 @@ public class ListApprovalActivity extends AppCompatActivity {
 
     public void getData() {
         binding.shimmerFrameLayout.startShimmer();
+        binding.shimmerFrameLayout.setVisibility(View.VISIBLE);
+
         viewModel.getTransaction(
                 AppPreference.getUser(this).getUserUsers(),
                 -1,
@@ -102,7 +107,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), isApproval));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -115,6 +120,8 @@ public class ListApprovalActivity extends AppCompatActivity {
 
     public void filterData(String filter) {
         binding.shimmerFrameLayout.startShimmer();
+        binding.shimmerFrameLayout.setVisibility(View.VISIBLE);
+
         viewModel.getTransaction(
                 AppPreference.getUser(this).getUserUsers(),
                 -1,
@@ -134,7 +141,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, AppPreference.getUser(ListApprovalActivity.this).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, isApproval));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);

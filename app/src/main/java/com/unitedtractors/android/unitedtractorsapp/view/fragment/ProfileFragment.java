@@ -38,18 +38,18 @@ public class ProfileFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getContext());
 
-        if (AppPreference.getUser(getContext()).getNamaUsers().equalsIgnoreCase("picm")) {
-            binding.textViewNamaUser.setText("PIC Maintenance");
-        } else if (AppPreference.getUser(getContext()).getNamaUsers().equalsIgnoreCase("pica")) {
-            binding.textViewNamaUser.setText("PIC Admin");
-        } else if (AppPreference.getUser(getContext()).getNamaUsers().equalsIgnoreCase("picg")) {
-            binding.textViewNamaUser.setText("PIC Gudang");
-        } else if (AppPreference.getUser(getContext()).getNamaUsers().equalsIgnoreCase("pick")) {
-            binding.textViewNamaUser.setText("PIC Kendaraan");
+        binding.textViewNamaUser.setText(AppPreference.getUser(getContext()).getNamaUsers());
+        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("picm")) {
+            binding.textViewRoleuser.setText("PIC Maintenance");
+        } else if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("pica")) {
+            binding.textViewRoleuser.setText("PIC Admin");
+        } else if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("picg")) {
+            binding.textViewRoleuser.setText("PIC Gudang");
+        } else if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("pick")) {
+            binding.textViewRoleuser.setText("PIC Kendaraan");
         } else {
-            binding.textViewNamaUser.setText(AppPreference.getUser(getContext()).getNamaUsers());
+            binding.textViewRoleuser.setText(AppPreference.getUser(getContext()).getNamaUsers());
         }
-        binding.textViewRoleuser.setText(AppPreference.getUser(getContext()).getRoleUsers());
         binding.textViewDepartementUser.setText(AppPreference.getUser(getContext()).getDeptUsers());
         binding.textViewDivisiUser.setText(AppPreference.getUser(getContext()).getDivUsers());
 

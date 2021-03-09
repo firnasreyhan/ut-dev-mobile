@@ -16,8 +16,8 @@
         android:id="@+id/tabTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_color"
         android:fontFamily="@font/montserrat_semi_bold"
-        android:textSize="@dimen/_13sdp" />
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/_11sdp" />
 
 </LinearLayout>

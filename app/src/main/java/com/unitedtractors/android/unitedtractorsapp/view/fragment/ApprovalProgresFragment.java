@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
@@ -45,6 +46,9 @@ public class ApprovalProgresFragment extends Fragment {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    binding.recyclerView.setVisibility(View.GONE);
+                    binding.linearLayoutNoData.setVisibility(View.GONE);
+
                     filterData(binding.textInputEditTextSearch.getText().toString());
                     cekSearch = true;
                 }
@@ -57,6 +61,9 @@ public class ApprovalProgresFragment extends Fragment {
             public void onClick(View v) {
                 binding.textInputEditTextSearch.getText().clear();
                 if (cekSearch) {
+                    binding.recyclerView.setVisibility(View.GONE);
+                    binding.linearLayoutNoData.setVisibility(View.GONE);
+
                     getData();
                     cekSearch = false;
                 }
@@ -88,10 +95,12 @@ public class ApprovalProgresFragment extends Fragment {
 
     public void getData() {
         binding.shimmerFrameLayout.startShimmer();
+        binding.shimmerFrameLayout.setVisibility(View.VISIBLE);
+
         viewModel.getTransaction(
                 AppPreference.getUser(getActivity()).getUserUsers(),
                 -1,
-                true
+                false
         ).observe(this, new Observer<TransactionResponse>() {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
@@ -101,7 +110,7 @@ public class ApprovalProgresFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), AppPreference.getUser(getActivity()).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -114,10 +123,12 @@ public class ApprovalProgresFragment extends Fragment {
 
     public void filterData(String filter) {
         binding.shimmerFrameLayout.startShimmer();
+        binding.shimmerFrameLayout.setVisibility(View.VISIBLE);
+
         viewModel.getTransaction(
                 AppPreference.getUser(getActivity()).getUserUsers(),
                 -1,
-                true
+                false
         ).observe(this, new Observer<TransactionResponse>() {
             @Override
             public void onChanged(TransactionResponse transactionResponse) {
@@ -133,7 +144,7 @@ public class ApprovalProgresFragment extends Fragment {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, AppPreference.getUser(getActivity()).getRoleUsers().equalsIgnoreCase("staff") ? false : true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, false));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);
