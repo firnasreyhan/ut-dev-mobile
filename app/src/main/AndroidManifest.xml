@@ -49,7 +49,7 @@
         <activity android:name=".view.activity.form.sidak_catering.KesehatanBahanDanPenyimpananMakananActivity" />
         <activity android:name=".view.activity.form.sidak_catering.PersyaratanTenagaKerjaActivity" />
         <activity android:name=".view.activity.form.sidak_catering.SidakCateringActivity" />
-        <activity android:name=".view.activity.form.perbaikan.KonfimasiPerbaikanActivity" />
+        <activity android:name=".view.activity.form.perbaikan.KonfirmasiPerbaikanActivity" />
         <activity android:name=".view.activity.form.perbaikan.KeteranganPerbaikanActivity" />
         <activity android:name=".view.activity.form.perbaikan.PerbaikanActivity" />
         <activity android:name=".view.activity.form.external_work_order.ListExternalWorkOrderActivity" />

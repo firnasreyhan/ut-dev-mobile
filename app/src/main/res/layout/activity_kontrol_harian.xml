@@ -75,7 +75,7 @@
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan."/>
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
 
             </LinearLayout>

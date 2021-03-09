@@ -34,6 +34,11 @@ public class HasilTestFoodCateringAdapter extends RecyclerView.Adapter<HasilTest
         return position;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public HasilTestFoodCateringAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

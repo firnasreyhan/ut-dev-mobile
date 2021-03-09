@@ -99,6 +99,7 @@
                                 android:textSize="@dimen/_8sdp" />
 
                             <EditText
+                                android:id="@+id/editTextJenisPerbaikan"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_75sdp"
                                 android:backgroundTint="@color/hint_color"
@@ -140,6 +141,7 @@
                                 android:textSize="@dimen/_8sdp" />
 
                             <EditText
+                                android:id="@+id/editTextAlasanPerbaikan"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_75sdp"
                                 android:backgroundTint="@color/hint_color"
@@ -194,11 +196,13 @@
                                     android:textSize="@dimen/_8sdp" />
 
                                 <RadioGroup
+                                    android:id="@+id/radioGroup"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="horizontal">
 
                                     <RadioButton
+                                        android:id="@+id/radioButtonVendor"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginRight="@dimen/_14sdp"
@@ -208,16 +212,19 @@
                                         android:text="Vendor"/>
 
                                     <RadioButton
+                                        android:id="@+id/radioButtonMaintenance"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/text_color"
                                         android:textColorHint="@color/hint_color"
                                         android:textSize="@dimen/_8sdp"
-                                        android:text="Maintenance"/>
+                                        android:text="Maintenance"
+                                        android:checked="true"/>
 
                                 </RadioGroup>
 
                                 <EditText
+                                    android:id="@+id/editTextEstimasiWaktu"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:backgroundTint="@color/hint_color"
@@ -231,6 +238,7 @@
                                     android:textSize="@dimen/_8sdp" />
 
                                 <EditText
+                                    android:id="@+id/editTextEstimasiBiaya"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:backgroundTint="@color/hint_color"

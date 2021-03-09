@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalProgressAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.FormAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.TaskAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
@@ -100,6 +101,10 @@ public class BerandaNoApprovalFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        binding.recyclerViewApproval.setVisibility(View.GONE);
+        binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+        binding.recyclerViewForm.setVisibility(View.GONE);
+        binding.linearLayoutNoDataForm.setVisibility(View.GONE);
 
         getApprovalData();
         getFormData();
@@ -122,7 +127,7 @@ public class BerandaNoApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
+                        binding.recyclerViewApproval.setAdapter(new ApprovalProgressAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
                     }

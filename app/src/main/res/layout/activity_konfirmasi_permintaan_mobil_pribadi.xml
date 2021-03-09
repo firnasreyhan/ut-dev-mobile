@@ -327,7 +327,7 @@
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
                     android:layout_marginBottom="@dimen/_13sdp"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan dan saya akan mematuhi beberapa peraturan berikut:\n\n1. Batas kecepatan tidak melibihi 120 Km/Jam\n2. Mematuhi rambu lalu lintas yang berlaku\n3. Menerapkan safety driving\n4. Dilarang menggunakan kendaraan dengan tidak tertib dan boros bahhan bakar"/>
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan dan saya akan mematuhi beberapa peraturan berikut:\n\n1. Batas kecepatan tidak melibihi 120 Km/Jam\n2. Mematuhi rambu lalu lintas yang berlaku\n3. Menerapkan safety driving\n4. Dilarang menggunakan kendaraan dengan tidak tertib dan boros bahhan bakar"/>
 
             </LinearLayout>
 

@@ -31,6 +31,11 @@ public class Pertanyaan3Adapter extends RecyclerView.Adapter<Pertanyaan3Adapter.
         return position;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

@@ -1,4 +1,5 @@
 package com.unitedtractors.android.unitedtractorsapp.utils.notif;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -39,6 +40,7 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                 .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setLights(Color.WHITE, 3000, 3000)
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setDefaults(Notification.DEFAULT_SOUND| Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
                 .setContentTitle(remoteMessage.getNotification().getTitle())
                 .setContentText(remoteMessage.getNotification().getBody()).setAutoCancel(true).setContentIntent(pendingIntent);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

@@ -38,6 +38,11 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
         return position;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public OrderCateringAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

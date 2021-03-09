@@ -42,7 +42,7 @@ public class KonfirmasiSidakCateringViewModel extends AndroidViewModel {
             JSONArray ptk = new JSONArray();
             for (boolean b : model.getPersyaratanTenagaKerja()) {
                 JSONObject object = new JSONObject();
-                object.put("status", b);
+                object.put("status", String.valueOf(b));
                 ptk.put(object);
             }
             paramObject.put("ptk", ptk);
@@ -50,7 +50,7 @@ public class KonfirmasiSidakCateringViewModel extends AndroidViewModel {
             JSONArray pkb_pm = new JSONArray();
             for (boolean b : model.getKesehatanBahanDanPenyimpananMakanan()) {
                 JSONObject object = new JSONObject();
-                object.put("status", b);
+                object.put("status", String.valueOf(b));
                 pkb_pm.put(object);
             }
             paramObject.put("pkb_pm", pkb_pm);
@@ -58,7 +58,7 @@ public class KonfirmasiSidakCateringViewModel extends AndroidViewModel {
             JSONArray psl_pfm = new JSONArray();
             for (boolean b : model.getSanitasiLingkunganDanFasilitasPengolahMakanan()) {
                 JSONObject object = new JSONObject();
-                object.put("status", b);
+                object.put("status", String.valueOf(b));
                 psl_pfm.put(object);
             }
             paramObject.put("psl_pfm", psl_pfm);

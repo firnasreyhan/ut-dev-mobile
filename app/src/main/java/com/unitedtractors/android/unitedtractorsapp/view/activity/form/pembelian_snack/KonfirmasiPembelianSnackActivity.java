@@ -50,13 +50,13 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String divisi = getIntent().getStringExtra("DIVISI");
+//        String divisi = getIntent().getStringExtra("DIVISI");
         String keperluan = getIntent().getStringExtra("KEPERLUAN");
         String serverTime = getIntent().getStringExtra("SERVER_TIME");
         String viewTime = getIntent().getStringExtra("VIEW_TIME");
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
-        binding.textViewDivisi.setText(divisi);
+        binding.textViewDivisi.setText(AppPreference.getUser(this).getDivUsers());
         binding.textViewKeperluan.setText(keperluan);
         binding.textViewTanggal.setText(viewTime);
 
@@ -70,7 +70,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
         model.setIdUser(AppPreference.getUser(this).getIdUsers());
         model.setIdMapping(idMapping);
         model.setTglSnack(serverTime);
-        model.setDivisiSnack(divisi);
+        model.setDivisiSnack(AppPreference.getUser(this).getDivUsers());
         model.setKeperluanSnack(keperluan);
         model.setDetSnack(list);
 
@@ -119,7 +119,7 @@ public class KonfirmasiPembelianSnackActivity extends AppCompatActivity {
                         } else {
                             new AlertDialog.Builder(v.getContext())
                                     .setTitle("Pesan")
-                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                    .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

@@ -86,6 +86,9 @@ public class BerandaSingleApprovalFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        binding.recyclerViewApproval.setVisibility(View.GONE);
+        binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+
         getForm();
     }
 
@@ -129,7 +132,7 @@ public class BerandaSingleApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
+                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
                     }

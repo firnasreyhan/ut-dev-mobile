@@ -96,7 +96,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgPrimary));
                             binding.linearLayoutButton.setVisibility(View.VISIBLE);
                         } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("1")) {
-                            binding.textViewStatus.setText("Distujui");
+                            binding.textViewStatus.setText("Disetujui");
                             binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
                             binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
                             binding.linearLayoutButton.setVisibility(View.INVISIBLE);
@@ -234,7 +234,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                 binding.linearLayoutStatus.setVisibility(View.VISIBLE);
                                 binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
                                 binding.textViewStatus.setTextColor(getResources().getColor(R.color.approve));
-                                binding.textViewStatus.setText("Approved");
+                                binding.textViewStatus.setText("Disetujui");
 
                                 new AlertDialog.Builder(TransactionDetailActivity.this)
                                         .setTitle("Pesan")
@@ -311,7 +311,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                                     binding.linearLayoutStatus.setVisibility(View.VISIBLE);
                                                     binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
                                                     binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
-                                                    binding.textViewStatus.setText("Rejected");
+                                                    binding.textViewStatus.setText("Ditolak");
 
                                                     new AlertDialog.Builder(TransactionDetailActivity.this)
                                                             .setTitle("Pesan")

@@ -161,7 +161,7 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                                         } else {
                                             new AlertDialog.Builder(v.getContext())
                                                     .setTitle("Pesan")
-                                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                                    .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
                                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                         @Override
                                                         public void onClick(DialogInterface dialog, int which) {
@@ -189,7 +189,7 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
                         } else {
                             new AlertDialog.Builder(v.getContext())
                                     .setTitle("Pesan")
-                                    .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                    .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
                                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

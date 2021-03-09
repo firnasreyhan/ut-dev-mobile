@@ -89,6 +89,7 @@
                     android:padding="@dimen/_13sdp">
 
                     <EditText
+                        android:id="@+id/editTextTanggal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="@dimen/_3sdp"
@@ -107,6 +108,7 @@
                         android:textSize="@dimen/_8sdp" />
 
                     <EditText
+                        android:id="@+id/editTextWaktu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_3sdp"
@@ -160,6 +162,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextNamaPemohon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -173,6 +176,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextDivisiPemohon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -186,6 +190,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextExtensionPemohon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -235,6 +240,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextNamaPenerima"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"
@@ -248,6 +254,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextNomorTroubleTicket"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.form.perbaikan.KonfimasiPerbaikanActivity">
+    tools:context=".view.activity.form.perbaikan.KonfirmasiPerbaikanActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -86,7 +86,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewPeminjam"
+                            android:id="@+id/textViewTanggal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -115,7 +115,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewPengemudi"
+                            android:id="@+id/textViewWaktu"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -144,7 +144,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewTanggalPeminjaman"
+                            android:id="@+id/textViewNamaPemohon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -173,7 +173,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewTanggalPengembalian"
+                            android:id="@+id/textViewDivisiPemohon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -202,7 +202,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewDivisiDepartement"
+                            android:id="@+id/textViewExtensionPemohon"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -231,7 +231,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewNoPolisi"
+                            android:id="@+id/textViewNamaPenerima"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -260,7 +260,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <TextView
-                            android:id="@+id/textViewJamBerangkat"
+                            android:id="@+id/textViewNomorTroubleTicket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_medium"
@@ -315,6 +315,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextJenisPerbaikan"
                             android:enabled="false"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
@@ -357,6 +358,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextAlasanPerbaikan"
                             android:enabled="false"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
@@ -417,6 +419,7 @@
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButtonVendor"
                                     android:enabled="false"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -427,6 +430,7 @@
                                     android:text="Vendor"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButtonMaintenance"
                                     android:enabled="false"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -438,6 +442,7 @@
                             </RadioGroup>
 
                             <EditText
+                                android:id="@+id/editTextEstimasiWaktu"
                                 android:enabled="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -452,6 +457,7 @@
                                 android:textSize="@dimen/_8sdp" />
 
                             <EditText
+                                android:id="@+id/editTextEstimasiBiaya"
                                 android:enabled="false"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -490,7 +496,7 @@
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
                     android:layout_marginBottom="@dimen/_13sdp"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan."/>
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
             </LinearLayout>
 

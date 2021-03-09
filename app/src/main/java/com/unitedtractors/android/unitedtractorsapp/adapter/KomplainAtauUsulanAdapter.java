@@ -33,6 +33,11 @@ public class KomplainAtauUsulanAdapter extends RecyclerView.Adapter<KomplainAtau
         return position;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public KomplainAtauUsulanAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

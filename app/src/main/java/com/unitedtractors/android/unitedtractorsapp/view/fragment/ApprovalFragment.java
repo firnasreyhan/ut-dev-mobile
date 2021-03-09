@@ -111,7 +111,7 @@ public class ApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -145,7 +145,7 @@ public class ApprovalFragment extends Fragment {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, true));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);

@@ -128,7 +128,7 @@ public class KonfirmasiSidakCateringActivity extends AppCompatActivity {
                             } else {
                                 new AlertDialog.Builder(v.getContext())
                                         .setTitle("Pesan")
-                                        .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+                                        .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -159,40 +159,40 @@ public class KonfirmasiSidakCateringActivity extends AppCompatActivity {
             cekCatatan = false;
         }
 
-        binding.freeDrawViewTimSidak.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
-            @Override
-            public void onDrawCreated(Bitmap draw) {
-                Bitmap emptyBitmap = Bitmap.createBitmap(draw.getWidth(), draw.getHeight(), draw.getConfig());
-                if (!draw.sameAs(emptyBitmap)) {
-                    bitmapTimSidak = draw;
-                } else {
-                    Toast.makeText(KonfirmasiSidakCateringActivity.this, "Tanda tangan tim sidak tidak boleh kosong.", Toast.LENGTH_SHORT).show();
-                }
-            }
+//        binding.freeDrawViewTimSidak.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
+//            @Override
+//            public void onDrawCreated(Bitmap draw) {
+//                Bitmap emptyBitmap = Bitmap.createBitmap(draw.getWidth(), draw.getHeight(), draw.getConfig());
+//                if (!draw.sameAs(emptyBitmap)) {
+//                    bitmapTimSidak = draw;
+//                } else {
+//                    Toast.makeText(KonfirmasiSidakCateringActivity.this, "Tanda tangan tim sidak tidak boleh kosong.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onDrawCreationError() {
+//
+//            }
+//        });
+//
+//        binding.freeDrawViewTimCatering.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
+//            @Override
+//            public void onDrawCreated(Bitmap draw) {
+//                Bitmap emptyBitmap = Bitmap.createBitmap(draw.getWidth(), draw.getHeight(), draw.getConfig());
+//                if (!draw.sameAs(emptyBitmap)) {
+//                    bitmapTimCatering = draw;
+//                } else {
+//                    Toast.makeText(KonfirmasiSidakCateringActivity.this, "Tanda tangan tim catering tidak boleh kosong.", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onDrawCreationError() {
+//
+//            }
+//        });
 
-            @Override
-            public void onDrawCreationError() {
-
-            }
-        });
-
-        binding.freeDrawViewTimCatering.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
-            @Override
-            public void onDrawCreated(Bitmap draw) {
-                Bitmap emptyBitmap = Bitmap.createBitmap(draw.getWidth(), draw.getHeight(), draw.getConfig());
-                if (!draw.sameAs(emptyBitmap)) {
-                    bitmapTimCatering = draw;
-                } else {
-                    Toast.makeText(KonfirmasiSidakCateringActivity.this, "Tanda tangan tim catering tidak boleh kosong.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onDrawCreationError() {
-
-            }
-        });
-
-        return bitmapTimCatering != null && bitmapTimSidak != null && cekCatatan;
+        return cekCatatan;
     }
 }

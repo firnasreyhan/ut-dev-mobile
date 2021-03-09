@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.button.MaterialButton;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.approval.DetailApprovalPembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.approval.TransactionDetailActivity;
 
 import java.text.DateFormat;
@@ -26,13 +25,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHolder> implements Filterable {
+public class ApprovalProgressAdapter extends RecyclerView.Adapter<ApprovalProgressAdapter.ViewHolder> implements Filterable {
     private static List<TransactionResponse.TransactionModel> list;
     private static List<TransactionResponse.TransactionModel> listFiltered;
 
-    public ApprovalAdapter(List<TransactionResponse.TransactionModel> list) {
-        ApprovalAdapter.list = list;
-        ApprovalAdapter.listFiltered = list;
+    public ApprovalProgressAdapter(List<TransactionResponse.TransactionModel> list) {
+        ApprovalProgressAdapter.list = list;
+        ApprovalProgressAdapter.listFiltered = list;
     }
 
     @Override
@@ -55,20 +54,24 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNamaForm.setText(list.get(position).getNamaForm());
 
-        if (list.get(position).getStatTrans() == null) {
+        if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
             holder.textViewStatusForm.setText("Menunggu Konfirmasi");
             holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
             holder.imageViewStatus.setImageResource(R.drawable.ic_process);
         } else if (list.get(position).getStatTrans().equalsIgnoreCase("1")) {
+            holder.textViewStatusForm.setText("Sedang Diproses");
+            holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.primary));
+            holder.imageViewStatus.setImageResource(R.drawable.ic_process);
+        } else if (list.get(position).getStatTrans().equalsIgnoreCase("2")) {
             holder.textViewStatusForm.setText("Disetujui");
             holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
             holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
-        } else if (list.get(position).getStatTrans().equalsIgnoreCase("0")) {
+        } else if (list.get(position).getStatTrans().equalsIgnoreCase("3")) {
             holder.textViewStatusForm.setText("Ditolak");
             holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
             holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
         }
-        holder.textViewApplicantForm.setText("Pemohon: " + list.get(position).getNamaUsers());
+        holder.textViewApplicantForm.setVisibility(View.GONE);
 
         String nmyFormat = "dd MMMM yyyy"; //In which you need put here
         SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));

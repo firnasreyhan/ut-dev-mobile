@@ -27,7 +27,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Details"/>
+                android:text="Detail"/>
 
         </FrameLayout>
 
@@ -128,7 +128,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:paddingTop="@dimen/_11sdp"
                 android:paddingBottom="@dimen/_11sdp"
-                android:text="Reject"
+                android:text="Tolak"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_10sdp"
                 app:backgroundTint="@color/reject"
@@ -144,7 +144,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:paddingTop="@dimen/_11sdp"
                 android:paddingBottom="@dimen/_11sdp"
-                android:text="Approve"
+                android:text="Setujui"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_10sdp"
                 app:backgroundTint="@color/approve"

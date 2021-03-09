@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalProgressAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.FormAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.TaskAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
@@ -119,6 +120,13 @@ public class BerandaMultipleApprovalFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        binding.recyclerViewApproval.setVisibility(View.GONE);
+        binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+        binding.recyclerViewApprovalProgress.setVisibility(View.GONE);
+        binding.linearLayoutNoDataApprovalProgress.setVisibility(View.GONE);
+        binding.recyclerViewForm.setVisibility(View.GONE);
+        binding.linearLayoutNoDataForm.setVisibility(View.GONE);
+
         getApproval();
         getApprovalProgress();
         getForm();
@@ -158,7 +166,7 @@ public class BerandaMultipleApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData(), true));
+                        binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
                     }
@@ -187,7 +195,7 @@ public class BerandaMultipleApprovalFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApprovalProgress.setVisibility(View.VISIBLE);
-                        binding.recyclerViewApprovalProgress.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
+                        binding.recyclerViewApprovalProgress.setAdapter(new ApprovalProgressAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoDataApprovalProgress.setVisibility(View.VISIBLE);
                     }

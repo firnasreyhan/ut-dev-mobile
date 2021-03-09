@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalProgressAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentApprovalProgresBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -110,7 +111,7 @@ public class ApprovalProgresFragment extends Fragment {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), false));
+                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -144,7 +145,7 @@ public class ApprovalProgresFragment extends Fragment {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, false));
+                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(filterList));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);

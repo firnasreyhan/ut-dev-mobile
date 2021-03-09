@@ -34,7 +34,7 @@ public class KonfirmasiSyaratLegalitasCateringViewModel extends AndroidViewModel
             JSONArray syarat = new JSONArray();
             for (boolean b : model.getSyarat()) {
                 JSONObject object = new JSONObject();
-                object.put("status", b);
+                object.put("status", String.valueOf(b));
                 syarat.put(object);
             }
             paramObject.put("syarat", syarat);
@@ -42,7 +42,7 @@ public class KonfirmasiSyaratLegalitasCateringViewModel extends AndroidViewModel
             JSONArray survey = new JSONArray();
             for (boolean b : model.getSurvey()) {
                 JSONObject object = new JSONObject();
-                object.put("status", b);
+                object.put("status", String.valueOf(b));
                 survey.put(object);
             }
             paramObject.put("survey", survey);

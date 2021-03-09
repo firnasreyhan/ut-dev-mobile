@@ -58,10 +58,10 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
             list.add(new PembelianSnackModel.DetailPembelianSnackModel("",""));
         }
 
-        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
-        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
-
-        binding.spinnerDivision.setAdapter(divisionAdapter);
+//        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
+//        ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, divisons);
+//
+//        binding.spinnerDivision.setAdapter(divisionAdapter);
 
 //        List<PembelianSnackModel> list = new ArrayList<>();
 //        list.add(new PembelianSnackModel("",""));
@@ -150,7 +150,7 @@ public class ListPembelianSnackActivity extends AppCompatActivity {
 
                 if (checkData() && !binding.editTextTanggal.getText().toString().isEmpty() && !binding.editTextKeperluan.getText().toString().isEmpty()) {
                     Intent intent = new Intent(v.getContext(), KonfirmasiPembelianSnackActivity.class);
-                    intent.putExtra("DIVISI", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
+//                    intent.putExtra("DIVISI", divisons[binding.spinnerDivision.getSelectedItemPosition()]);
                     intent.putExtra("KEPERLUAN", binding.editTextKeperluan.getText().toString());
                     intent.putExtra("SERVER_TIME", serverDate);
                     intent.putExtra("VIEW_TIME", binding.editTextTanggal.getText().toString());

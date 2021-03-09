@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalProgressAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListApprovalBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -107,7 +108,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData(), isApproval));
+                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -141,7 +142,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList, isApproval));
+                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(filterList));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);

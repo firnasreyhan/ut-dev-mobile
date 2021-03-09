@@ -38,6 +38,11 @@ public class IdentifikasiAdapter extends RecyclerView.Adapter<IdentifikasiAdapte
         return position;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
