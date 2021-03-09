@@ -1,6 +1,8 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
-public class Pertanyaan2Model {
+import java.io.Serializable;
+
+public class Pertanyaan2Model implements Serializable {
     private String pertanyaan;
     private int status;
     private String catatan;

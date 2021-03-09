@@ -11,6 +11,7 @@ import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan2Adapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityUnitEngineBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan2Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,17 @@ public class UnitEngineActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String tanggal = getIntent().getStringExtra("TANGGAL");
+        String tanggalView = getIntent().getStringExtra("TANGGAL_VIEW");
+        String lokasi = getIntent().getStringExtra("LOKASI");
+        String engine = getIntent().getStringExtra("ENGINE");
+        String engineModel = getIntent().getStringExtra("ENGINE_MODEL");
+        String serialNo = getIntent().getStringExtra("SERIAL_NO");
+        String genoType = getIntent().getStringExtra("GENO_TYPE");
+        String serialNo2 = getIntent().getStringExtra("SERIAL_NO_2");
+        String hour_meter = getIntent().getStringExtra("HOUR_METER");
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -32,47 +44,47 @@ public class UnitEngineActivity extends AppCompatActivity {
         List<Pertanyaan2Model> list = new ArrayList<>();
         list.add(new Pertanyaan2Model(
                 "Engine Oil",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Engine Oil Pressure",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Radiator",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Radiator Hose",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Fan Belt",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Battery",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Electrolyt (Air Accu)",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Starter Motor",
-                0,
+                1,
                 ""
         ));
         list.add(new Pertanyaan2Model(
                 "Oil Pressure Indicator",
-                0,
+                1,
                 ""
         ));
 
@@ -84,6 +96,17 @@ public class UnitEngineActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ControlSystemActivity.class);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("TANGGAL", tanggal);
+                intent.putExtra("TANGGAL_VIEW", tanggalView);
+                intent.putExtra("LOKASI", lokasi);
+                intent.putExtra("ENGINE", engine);
+                intent.putExtra("ENGINE_MODEL", engineModel);
+                intent.putExtra("SERIAL_NO", serialNo);
+                intent.putExtra("GENO_TYPE", genoType);
+                intent.putExtra("SERIAL_NO_2", serialNo2);
+                intent.putExtra("HOUR_METER", hour_meter);
+                intent.putExtra("UNIT_ENGINE", (Serializable) Pertanyaan2Adapter.getList());
                 startActivity(intent);
             }
         });
