@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.activity.form.identifikasi.ListIdentifikasiActivity">
+    tools:context=".view.activity.form.permintaan_non_asset.ListPermintaanNonAssetActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -27,7 +27,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Identifikasi"/>
+                android:text="Permintaan Non Asset"/>
 
         </FrameLayout>
 
