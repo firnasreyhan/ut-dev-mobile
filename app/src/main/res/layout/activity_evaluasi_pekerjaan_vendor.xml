@@ -688,7 +688,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:text="Total nilai < 8 : Rekomendasi tidak diteruskan sebagai vendor"
+                                android:text="Total nilai &lt; 8 : Rekomendasi tidak diteruskan sebagai vendor"
                                 android:textColor="@color/text_color"
                                 android:lineSpacingExtra="@dimen/_1sdp"
                                 android:textSize="@dimen/_8sdp" />
@@ -742,7 +742,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:text="Total nilai > 11 : Rekomendasi diteruskan sebagai vendor"
+                                android:text="Total nilai &gt; 11 : Rekomendasi diteruskan sebagai vendor"
                                 android:textColor="@color/text_color"
                                 android:lineSpacingExtra="@dimen/_1sdp"
                                 android:textSize="@dimen/_8sdp" />
