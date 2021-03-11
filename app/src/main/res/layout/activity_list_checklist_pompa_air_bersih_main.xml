@@ -28,7 +28,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Checklist For Hydrant"/>
+                android:text="Checklist Pompa Air Bersih"/>
 
         </FrameLayout>
 

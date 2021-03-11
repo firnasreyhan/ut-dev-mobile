@@ -36,10 +36,8 @@
         <activity android:name=".view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity" />
         <activity android:name=".view.activity.form.external_work_order.KonfirmasiExternalWorkOrderActivity" />
         <activity android:name=".view.activity.ListMultipleApprovalActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondDActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondCActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondBActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_pond.PompaPondAActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_pond.CheckingRunningTestActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_pond.LokasiPompaPondActivity" />
         <activity android:name=".view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity" />
         <activity android:name=".view.activity.form.permintaan_layout_acara.KonfirmasiPermintaanLayoutAcaraActivity" />
         <activity android:name=".view.activity.form.permintaan_layout_acara.PermintaanLayoutAcaraActivity" />

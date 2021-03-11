@@ -9,7 +9,7 @@
     android:background="@color/background"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".view.activity.form.checklist_pompa_pond.PompaPondCActivity">
+    tools:context=".view.activity.form.checklist_pompa_pond.CheckingRunningTestActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -59,70 +59,7 @@
                     android:fontFamily="@font/montserrat_medium"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp"
-                    android:text="Pompa POND C"/>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/white"
-                    app:cardCornerRadius="@dimen/_7sdp"
-                    app:strokeColor="@color/box_stroke"
-                    app:strokeWidth="@dimen/_1sdp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:padding="@dimen/_13sdp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat_semi_bold"
-                            android:text="Lokasi SAMPING IPAL"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/_8sdp"
-                            android:lineSpacingExtra="@dimen/_3sdp"/>
-
-                        <RadioGroup
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_14sdp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:text="OK"
-                                android:checked="true"/>
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_14sdp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:text="Perbaikan"/>
-
-                            <RadioButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp"
-                                android:text="Rusak"/>
-
-                        </RadioGroup>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                    android:text="Checking"/>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
@@ -140,16 +77,6 @@
                         android:padding="@dimen/_13sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_10sdp"
-                            android:fontFamily="@font/montserrat_semi_bold"
-                            android:text="Checking"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/_8sdp"
-                            android:lineSpacingExtra="@dimen/_3sdp"/>
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -165,11 +92,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton1"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -180,6 +109,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -189,6 +119,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -215,11 +146,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton4"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -230,6 +163,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton5"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -239,6 +173,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton6"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -265,11 +200,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton7"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -280,6 +217,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -289,6 +227,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton9"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -315,11 +254,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup4"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -330,6 +271,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton11"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -339,6 +281,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -365,11 +308,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup5"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton13"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -380,6 +325,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton14"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -389,6 +335,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton15"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -403,6 +350,15 @@
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Running Test"/>
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
@@ -420,16 +376,6 @@
                         android:padding="@dimen/_13sdp"
                         android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/_10sdp"
-                            android:fontFamily="@font/montserrat_semi_bold"
-                            android:text="Running Test"
-                            android:textColor="@color/text_color"
-                            android:textSize="@dimen/_8sdp"
-                            android:lineSpacingExtra="@dimen/_3sdp"/>
-
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -445,11 +391,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup6"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton16"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -460,6 +408,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton17"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -469,6 +418,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton18"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -495,11 +445,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup7"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton19"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -510,6 +462,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton20"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -519,6 +472,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton21"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -545,11 +499,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup8"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton22"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -560,6 +516,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton23"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -569,6 +526,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton24"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -595,11 +553,13 @@
                                 android:lineSpacingExtra="@dimen/_3sdp"/>
 
                             <RadioGroup
+                                android:id="@+id/radioGroup9"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
 
                                 <RadioButton
+                                    android:id="@+id/radioButton25"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -610,6 +570,7 @@
                                     android:checked="true"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton26"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_14sdp"
@@ -619,6 +580,7 @@
                                     android:text="Perbaikan"/>
 
                                 <RadioButton
+                                    android:id="@+id/radioButton27"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:textColor="@color/text_color"
@@ -650,6 +612,7 @@
                         android:orientation="vertical">
 
                         <EditText
+                            android:id="@+id/editTextCatatan"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
                             android:backgroundTint="@color/hint_color"
@@ -665,12 +628,33 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
+
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonSelanjutnya"
+            android:id="@+id/materialButtonAjukan"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -678,10 +662,11 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Selanjutnya"
+            android:text="Ajukan"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/primary"
+            app:backgroundTint="@color/button_disable"
+            android:enabled="false"
             app:cornerRadius="@dimen/_11sdp" />
 
     </LinearLayout>
