@@ -74,7 +74,7 @@ public class ControlSystemActivity extends AppCompatActivity {
                 ""
         ));
         list.add(new Pertanyaan2Model(
-                "Terminal",
+                "Emergency Stop",
                 1,
                 ""
         ));

@@ -41,6 +41,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
         setContentView(view);
 
         idTrans = getIntent().getStringExtra("ID_TRANS");
+        idUsers = getIntent().getStringExtra("ID_USERS");
 
         viewModel = ViewModelProviders.of(this).get(TransactionDetailViewModel.class);
 
@@ -89,7 +90,6 @@ public class TransactionDetailActivity extends AppCompatActivity {
             public void onChanged(TransactionDetailResponse transactionDetailResponse) {
                 if (transactionDetailResponse != null) {
                     if (transactionDetailResponse.isStatus()) {
-                        idUsers = transactionDetailResponse.getData().getIdUsers();
                         idMapping = transactionDetailResponse.getData().getIdMapping();
                         if (AppPreference.getUser(TransactionDetailActivity.this).getIdUsers().equalsIgnoreCase(idUsers) ? false : true) {
                             if (transactionDetailResponse.getData().getStatTrans() == null) {
@@ -103,7 +103,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                                 binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgApprove));
                                 binding.linearLayoutButton.setVisibility(View.INVISIBLE);
                             } else if (transactionDetailResponse.getData().getStatTrans().equalsIgnoreCase("0")) {
-                                binding.textViewStatus.setText("Ditoklak");
+                                binding.textViewStatus.setText("Ditolak");
                                 binding.textViewStatus.setTextColor(getResources().getColor(R.color.reject));
                                 binding.linearLayoutStatus.setBackgroundColor(getResources().getColor(R.color.bgReject));
                                 binding.linearLayoutButton.setVisibility(View.INVISIBLE);
@@ -219,44 +219,48 @@ public class TransactionDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (idMapping.equalsIgnoreCase("MAPP_4a1f600ad300b633f2f0c4a0b7b4acc6") || idMapping.equalsIgnoreCase("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
-                    final EditText input = new EditText(v.getContext());
-                    input.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
-                    input.setHint("N 897984 ED");
+                    if (AppPreference.getUser(v.getContext()).getRoleUsers().equalsIgnoreCase("pick")) {
+                        final EditText input = new EditText(v.getContext());
+                        input.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
+                        input.setHint("N 897984 ED");
 
-                    LinearLayout linearLayout = new LinearLayout(v.getContext());
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                    input.setLayoutParams(layoutParams);
-                    linearLayout.addView(input);
-                    linearLayout.setPadding(60, 0, 60, 0);
+                        LinearLayout linearLayout = new LinearLayout(v.getContext());
+                        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                        input.setLayoutParams(layoutParams);
+                        linearLayout.addView(input);
+                        linearLayout.setPadding(60, 0, 60, 0);
 
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Masukkan Nomor Polisi Kendaraan")
-                            .setView(linearLayout)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    if (input.getText().toString().isEmpty()) {
-                                        input.setError("Mohon isi data berikut");
-                                    } else {
-                                        dialog.dismiss();
-                                        progressDialog.show();
-                                        if (idMapping.equalsIgnoreCase("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
-                                            nopol(1, input.getText().toString(), true);
+                        new AlertDialog.Builder(v.getContext())
+                                .setTitle("Pesan")
+                                .setMessage("Masukkan Nomor Polisi Kendaraan")
+                                .setView(linearLayout)
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        if (input.getText().toString().isEmpty()) {
+                                            input.setError("Mohon isi data berikut");
                                         } else {
-                                            nopol(1, input.getText().toString(), false);
+                                            dialog.dismiss();
+                                            progressDialog.show();
+                                            if (idMapping.equalsIgnoreCase("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
+                                                nopol(1, input.getText().toString(), true);
+                                            } else {
+                                                nopol(1, input.getText().toString(), false);
+                                            }
                                         }
                                     }
-                                }
-                            })
-                            .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
+                                })
+                                .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create()
+                                .show();
+                    } else {
+                        approval(1, "-");
+                    }
                 } else {
                     approval(1, "-");
                 }
@@ -348,7 +352,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
             viewModel.putNopolMobilDinas(
                     idUsers,
                     idTrans,
-                    nopol
+                    nopol.toUpperCase()
             ).observe(this, new Observer<BaseResponse>() {
                 @Override
                 public void onChanged(BaseResponse baseResponse) {
@@ -387,7 +391,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
             viewModel.putNopolMobilPribadi(
                     idUsers,
                     idTrans,
-                    nopol
+                    nopol.toUpperCase()
             ).observe(this, new Observer<BaseResponse>() {
                 @Override
                 public void onChanged(BaseResponse baseResponse) {

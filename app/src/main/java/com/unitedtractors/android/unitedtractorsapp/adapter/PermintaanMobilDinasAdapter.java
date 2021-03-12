@@ -62,7 +62,7 @@ public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<Permintaan
         private final ImageView imageViewExpand;
         private final LinearLayout linearLayoutForm;
         private final TextView textViewUrutan;
-        private final EditText editTextTujuan, editTextKeperluan, editTextCatatan;
+        private final EditText editTextTujuan, editTextKeperluan;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -73,11 +73,9 @@ public class PermintaanMobilDinasAdapter extends RecyclerView.Adapter<Permintaan
             textViewUrutan = itemView.findViewById(R.id.textViewUrutan);
             editTextTujuan = itemView.findViewById(R.id.editTextTujuan);
             editTextKeperluan = itemView.findViewById(R.id.editTextKeperluan);
-            editTextCatatan = itemView.findViewById(R.id.editTextCatatan);
 
             editTextTujuan.setEnabled(isEditable);
             editTextKeperluan.setEnabled(isEditable);
-            editTextCatatan.setEnabled(isEditable);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

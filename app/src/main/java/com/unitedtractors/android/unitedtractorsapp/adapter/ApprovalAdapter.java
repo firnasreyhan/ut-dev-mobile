@@ -143,6 +143,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
 //                    }
                     Intent intent = new Intent(itemView.getContext(), TransactionDetailActivity.class);
                     intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+                    intent.putExtra("ID_USERS", list.get(getAdapterPosition()).getIdUsers());
                     itemView.getContext().startActivity(intent);
                 }
             });
@@ -157,6 +158,7 @@ public class ApprovalAdapter extends RecyclerView.Adapter<ApprovalAdapter.ViewHo
 //                    }
                     Intent intent = new Intent(itemView.getContext(), TransactionDetailActivity.class);
                     intent.putExtra("ID_TRANS", list.get(getAdapterPosition()).getIdTrans());
+                    intent.putExtra("ID_USERS", list.get(getAdapterPosition()).getIdUsers());
                     itemView.getContext().startActivity(intent);
                 }
             });
