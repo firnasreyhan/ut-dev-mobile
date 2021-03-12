@@ -52,16 +52,6 @@ public class KonfirmasiLaporanPerbaikanActivity extends AppCompatActivity {
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
 
-        model = new LaporanPerbaikanModel(
-                AppPreference.getUser(this).getIdUsers(),
-                idMapping,
-                tanggal,
-                tanggalView,
-                tanggal,
-                tanggalView,
-                LaporanPerbaikanAdapter.getList()
-        );
-
         binding.textViewTanggal.setText(tanggalView);
 
         binding.recyclerView.setHasFixedSize(true);
@@ -85,6 +75,17 @@ public class KonfirmasiLaporanPerbaikanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
+
+                model = new LaporanPerbaikanModel(
+                        AppPreference.getUser(v.getContext()).getIdUsers(),
+                        idMapping,
+                        tanggal,
+                        tanggalView,
+                        tanggal,
+                        tanggalView,
+                        LaporanPerbaikanAdapter.getList()
+                );
+
                 viewModel.postLaporanPerbaikan(
                         model
                 ).observe(KonfirmasiLaporanPerbaikanActivity.this, new Observer<BaseResponse>() {

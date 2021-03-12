@@ -84,13 +84,7 @@ public class KontrolHarianActivity extends AppCompatActivity {
                 ""
         ));
 
-        model = new KontrolHarianModel(
-                AppPreference.getUser(this).getIdUsers(),
-                idMapping,
-                "08:00:00",
-                "2021-02-02",
-                list
-        );
+
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
@@ -112,13 +106,16 @@ public class KontrolHarianActivity extends AppCompatActivity {
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (KontrolHarianModel.DetailKontrolHarian model : KontrolHarianAdapter.getList()) {
-                    if (model.getKeterangan().isEmpty()) {
-                        model.setKeterangan("-");
-                    }
-                }
-                model.setData(KontrolHarianAdapter.getList());
                 progressDialog.show();
+
+                model = new KontrolHarianModel(
+                        AppPreference.getUser(v.getContext()).getIdUsers(),
+                        idMapping,
+                        "08:00:00",
+                        "2021-02-02",
+                        list(KontrolHarianAdapter.getList())
+                );
+
                 viewModel.postControlHarian(
                         model
                 ).observe(KontrolHarianActivity.this, new Observer<BaseResponse>() {
@@ -168,5 +165,14 @@ public class KontrolHarianActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private List<KontrolHarianModel.DetailKontrolHarian> list(List<KontrolHarianModel.DetailKontrolHarian> list) {
+        for (KontrolHarianModel.DetailKontrolHarian model : list) {
+            if (model.getKeterangan().isEmpty()) {
+                model.setKeterangan("-");
+            }
+        }
+        return list;
     }
 }

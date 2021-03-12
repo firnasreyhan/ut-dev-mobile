@@ -31,7 +31,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_10sdp"
-                android:text="Kondisi Karyawan"/>
+                android:text="-"/>
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -85,6 +85,8 @@
                 android:id="@+id/editTextKeterangan"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_75sdp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Keterangan"
