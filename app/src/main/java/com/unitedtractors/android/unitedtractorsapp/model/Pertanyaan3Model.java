@@ -1,12 +1,14 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
-public class Pertanyaan3Model {
+import java.io.Serializable;
+
+public class Pertanyaan3Model implements Serializable {
     private String pertanyaan;
-    private boolean status;
+    private int status;
     private String keterangan;
     private String catatan;
 
-    public Pertanyaan3Model(String pertanyaan, boolean status, String keterangan, String catatan) {
+    public Pertanyaan3Model(String pertanyaan, int status, String keterangan, String catatan) {
         this.pertanyaan = pertanyaan;
         this.status = status;
         this.keterangan = keterangan;
@@ -21,11 +23,11 @@ public class Pertanyaan3Model {
         this.pertanyaan = pertanyaan;
     }
 
-    public boolean isStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

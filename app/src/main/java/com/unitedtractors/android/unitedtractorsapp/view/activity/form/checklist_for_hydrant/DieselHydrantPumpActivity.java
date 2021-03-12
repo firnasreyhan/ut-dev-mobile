@@ -11,6 +11,7 @@ import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityDieselHydrantPumpBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +25,13 @@ public class DieselHydrantPumpActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String tanggal = getIntent().getStringExtra("TANGGAL");
+        String lokasi = getIntent().getStringExtra("LOKASI");
+        List<Pertanyaan3Model> systemPemipaan = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("SYSTEM_PEMIPAAN");
+        List<Pertanyaan3Model> jockeyPump = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("JOCKEY_PUMP");
+        List<Pertanyaan3Model> electricPump = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("ELECTRIC_PUMP");
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -32,43 +40,43 @@ public class DieselHydrantPumpActivity extends AppCompatActivity {
         List<Pertanyaan3Model> list = new ArrayList<>();
         list.add(new Pertanyaan3Model(
                 "Gate Valve",
-                true,
+                1,
                 "*Standard: Air Pancingan selalu pada posisi ‘OPEN’",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Air Radiator",
-                true,
+                1,
                 "*Standard: Harus penuh (Tidak boleh kosong)",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Oli Mesin Diesel",
-                true,
+                1,
                 "*Standard: Pada level yang ditentukan",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Tali Kipas (Fan Belt)",
-                true,
+                1,
                 "*Standard: Tidak retas dan kendor (ganti jika perlu)",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Air Battery",
-                true,
+                1,
                 "*Standard: Pada level yang ditentukan",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Putaran Mesin RPM",
-                true,
+                1,
                 "*Standard: Sesuai kebutuhan, setting (Bila perlu)",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Test Running",
-                true,
+                1,
                 "*Standard: Laksanakan 2 minggu sekali",
                 ""
         ));
@@ -81,6 +89,13 @@ public class DieselHydrantPumpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), PanelHydrantActivity.class);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("TANGGAL", tanggal);
+                intent.putExtra("LOKASI", lokasi);
+                intent.putExtra("SYSTEM_PEMIPAAN", (Serializable) systemPemipaan);
+                intent.putExtra("JOCKEY_PUMP", (Serializable) jockeyPump);
+                intent.putExtra("ELECTRIC_PUMP", (Serializable) electricPump);
+                intent.putExtra("DIESEL_HYDRANT_PUMP", (Serializable) list(Pertanyaan3Adapter.getList()));
                 startActivity(intent);
             }
         });
@@ -90,5 +105,14 @@ public class DieselHydrantPumpActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private List<Pertanyaan3Model> list(List<Pertanyaan3Model> list) {
+        for (Pertanyaan3Model model : list) {
+            if (model.getCatatan().isEmpty()) {
+                model.setCatatan("-");
+            }
+        }
+        return list;
     }
 }

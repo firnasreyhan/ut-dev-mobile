@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_19sdp"
             android:orientation="vertical"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <EditText
                 android:id="@+id/editTextTujuan"
@@ -57,6 +57,8 @@
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Tujuan"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:inputType="textCapWords"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
@@ -68,22 +70,10 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
                 android:hint="Keperluan"
                 android:inputType="text"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
-
-            <EditText
-                android:visibility="gone"
-                android:id="@+id/editTextCatatan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Catatan"
-                android:inputType="textMultiLine"
-                android:maxLines="3"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />

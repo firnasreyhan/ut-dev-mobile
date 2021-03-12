@@ -60,10 +60,10 @@ public class CheckingRunningTestActivity extends AppCompatActivity {
 
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
         String tanggal = getIntent().getStringExtra("TANGGAL");
-        String pondA = getIntent().getStringExtra("POND_A");
-        String pondB = getIntent().getStringExtra("POND_B");
-        String pondC = getIntent().getStringExtra("POND_C");
-        String pondD = getIntent().getStringExtra("POND_D");
+        String pondA = String.valueOf(getIntent().getIntExtra("POND_A", 0));
+        String pondB = String.valueOf(getIntent().getIntExtra("POND_B", 0));
+        String pondC = String.valueOf(getIntent().getIntExtra("POND_C", 0));
+        String pondD = String.valueOf(getIntent().getIntExtra("POND_D", 0));
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
@@ -266,7 +266,7 @@ public class CheckingRunningTestActivity extends AppCompatActivity {
                         binding.editTextCatatan.getText().toString().isEmpty() ? "-" : binding.editTextCatatan.getText().toString()
                 );
 
-                viewModel.postICGS(
+                viewModel.postICP(
                         model
                 ).observe(CheckingRunningTestActivity.this, new Observer<BaseResponse>() {
                     @Override

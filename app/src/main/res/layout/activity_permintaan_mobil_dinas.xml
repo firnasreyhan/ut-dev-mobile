@@ -297,7 +297,7 @@
                     app:cardElevation="0dp"
                     app:cardBackgroundColor="@android:color/white"
                     app:cardCornerRadius="@dimen/_7sdp"
-                    app:strokeColor="@color/box_stroke"
+                    app:strokeColor="@color/white"
                     app:strokeWidth="@dimen/_1sdp">
 
                     <LinearLayout

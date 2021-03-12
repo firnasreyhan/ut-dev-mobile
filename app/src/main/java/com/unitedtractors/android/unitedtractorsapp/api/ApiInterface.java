@@ -97,6 +97,14 @@ public interface ApiInterface {
             @Part MultipartBody.Part file
     );
 
+    @PUT("formMobdin/nopol")
+    @FormUrlEncoded
+    Call<BaseResponse> putNopolMobilDinas(
+            @Field("idUser") String username,
+            @Field("idTrans") String idTrans,
+            @Field("nopol") String isApprove
+    );
+
     @Headers("Content-Type: application/json")
     @POST("formMobpri")
     Call<PostMobilResponse> postPermintaanMobilPribadi(
@@ -109,6 +117,14 @@ public interface ApiInterface {
             @Part("idUser") RequestBody idUser,
             @Part("idTrans") RequestBody idTrans,
             @Part MultipartBody.Part file
+    );
+
+    @PUT("formMobpri/nopol")
+    @FormUrlEncoded
+    Call<BaseResponse> putNopolMobilPribadi(
+            @Field("idUser") String username,
+            @Field("idTrans") String idTrans,
+            @Field("nopol") String isApprove
     );
 
     @Headers("Content-Type: application/json")
@@ -162,6 +178,12 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("formICP")
     Call<BaseResponse> postICP(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formICH")
+    Call<BaseResponse> posICH(
             @Body String body
     );
 

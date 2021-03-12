@@ -37,27 +37,27 @@ public class SyaratLegalitasCateringActivity extends AppCompatActivity {
         List<PertanyaanModel> list = new ArrayList<>();
         list.add(new PertanyaanModel(
                 "SIUP dari perindustrian dan pariwisata",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Tanda daftar jasa boga dari DEPKES",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Domisili perusahaan dari Kelurahan",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Tanda daftar perindustrian dari perindustrian dan pariwisata",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Hasil pemeriksaan dari LAB",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Surat suku dinas tenaga kerja dan transmigrasi",
-                true
+                false
         ));
 
         binding.recyclerView.setHasFixedSize(true);
@@ -71,7 +71,7 @@ public class SyaratLegalitasCateringActivity extends AppCompatActivity {
                 intent.putExtra("ID_MAPPING", idMapping);
                 intent.putExtra("NAMA_CATERING", binding.editTextNamaCatering.getText().toString());
                 intent.putExtra("ALAMAT_CATERING", binding.editTextAlamatCatering.getText().toString());
-                intent.putExtra("SYARAT", getStatus());
+                intent.putExtra("SYARAT", getStatus(PertanyaanAdapter.getList()));
                 startActivity(intent);
             }
         });
@@ -84,11 +84,11 @@ public class SyaratLegalitasCateringActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean[] getStatus() {
-        boolean[] list = new boolean[PertanyaanAdapter.getList().size()];
-        for (int i = 0; i < PertanyaanAdapter.getList().size(); i++) {
-            list[i] = PertanyaanAdapter.getList().get(i).isStatus();
+    public boolean[] getStatus(List<PertanyaanModel> list) {
+        boolean[] booleans = new boolean[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            booleans[i] = list.get(i).isStatus();
         }
-        return list;
+        return booleans;
     }
 }

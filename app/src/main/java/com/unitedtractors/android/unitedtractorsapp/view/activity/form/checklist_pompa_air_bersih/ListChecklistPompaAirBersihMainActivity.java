@@ -34,49 +34,49 @@ public class ListChecklistPompaAirBersihMainActivity extends AppCompatActivity {
         List<Pertanyaan3Model> list = new ArrayList<>();
         list.add(new Pertanyaan3Model(
                 "Cek Kondisi Air Dalam Reservoir",
-                true,
+                1,
                 "*Standard : Bak Terisi Penuh",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek Air Pancingan Pompa",
-                true,
+                1,
                 "*Standard : Posisi 'ON' Menyembur",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek / Lihat Indicator Lamp",
-                true,
+                1,
                 "*Standard : Indicator Lamp ‘OFF’",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek / Lihat Tekanan Udara dalam tangki",
-                true,
+                1,
                 "*Standard : Posisi pada garis merah",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek / lihat flow meter",
-                true,
+                1,
                 "*Standard : Catat angka",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek Supply air dari PDAM dan air tanah",
-                true,
+                1,
                 "*Standard : Flow meter memutar",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Test secara manual supply air sumur",
-                true,
+                1,
                 "*Standard : Angkat electroda",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Cek fungsi panel",
-                true,
+                1,
                 "*Standard : Indikator lamp posisi 'Off'",
                 ""
         ));

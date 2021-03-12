@@ -459,6 +459,27 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> posICH(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.posICH(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("posICH", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> postSimMobilDinas(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postSimMobilDinas(
@@ -499,6 +520,52 @@ public class Repository {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postSimMobilPribadi", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> putNopolMobilDinas(String idUser, String idTrans, String nopol) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.putNopolMobilDinas(
+                idUser,
+                idTrans,
+                nopol
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("putNopolMobilDinas", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> putNopolMobilPribadi(String idUser, String idTrans, String nopol) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.putNopolMobilPribadi(
+                idUser,
+                idTrans,
+                nopol
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("putNopolMobilPribadi", t.getMessage());
                 data.postValue(null);
             }
         });

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.ChecklistForGensetActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
@@ -144,6 +145,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Form Check List Pompa POND A,B,C & D
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_46dcc2031b229755961affc8c2095314")) {
                         intent = new Intent(v.getContext(), ChecklistPompaPondActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Inspection Checklist for Hydrant
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_50b7e945745a5d053e64f3a1026a032a")) {
+                        intent = new Intent(v.getContext(), ChecklistForHydrantActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

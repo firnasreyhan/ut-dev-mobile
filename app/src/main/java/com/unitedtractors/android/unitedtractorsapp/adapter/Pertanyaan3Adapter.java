@@ -73,10 +73,10 @@ public class Pertanyaan3Adapter extends RecyclerView.Adapter<Pertanyaan3Adapter.
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
                     switch (checkedId) {
                         case R.id.radioButtonOK:
-                            list.get(getAdapterPosition()).setStatus(true);
+                            list.get(getAdapterPosition()).setStatus(1);
                             break;
                         case R.id.radioButtonPerbaikan:
-                            list.get(getAdapterPosition()).setStatus(false);
+                            list.get(getAdapterPosition()).setStatus(0);
                             break;
                     }
                 }
@@ -99,5 +99,9 @@ public class Pertanyaan3Adapter extends RecyclerView.Adapter<Pertanyaan3Adapter.
                 }
             });
         }
+    }
+
+    public static List<Pertanyaan3Model> getList() {
+        return list;
     }
 }

@@ -96,6 +96,7 @@
                         android:orientation="vertical">
 
                         <EditText
+                            android:id="@+id/editTextTanggal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/_3sdp"
@@ -113,6 +114,7 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
+                            android:id="@+id/editTextLokasi"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/hint_color"

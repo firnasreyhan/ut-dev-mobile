@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
@@ -79,10 +80,25 @@ public class TroublesInformationActivity extends AppCompatActivity {
             }
         });
 
+        binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.materialButtonAjukan.setEnabled(true);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.primary));
+                } else {
+                    binding.materialButtonAjukan.setEnabled(false);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.button_disable));
+                }
+            }
+        });
+
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
+                    progressDialog.show();
+
                     model = new ChecklistForGensetModel(
                             AppPreference.getUser(v.getContext()).getIdUsers(),
                             idMapping,
@@ -106,7 +122,6 @@ public class TroublesInformationActivity extends AppCompatActivity {
                             String.valueOf(keadaanGenset)
                     );
 
-                    progressDialog.show();
                     viewModel.postICGS(
                             model
                     ).observe(TroublesInformationActivity.this, new Observer<BaseResponse>() {

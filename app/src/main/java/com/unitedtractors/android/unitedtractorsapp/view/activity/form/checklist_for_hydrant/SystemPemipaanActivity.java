@@ -14,6 +14,7 @@ import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan2Model;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.K5Activity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,10 @@ public class SystemPemipaanActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String tanggal = getIntent().getStringExtra("TANGGAL");
+        String lokasi = getIntent().getStringExtra("LOKASI");
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,19 +40,19 @@ public class SystemPemipaanActivity extends AppCompatActivity {
         List<Pertanyaan3Model> list = new ArrayList<>();
         list.add(new Pertanyaan3Model(
                 "Kebocoran Pemipaan",
-                true,
+                1,
                 "*Standard: Tidak ada kebocoran",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Flange / Packing",
-                true,
+                1,
                 "*Standard: Tidak ada kebocoran",
                 ""
         ));
         list.add(new Pertanyaan3Model(
                 "Posisi Valve",
-                true,
+                1,
                 "*Standard: Sesuai dengan posisi (OPEN/SHUT)",
                 ""
         ));
@@ -60,6 +65,10 @@ public class SystemPemipaanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), JockeyPumpActivity.class);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("TANGGAL", tanggal);
+                intent.putExtra("LOKASI", lokasi);
+                intent.putExtra("SYSTEM_PEMIPAAN", (Serializable) list(Pertanyaan3Adapter.getList()));
                 startActivity(intent);
             }
         });
@@ -69,5 +78,14 @@ public class SystemPemipaanActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private List<Pertanyaan3Model> list(List<Pertanyaan3Model> list) {
+        for (Pertanyaan3Model model : list) {
+            if (model.getCatatan().isEmpty()) {
+                model.setCatatan("-");
+            }
+        }
+        return list;
     }
 }

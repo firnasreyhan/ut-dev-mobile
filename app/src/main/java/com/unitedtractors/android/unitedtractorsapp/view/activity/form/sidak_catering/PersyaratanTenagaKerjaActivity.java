@@ -80,7 +80,7 @@ public class PersyaratanTenagaKerjaActivity extends AppCompatActivity {
                 intent.putExtra("PERUSAHAAN_YANG_DILAYANI", perusahaanYangDilayani);
                 intent.putExtra("KANDEPNAKER", kandepnaker);
                 intent.putExtra("KANWIL", kanwil);
-                intent.putExtra("PTK", getStatus());
+                intent.putExtra("PTK", getStatus(PertanyaanAdapter.getList()));
                 startActivity(intent);
             }
         });
@@ -92,11 +92,11 @@ public class PersyaratanTenagaKerjaActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean[] getStatus() {
-        boolean[] list = new boolean[PertanyaanAdapter.getList().size()];
-        for (int i = 0; i < PertanyaanAdapter.getList().size(); i++) {
-            list[i] = PertanyaanAdapter.getList().get(i).isStatus();
+    public boolean[] getStatus(List<PertanyaanModel> list) {
+        boolean[] booleans = new boolean[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            booleans[i] = list.get(i).isStatus();
         }
-        return list;
+        return booleans;
     }
 }

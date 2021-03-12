@@ -23,7 +23,7 @@ public class CheckingRunningTestViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
-    public MutableLiveData<BaseResponse> postICGS(ChecklistPompaPondModel model) {
+    public MutableLiveData<BaseResponse> postICP(ChecklistPompaPondModel model) {
         try {
             JSONObject paramObject = new JSONObject();
             paramObject.put("idUser", model.getIdUser());
@@ -52,11 +52,11 @@ public class CheckingRunningTestViewModel extends AndroidViewModel {
 
             paramObject.put("catatan", model.getCatatan());
 
-            return repository.postICGS(paramObject.toString());
+            return repository.postICP(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postICGS(null);
+        return repository.postICP(null);
     }
 }

@@ -99,7 +99,7 @@ public class SanitasiLingkunganDanFasilitasPengolahMakananActivity extends AppCo
                 intent.putExtra("KANWIL", kanwil);
                 intent.putExtra("PTK", ptk);
                 intent.putExtra("KBDPM", kbdpm);
-                intent.putExtra("SLDFPM", getStatus());
+                intent.putExtra("SLDFPM", getStatus(PertanyaanAdapter.getList()));
                 startActivity(intent);
             }
         });
@@ -111,11 +111,11 @@ public class SanitasiLingkunganDanFasilitasPengolahMakananActivity extends AppCo
         return true;
     }
 
-    public boolean[] getStatus() {
-        boolean[] list = new boolean[PertanyaanAdapter.getList().size()];
-        for (int i = 0; i < PertanyaanAdapter.getList().size(); i++) {
-            list[i] = PertanyaanAdapter.getList().get(i).isStatus();
+    public boolean[] getStatus(List<PertanyaanModel> list) {
+        boolean[] booleans = new boolean[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            booleans[i] = list.get(i).isStatus();
         }
-        return list;
+        return booleans;
     }
 }

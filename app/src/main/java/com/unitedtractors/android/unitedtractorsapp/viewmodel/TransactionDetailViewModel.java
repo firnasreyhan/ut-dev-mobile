@@ -23,6 +23,14 @@ public class TransactionDetailViewModel extends AndroidViewModel {
         return repository.putConfirm(username, idTrans, isApprove, keterangan);
     }
 
+    public MutableLiveData<BaseResponse> putNopolMobilDinas(String idUser, String idTrans, String nopol) {
+        return repository.putNopolMobilDinas(idUser, idTrans, nopol);
+    }
+
+    public MutableLiveData<BaseResponse> putNopolMobilPribadi(String idUser, String idTrans, String nopol) {
+        return repository.putNopolMobilPribadi(idUser, idTrans, nopol);
+    }
+
     public MutableLiveData<TransactionDetailResponse> getTransactionDetail(String username, String idTrans, boolean isApproval) {
         return repository.getTransactionDetail(username, idTrans, isApproval);
     }

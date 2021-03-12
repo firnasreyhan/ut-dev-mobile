@@ -11,7 +11,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 
+import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PertanyaanAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivitySyaratLegalitasCateringBinding;
@@ -57,50 +59,64 @@ public class SyaratLegatitasCateringLanjutanActivity extends AppCompatActivity {
         List<PertanyaanModel> list = new ArrayList<>();
         list.add(new PertanyaanModel(
                 "Dapur Bersih",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Perlengkapan Alat Dapur mampu melayani minimal 5000 porsi",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Dapur pisah dengan rumah tinggal",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Memiliki kendaraan terutama mobil box",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Jarak dapur ke – UT",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Kedapur catering harus bisa masuk mobil",
-                true
+                false
         ));
         list.add(new PertanyaanModel(
                 "Memiliki karyawan",
-                true
+                false
         ));
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(new PertanyaanAdapter(list));
 
-        model = new SyaratLegalitasCateringModel(
-                AppPreference.getUser(this).getIdUsers(),
-                idMapping,
-                namaCatering,
-                alamatCatering,
-                syarat,
-                getStatus()
-        );
+        binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.materialButtonAjukan.setEnabled(true);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.primary));
+                } else {
+                    binding.materialButtonAjukan.setEnabled(false);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.button_disable));
+                }
+            }
+        });
 
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
+
+                model = new SyaratLegalitasCateringModel(
+                        AppPreference.getUser(v.getContext()).getIdUsers(),
+                        idMapping,
+                        namaCatering,
+                        alamatCatering,
+                        syarat,
+                        getStatus(PertanyaanAdapter.getList())
+                );
+
                 viewModel.postLegalitas(
                         model
                 ).observe(SyaratLegatitasCateringLanjutanActivity.this, new Observer<BaseResponse>() {
@@ -151,11 +167,11 @@ public class SyaratLegatitasCateringLanjutanActivity extends AppCompatActivity {
         return true;
     }
 
-    public boolean[] getStatus() {
-        boolean[] list = new boolean[PertanyaanAdapter.getList().size()];
-        for (int i = 0; i < PertanyaanAdapter.getList().size(); i++) {
-            list[i] = PertanyaanAdapter.getList().get(i).isStatus();
+    public boolean[] getStatus(List<PertanyaanModel> list) {
+        boolean[] booleans = new boolean[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            booleans[i] = list.get(i).isStatus();
         }
-        return list;
+        return booleans;
     }
 }

@@ -11,9 +11,11 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.rm.freedrawview.FreeDrawView;
+import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiSidakCateringBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.SidakCateringModel;
@@ -62,25 +64,6 @@ public class KonfirmasiSidakCateringActivity extends AppCompatActivity {
         boolean[] kbdpm = getIntent().getBooleanArrayExtra("KBDPM");
         boolean[] sldfpm = getIntent().getBooleanArrayExtra("SLDFPM");
 
-        model = new SidakCateringModel(
-                AppPreference.getUser(this).getIdUsers(),
-                idMapping,
-                perusahaan,
-                pemilik,
-                pengurus,
-                alamat,
-                telepon,
-                fax,
-                jumlahTenagaKerja,
-                perusahaanYangDilayani,
-                kandepnaker,
-                kanwil,
-                ptk,
-                kbdpm,
-                sldfpm,
-                binding.editTextCatatan.getText().toString()
-        );
-
         binding.materialButtonHapusTimSidak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,11 +78,43 @@ public class KonfirmasiSidakCateringActivity extends AppCompatActivity {
             }
         });
 
+        binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.materialButtonAjukan.setEnabled(true);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.primary));
+                } else {
+                    binding.materialButtonAjukan.setEnabled(false);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.button_disable));
+                }
+            }
+        });
+
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkData()) {
+//                if (checkData()) {
                     progressDialog.show();
+                    model = new SidakCateringModel(
+                            AppPreference.getUser(v.getContext()).getIdUsers(),
+                            idMapping,
+                            perusahaan,
+                            pemilik,
+                            pengurus,
+                            alamat,
+                            telepon,
+                            fax,
+                            jumlahTenagaKerja,
+                            perusahaanYangDilayani,
+                            kandepnaker,
+                            kanwil,
+                            ptk,
+                            kbdpm,
+                            sldfpm,
+                            binding.editTextCatatan.getText().toString().isEmpty() ? "-" : binding.editTextCatatan.getText().toString()
+                    );
+
                     viewModel.postformSidakCatering(
                             model
                     ).observe(KonfirmasiSidakCateringActivity.this, new Observer<BaseResponse>() {
@@ -140,7 +155,7 @@ public class KonfirmasiSidakCateringActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }
+//                }
             }
         });
     }
