@@ -34,6 +34,11 @@ public class MingguAdapter extends RecyclerView.Adapter<MingguAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewMingguKe.setText(list.get(position).mingguKe);
         holder.textViewStatus.setText(list.get(position).status ? "Selesai Diisi" : "Belum Diisi");
+
+        if (list.get(position).status) {
+            holder.textViewStatus.setTextColor(holder.itemView.getResources().getColor(R.color.approve));
+            holder.imageViewStatus.setImageResource(R.drawable.ic_approve);
+        }
     }
 
     @Override

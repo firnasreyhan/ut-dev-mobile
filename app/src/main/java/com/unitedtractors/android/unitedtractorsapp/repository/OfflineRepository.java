@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.database.AppDAO;
 import com.unitedtractors.android.unitedtractorsapp.database.Database;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
 
 import java.util.List;
@@ -30,11 +31,51 @@ public class OfflineRepository {
         });
     }
 
-    public void updateAlarm(int id, boolean b){
+    public void updateMinggu(int id, boolean b){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
                 appDAO.updateMinggu(id, b);
+            }
+        });
+    }
+
+    public LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe){
+        return appDAO.getDetailMinggu(mingguKe);
+    }
+
+    public void insertDetailMinggu (final DetailMingguEntity detailMingguEntity){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.insertDetailMinggu(detailMingguEntity);
+            }
+        });
+    }
+
+    public void deleteDetailMinggu(int mingguKe){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.deleteDetailMinggu(mingguKe);
+            }
+        });
+    }
+
+    public void deleteDetaiAlllMinggu (){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.deleteDetaiAlllMinggu();
+            }
+        });
+    }
+
+    public void updateAllMinggu(boolean status){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.updateAllMinggu(status);
             }
         });
     }

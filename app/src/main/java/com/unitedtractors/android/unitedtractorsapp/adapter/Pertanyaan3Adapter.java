@@ -46,6 +46,12 @@ public class Pertanyaan3Adapter extends RecyclerView.Adapter<Pertanyaan3Adapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewPertanyaan.setText(list.get(position).getPertanyaan());
         holder.textViewKeterangan.setText(list.get(position).getKeterangan());
+        if (list.get(position).getStatus() == 1) {
+            holder.radioButtonOK.setChecked(true);
+        } else {
+            holder.radioButtonPerbaikan.setChecked(true);
+        }
+        holder.editTextCatatan.setText(list.get(position).getCatatan());
     }
 
     @Override

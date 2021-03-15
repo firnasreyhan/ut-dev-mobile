@@ -24,7 +24,15 @@ public class ChecklistPompaAirBersihViewModel extends AndroidViewModel {
         return offlineRepository.getMinggu();
     }
 
-    public void insertAlarm(MingguEntity mingguEntity){
+    public void insertMinggu(MingguEntity mingguEntity){
         offlineRepository.insertMinggu(mingguEntity);
+    }
+
+    public void deleteDetaiAlllMinggu(){
+        offlineRepository.deleteDetaiAlllMinggu();
+    }
+
+    public void updateAllMinggu(boolean status){
+        offlineRepository.updateAllMinggu(status);
     }
 }

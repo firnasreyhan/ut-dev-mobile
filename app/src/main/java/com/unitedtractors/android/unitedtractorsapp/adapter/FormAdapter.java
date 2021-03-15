@@ -105,7 +105,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                     //Form Inspection Checklist for Genset
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_347f0e1d0950dd8fd36f23d90b293ea9")) {
-                        intent = new Intent(v.getContext(), NewChecklistPompaAirBersihActivity.class);
+                        intent = new Intent(v.getContext(), ChecklistForGensetActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
                     //Laporan Perbaikan
