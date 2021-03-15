@@ -7,19 +7,18 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
 import com.unitedtractors.android.unitedtractorsapp.model.OrderCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class OrderCateringViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public OrderCateringViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postOrderCatering(OrderCateringModel model) {
@@ -30,11 +29,11 @@ public class OrderCateringViewModel extends AndroidViewModel {
             paramObject.put("idMapping", model.getIdMapping());
             paramObject.put("idMapping", model.getIdMapping());
 
-            return repository.postOrderCatering(paramObject.toString());
+            return onlineRepository.postOrderCatering(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postOrderCatering(null);
+        return onlineRepository.postOrderCatering(null);
     }
 }

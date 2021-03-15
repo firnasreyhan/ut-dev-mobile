@@ -20,10 +20,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Repository {
+public class OnlineRepository {
     private ApiInterface apiInterface;
 
-    public Repository() {
+    public OnlineRepository() {
         this.apiInterface = ApiClient.getClient();
     }
 

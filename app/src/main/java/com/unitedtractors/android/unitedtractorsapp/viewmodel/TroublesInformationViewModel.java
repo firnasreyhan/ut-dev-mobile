@@ -8,9 +8,8 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistForGensetModel;
-import com.unitedtractors.android.unitedtractorsapp.model.ExternalWorkOrderModel;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan2Model;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -19,11 +18,11 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class TroublesInformationViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public TroublesInformationViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postICGS(ChecklistForGensetModel model) {
@@ -69,12 +68,12 @@ public class TroublesInformationViewModel extends AndroidViewModel {
             paramObject.put("status", model.getStatus());
             paramObject.put("condGenset", model.getCondGenset());
 
-            return repository.postICGS(paramObject.toString());
+            return onlineRepository.postICGS(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postICGS(null);
+        return onlineRepository.postICGS(null);
     }
 
     public JSONArray jsonArray(List<Pertanyaan2Model> list, int i) throws JSONException {

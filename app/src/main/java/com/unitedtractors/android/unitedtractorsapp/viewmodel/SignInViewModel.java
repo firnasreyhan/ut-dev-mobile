@@ -11,18 +11,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.TokenModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 public class SignInViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public SignInViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<SignInResponse> signIn(String username, String password) {
-        return repository.postSignIn(username, password, updateToken(username));
+        return onlineRepository.postSignIn(username, password, updateToken(username));
     }
 
     private String updateToken(String username) {

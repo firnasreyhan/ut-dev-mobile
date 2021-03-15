@@ -6,13 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.gson.JsonObject;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistForHydrantModel;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistPompaPondModel;
-import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,11 +17,11 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class PanelHydrantViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public PanelHydrantViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> posICH(ChecklistForHydrantModel model) {
@@ -71,12 +67,12 @@ public class PanelHydrantViewModel extends AndroidViewModel {
 //            paramObject.put("konektorPanel", object(model.getPanelHydrant().get(4)));
 
             paramObject.put("catatan", model.getCatatan());
-            return repository.posICH(paramObject.toString());
+            return onlineRepository.posICH(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.posICH(null);
+        return onlineRepository.posICH(null);
     }
 
 //    private JSONObject object(ChecklistForHydrantModel.DetailChecklistHydrant model) {

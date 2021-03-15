@@ -7,17 +7,17 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 public class ApprovalListViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public ApprovalListViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<TransactionResponse> getTransaction(String username, int limit, boolean isApproval) {
-        return repository.getTransaction(username, limit, isApproval);
+        return onlineRepository.getTransaction(username, limit, isApproval);
     }
 }

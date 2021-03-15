@@ -7,20 +7,19 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
 import com.unitedtractors.android.unitedtractorsapp.model.SidakCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KonfirmasiSidakCateringViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public KonfirmasiSidakCateringViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postformSidakCatering(SidakCateringModel model) {
@@ -65,11 +64,11 @@ public class KonfirmasiSidakCateringViewModel extends AndroidViewModel {
 
             paramObject.put("catatan", model.getCatatan());
 
-            return repository.postSidakCatering(paramObject.toString());
+            return onlineRepository.postSidakCatering(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postSidakCatering(null);
+        return onlineRepository.postSidakCatering(null);
     }
 }

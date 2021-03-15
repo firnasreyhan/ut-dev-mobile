@@ -90,4 +90,11 @@ dependencies {
 
     //Image Picker Library for Android
     implementation 'com.github.dhaval2404:imagepicker:1.8'
+
+    //Room
+    implementation 'androidx.room:room-runtime:2.3.0-beta03'
+    implementation 'androidx.room:room-rxjava2:2.3.0-beta03'
+    implementation 'androidx.room:room-guava:2.3.0-beta03'
+    testImplementation 'androidx.room:room-testing:2.3.0-beta03'
+    annotationProcessor 'androidx.room:room-compiler:2.3.0-beta03'
 }

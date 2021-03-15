@@ -7,24 +7,22 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 public class DetailApprovalPembelianSnackViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public DetailApprovalPembelianSnackViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> putConfirm(String username, String idTrans, int isApprove, String keterangan) {
-        return repository.putConfirm(username, idTrans, isApprove, keterangan);
+        return onlineRepository.putConfirm(username, idTrans, isApprove, keterangan);
     }
 
     public MutableLiveData<PembelianSnackResponse> getPembelianSnack(String idTrans) {
-        return repository.getPembelianSnack(idTrans);
+        return onlineRepository.getPembelianSnack(idTrans);
     }
 }

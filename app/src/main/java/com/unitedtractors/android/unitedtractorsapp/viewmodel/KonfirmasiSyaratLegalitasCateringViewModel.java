@@ -7,20 +7,19 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.SidakCateringModel;
 import com.unitedtractors.android.unitedtractorsapp.model.SyaratLegalitasCateringModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KonfirmasiSyaratLegalitasCateringViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public KonfirmasiSyaratLegalitasCateringViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postLegalitas(SyaratLegalitasCateringModel model) {
@@ -47,11 +46,11 @@ public class KonfirmasiSyaratLegalitasCateringViewModel extends AndroidViewModel
             }
             paramObject.put("survey", survey);
 
-            return repository.postLegalitas(paramObject.toString());
+            return onlineRepository.postLegalitas(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postLegalitas(null);
+        return onlineRepository.postLegalitas(null);
     }
 }

@@ -15,7 +15,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,12 +32,12 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class KonfirmasiPermintaanMobilDinasViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
     private Context context;
 
     public KonfirmasiPermintaanMobilDinasViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
         context = application.getApplicationContext();
     }
 
@@ -66,17 +66,17 @@ public class KonfirmasiPermintaanMobilDinasViewModel extends AndroidViewModel {
             }
             paramObject.put("detMobdin", jsonArray);
 
-            return repository.postPermintaanMobilDinas(paramObject.toString());
+            return onlineRepository.postPermintaanMobilDinas(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postPermintaanMobilDinas(null);
+        return onlineRepository.postPermintaanMobilDinas(null);
     }
     public MutableLiveData<BaseResponse> postUploadSim(String idUsers_, String idTrans_, Uri file_) {
         RequestBody idUsers = RequestBody.create(MediaType.parse("text/plain"), idUsers_);
         RequestBody idTrans = RequestBody.create(MediaType.parse("text/plain"), idTrans_);
-        return repository.postSimMobilDinas(
+        return onlineRepository.postSimMobilDinas(
                 idUsers,
                 idTrans,
                 compressFile(file_, "file")

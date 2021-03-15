@@ -8,17 +8,17 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ChecklistRuangMeetingViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public ChecklistRuangMeetingViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postChecklistRuangMeeting(ChecklistRuangMeetingModel model) {
@@ -34,11 +34,11 @@ public class ChecklistRuangMeetingViewModel extends AndroidViewModel {
             paramObject.put("spidol", model.getSpidol());
             paramObject.put("whiteBoard", model.getWhiteBoard());
 
-            return repository.postChecklistRuangMeeting(paramObject.toString());
+            return onlineRepository.postChecklistRuangMeeting(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postChecklistRuangMeeting(null);
+        return onlineRepository.postChecklistRuangMeeting(null);
     }
 }

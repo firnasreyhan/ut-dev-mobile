@@ -7,18 +7,17 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 public class FormListViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public FormListViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<FormResponse> getForm(String role) {
-        return repository.getListForm(role);
+        return onlineRepository.getListForm(role);
     }
 }

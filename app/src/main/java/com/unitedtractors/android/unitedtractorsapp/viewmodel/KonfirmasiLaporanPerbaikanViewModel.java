@@ -8,19 +8,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.LaporanPerbaikanModel;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KonfirmasiLaporanPerbaikanViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public KonfirmasiLaporanPerbaikanViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postLaporanPerbaikan(LaporanPerbaikanModel model) {
@@ -45,11 +44,11 @@ public class KonfirmasiLaporanPerbaikanViewModel extends AndroidViewModel {
             }
             paramObject.put("detPerbaikan", jsonArray);
 
-            return repository.postLaporanPerbaikan(paramObject.toString());
+            return onlineRepository.postLaporanPerbaikan(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postLaporanPerbaikan(null);
+        return onlineRepository.postLaporanPerbaikan(null);
     }
 }

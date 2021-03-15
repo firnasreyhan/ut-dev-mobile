@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.TokenModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,12 +26,12 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class SignUpViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
     private Context context;
 
     public SignUpViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
         context = application.getApplicationContext();
     }
 
@@ -43,7 +43,7 @@ public class SignUpViewModel extends AndroidViewModel {
         RequestBody division_ = RequestBody.create(MediaType.parse("text/plain"), division);
         RequestBody password_ = RequestBody.create(MediaType.parse("text/plain"), password);
         RequestBody token_ = RequestBody.create(MediaType.parse("text/plain"), updateToken(username));
-        return repository.postSignUp(
+        return onlineRepository.postSignUp(
                 username_,
                 namaLengkap_,
                 role_,

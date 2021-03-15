@@ -15,8 +15,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
-import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,12 +31,12 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class KonfirmasiPermintaanMobilPribadiViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
     private Context context;
 
     public KonfirmasiPermintaanMobilPribadiViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
         context = application.getApplicationContext();
     }
 
@@ -55,18 +54,18 @@ public class KonfirmasiPermintaanMobilPribadiViewModel extends AndroidViewModel 
             paramObject.put("jamBerangkat", model.getJamBerangkat());
             paramObject.put("jamPulang", model.getJamPulang());
 
-            return repository.postPermintaanMobilPribadi(paramObject.toString());
+            return onlineRepository.postPermintaanMobilPribadi(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postPermintaanMobilPribadi(null);
+        return onlineRepository.postPermintaanMobilPribadi(null);
     }
 
     public MutableLiveData<BaseResponse> postUploadSim(String idUsers_, String idTrans_, Uri file_) {
         RequestBody idUsers = RequestBody.create(MediaType.parse("text/plain"), idUsers_);
         RequestBody idTrans = RequestBody.create(MediaType.parse("text/plain"), idTrans_);
-        return repository.postSimMobilPribadi(
+        return onlineRepository.postSimMobilPribadi(
                 idUsers,
                 idTrans,
                 compressFile(file_, "file")

@@ -8,18 +8,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class KonfirmasiPembelianSnackViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public KonfirmasiPembelianSnackViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postPembelianSnack(PembelianSnackModel model) {
@@ -40,11 +40,11 @@ public class KonfirmasiPembelianSnackViewModel extends AndroidViewModel {
             }
             paramObject.put("detSnack", jsonArray);
 
-            return repository.postPembelianSnack(paramObject.toString());
+            return onlineRepository.postPembelianSnack(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postPembelianSnack(null);
+        return onlineRepository.postPembelianSnack(null);
     }
 }

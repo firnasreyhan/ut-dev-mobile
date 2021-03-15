@@ -8,19 +8,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistPompaPondModel;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CheckingRunningTestViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public CheckingRunningTestViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postICP(ChecklistPompaPondModel model) {
@@ -52,11 +51,11 @@ public class CheckingRunningTestViewModel extends AndroidViewModel {
 
             paramObject.put("catatan", model.getCatatan());
 
-            return repository.postICP(paramObject.toString());
+            return onlineRepository.postICP(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postICP(null);
+        return onlineRepository.postICP(null);
     }
 }

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/background"
+    tools:context=".view.activity.form.checklist_pompa_air_bersih.NewChecklistPompaAirBersihActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                android:text="Checklist Pompa Air Bersih"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Checklist Pompa Air Bersih"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Checklist Pompa Air Bersih"
+                        android:textColor="@color/hint_color2"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_below="@+id/linearLayoutKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/editTextLokasi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="Lokasi"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTextBulan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Bulan"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <EditText
+                                    android:id="@+id/editTextTahun"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Tahun"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Weekly Report"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
+
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButtonAjukan"
+            android:layout_alignParentBottom="true"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:paddingTop="@dimen/_11sdp"
+            android:paddingBottom="@dimen/_11sdp"
+            android:text="Ajukan"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10sdp"
+            app:backgroundTint="@color/button_disable"
+            android:enabled="false"
+            app:cornerRadius="@dimen/_11sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>

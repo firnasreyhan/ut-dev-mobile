@@ -11,27 +11,27 @@ import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 public class MainViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public MainViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> signOut() {
         String userKey = AppPreference.getUser(getApplication().getApplicationContext()).getUserUsers().replaceAll("[-+.^:,]","");
         FirebaseDatabase.getInstance().getReference("UnitedTractor").child("Token").child(userKey).removeValue();
-        return repository.postSignOut(AppPreference.getUser(getApplication().getApplicationContext()).getIdUsers());
+        return onlineRepository.postSignOut(AppPreference.getUser(getApplication().getApplicationContext()).getIdUsers());
     }
 
     public MutableLiveData<TransactionResponse> getTransaction(String username, int limit, boolean isApproval) {
-        return repository.getTransaction(username, limit, isApproval);
+        return onlineRepository.getTransaction(username, limit, isApproval);
     }
 
     public MutableLiveData<FormResponse> getForm(String role) {
-        return repository.getListForm(role);
+        return onlineRepository.getListForm(role);
     }
 }

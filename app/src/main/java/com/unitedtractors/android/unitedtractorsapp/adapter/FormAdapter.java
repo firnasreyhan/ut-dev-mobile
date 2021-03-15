@@ -14,6 +14,7 @@ import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.ChecklistForGensetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.NewChecklistPompaAirBersihActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
@@ -104,7 +105,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                     //Form Inspection Checklist for Genset
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_347f0e1d0950dd8fd36f23d90b293ea9")) {
-                        intent = new Intent(v.getContext(), ChecklistForGensetActivity.class);
+                        intent = new Intent(v.getContext(), NewChecklistPompaAirBersihActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
                     //Laporan Perbaikan

@@ -7,19 +7,18 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanCateringRegulerModel;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PermintaanCateringRegulerViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public PermintaanCateringRegulerViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postPermintaanCateringReguler(PermintaanCateringRegulerModel model) {
@@ -30,11 +29,11 @@ public class PermintaanCateringRegulerViewModel extends AndroidViewModel {
             paramObject.put("tglCatering", model.getTgl());
             paramObject.put("jumlahOrang", model.getJumlahOrang());
 
-            return repository.postPermintaanCateringReguler(paramObject.toString());
+            return onlineRepository.postPermintaanCateringReguler(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postChecklistRuangMeeting(null);
+        return onlineRepository.postChecklistRuangMeeting(null);
     }
 }

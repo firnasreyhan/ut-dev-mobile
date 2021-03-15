@@ -1,7 +1,6 @@
 package com.unitedtractors.android.unitedtractorsapp.viewmodel;
 
 import android.app.Application;
-import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,21 +8,17 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.KontrolHarianModel;
-import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
-import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.repository.Repository;
+import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.List;
-
 public class KontrolHarianViewModel extends AndroidViewModel {
-    private Repository repository;
+    private OnlineRepository onlineRepository;
 
     public KontrolHarianViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        onlineRepository = new OnlineRepository();
     }
 
     public MutableLiveData<BaseResponse> postControlHarian(KontrolHarianModel model) {
@@ -46,11 +41,11 @@ public class KontrolHarianViewModel extends AndroidViewModel {
             paramObject.put("kebersihanKet", model.getData().get(5).getKeterangan());
             paramObject.put("tglOut", model.getTglOut());
 
-            return repository.postControlHarian(paramObject.toString());
+            return onlineRepository.postControlHarian(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return repository.postControlHarian(null);
+        return onlineRepository.postControlHarian(null);
     }
 }
