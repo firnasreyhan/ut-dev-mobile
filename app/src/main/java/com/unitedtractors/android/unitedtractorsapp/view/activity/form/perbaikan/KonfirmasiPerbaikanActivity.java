@@ -43,8 +43,6 @@ public class KonfirmasiPerbaikanActivity extends AppCompatActivity {
         String tanggal = getIntent().getStringExtra("TANGGAL");
         String tanggalView = getIntent().getStringExtra("TANGGAL_VIEW");
         String waktu = getIntent().getStringExtra("WAKTU");
-        String namaPemohon = getIntent().getStringExtra("NAMA_PEMOHON");
-        String divisi = getIntent().getStringExtra("DIVISI");
         String extension = getIntent().getStringExtra("EXTENSION");
         String namaPenerima = getIntent().getStringExtra("NAMA_PENERIMA");
         String nomorTroubleTicket = getIntent().getStringExtra("NOMOR_TROUBLE_TICKET");
@@ -61,8 +59,8 @@ public class KonfirmasiPerbaikanActivity extends AppCompatActivity {
 
         binding.textViewTanggal.setText(tanggalView);
         binding.textViewWaktu.setText(waktu);
-        binding.textViewNamaPemohon.setText(namaPemohon);
-        binding.textViewDivisiPemohon.setText(divisi);
+        binding.textViewNamaPemohon.setText(AppPreference.getUser(this).getNamaUsers());
+        binding.textViewDivisiPemohon.setText(AppPreference.getUser(this).getDivUsers());
         binding.textViewExtensionPemohon.setText(extension);
         binding.textViewNamaPenerima.setText(namaPenerima);
         binding.textViewNomorTroubleTicket.setText(nomorTroubleTicket);

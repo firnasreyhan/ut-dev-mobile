@@ -162,36 +162,6 @@
                             android:textSize="@dimen/_8sdp" />
 
                         <EditText
-                            android:visibility="gone"
-                            android:id="@+id/editTextNamaPemohon"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="Nama"
-                            android:inputType="textPersonName"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
-
-                        <EditText
-                            android:visibility="gone"
-                            android:id="@+id/editTextDivisiPemohon"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="Divisi"
-                            android:inputType="text"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
-
-                        <EditText
                             android:id="@+id/editTextExtensionPemohon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -279,7 +249,6 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonSelanjutnya"
-            android:layout_alignParentBottom="true"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

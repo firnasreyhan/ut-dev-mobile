@@ -25,8 +25,6 @@ public class KeteranganPerbaikanActivity extends AppCompatActivity {
         String tanggal = getIntent().getStringExtra("TANGGAL");
         String tanggalView = getIntent().getStringExtra("TANGGAL_VIEW");
         String waktu = getIntent().getStringExtra("WAKTU");
-        String namaPemohon = getIntent().getStringExtra("NAMA_PEMOHON");
-        String divisi = getIntent().getStringExtra("DIVISI");
         String extension = getIntent().getStringExtra("EXTENSION");
         String namaPenerima = getIntent().getStringExtra("NAMA_PENERIMA");
         String nomorTroubleTicket = getIntent().getStringExtra("NOMOR_TROUBLE_TICKET");
@@ -59,8 +57,6 @@ public class KeteranganPerbaikanActivity extends AppCompatActivity {
                     intent.putExtra("TANGGAL", tanggal);
                     intent.putExtra("TANGGAL_VIEW", tanggalView);
                     intent.putExtra("WAKTU", waktu);
-                    intent.putExtra("NAMA_PEMOHON", namaPemohon);
-                    intent.putExtra("DIVISI", divisi);
                     intent.putExtra("EXTENSION", extension);
                     intent.putExtra("NAMA_PENERIMA", namaPenerima);
                     intent.putExtra("NOMOR_TROUBLE_TICKET", nomorTroubleTicket);

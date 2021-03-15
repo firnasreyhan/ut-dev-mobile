@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
@@ -94,8 +95,6 @@ public class PerbaikanActivity extends AppCompatActivity {
                     intent.putExtra("TANGGAL", tanggal);
                     intent.putExtra("TANGGAL_VIEW", tanggalView);
                     intent.putExtra("WAKTU", binding.editTextWaktu.getText().toString());
-                    intent.putExtra("NAMA_PEMOHON", binding.editTextNamaPemohon.getText().toString());
-                    intent.putExtra("DIVISI", binding.editTextDivisiPemohon.getText().toString());
                     intent.putExtra("EXTENSION", binding.editTextExtensionPemohon.getText().toString());
                     intent.putExtra("NAMA_PENERIMA", binding.editTextNamaPenerima.getText().toString());
                     intent.putExtra("NOMOR_TROUBLE_TICKET", binding.editTextNomorTroubleTicket.getText().toString());
@@ -117,8 +116,6 @@ public class PerbaikanActivity extends AppCompatActivity {
         boolean cek3 = true;
         boolean cek4 = true;
         boolean cek5 = true;
-        boolean cek6 = true;
-        boolean cek7 = true;
 
         if (binding.editTextTanggal.getText().toString().isEmpty()) {
             binding.editTextTanggal.setError("Mohon isi data berikut");
@@ -130,31 +127,21 @@ public class PerbaikanActivity extends AppCompatActivity {
             cek2 = false;
         }
 
-        if (binding.editTextNamaPemohon.getText().toString().isEmpty()) {
-            binding.editTextNamaPemohon.setError("Mohon isi data berikut");
-            cek3 = false;
-        }
-
-        if (binding.editTextDivisiPemohon.getText().toString().isEmpty()) {
-            binding.editTextDivisiPemohon.setError("Mohon isi data berikut");
-            cek4 = false;
-        }
-
         if (binding.editTextExtensionPemohon.getText().toString().isEmpty()) {
             binding.editTextExtensionPemohon.setError("Mohon isi data berikut");
-            cek5 = false;
+            cek3 = false;
         }
 
         if (binding.editTextNamaPenerima.getText().toString().isEmpty()) {
             binding.editTextNamaPenerima.setError("Mohon isi data berikut");
-            cek6 = false;
+            cek4 = false;
         }
 
         if (binding.editTextNomorTroubleTicket.getText().toString().isEmpty()) {
             binding.editTextNomorTroubleTicket.setError("Mohon isi data berikut");
-            cek7 = false;
+            cek5 = false;
         }
 
-        return cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7;
+        return cek1 && cek2 && cek3 && cek4 && cek5;
     }
 }
