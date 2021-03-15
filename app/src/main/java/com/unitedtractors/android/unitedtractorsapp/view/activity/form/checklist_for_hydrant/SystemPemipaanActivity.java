@@ -7,9 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.unitedtractors.android.unitedtractorsapp.adapter.ChecklistForHydrantAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan2Adapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivitySystemPemipaanBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.ChecklistForHydrantModel;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan2Model;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.K5Activity;
@@ -37,29 +39,23 @@ public class SystemPemipaanActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        List<Pertanyaan3Model> list = new ArrayList<>();
-        list.add(new Pertanyaan3Model(
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> list = new ArrayList<>();
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Kebocoran Pemipaan",
-                1,
-                "*Standard: Tidak ada kebocoran",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Flange / Packing",
-                1,
-                "*Standard: Tidak ada kebocoran",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Posisi Valve",
-                1,
-                "*Standard: Sesuai dengan posisi (OPEN/SHUT)",
-                ""
+                1
         ));
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new Pertanyaan3Adapter(list));
+        binding.recyclerView.setAdapter(new ChecklistForHydrantAdapter(list));
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +64,7 @@ public class SystemPemipaanActivity extends AppCompatActivity {
                 intent.putExtra("ID_MAPPING", idMapping);
                 intent.putExtra("TANGGAL", tanggal);
                 intent.putExtra("LOKASI", lokasi);
-                intent.putExtra("SYSTEM_PEMIPAAN", (Serializable) list(Pertanyaan3Adapter.getList()));
+                intent.putExtra("SYSTEM_PEMIPAAN", (Serializable) ChecklistForHydrantAdapter.getList());
                 startActivity(intent);
             }
         });
@@ -78,14 +74,5 @@ public class SystemPemipaanActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private List<Pertanyaan3Model> list(List<Pertanyaan3Model> list) {
-        for (Pertanyaan3Model model : list) {
-            if (model.getCatatan().isEmpty()) {
-                model.setCatatan("-");
-            }
-        }
-        return list;
     }
 }

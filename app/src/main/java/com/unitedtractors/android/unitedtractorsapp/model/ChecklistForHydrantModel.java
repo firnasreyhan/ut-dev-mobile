@@ -1,5 +1,6 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ChecklistForHydrantModel {
@@ -8,13 +9,13 @@ public class ChecklistForHydrantModel {
     private String tanggal;
     private String lokasi;
     private String catatan;
-    private List<Pertanyaan3Model> systemPemipaan;
-    private List<Pertanyaan3Model> jockeyPump;
-    private List<Pertanyaan3Model> electricPump;
-    private List<Pertanyaan3Model> dieselHydrantPump;
-    private List<Pertanyaan3Model> panelHydrant;
+    private List<DetailChecklistHydrant> systemPemipaan;
+    private List<DetailChecklistHydrant> jockeyPump;
+    private List<DetailChecklistHydrant> electricPump;
+    private List<DetailChecklistHydrant> dieselHydrantPump;
+    private List<DetailChecklistHydrant> panelHydrant;
 
-    public ChecklistForHydrantModel(String idUser, String idMapping, String tanggal, String lokasi, String catatan, List<Pertanyaan3Model> systemPemipaan, List<Pertanyaan3Model> jockeyPump, List<Pertanyaan3Model> electricPump, List<Pertanyaan3Model> dieselHydrantPump, List<Pertanyaan3Model> panelHydrant) {
+    public ChecklistForHydrantModel(String idUser, String idMapping, String tanggal, String lokasi, String catatan, List<DetailChecklistHydrant> systemPemipaan, List<DetailChecklistHydrant> jockeyPump, List<DetailChecklistHydrant> electricPump, List<DetailChecklistHydrant> dieselHydrantPump, List<DetailChecklistHydrant> panelHydrant) {
         this.idUser = idUser;
         this.idMapping = idMapping;
         this.tanggal = tanggal;
@@ -67,43 +68,69 @@ public class ChecklistForHydrantModel {
         this.catatan = catatan;
     }
 
-    public List<Pertanyaan3Model> getSystemPemipaan() {
+    public List<DetailChecklistHydrant> getSystemPemipaan() {
         return systemPemipaan;
     }
 
-    public void setSystemPemipaan(List<Pertanyaan3Model> systemPemipaan) {
+    public void setSystemPemipaan(List<DetailChecklistHydrant> systemPemipaan) {
         this.systemPemipaan = systemPemipaan;
     }
 
-    public List<Pertanyaan3Model> getJockeyPump() {
+    public List<DetailChecklistHydrant> getJockeyPump() {
         return jockeyPump;
     }
 
-    public void setJockeyPump(List<Pertanyaan3Model> jockeyPump) {
+    public void setJockeyPump(List<DetailChecklistHydrant> jockeyPump) {
         this.jockeyPump = jockeyPump;
     }
 
-    public List<Pertanyaan3Model> getElectricPump() {
+    public List<DetailChecklistHydrant> getElectricPump() {
         return electricPump;
     }
 
-    public void setElectricPump(List<Pertanyaan3Model> electricPump) {
+    public void setElectricPump(List<DetailChecklistHydrant> electricPump) {
         this.electricPump = electricPump;
     }
 
-    public List<Pertanyaan3Model> getDieselHydrantPump() {
+    public List<DetailChecklistHydrant> getDieselHydrantPump() {
         return dieselHydrantPump;
     }
 
-    public void setDieselHydrantPump(List<Pertanyaan3Model> dieselHydrantPump) {
+    public void setDieselHydrantPump(List<DetailChecklistHydrant> dieselHydrantPump) {
         this.dieselHydrantPump = dieselHydrantPump;
     }
 
-    public List<Pertanyaan3Model> getPanelHydrant() {
+    public List<DetailChecklistHydrant> getPanelHydrant() {
         return panelHydrant;
     }
 
-    public void setPanelHydrant(List<Pertanyaan3Model> panelHydrant) {
+    public void setPanelHydrant(List<DetailChecklistHydrant> panelHydrant) {
         this.panelHydrant = panelHydrant;
+    }
+
+    public static class DetailChecklistHydrant implements Serializable {
+        private String pertanyaan;
+        private int status;
+
+        public DetailChecklistHydrant(String pertanyaan, int status) {
+            this.pertanyaan = pertanyaan;
+            this.status = status;
+        }
+
+        public String getPertanyaan() {
+            return pertanyaan;
+        }
+
+        public void setPertanyaan(String pertanyaan) {
+            this.pertanyaan = pertanyaan;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
+        }
     }
 }

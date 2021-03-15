@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ChecklistForHydrantAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPanelHydrantBinding;
@@ -47,10 +48,10 @@ public class PanelHydrantActivity extends AppCompatActivity {
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
         String tanggal = getIntent().getStringExtra("TANGGAL");
         String lokasi = getIntent().getStringExtra("LOKASI");
-        List<Pertanyaan3Model> systemPemipaan = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("SYSTEM_PEMIPAAN");
-        List<Pertanyaan3Model> jockeyPump = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("JOCKEY_PUMP");
-        List<Pertanyaan3Model> electricPump = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("ELECTRIC_PUMP");
-        List<Pertanyaan3Model> dieselHydrantPump = (List<Pertanyaan3Model>) getIntent().getSerializableExtra("DIESEL_HYDRANT_PUMP");
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> systemPemipaan = (List<ChecklistForHydrantModel.DetailChecklistHydrant>) getIntent().getSerializableExtra("SYSTEM_PEMIPAAN");
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> jockeyPump = (List<ChecklistForHydrantModel.DetailChecklistHydrant>) getIntent().getSerializableExtra("JOCKEY_PUMP");
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> electricPump = (List<ChecklistForHydrantModel.DetailChecklistHydrant>) getIntent().getSerializableExtra("ELECTRIC_PUMP");
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> dieselHydrantPump = (List<ChecklistForHydrantModel.DetailChecklistHydrant>) getIntent().getSerializableExtra("DIESEL_HYDRANT_PUMP");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -61,41 +62,31 @@ public class PanelHydrantActivity extends AppCompatActivity {
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
 
-        List<Pertanyaan3Model> list = new ArrayList<>();
-        list.add(new Pertanyaan3Model(
+        List<ChecklistForHydrantModel.DetailChecklistHydrant> list = new ArrayList<>();
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Selector Switch",
-                1,
-                "*Standard: Harus selalu pada posisi ‘AUTO’",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Lampu Indikator",
-                1,
-                "*Standard: Sesuai dengan operation",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Volt Meter",
-                1,
-                "*Standard: Putar selector switch u/ Volt meter",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Ampere Meter",
-                1,
-                "*Standard: Seimbang dengan daya motor pompa masing-masing",
-                ""
+                1
         ));
-        list.add(new Pertanyaan3Model(
+        list.add(new ChecklistForHydrantModel.DetailChecklistHydrant(
                 "Konektor Panel",
-                1,
-                "*Standard: Pengencangan terminasi MCB, MCCB, kontaktor, relay, terminal bar (setiap 2 bulan sekali)",
-                ""
+                1
         ));
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new Pertanyaan3Adapter(list));
+        binding.recyclerView.setAdapter(new ChecklistForHydrantAdapter(list));
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -125,7 +116,7 @@ public class PanelHydrantActivity extends AppCompatActivity {
                         jockeyPump,
                         electricPump,
                         dieselHydrantPump,
-                        list(Pertanyaan3Adapter.getList())
+                        ChecklistForHydrantAdapter.getList()
                 );
 
                 viewModel.posICH(
@@ -175,14 +166,5 @@ public class PanelHydrantActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private List<Pertanyaan3Model> list(List<Pertanyaan3Model> list) {
-        for (Pertanyaan3Model model : list) {
-            if (model.getCatatan().isEmpty()) {
-                model.setCatatan("-");
-            }
-        }
-        return list;
     }
 }
