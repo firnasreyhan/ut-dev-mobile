@@ -19,11 +19,13 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.identifik
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.material_used_slip.MaterialUsedSlipActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.order_catering.OrderCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.sidak_catering.SidakCateringActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.survery_kepuasan_pelanggan.SurveryKepuasanPelangganActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
 
 import java.util.List;
@@ -75,7 +77,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         intent = new Intent(v.getContext(), OrderCateringActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_4a1f600ad300b633f2f0c4a0b7b4acc6")) {
-                        intent = new Intent(v.getContext(), PermintaanMobilPribadiActivity.class);
+                        intent = new Intent(v.getContext(), SurveryKepuasanPelangganActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_628426fdf153e5637a5c3970696d2ad2")) {
                         intent = new Intent(v.getContext(), KontrolHarianActivity.class);
