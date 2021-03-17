@@ -23,14 +23,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textViewJudul"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp"
-                android:text="-"/>
+                android:text="Jenis Permintaan / Perubahan"/>
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -46,7 +45,7 @@
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/hint_color"
                     android:textSize="@dimen/_8sdp"
-                    android:text="Baik Sekali"
+                    android:text="Akses Existing"
                     android:checked="true"/>
 
                 <RadioButton
@@ -57,43 +56,29 @@
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/hint_color"
                     android:textSize="@dimen/_8sdp"
-                    android:text="Baik"/>
-
-                <RadioButton
-                    android:id="@+id/radioButtonCukup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_13sdp"
-                    android:textColor="@color/text_color"
-                    android:textColorHint="@color/hint_color"
-                    android:textSize="@dimen/_8sdp"
-                    android:text="Cukup"/>
-
-                <RadioButton
-                    android:id="@+id/radioButtonKurang"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/text_color"
-                    android:textColorHint="@color/hint_color"
-                    android:textSize="@dimen/_8sdp"
-                    android:text="Kurang"/>
+                    android:text="Akses Baru"/>
 
             </RadioGroup>
 
-            <EditText
-                android:id="@+id/editTextKeterangan"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_75sdp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Keterangan"
-                android:gravity="left|top"
-                android:inputType="textMultiLine"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
+                android:textSize="@dimen/_8sdp"
+                android:text="Kontak Ke"/>
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:spinnerMode="dropdown"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hint_color"/>
 
         </LinearLayout>
 

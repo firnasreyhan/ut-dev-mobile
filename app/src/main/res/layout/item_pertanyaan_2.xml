@@ -19,9 +19,9 @@
 
         <TextView
             android:id="@+id/textViewPertanyaan"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
+            android:fontFamily="@font/montserrat_semi_bold"
             android:text="-"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_8sdp"

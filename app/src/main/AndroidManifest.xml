@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.NewListChecklistPompaAirBersihActivity"></activity>
+        <activity android:name=".view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity"></activity>
+        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.NewListChecklistPompaAirBersihActivity" />
         <activity android:name=".view.activity.form.checklist_pompa_air_bersih.NewChecklistPompaAirBersihActivity" />
         <activity android:name=".view.activity.form.deklarasi.KonfirmasiDeklarasiActivity" />
         <activity android:name=".view.activity.form.deklarasi.ListDeklarasiActivity" />
