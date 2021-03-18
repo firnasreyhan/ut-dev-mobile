@@ -7,9 +7,12 @@ import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityDetailSurveyKepuasanPelangganBinding;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivitySurveryKepuasanPelangganBinding;
+import com.unitedtractors.android.unitedtractorsapp.model.SurveyKepuasanPelangganModel;
 
 public class DetailSurveyKepuasanPelangganActivity extends AppCompatActivity {
     private ActivityDetailSurveyKepuasanPelangganBinding binding;
+
+    SurveyKepuasanPelangganModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +22,16 @@ public class DetailSurveyKepuasanPelangganActivity extends AppCompatActivity {
         setContentView(view);
 
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String tglSurvey = getIntent().getStringExtra("TGL_SURVEY");
+        String nama = getIntent().getStringExtra("NAM");
+        String departemen = getIntent().getStringExtra("DEPARTEMEN");
+        String divisi = getIntent().getStringExtra("DIVISI");
+
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 }

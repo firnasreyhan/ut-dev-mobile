@@ -22,8 +22,8 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
 
     Calendar calendar;
     String idMapping;
-    private String tglCekView;
-    private String tglCekServer;
+    private String tgl;
+    private String lokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +55,7 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 binding.editTextTanggalChecklist.setText(simpleDateFormatView.format(calendar.getTime()));
-                tglCekView = simpleDateFormatView.format(calendar.getTime());
-                tglCekServer = simpleDateFormatServer.format(calendar.getTime());
+                tgl = simpleDateFormatView.format(calendar.getTime());
             }
         };
 
@@ -69,15 +68,16 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
             }
         });
 
+        lokasi = binding.editTextLokasi.getText().toString().trim();
+
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), ListCheckRuangMeetingActivity.class);
+                    Intent intent = new Intent(v.getContext(), PabxActivity.class);
                     intent.putExtra("ID_MAPPING", idMapping);
-                    intent.putExtra("TGL_CEK_SERVER", tglCekServer);
-                    intent.putExtra("TGL_CEK_VIEW", tglCekView);
-                    intent.putExtra("TGL_CEK_VIEW", tglCekView);
+                    intent.putExtra("TGL", tgl);
+                    intent.putExtra("LOKASI", lokasi);
                     startActivity(intent);
                 }
             }
@@ -93,8 +93,8 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
             cek1 = false;
         }
 
-        if (binding.editTextKeterangan.getText().toString().isEmpty()) {
-            binding.editTextKeterangan.setError("Mohon isi data berikut");
+        if (binding.editTextLokasi.getText().toString().isEmpty()) {
+            binding.editTextLokasi.setError("Mohon isi data berikut");
             cek2 = false;
         }
 

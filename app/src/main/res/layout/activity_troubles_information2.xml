@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.form.checklist_alat_komunikasi.TroublesInformationActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="24dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Checklist Alat Komunikasi"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp" />
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_13sdp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Troubles Information"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayoutKeterangan"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:cardBackgroundColor="@android:color/white"
+                app:cardCornerRadius="@dimen/_7sdp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/box_stroke"
+                app:strokeWidth="@dimen/_1sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/editTextProblem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Problem indetification"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextCause"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Root cause"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextCorrective"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Corrective action"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextPreventive"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Preventive action"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextDeadline"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="Deadline"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                        <EditText
+                            android:id="@+id/editTextPIC"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/hint_color"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:hint="PIC"
+                            android:inputType="text"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:textColor="@color/text_color"
+                            android:textColorHint="@color/hint_color"
+                            android:textSize="@dimen/_8sdp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButtonAjukan"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:paddingTop="@dimen/_11sdp"
+            android:paddingBottom="@dimen/_11sdp"
+            android:text="Ajukan"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10sdp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="@dimen/_11sdp" />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
