@@ -1,9 +1,11 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting;
 
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -81,6 +83,7 @@ public class ListCheckRuangMeetingActivity extends AppCompatActivity {
                     for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
                         list.add(model(entity));
                         binding.editTextTanggal.setText(entity.tanggalView);
+                        binding.editTextJam.setText(entity.jam);
                     }
                 }
                 binding.recyclerView.setAdapter(new ChecklistRuangMeetingAdapter(list));
@@ -114,6 +117,26 @@ public class ListCheckRuangMeetingActivity extends AppCompatActivity {
             }
         });
 
+        binding.editTextJam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int min = calendar.get(Calendar.MINUTE);
+
+                TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        String hour = hourOfDay < 10 ? ("0"+ hourOfDay) : String.valueOf(hourOfDay);
+                        String sMinute = minute < 10 ? ("0"+ minute) : String.valueOf(minute);
+                        String time = hour + ":" + sMinute;
+                        binding.editTextJam.setText(time);
+                    }
+                }, hour, min, true);
+
+                timePicker.show();
+            }
+        });
+
         binding.materialButtonSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,6 +165,7 @@ public class ListCheckRuangMeetingActivity extends AppCompatActivity {
         entity.status = model.getStatus();
         entity.tanggal = tanggal;
         entity.tanggalView = tanggalView;
+        entity.jam = binding.editTextJam.getText().toString() + ":00";
         return entity;
     }
 
@@ -155,12 +179,18 @@ public class ListCheckRuangMeetingActivity extends AppCompatActivity {
 
     private boolean checkData() {
         boolean cek1 = true;
+        boolean cek2 = true;
 
         if (binding.editTextTanggal.getText().toString().isEmpty()) {
             binding.editTextTanggal.setError("Mohon isi data berikut");
             cek1 = false;
         }
 
-        return cek1;
+        if (binding.editTextJam.getText().toString().isEmpty()) {
+            binding.editTextJam.setError("Mohon isi data berikut");
+            cek2 = false;
+        }
+
+        return cek1 && cek2;
     }
 }

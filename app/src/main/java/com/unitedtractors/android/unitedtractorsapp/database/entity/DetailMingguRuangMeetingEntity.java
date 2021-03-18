@@ -25,4 +25,7 @@ public class DetailMingguRuangMeetingEntity {
 
     @ColumnInfo(name = "tanggalView")
     public String tanggalView;
+
+    @ColumnInfo(name = "jam")
+    public String jam;
 }

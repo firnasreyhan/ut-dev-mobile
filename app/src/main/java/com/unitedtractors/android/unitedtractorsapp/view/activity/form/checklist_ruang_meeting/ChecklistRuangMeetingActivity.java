@@ -215,28 +215,28 @@ public class ChecklistRuangMeetingActivity extends AppCompatActivity {
                     if (!detailMingguEntities.isEmpty()) {
                         if (detailMingguEntities.size() == 5) {
                             if (mingguKe == 1) {
-                                detailMinggu1.setTanggal(detailMingguEntities.get(0).tanggal);
+                                detailMinggu1.setTanggal(detailMingguEntities.get(0).tanggal + " " + detailMingguEntities.get(0).jam);
                                 List<Integer> list =  new ArrayList<>();
                                 for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
                                     list.add(entity.status);
                                 }
                                 detailMinggu1.setList(list);
                             } else if (mingguKe == 2) {
-                                detailMinggu2.setTanggal(detailMingguEntities.get(0).tanggal);
+                                detailMinggu2.setTanggal(detailMingguEntities.get(0).tanggal + " " + detailMingguEntities.get(0).jam);
                                 List<Integer> list =  new ArrayList<>();
                                 for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
                                     list.add(entity.status);
                                 }
                                 detailMinggu2.setList(list);
                             } else if (mingguKe == 3) {
-                                detailMinggu3.setTanggal(detailMingguEntities.get(0).tanggal);
+                                detailMinggu3.setTanggal(detailMingguEntities.get(0).tanggal + " " + detailMingguEntities.get(0).jam);
                                 List<Integer> list =  new ArrayList<>();
                                 for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
                                     list.add(entity.status);
                                 }
                                 detailMinggu3.setList(list);
                             } else if (mingguKe == 4) {
-                                detailMinggu4.setTanggal(detailMingguEntities.get(0).tanggal);
+                                detailMinggu4.setTanggal(detailMingguEntities.get(0).tanggal + " " + detailMingguEntities.get(0).jam);
                                 List<Integer> list =  new ArrayList<>();
                                 for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
                                     list.add(entity.status);
