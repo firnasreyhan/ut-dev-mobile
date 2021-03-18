@@ -1,163 +1,130 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting;
 
+import android.app.DatePickerDialog;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.DatePicker;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.RadioGroup;
-
-import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.adapter.ChecklistRuangMeetingAdapter;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguRuangMeetingEntity;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListCheckRuangMeetingBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
-import com.unitedtractors.android.unitedtractorsapp.model.PembelianSnackModel;
-import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.KonfirmasiPembelianSnackActivity;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.ChecklistRuangMeetingViewModel;
-import com.unitedtractors.android.unitedtractorsapp.viewmodel.PermintaanCateringRegulerViewModel;
+import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan4Model;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.ListChecklistRuangMeetingViewModel;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
 
 public class ListCheckRuangMeetingActivity extends AppCompatActivity {
-    private com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListCheckRuangMeetingBinding binding;
-    public ChecklistRuangMeetingModel model;
-    ChecklistRuangMeetingViewModel viewModel;
+    private ActivityListCheckRuangMeetingBinding binding;
+    private ListChecklistRuangMeetingViewModel viewModel;
 
-    private int lcd;
-    private  int viewer;
-    private int spidol;
-    private int whiteBoard;
-    private int screen;
+    private Calendar calendar;
 
-    private ProgressDialog progressDialog;
+    private int id;
+    private String tanggal, tanggalView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityListCheckRuangMeetingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-
-        viewModel = ViewModelProviders.of(this).get(ChecklistRuangMeetingViewModel.class);
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Mohon Tunggu Sebentar...");
-        progressDialog.setCancelable(false);
-
-        binding.materialButtonAjukan.setEnabled(true);
-        binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.primary));
+        id = getIntent().getIntExtra("ID", 0);
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String idMapping = getIntent().getStringExtra("ID_MAPPING");
-        String tglCekView = getIntent().getStringExtra("TGL_CEK_VIEW");
-        String tglCekServer = getIntent().getStringExtra("TGL_CEK_SERVER");
-        String jamCek = getIntent().getStringExtra("JAM_CEK");
-        String namaCek = getIntent().getStringExtra("NAMA_CEK");
+        viewModel = ViewModelProviders.of(this).get(ListChecklistRuangMeetingViewModel.class);
 
-        binding.radioGroupLcd.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setHasFixedSize(true);
+
+        List<Pertanyaan4Model> list = new ArrayList<>();
+
+        viewModel.getDetailMinggu(
+                id
+        ).observe(this, new Observer<List<DetailMingguRuangMeetingEntity>>() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                lcd = group.getCheckedRadioButtonId();
+            public void onChanged(List<DetailMingguRuangMeetingEntity> detailMingguEntities) {
+                if (detailMingguEntities.isEmpty()) {
+                    list.add(new Pertanyaan4Model(
+                            "Viewer",
+                            1
+                    ));
+                    list.add(new Pertanyaan4Model(
+                            "White Board",
+                            1
+                    ));
+                    list.add(new Pertanyaan4Model(
+                            "LCD",
+                            1
+                    ));
+                    list.add(new Pertanyaan4Model(
+                            "Screen",
+                            1
+                    ));
+                    list.add(new Pertanyaan4Model(
+                            "Spidol",
+                            1
+                    ));
+                } else {
+                    for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
+                        list.add(model(entity));
+                        binding.editTextTanggal.setText(entity.tanggalView);
+                    }
+                }
+                binding.recyclerView.setAdapter(new ChecklistRuangMeetingAdapter(list));
             }
         });
 
-        binding.radioGroupScreen.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        calendar = Calendar.getInstance();
+
+        SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
+        SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                screen = group.getCheckedRadioButtonId();
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                // TODO Auto-generated method stub
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH, monthOfYear);
+                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                binding.editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
+                tanggalView = simpleDateFormatView.format(calendar.getTime());
+                tanggal = simpleDateFormatServer.format(calendar.getTime());
             }
-        });
+        };
 
-        binding.radioGroupWhiteBoard.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                whiteBoard = group.getCheckedRadioButtonId();
-            }
-        });
-
-        binding.radioGroupSpidol.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                spidol = group.getCheckedRadioButtonId();
-            }
-        });
-
-        binding.radioGroupViewer.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                viewer = group.getCheckedRadioButtonId();
-            }
-        });
-
-
-        model = new ChecklistRuangMeetingModel(
-                idMapping,
-                AppPreference.getUser(this).getIdUsers(),
-                namaCek,
-                tglCekServer,
-                jamCek,
-                viewer,
-                whiteBoard,
-                lcd,
-                screen,
-                spidol);
-
-        binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
+        binding.editTextTanggal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Mohon tunggu sebentar...");
-                progressDialog.show();
+                new DatePickerDialog(v.getContext(), date, calendar
+                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                        calendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
 
-                viewModel.postChecklistRuangMeeting(
-                        model
-                ).observe(ListCheckRuangMeetingActivity.this, new Observer<BaseResponse>() {
-                    @Override
-                    public void onChanged(BaseResponse baseResponse) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-
-                        if (baseResponse != null) {
-                            if (baseResponse.isStatus()) {
-                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
-                            } else {
-                                new AlertDialog.Builder(v.getContext())
-                                        .setTitle("Pesan")
-                                        .setMessage(baseResponse.getMessage())
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .create()
-                                        .show();
-                            }
-                        } else {
-                            new AlertDialog.Builder(v.getContext())
-                                    .setTitle("Pesan")
-                                    .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    })
-                                    .create()
-                                    .show();
-                        }
+        binding.materialButtonSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkData()) {
+                    viewModel.deleteDetailMinggu(id);
+                    for (Pertanyaan4Model model : ChecklistRuangMeetingAdapter.getList()) {
+                        viewModel.insertDetailMinggu(entity(model));
                     }
-                });
+                    viewModel.updateMinggu(id, true);
+                    finish();
+                }
             }
         });
     }
@@ -168,16 +135,32 @@ public class ListCheckRuangMeetingActivity extends AppCompatActivity {
         return true;
     }
 
-//    public boolean checkData()  {
-//        if (!binding.r.getText().toString().isEmpty()
-//                && !binding.editTextKeterangan2.getText().toString().isEmpty()
-//                && !binding.editTextKeterangan3.getText().toString().isEmpty()
-//                && !binding.editTextKeterangan4.getText().toString().isEmpty()
-//                && !binding.editTextKeterangan5.getText().toString().isEmpty()
-//                && !binding.editTextKeterangan6.getText().toString().isEmpty()) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    private DetailMingguRuangMeetingEntity entity(Pertanyaan4Model model) {
+        DetailMingguRuangMeetingEntity entity = new DetailMingguRuangMeetingEntity();
+        entity.mingguKe = id;
+        entity.pertanyaan = model.getPertanyaan();
+        entity.status = model.getStatus();
+        entity.tanggal = tanggal;
+        entity.tanggalView = tanggalView;
+        return entity;
+    }
+
+    private Pertanyaan4Model model(DetailMingguRuangMeetingEntity entity) {
+        Pertanyaan4Model model = new Pertanyaan4Model(
+                entity.pertanyaan,
+                entity.status
+        );
+        return model;
+    }
+
+    private boolean checkData() {
+        boolean cek1 = true;
+
+        if (binding.editTextTanggal.getText().toString().isEmpty()) {
+            binding.editTextTanggal.setError("Mohon isi data berikut");
+            cek1 = false;
+        }
+
+        return cek1;
+    }
 }

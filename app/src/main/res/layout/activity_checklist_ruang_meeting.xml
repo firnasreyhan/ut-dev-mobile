@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/background"
     tools:context=".view.activity.form.checklist_ruang_meeting.ChecklistRuangMeetingActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -37,169 +40,151 @@
         android:orientation="vertical"
         android:padding="@dimen/_13sdp">
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_weight="1">
 
             <LinearLayout
-                android:id="@+id/linearLayoutKeterangan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Masukkan Detail"/>
-
-                <TextView
-                    android:id="@+id/textViewKeterangan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Ruang Meeting Inspection Card"
-                    android:textColor="@color/hint_color2"
-                    android:textSize="@dimen/_8sdp" />
-
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardViewForm"
-                android:layout_below="@+id/linearLayoutKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:strokeColor="@color/box_stroke"
-                app:strokeWidth="@dimen/_1sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Checklist Ruang Meeting"/>
+
+                    <TextView
+                        android:visibility="gone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Checklist Ruang Meeting"
+                        android:textColor="@color/hint_color2"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_below="@+id/linearLayoutKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutForm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
                             <EditText
-                                android:id="@+id/editTextTanggal"
+                                android:id="@+id/editTextLokasi"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
                                 android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:drawableEnd="@drawable/ic_outline_calendar"
-                                android:drawableRight="@drawable/ic_outline_calendar"
-                                android:focusable="false"
                                 android:fontFamily="@font/montserrat_medium"
-                                android:hint="Tanggal"
+                                android:hint="Ruang Meeting"
+                                android:inputType="text"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:textColor="@color/text_color"
                                 android:textColorHint="@color/hint_color"
                                 android:textSize="@dimen/_8sdp" />
 
-                            <EditText
-                                android:id="@+id/editTextWaktu"
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_3sdp"
-                                android:layout_weight="1"
-                                android:backgroundTint="@color/hint_color"
-                                android:clickable="true"
-                                android:focusable="false"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:hint="Jam Berangkat"
-                                android:paddingLeft="8dp"
-                                android:paddingRight="8dp"
-                                android:textColor="@color/text_color"
-                                android:textColorHint="@color/hint_color"
-                                android:textSize="@dimen/_8sdp" />
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTextBulanTahun"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Bulan / Tahun"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Weekly Report"/>
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_below="@+id/linearLayoutKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:strokeColor="@color/box_stroke"
-                app:strokeWidth="@dimen/_1sdp">
-
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
+                    android:layout_marginTop="@dimen/_10sdp"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_50sdp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:text="Dicek oleh"
-                            android:textColor="@color/text_color"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_8sdp" />
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
-                        <EditText
-                            android:id="@+id/editTextNamaCek"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="@color/hint_color"
-                            android:fontFamily="@font/montserrat_medium"
-                            android:hint="Nama"
-                            android:inputType="textCapWords"
-                            android:paddingLeft="8dp"
-                            android:paddingRight="8dp"
-                            android:textColor="@color/text_color"
-                            android:textColorHint="@color/hint_color"
-                            android:textSize="@dimen/_8sdp" />
 
-                    </LinearLayout>
+            </LinearLayout>
 
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonSelanjutnya"
+            android:id="@+id/materialButtonAjukan"
             android:layout_alignParentBottom="true"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
@@ -208,7 +193,7 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Selanjutnya"
+            android:text="Ajukan"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
             app:backgroundTint="@color/button_disable"

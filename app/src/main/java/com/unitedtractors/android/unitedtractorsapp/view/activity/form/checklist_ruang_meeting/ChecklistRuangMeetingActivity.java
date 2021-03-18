@@ -1,139 +1,306 @@
 package com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TimePicker;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
+import com.github.dewinjm.monthyearpicker.MonthFormat;
+import com.github.dewinjm.monthyearpicker.MonthYearPickerDialog;
+import com.github.dewinjm.monthyearpicker.MonthYearPickerDialogFragment;
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.adapter.MingguRuangMeetingAdapter;
+import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguRuangMeetingEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguRuangMeetingEntity;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityChecklistRuangMeetingBinding;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityIdentifikasiBinding;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.ListPermintaanMobilDinasActivity;
+import com.unitedtractors.android.unitedtractorsapp.model.ChecklistRuangMeetingModel;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
+import com.unitedtractors.android.unitedtractorsapp.viewmodel.ChecklistRuangMeetingViewModel;
 
-import java.text.SimpleDateFormat;
+import java.text.DateFormatSymbols;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.List;
 
 public class ChecklistRuangMeetingActivity extends AppCompatActivity {
     private ActivityChecklistRuangMeetingBinding binding;
+    private ChecklistRuangMeetingViewModel viewModel;
+    private ProgressDialog progressDialog;
+    private Calendar calendar;
 
-    Calendar calendar;
-    private String idMapping;
-    private String tglCekView;
-    private String tglCekServer;
+    private String idMapping, tanggal;
+    private boolean isValid;
+    private int currentYear;
+    private int yearSelected;
+    private int monthSelected;
+
+    private ChecklistRuangMeetingModel.DetailChecklistRuangMeeting detailMinggu1, detailMinggu2, detailMinggu3, detailMinggu4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
-
         binding = ActivityChecklistRuangMeetingBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
+        detailMinggu1 = new ChecklistRuangMeetingModel.DetailChecklistRuangMeeting();
+        detailMinggu2 = new ChecklistRuangMeetingModel.DetailChecklistRuangMeeting();
+        detailMinggu3 = new ChecklistRuangMeetingModel.DetailChecklistRuangMeeting();
+        detailMinggu4 = new ChecklistRuangMeetingModel.DetailChecklistRuangMeeting();
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        binding.materialButtonSelanjutnya.setEnabled(true);
-        binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
+        viewModel = ViewModelProviders.of(this).get(ChecklistRuangMeetingViewModel.class);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon tunggu sebentar...");
+        progressDialog.setCancelable(false);
 
         calendar = Calendar.getInstance();
+        currentYear = calendar.get(Calendar.YEAR);
+        yearSelected = currentYear;
+        monthSelected = calendar.get(Calendar.MONTH);
 
-        SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
-        SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(ChecklistRuangMeetingActivity.this));
 
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        viewModel.getMinggu().observe(this, new Observer<List<MingguRuangMeetingEntity>>() {
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                // TODO Auto-generated method stub
-                calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONTH, monthOfYear);
-                calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                binding.editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
-                tglCekView = simpleDateFormatView.format(calendar.getTime());
-                tglCekServer = simpleDateFormatServer.format(calendar.getTime());
-            }
-        };
+            public void onChanged(List<MingguRuangMeetingEntity> mingguEntities) {
+                if (mingguEntities.isEmpty()) {
+                    viewModel.insertMinggu(mingguEntity("Minggu Ke 1", false));
+                    viewModel.insertMinggu(mingguEntity("Minggu Ke 2", false));
+                    viewModel.insertMinggu(mingguEntity("Minggu Ke 3", false));
+                    viewModel.insertMinggu(mingguEntity("Minggu Ke 4", false));
+                } else {
+                    binding.recyclerView.setAdapter(new MingguRuangMeetingAdapter(mingguEntities));
 
-        binding.editTextTanggal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(v.getContext(), date, calendar
-                        .get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                        calendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-
-        binding.editTextWaktu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int min = calendar.get(Calendar.MINUTE);
-
-                TimePickerDialog timePicker = new TimePickerDialog(v.getContext(), new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String hour = hourOfDay < 10 ? ("0"+ hourOfDay) : String.valueOf(hourOfDay);
-                        String sMinute = minute < 10 ? ("0"+ minute) : String.valueOf(minute);
-                        String time = hour + ":" + sMinute;
-                        binding.editTextWaktu.setText(time);
-                    }
-                }, hour, min, true);
-
-                timePicker.show();
-            }
-        });
-
-        binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), ListCheckRuangMeetingActivity.class);
-                    intent.putExtra("ID_MAPPING", idMapping);
-                    intent.putExtra("TGL_CEK_SERVER", tglCekServer);
-                    intent.putExtra("TGL_CEK_VIEW", tglCekView);
-                    intent.putExtra("WAKTU_CEK", binding.editTextWaktu.getText().toString());
-                    intent.putExtra("NAMA_CEK", binding.editTextNamaCek.getText().toString().trim());
-                    startActivity(intent);
+                    isValid = mingguEntities.get(0).status && mingguEntities.get(1).status && mingguEntities.get(2).status && mingguEntities.get(3).status;
                 }
             }
         });
-    }
 
-    private boolean checkData() {
-        boolean cek1 = true;
-        boolean cek2 = true;
-        boolean cek3 = true;
+        binding.editTextBulanTahun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayMonthYearPickerDialogFragment();
+            }
+        });
 
-        if (binding.editTextTanggal.getText().toString().isEmpty()) {
-            binding.editTextTanggal.setError("Mohon isi data berikut");
-            cek1 = false;
-        }
+        binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    binding.materialButtonAjukan.setEnabled(true);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.primary));
+                } else {
+                    binding.materialButtonAjukan.setEnabled(false);
+                    binding.materialButtonAjukan.setBackgroundColor(getResources().getColor(R.color.button_disable));
+                }
+            }
+        });
 
-        if (binding.editTextWaktu.getText().toString().isEmpty()) {
-            binding.editTextWaktu.setError("Mohon isi data berikut");
-            cek2 = false;
-        }
+        detailMinggu(1);
+        detailMinggu(2);
+        detailMinggu(3);
+        detailMinggu(4);
 
-        if (binding.editTextNamaCek.getText().toString().isEmpty()) {
-            binding.editTextNamaCek.setError("Mohon isi data berikut");
-            cek3 = false;
-        }
+        binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isValid) {
+                    progressDialog.show();
 
-        return cek1 && cek2 && cek3;
+                    ChecklistRuangMeetingModel model = new ChecklistRuangMeetingModel(
+                            AppPreference.getUser(v.getContext()).getIdUsers(),
+                            idMapping,
+                            binding.editTextLokasi.getText().toString(),
+                            tanggal,
+                            detailMinggu1,
+                            detailMinggu2,
+                            detailMinggu3,
+                            detailMinggu4
+                    );
+
+                    viewModel.postChecklistRuangMeeting(
+                            model
+                    ).observe(ChecklistRuangMeetingActivity.this, new Observer<BaseResponse>() {
+                        @Override
+                        public void onChanged(BaseResponse baseResponse) {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+
+                            if (baseResponse != null) {
+                                if (baseResponse.isStatus()) {
+                                    viewModel.deleteDetaiAlllMinggu();
+                                    viewModel.updateAllMinggu(false);
+                                    binding.checkBox.setChecked(false);
+
+                                    startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                } else {
+                                    new AlertDialog.Builder(v.getContext())
+                                            .setTitle("Pesan")
+                                            .setMessage(baseResponse.getMessage())
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            })
+                                            .create()
+                                            .show();
+                                }
+                            } else {
+                                new AlertDialog.Builder(v.getContext())
+                                        .setTitle("Pesan")
+                                        .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            }
+                        }
+                    });
+
+//                    viewModel.deleteDetaiAlllMinggu();
+//                    viewModel.updateAllMinggu(false);
+//                    binding.checkBox.setChecked(false);
+                } else {
+                    Toast.makeText(ChecklistRuangMeetingActivity.this, "Mohon isi semua data", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private MingguRuangMeetingEntity mingguEntity(String mingguKe, boolean status) {
+        MingguRuangMeetingEntity entity = new MingguRuangMeetingEntity();
+        entity.mingguKe = mingguKe;
+        entity.status = status;
+        return entity;
+    }
+
+    private void detailMinggu(int mingguKe) {
+        viewModel.getDetailMinggu(
+                mingguKe
+        ).observe(this, new Observer<List<DetailMingguRuangMeetingEntity>>() {
+            @Override
+            public void onChanged(List<DetailMingguRuangMeetingEntity> detailMingguEntities) {
+                if (detailMingguEntities != null) {
+                    if (!detailMingguEntities.isEmpty()) {
+                        if (detailMingguEntities.size() == 5) {
+                            if (mingguKe == 1) {
+                                detailMinggu1.setTanggal(detailMingguEntities.get(0).tanggal);
+                                List<Integer> list =  new ArrayList<>();
+                                for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
+                                    list.add(entity.status);
+                                }
+                                detailMinggu1.setList(list);
+                            } else if (mingguKe == 2) {
+                                detailMinggu2.setTanggal(detailMingguEntities.get(0).tanggal);
+                                List<Integer> list =  new ArrayList<>();
+                                for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
+                                    list.add(entity.status);
+                                }
+                                detailMinggu2.setList(list);
+                            } else if (mingguKe == 3) {
+                                detailMinggu3.setTanggal(detailMingguEntities.get(0).tanggal);
+                                List<Integer> list =  new ArrayList<>();
+                                for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
+                                    list.add(entity.status);
+                                }
+                                detailMinggu3.setList(list);
+                            } else if (mingguKe == 4) {
+                                detailMinggu4.setTanggal(detailMingguEntities.get(0).tanggal);
+                                List<Integer> list =  new ArrayList<>();
+                                for (DetailMingguRuangMeetingEntity entity : detailMingguEntities) {
+                                    list.add(entity.status);
+                                }
+                                detailMinggu4.setList(list);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    private void displayMonthYearPickerDialogFragment() {
+        MonthYearPickerDialogFragment dialogFragment =  createDialog();
+
+        dialogFragment.setOnDateSetListener(new MonthYearPickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(int year, int monthOfYear) {
+                monthSelected = monthOfYear;
+                yearSelected = year;
+                updateViews();
+            }
+        });
+
+        dialogFragment.show(getSupportFragmentManager(), null);
+    }
+
+    private MonthYearPickerDialogFragment createDialog() {
+        return MonthYearPickerDialogFragment
+                .getInstance(monthSelected,
+                        yearSelected,
+                        "Pilih Bulan dan Tahun",
+                        MonthFormat.LONG);
+    }
+
+    private void updateViews() {
+        String month = new DateFormatSymbols().getMonths()[monthSelected];
+        if (monthSelected == 0) {
+            month = "Januari";
+        } else if (monthSelected == 1) {
+            month = "Febuari";
+        } else if (monthSelected == 2) {
+            month = "Maret";
+        } else if (monthSelected == 3) {
+            month = "April";
+        } else if (monthSelected == 4) {
+            month = "Mei";
+        } else if (monthSelected == 5) {
+            month = "Juni";
+        } else if (monthSelected == 6) {
+            month = "Juli";
+        } else if (monthSelected == 7) {
+            month = "Agustus";
+        } else if (monthSelected == 8) {
+            month = "September";
+        } else if (monthSelected == 9) {
+            month = "Oktober";
+        } else if (monthSelected == 10) {
+            month = "November";
+        } else if (monthSelected == 11) {
+            month = "Desember";
+        }
+        binding.editTextBulanTahun.setText(String.format("%s / %s", month, yearSelected));
+        tanggal = yearSelected + "-" + (monthSelected + 1) + "-01";
     }
 }

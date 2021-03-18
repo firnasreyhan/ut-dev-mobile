@@ -1,42 +1,72 @@
 package com.unitedtractors.android.unitedtractorsapp.database;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguRuangMeetingEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguRuangMeetingEntity;
 
 import java.util.List;
 
 @Dao
 public interface AppDAO {
-    @Query("SELECT * FROM MingguEntity")
-    LiveData<List<MingguEntity>> getMinggu();
+    //Pompa Air Berish
+    @Query("SELECT * FROM MingguPompaAirBersihEntity")
+    LiveData<List<MingguPompaAirBersihEntity>> getMingguPompaAirBersih();
 
     @Insert
-    void insertMinggu(MingguEntity mingguEntity);
+    void insertMingguPompaAirBersih(MingguPompaAirBersihEntity mingguPompaAirBersihEntity);
 
-    @Query("UPDATE MingguEntity SET status = :status WHERE id = :id")
-    void updateMinggu(int id, boolean status);
+    @Query("UPDATE MingguPompaAirBersihEntity SET status = :status WHERE id = :id")
+    void updateMingguPompaAirBersih(int id, boolean status);
 
-    @Query("SELECT * FROM DetailMingguEntity WHERE mingguKe = :mingguKe")
-    LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe);
+    @Query("SELECT * FROM DetailMingguPompaAirBersihEntity WHERE mingguKe = :mingguKe")
+    LiveData<List<DetailMingguPompaAirBersihEntity>> getDetailMingguPompaAirBersih(int mingguKe);
 
-    @Query("SELECT * FROM DetailMingguEntity")
-    LiveData<List<DetailMingguEntity>> getDetailMinggu();
+    @Query("SELECT * FROM DetailMingguPompaAirBersihEntity")
+    LiveData<List<DetailMingguPompaAirBersihEntity>> getDetailMingguPompaAirBersih();
 
     @Insert
-    void insertDetailMinggu(DetailMingguEntity detailMingguEntity);
+    void insertDetailMingguPompaAirBersih(DetailMingguPompaAirBersihEntity detailMingguPompaAirBersihEntity);
 
-    @Query("DELETE FROM DetailMingguEntity WHERE mingguKe = :mingguKe")
-    void deleteDetailMinggu(int mingguKe);
+    @Query("DELETE FROM DetailMingguPompaAirBersihEntity WHERE mingguKe = :mingguKe")
+    void deleteDetailMingguPompaAirBersih(int mingguKe);
 
-    @Query("DELETE FROM DetailMingguEntity")
-    void deleteDetaiAlllMinggu();
+    @Query("DELETE FROM DetailMingguPompaAirBersihEntity")
+    void deleteDetailAllMingguPompaAirBersih();
 
-    @Query("UPDATE MingguEntity SET status = :status")
-    void updateAllMinggu(boolean status);
+    @Query("UPDATE MingguPompaAirBersihEntity SET status = :status")
+    void updateAllMingguPompaAirBersih(boolean status);
+
+    //Ruang Meeting
+    @Query("SELECT * FROM MingguRuangMeetingEntity")
+    LiveData<List<MingguRuangMeetingEntity>> getMingguRuangMeeting();
+
+    @Insert
+    void insertMingguRuangMeeting(MingguRuangMeetingEntity mingguRuangMeetingEntity);
+
+    @Query("UPDATE MingguRuangMeetingEntity SET status = :status WHERE id = :id")
+    void updateMingguRuangMeeting(int id, boolean status);
+
+    @Query("SELECT * FROM DetailMingguRuangMeetingEntity WHERE mingguKe = :mingguKe")
+    LiveData<List<DetailMingguRuangMeetingEntity>> getDetailMingguRuangMeeting(int mingguKe);
+
+    @Query("SELECT * FROM DetailMingguRuangMeetingEntity")
+    LiveData<List<DetailMingguRuangMeetingEntity>> getDetailMingguRuangMeeting();
+
+    @Insert
+    void insertDetailMingguRuangMeeting(DetailMingguRuangMeetingEntity detailMingguRuangMeetingEntity);
+
+    @Query("DELETE FROM DetailMingguRuangMeetingEntity WHERE mingguKe = :mingguKe")
+    void deleteDetailMingguRuangMeeting(int mingguKe);
+
+    @Query("DELETE FROM DetailMingguRuangMeetingEntity")
+    void deleteDetailAllMingguRuangMeeting();
+
+    @Query("UPDATE MingguRuangMeetingEntity SET status = :status")
+    void updateAllMingguRuangMeeting(boolean status);
 }

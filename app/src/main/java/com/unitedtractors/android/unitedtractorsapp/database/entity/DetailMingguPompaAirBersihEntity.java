@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class DetailMingguEntity {
+public class DetailMingguPompaAirBersihEntity {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     public int id;

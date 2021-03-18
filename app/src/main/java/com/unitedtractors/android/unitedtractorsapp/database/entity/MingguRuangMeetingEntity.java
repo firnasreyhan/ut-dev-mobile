@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity
-public class MingguEntity {
+public class MingguRuangMeetingEntity {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     public int id;

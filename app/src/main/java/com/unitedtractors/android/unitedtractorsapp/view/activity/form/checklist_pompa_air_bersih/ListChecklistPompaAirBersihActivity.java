@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListChecklistPompaAirBersihBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.ListChecklistPompaAirBersihViewModel;
@@ -54,9 +54,9 @@ public class ListChecklistPompaAirBersihActivity extends AppCompatActivity {
 
         viewModel.getDetailMinggu(
                 id
-        ).observe(this, new Observer<List<DetailMingguEntity>>() {
+        ).observe(this, new Observer<List<DetailMingguPompaAirBersihEntity>>() {
             @Override
-            public void onChanged(List<DetailMingguEntity> detailMingguEntities) {
+            public void onChanged(List<DetailMingguPompaAirBersihEntity> detailMingguEntities) {
                 if (detailMingguEntities.isEmpty()) {
                     list.add(new Pertanyaan3Model(
                             "Cek Kondisi Air Dalam Reservoir",
@@ -107,7 +107,7 @@ public class ListChecklistPompaAirBersihActivity extends AppCompatActivity {
                             ""
                     ));
                 } else {
-                    for (DetailMingguEntity entity : detailMingguEntities) {
+                    for (DetailMingguPompaAirBersihEntity entity : detailMingguEntities) {
                         list.add(model(entity));
                         binding.editTextTanggal.setText(entity.tanggalView);
                     }
@@ -164,8 +164,8 @@ public class ListChecklistPompaAirBersihActivity extends AppCompatActivity {
         return true;
     }
 
-    private DetailMingguEntity entity(Pertanyaan3Model model) {
-        DetailMingguEntity entity = new DetailMingguEntity();
+    private DetailMingguPompaAirBersihEntity entity(Pertanyaan3Model model) {
+        DetailMingguPompaAirBersihEntity entity = new DetailMingguPompaAirBersihEntity();
         entity.pertanyaan = model.getPertanyaan();
         entity.mingguKe = id;
         entity.status = model.getStatus();
@@ -176,7 +176,7 @@ public class ListChecklistPompaAirBersihActivity extends AppCompatActivity {
         return entity;
     }
 
-    private Pertanyaan3Model model(DetailMingguEntity entity) {
+    private Pertanyaan3Model model(DetailMingguPompaAirBersihEntity entity) {
         Pertanyaan3Model model = new Pertanyaan3Model(
                 entity.pertanyaan,
                 entity.status,

@@ -5,10 +5,8 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.repository.OfflineRepository;
 
 import java.util.List;
@@ -22,19 +20,19 @@ public class ListChecklistPompaAirBersihViewModel extends AndroidViewModel {
         offlineRepository = new OfflineRepository(application);
     }
 
-    public LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe){
-        return offlineRepository.getDetailMinggu(mingguKe);
+    public LiveData<List<DetailMingguPompaAirBersihEntity>> getDetailMinggu(int mingguKe){
+        return offlineRepository.getDetailMingguPompaAirBersih(mingguKe);
     }
 
-    public void insertDetailMinggu(DetailMingguEntity detailMingguEntity){
-        offlineRepository.insertDetailMinggu(detailMingguEntity);
+    public void insertDetailMinggu(DetailMingguPompaAirBersihEntity detailMingguPompaAirBersihEntity){
+        offlineRepository.insertDetailMingguPompaAirBersih(detailMingguPompaAirBersihEntity);
     }
 
     public void deleteDetailMinggu(int mingguKe){
-        offlineRepository.deleteDetailMinggu(mingguKe);
+        offlineRepository.deleteDetailMingguPompaAirBersih(mingguKe);
     }
 
     public void updateMinggu(int id, boolean b){
-        offlineRepository.updateMinggu(id, b);
+        offlineRepository.updateMingguPompaAirBersih(id, b);
     }
 }

@@ -16,6 +16,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.ChecklistPompaAirBersihActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting.ChecklistRuangMeetingActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.identifikasi.IdentifikasiActivity;
@@ -167,6 +168,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Permintaan Catering Reguler
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_ad87a2b2fe39467ddf6639b36bf22579")) {
                         intent = new Intent(v.getContext(), NewPermintaanCateringRegulerActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Checklist Ruang Meeting
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_4316e329225c7df1b08b8fcb435dfd65")) {
+                        intent = new Intent(v.getContext(), ChecklistRuangMeetingActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

@@ -165,27 +165,6 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postChecklistRuangMeeting(String body) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
-        apiInterface.postChecklistRuangMeeting(
-                body
-        ).enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("postCheckRuangMeeting", t.getMessage());
-                data.postValue(null);
-            }
-        });
-        return data;
-    }
-
     public MutableLiveData<BaseResponse> postOrderCatering(String body) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postOrderCatering(
@@ -537,6 +516,27 @@ public class OnlineRepository {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postCateringReguler", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postRuangMeeting(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postRuangMeeting(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postRuangMeeting", t.getMessage());
                 data.postValue(null);
             }
         });

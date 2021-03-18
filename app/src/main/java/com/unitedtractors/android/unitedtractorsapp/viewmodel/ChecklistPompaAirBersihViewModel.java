@@ -1,7 +1,6 @@
 package com.unitedtractors.android.unitedtractorsapp.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,14 +8,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.model.ChecklistForHydrantModel;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistPompaAirBersihModel;
 import com.unitedtractors.android.unitedtractorsapp.repository.OfflineRepository;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,24 +29,24 @@ public class ChecklistPompaAirBersihViewModel extends AndroidViewModel {
         onlineRepository = new OnlineRepository();
     }
 
-    public LiveData<List<MingguEntity>> getMinggu(){
-        return offlineRepository.getMinggu();
+    public LiveData<List<MingguPompaAirBersihEntity>> getMinggu(){
+        return offlineRepository.getMingguPompaAirBersih();
     }
 
-    public LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe){
-        return offlineRepository.getDetailMinggu(mingguKe);
+    public LiveData<List<DetailMingguPompaAirBersihEntity>> getDetailMinggu(int mingguKe){
+        return offlineRepository.getDetailMingguPompaAirBersih(mingguKe);
     }
 
-    public void insertMinggu(MingguEntity mingguEntity){
-        offlineRepository.insertMinggu(mingguEntity);
+    public void insertMinggu(MingguPompaAirBersihEntity mingguPompaAirBersihEntity){
+        offlineRepository.insertMingguPompaAirBersih(mingguPompaAirBersihEntity);
     }
 
     public void deleteDetaiAlllMinggu(){
-        offlineRepository.deleteDetaiAlllMinggu();
+        offlineRepository.deleteDetailAllMingguPompaAirBersih();
     }
 
     public void updateAllMinggu(boolean status){
-        offlineRepository.updateAllMinggu(status);
+        offlineRepository.updateAllMingguPompaAirBersih(status);
     }
 
     public MutableLiveData<BaseResponse> postICPAB(ChecklistPompaAirBersihModel model) {

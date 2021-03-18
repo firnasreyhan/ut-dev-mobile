@@ -11,15 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguRuangMeetingEntity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.ListChecklistPompaAirBersihActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting.ListCheckRuangMeetingActivity;
 
 import java.util.List;
 
-public class MingguAdapter extends RecyclerView.Adapter<MingguAdapter.ViewHolder> {
-    private List<MingguEntity> list;
+public class MingguRuangMeetingAdapter extends RecyclerView.Adapter<MingguRuangMeetingAdapter.ViewHolder> {
+    private List<MingguRuangMeetingEntity> list;
 
-    public MingguAdapter(List<MingguEntity> list) {
+    public MingguRuangMeetingAdapter(List<MingguRuangMeetingEntity> list) {
         this.list = list;
     }
 
@@ -57,7 +59,7 @@ public class MingguAdapter extends RecyclerView.Adapter<MingguAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), ListChecklistPompaAirBersihActivity.class);
+                    Intent intent = new Intent(v.getContext(), ListCheckRuangMeetingActivity.class);
                     intent.putExtra("ID", list.get(getAdapterPosition()).id);
                     v.getContext().startActivity(intent);
                 }

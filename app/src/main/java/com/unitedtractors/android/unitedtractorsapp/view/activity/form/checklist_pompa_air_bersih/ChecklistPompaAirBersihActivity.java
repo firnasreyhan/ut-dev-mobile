@@ -18,10 +18,10 @@ import com.github.dewinjm.monthyearpicker.MonthFormat;
 import com.github.dewinjm.monthyearpicker.MonthYearPickerDialog;
 import com.github.dewinjm.monthyearpicker.MonthYearPickerDialogFragment;
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.adapter.MingguAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.MingguPompaAirBersihAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityChecklistPompaAirBersihBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistPompaAirBersihModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -77,16 +77,16 @@ public class ChecklistPompaAirBersihActivity extends AppCompatActivity {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(ChecklistPompaAirBersihActivity.this));
 
-        viewModel.getMinggu().observe(this, new Observer<List<MingguEntity>>() {
+        viewModel.getMinggu().observe(this, new Observer<List<MingguPompaAirBersihEntity>>() {
             @Override
-            public void onChanged(List<MingguEntity> mingguEntities) {
+            public void onChanged(List<MingguPompaAirBersihEntity> mingguEntities) {
                 if (mingguEntities.isEmpty()) {
                     viewModel.insertMinggu(mingguEntity("Minggu Ke 1", false));
                     viewModel.insertMinggu(mingguEntity("Minggu Ke 2", false));
                     viewModel.insertMinggu(mingguEntity("Minggu Ke 3", false));
                     viewModel.insertMinggu(mingguEntity("Minggu Ke 4", false));
                 } else {
-                    binding.recyclerView.setAdapter(new MingguAdapter(mingguEntities));
+                    binding.recyclerView.setAdapter(new MingguPompaAirBersihAdapter(mingguEntities));
 
                     isValid = mingguEntities.get(0).status && mingguEntities.get(1).status && mingguEntities.get(2).status && mingguEntities.get(3).status;
                 }
@@ -96,33 +96,6 @@ public class ChecklistPompaAirBersihActivity extends AppCompatActivity {
         binding.editTextBulanTahun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(NewChecklistPompaAirBersihActivity.this, new MonthPickerDialog.OnDateSetListener() {
-//                    @Override
-//                    public void onDateSet(int selectedMonth, int selectedYear) {
-//                        Log.d("date", "selectedMonth : " + selectedMonth + " selectedYear : " + selectedYear);
-//                        Toast.makeText(NewChecklistPompaAirBersihActivity.this, "Date set with month" + selectedMonth + " year " + selectedYear, Toast.LENGTH_SHORT).show();
-//                    }
-//                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
-//
-//                builder.setActivatedMonth(Calendar.MONTH)
-//                        .setActivatedYear(Calendar.YEAR)
-//                        .setTitle("Select trading month")
-//                        .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
-//                            @Override
-//                            public void onMonthChanged(int selectedMonth) {
-//                                Log.d("TAG", "Selected month : " + selectedMonth);
-//                                // Toast.makeText(MainActivity.this, " Selected month : " + selectedMonth, Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
-//                        .setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
-//                            @Override
-//                            public void onYearChanged(int selectedYear) {
-//                                Log.d("TAG", "Selected year : " + selectedYear);
-//                                // Toast.makeText(MainActivity.this, " Selected year : " + selectedYear, Toast.LENGTH_SHORT).show();
-//                            }
-//                        })
-//                        .build()
-//                        .show();
                 displayMonthYearPickerDialogFragment();
             }
         });
@@ -223,8 +196,8 @@ public class ChecklistPompaAirBersihActivity extends AppCompatActivity {
         return true;
     }
 
-    private MingguEntity mingguEntity(String mingguKe, boolean status) {
-        MingguEntity entity = new MingguEntity();
+    private MingguPompaAirBersihEntity mingguEntity(String mingguKe, boolean status) {
+        MingguPompaAirBersihEntity entity = new MingguPompaAirBersihEntity();
         entity.mingguKe = mingguKe;
         entity.status = status;
         return entity;
@@ -233,9 +206,9 @@ public class ChecklistPompaAirBersihActivity extends AppCompatActivity {
     private void detailMinggu(int mingguKe) {
         viewModel.getDetailMinggu(
                 mingguKe
-        ).observe(this, new Observer<List<DetailMingguEntity>>() {
+        ).observe(this, new Observer<List<DetailMingguPompaAirBersihEntity>>() {
             @Override
-            public void onChanged(List<DetailMingguEntity> detailMingguEntities) {
+            public void onChanged(List<DetailMingguPompaAirBersihEntity> detailMingguEntities) {
                 if (detailMingguEntities != null) {
                     if (!detailMingguEntities.isEmpty()) {
                         if (detailMingguEntities.size() == 8) {
