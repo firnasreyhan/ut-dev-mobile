@@ -54,17 +54,17 @@ public class ChecklistPompaAirBersihViewModel extends AndroidViewModel {
 
     public MutableLiveData<BaseResponse> postICPAB(ChecklistPompaAirBersihModel model) {
         try {
-            JSONObject paramObject = new JSONObject();
-            paramObject.put("idUser", model.getIdUser());
-            paramObject.put("idMapping", model.getIdMapping());
-            paramObject.put("tgl", model.getTgl());
-            paramObject.put("lokasi", model.getLokasi());
+            JSONObject object = new JSONObject();
+            object.put("idUser", model.getIdUser());
+            object.put("idMapping", model.getIdMapping());
+            object.put("tgl", model.getTgl());
+            object.put("lokasi", model.getLokasi());
 
-            paramObject.put("cek1", detailMinggu(model.getMinggu1()));
-            paramObject.put("cek2", detailMinggu(model.getMinggu2()));
-            paramObject.put("cek3", detailMinggu(model.getMinggu3()));
-            paramObject.put("cek4", detailMinggu(model.getMinggu4()));
-            return onlineRepository.postICPAB(paramObject.toString());
+            object.put("cek1", detailMinggu(model.getMinggu1()));
+            object.put("cek2", detailMinggu(model.getMinggu2()));
+            object.put("cek3", detailMinggu(model.getMinggu3()));
+            object.put("cek4", detailMinggu(model.getMinggu4()));
+            return onlineRepository.postICPAB(object.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -75,6 +75,7 @@ public class ChecklistPompaAirBersihViewModel extends AndroidViewModel {
     private JSONObject detailMinggu(ChecklistPompaAirBersihModel.DetailMinggu detailMinggu) {
         JSONObject object = new JSONObject();
         try {
+            object.put("tgl", detailMinggu.getTgl());
             object.put("kondAir", detailChecklist(detailMinggu.getKondAir()));
             object.put("airPancingan", detailChecklist(detailMinggu.getAirPancingan()));
             object.put("indikator", detailChecklist(detailMinggu.getIndikator()));

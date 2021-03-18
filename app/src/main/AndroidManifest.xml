@@ -19,8 +19,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
         <activity android:name=".view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity"/>
-        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.NewListChecklistPompaAirBersihActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.NewChecklistPompaAirBersihActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.ListChecklistPompaAirBersihActivity" />
+        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.ChecklistPompaAirBersihActivity" />
         <activity android:name=".view.activity.form.deklarasi.KonfirmasiDeklarasiActivity" />
         <activity android:name=".view.activity.form.deklarasi.ListDeklarasiActivity" />
         <activity android:name=".view.activity.form.deklarasi.DeklarasiActivity" />
@@ -32,8 +32,6 @@
         <activity android:name=".view.activity.form.internal_work_order.KeteranganInternalWorkOrderActivity" />
         <activity android:name=".view.activity.form.internal_work_order.InternalWorkOrderActivity" />
         <activity android:name=".view.activity.form.evaluasi_pekerjaan_vendor.EvaluasiPekerjaanVendorActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.ListChecklistPompaAirBersihMainActivity" />
-        <activity android:name=".view.activity.form.checklist_pompa_air_bersih.ChecklistPompaAirBersihActivity" />
         <activity android:name=".view.activity.ListFormActivity" />
         <activity android:name=".view.activity.form.survery_kepuasan_pelanggan.DetailSurveyKepuasanPelangganActivity"/>
         <activity android:name=".view.activity.form.survery_kepuasan_pelanggan.SurveryKepuasanPelangganActivity" />

@@ -1,7 +1,6 @@
 package com.unitedtractors.android.unitedtractorsapp.adapter;
 
 import android.content.Intent;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguEntity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.NewListChecklistPompaAirBersihActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.ListChecklistPompaAirBersihActivity;
 
 import java.util.List;
 
@@ -58,7 +57,7 @@ public class MingguAdapter extends RecyclerView.Adapter<MingguAdapter.ViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), NewListChecklistPompaAirBersihActivity.class);
+                    Intent intent = new Intent(v.getContext(), ListChecklistPompaAirBersihActivity.class);
                     intent.putExtra("ID", list.get(getAdapterPosition()).id);
                     v.getContext().startActivity(intent);
                 }

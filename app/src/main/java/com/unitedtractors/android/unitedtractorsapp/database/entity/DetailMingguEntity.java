@@ -25,4 +25,10 @@ public class DetailMingguEntity {
 
     @ColumnInfo(name = "catatan")
     public String catatan;
+
+    @ColumnInfo(name = "tanggal")
+    public String tanggal;
+
+    @ColumnInfo(name = "tanggalView")
+    public String tanggalView;
 }

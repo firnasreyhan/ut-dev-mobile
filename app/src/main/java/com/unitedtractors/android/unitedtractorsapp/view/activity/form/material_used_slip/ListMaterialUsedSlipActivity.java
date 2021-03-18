@@ -65,68 +65,68 @@ public class ListMaterialUsedSlipActivity extends AppCompatActivity {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(new MaterialUsedSlipAdapter(list));
 
-        binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkData()) {
-                    progressDialog.show();
-                    viewModel.postMaterialUsedSlip(
-                            model
-                    ).observe(ListMaterialUsedSlipActivity.this, new Observer<BaseResponse>() {
-                        @Override
-                        public void onChanged(BaseResponse baseResponse) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-
-                            if (baseResponse != null) {
-                                if (baseResponse.isStatus()) {
-                                    startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
-                                } else {
-                                    new AlertDialog.Builder(v.getContext())
-                                            .setTitle("Pesan")
-                                            .setMessage(baseResponse.getMessage())
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.dismiss();
-                                                }
-                                            })
-                                            .create()
-                                            .show();
-                                }
-                            } else {
-                                new AlertDialog.Builder(v.getContext())
-                                        .setTitle("Pesan")
-                                        .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .create()
-                                        .show();
-                            }
-                        }
-                    });
-                } else {
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
-                }
-
-            }
-        });
+//        binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (checkData()) {
+//                    progressDialog.show();
+//                    viewModel.postMaterialUsedSlip(
+//                            model
+//                    ).observe(ListMaterialUsedSlipActivity.this, new Observer<BaseResponse>() {
+//                        @Override
+//                        public void onChanged(BaseResponse baseResponse) {
+//                            if (progressDialog.isShowing()) {
+//                                progressDialog.dismiss();
+//                            }
+//
+//                            if (baseResponse != null) {
+//                                if (baseResponse.isStatus()) {
+//                                    startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+//                                } else {
+//                                    new AlertDialog.Builder(v.getContext())
+//                                            .setTitle("Pesan")
+//                                            .setMessage(baseResponse.getMessage())
+//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                                @Override
+//                                                public void onClick(DialogInterface dialog, int which) {
+//                                                    dialog.dismiss();
+//                                                }
+//                                            })
+//                                            .create()
+//                                            .show();
+//                                }
+//                            } else {
+//                                new AlertDialog.Builder(v.getContext())
+//                                        .setTitle("Pesan")
+//                                        .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
+//                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                            @Override
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                dialog.dismiss();
+//                                            }
+//                                        })
+//                                        .create()
+//                                        .show();
+//                            }
+//                        }
+//                    });
+//                } else {
+//                    new AlertDialog.Builder(v.getContext())
+//                            .setTitle("Pesan")
+//                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
+//                            .setCancelable(false)
+//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                @Override
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    dialog.dismiss();
+//                                }
+//                            })
+//                            .create()
+//                            .show();
+//                }
+//
+//            }
+//        });
     }
 
     @Override

@@ -14,7 +14,7 @@ import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.ChecklistForGensetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.NewChecklistPompaAirBersihActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.ChecklistPompaAirBersihActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
@@ -22,15 +22,11 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.identifik
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.material_used_slip.MaterialUsedSlipActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.order_catering.OrderCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan.PerbaikanActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.sidak_catering.SidakCateringActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.survery_kepuasan_pelanggan.SurveryKepuasanPelangganActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
 
 import java.util.List;
@@ -157,7 +153,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                     //Form Inspection Check List Pompa Air Bersih
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_d5e8dc39bd0ab682ac54d305059c47ab")) {
-                        intent = new Intent(v.getContext(), NewChecklistPompaAirBersihActivity.class);
+                        intent = new Intent(v.getContext(), ChecklistPompaAirBersihActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
