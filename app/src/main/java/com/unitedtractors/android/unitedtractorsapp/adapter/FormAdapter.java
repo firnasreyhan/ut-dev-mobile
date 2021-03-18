@@ -27,6 +27,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.sidak_catering.SidakCateringActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.survery_kepuasan_pelanggan.DetailSurveyKepuasanPelangganActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
 
 import java.util.List;
@@ -154,6 +155,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Form Inspection Check List Pompa Air Bersih
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_d5e8dc39bd0ab682ac54d305059c47ab")) {
                         intent = new Intent(v.getContext(), ChecklistPompaAirBersihActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Survey Kepuasan Pelanggan
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_91d115ecfb647d098a42074a12e36f53")) {
+                        intent = new Intent(v.getContext(), DetailSurveyKepuasanPelangganActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

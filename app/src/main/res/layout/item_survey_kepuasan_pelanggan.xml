@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_7sdp"
+    app:cardElevation="0dp"
+    app:cardBackgroundColor="@android:color/white"
+    app:cardCornerRadius="@dimen/_7sdp"
+    app:strokeColor="@color/box_stroke"
+    app:strokeWidth="@dimen/_1sdp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_13sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewPertanyaan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:lineSpacingExtra="@dimen/_3sdp"
+            android:text="-"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_8sdp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioButtonSangatPuas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Sangat Puas"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonPuas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Puas"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonCukupPuas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Cukup Puas"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonTidakPuas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Tidak Puas"/>
+
+            <RadioButton
+                android:id="@+id/radioButtonSangatTidakPuas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Sangat Tidak Puas"/>
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
