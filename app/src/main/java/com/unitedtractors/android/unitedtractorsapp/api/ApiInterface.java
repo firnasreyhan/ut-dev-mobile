@@ -66,12 +66,6 @@ public interface ApiInterface {
     );
 
     @Headers("Content-Type: application/json")
-    @POST("formPermintaanCateringReguler")
-    Call<BaseResponse> postPermintaanCateringReguler(
-            @Body String body
-    );
-
-    @Headers("Content-Type: application/json")
     @POST("formMaterialUsedSlip")
     Call<BaseResponse> postMaterialUsedSlip(
             @Body String body
@@ -202,6 +196,12 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("formKepuasan")
     Call<BaseResponse> postKepuasan(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formCateringReguler")
+    Call<BaseResponse> postCateringReguler(
             @Body String body
     );
 

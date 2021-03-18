@@ -228,27 +228,6 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postPermintaanCateringReguler(String body) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
-        apiInterface.postPermintaanCateringReguler(
-                body
-        ).enqueue(new Callback<BaseResponse>() {
-            @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("postPermintaanCatReg", t.getMessage());
-                data.postValue(null);
-            }
-        });
-        return data;
-    }
-
     public MutableLiveData<PostMobilResponse> postPermintaanMobilDinas(String body) {
         MutableLiveData<PostMobilResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilDinas(
@@ -537,6 +516,27 @@ public class OnlineRepository {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postKepuasan", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postCateringReguler(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postCateringReguler(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postCateringReguler", t.getMessage());
                 data.postValue(null);
             }
         });

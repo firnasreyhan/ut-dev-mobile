@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity.form.perminta
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -13,28 +14,28 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanCateringRegulerAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanCateringRegulerBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityNewKonfirmasiPermintaanCateringRegulerBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.CateringRegulerModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.PermintaanCateringRegulerViewModel;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class KonfirmasiPermintaanCateringRegulerActivity extends AppCompatActivity {
-    private ActivityKonfirmasiPermintaanCateringRegulerBinding binding;
+public class NewKonfirmasiPermintaanCateringRegulerActivity extends AppCompatActivity {
+    private ActivityNewKonfirmasiPermintaanCateringRegulerBinding binding;
     private PermintaanCateringRegulerViewModel viewModel;
     private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityKonfirmasiPermintaanCateringRegulerBinding.inflate(getLayoutInflater());
+        binding = ActivityNewKonfirmasiPermintaanCateringRegulerBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         viewModel = ViewModelProviders.of(this).get(PermintaanCateringRegulerViewModel.class);
 
@@ -47,24 +48,14 @@ public class KonfirmasiPermintaanCateringRegulerActivity extends AppCompatActivi
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String idMapping = getIntent().getStringExtra("ID_MAPPING");
-        String tglCekView = getIntent().getStringExtra("TGL_CATERING_VIEW");
-        String tglCekServer = getIntent().getStringExtra("TGL_CATERING_SERVER");
-        String jumlahOrang = getIntent().getStringExtra("JUMLAH_ORANG");
-
-        binding.textViewJumlahOrang.setText(jumlahOrang);
-        binding.textViewTanggal.setText(tglCekView);
-
-        List<CateringRegulerModel.DetailCatering> list = new ArrayList<>();
-        list.add(new CateringRegulerModel.DetailCatering(
-                tglCekServer,
-                jumlahOrang
-        ));
+        binding.recyclerView.setHasFixedSize(true);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(new PermintaanCateringRegulerAdapter(PermintaanCateringRegulerAdapter.getList(), false));
 
         CateringRegulerModel model = new CateringRegulerModel(
                 AppPreference.getUser(this).getIdUsers(),
                 idMapping,
-                list
+                PermintaanCateringRegulerAdapter.getList()
         );
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -87,7 +78,7 @@ public class KonfirmasiPermintaanCateringRegulerActivity extends AppCompatActivi
 
                 viewModel.postCateringReguler(
                         model
-                ).observe(KonfirmasiPermintaanCateringRegulerActivity.this, new Observer<BaseResponse>() {
+                ).observe(NewKonfirmasiPermintaanCateringRegulerActivity.this, new Observer<BaseResponse>() {
                     @Override
                     public void onChanged(BaseResponse baseResponse) {
                         if (progressDialog.isShowing()) {

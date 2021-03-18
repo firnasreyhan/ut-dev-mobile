@@ -108,23 +108,9 @@ public class PermintaanCateringRegulerActivity extends AppCompatActivity {
                     intent.putExtra("ID_MAPPING", idMapping);
                     intent.putExtra("TGL_CATERING_SERVER", tglCateringServer);
                     intent.putExtra("TGL_CATERING_VIEW", tglCateringView);
-                    intent.putExtra("JUMLAH_ORANG", binding.editTextJumlahOrang.getText().toString().trim());
+                    intent.putExtra("JUMLAH_ORANG", binding.editTextJumlahOrang.getText().toString());
                     startActivity(intent);
-                }else {
-                    new AlertDialog.Builder(v.getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
                 }
-
             }
         });
     }
