@@ -24,7 +24,7 @@ public class PanelHydrantViewModel extends AndroidViewModel {
         onlineRepository = new OnlineRepository();
     }
 
-    public MutableLiveData<BaseResponse> posICH(ChecklistForHydrantModel model) {
+    public MutableLiveData<BaseResponse> postICH(ChecklistForHydrantModel model) {
         try {
             JSONObject paramObject = new JSONObject();
             paramObject.put("idUser", model.getIdUser());
@@ -67,12 +67,12 @@ public class PanelHydrantViewModel extends AndroidViewModel {
 //            paramObject.put("konektorPanel", object(model.getPanelHydrant().get(4)));
 
             paramObject.put("catatan", model.getCatatan());
-            return onlineRepository.posICH(paramObject.toString());
+            return onlineRepository.postICH(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return onlineRepository.posICH(null);
+        return onlineRepository.postICH(null);
     }
 
 //    private JSONObject object(ChecklistForHydrantModel.DetailChecklistHydrant model) {

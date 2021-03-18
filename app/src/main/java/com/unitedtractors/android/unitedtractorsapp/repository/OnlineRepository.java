@@ -459,9 +459,9 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> posICH(String body) {
+    public MutableLiveData<BaseResponse> postICH(String body) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
-        apiInterface.posICH(
+        apiInterface.postICH(
                 body
         ).enqueue(new Callback<BaseResponse>() {
             @Override
@@ -473,7 +473,28 @@ public class OnlineRepository {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                Log.e("posICH", t.getMessage());
+                Log.e("postICH", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postICPAB(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postICPAB(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postICPAB", t.getMessage());
                 data.postValue(null);
             }
         });

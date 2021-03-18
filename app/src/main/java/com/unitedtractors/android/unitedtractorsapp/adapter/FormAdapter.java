@@ -153,6 +153,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         intent = new Intent(v.getContext(), ChecklistForHydrantActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
+                    //Form Inspection Check List Pompa Air Bersih
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_d5e8dc39bd0ab682ac54d305059c47ab")) {
+                        intent = new Intent(v.getContext(), NewChecklistPompaAirBersihActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
 //                        intent = new Intent(v.getContext(), PermintaanMobilDinasActivity.class);
 //                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());

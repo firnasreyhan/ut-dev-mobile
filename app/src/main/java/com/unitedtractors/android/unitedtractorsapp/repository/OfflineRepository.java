@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.repository;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.database.AppDAO;
 import com.unitedtractors.android.unitedtractorsapp.database.Database;
@@ -42,6 +43,10 @@ public class OfflineRepository {
 
     public LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe){
         return appDAO.getDetailMinggu(mingguKe);
+    }
+
+    public LiveData<List<DetailMingguEntity>> getDetailMinggu(){
+        return appDAO.getDetailMinggu();
     }
 
     public void insertDetailMinggu (final DetailMingguEntity detailMingguEntity){

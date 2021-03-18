@@ -183,7 +183,13 @@ public interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("formICH")
-    Call<BaseResponse> posICH(
+    Call<BaseResponse> postICH(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formICPAB")
+    Call<BaseResponse> postICPAB(
             @Body String body
     );
 

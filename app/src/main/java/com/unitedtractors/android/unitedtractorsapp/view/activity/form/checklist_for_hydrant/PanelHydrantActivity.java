@@ -10,20 +10,16 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.ChecklistForHydrantAdapter;
-import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPanelHydrantBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistForHydrantModel;
-import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.CheckingRunningTestActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.PanelHydrantViewModel;
 
 import java.util.ArrayList;
@@ -119,7 +115,7 @@ public class PanelHydrantActivity extends AppCompatActivity {
                         ChecklistForHydrantAdapter.getList()
                 );
 
-                viewModel.posICH(
+                viewModel.postICH(
                         model
                 ).observe(PanelHydrantActivity.this, new Observer<BaseResponse>() {
                     @Override

@@ -1,6 +1,7 @@
 package com.unitedtractors.android.unitedtractorsapp.database;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -23,6 +24,9 @@ public interface AppDAO {
 
     @Query("SELECT * FROM DetailMingguEntity WHERE mingguKe = :mingguKe")
     LiveData<List<DetailMingguEntity>> getDetailMinggu(int mingguKe);
+
+    @Query("SELECT * FROM DetailMingguEntity")
+    LiveData<List<DetailMingguEntity>> getDetailMinggu();
 
     @Insert
     void insertDetailMinggu(DetailMingguEntity detailMingguEntity);
