@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.permintaan_catering_reguler.NewKonfirmasiPermintaanCateringRegulerActivity"></activity>
+        <activity android:name=".view.activity.form.permintaan_catering_reguler.NewKonfirmasiPermintaanCateringRegulerActivity"/>
         <activity android:name=".view.activity.form.permintaan_catering_reguler.NewListPermintaanCateringRegulerActivity" />
         <activity android:name=".view.activity.form.permintaan_catering_reguler.NewPermintaanCateringRegulerActivity" />
         <activity android:name=".view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity" />
@@ -36,6 +36,9 @@
         <activity android:name=".view.activity.form.internal_work_order.InternalWorkOrderActivity" />
         <activity android:name=".view.activity.form.evaluasi_pekerjaan_vendor.EvaluasiPekerjaanVendorActivity" />
         <activity android:name=".view.activity.ListFormActivity" />
+        <activity android:name=".view.activity.form.checklist_alat_komunikasi.TroublesInformationActivity"/>
+        <activity android:name=".view.activity.form.checklist_alat_komunikasi.RepeaterRadioActivity" />
+        <activity android:name=".view.activity.form.checklist_alat_komunikasi.PabxActivity" />
         <activity android:name=".view.activity.form.survery_kepuasan_pelanggan.DetailSurveyKepuasanPelangganActivity" />
         <activity android:name=".view.activity.form.survery_kepuasan_pelanggan.SurveryKepuasanPelangganActivity" />
         <activity android:name=".view.activity.form.checklist_alat_komunikasi.ChecklistAlatKomunikasiActivity" />

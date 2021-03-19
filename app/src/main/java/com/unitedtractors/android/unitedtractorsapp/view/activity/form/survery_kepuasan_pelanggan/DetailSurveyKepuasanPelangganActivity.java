@@ -31,6 +31,8 @@ public class DetailSurveyKepuasanPelangganActivity extends AppCompatActivity {
     private SurveyKepuasanPelangganViewModel viewModel;
     private ProgressDialog progressDialog;
 
+    SurveyKepuasanPelangganModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,11 @@ public class DetailSurveyKepuasanPelangganActivity extends AppCompatActivity {
         setContentView(view);
 
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
+        String tglSurvey = getIntent().getStringExtra("TGL_SURVEY");
+        String nama = getIntent().getStringExtra("NAM");
+        String departemen = getIntent().getStringExtra("DEPARTEMEN");
+        String divisi = getIntent().getStringExtra("DIVISI");
+
 
         viewModel = ViewModelProviders.of(this).get(SurveyKepuasanPelangganViewModel.class);
         progressDialog = new ProgressDialog(this);
