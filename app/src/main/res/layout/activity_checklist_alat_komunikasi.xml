@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".view.activity.form.checklist_alat_komunikasi.ChecklistAlatKomunikasiActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -95,7 +96,6 @@
                             android:id="@+id/editTextTanggalChecklist"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_3sdp"
                             android:backgroundTint="@color/hint_color"
                             android:clickable="true"
                             android:drawableEnd="@drawable/ic_outline_calendar"

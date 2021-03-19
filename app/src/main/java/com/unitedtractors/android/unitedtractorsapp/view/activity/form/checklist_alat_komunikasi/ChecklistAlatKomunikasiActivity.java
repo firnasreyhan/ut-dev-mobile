@@ -20,27 +20,23 @@ import java.util.Locale;
 public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
     private ActivityChecklistAlatKomunikasiBinding binding;
 
-    Calendar calendar;
-    String idMapping;
+    private Calendar calendar;
+    private String idMapping;
     private String tgl;
-    private String lokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        idMapping = getIntent().getStringExtra("ID_MAPPING");
-
         binding = ActivityChecklistAlatKomunikasiBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        binding.materialButtonSelanjutnya.setEnabled(true);
-        binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
 
         calendar = Calendar.getInstance();
 
@@ -55,7 +51,7 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 binding.editTextTanggalChecklist.setText(simpleDateFormatView.format(calendar.getTime()));
-                tgl = simpleDateFormatView.format(calendar.getTime());
+                tgl = simpleDateFormatServer.format(calendar.getTime());
             }
         };
 
@@ -68,8 +64,6 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
             }
         });
 
-        lokasi = binding.editTextLokasi.getText().toString().trim();
-
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,11 +71,17 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), PabxActivity.class);
                     intent.putExtra("ID_MAPPING", idMapping);
                     intent.putExtra("TGL", tgl);
-                    intent.putExtra("LOKASI", lokasi);
+                    intent.putExtra("LOKASI", binding.editTextLokasi.getText().toString());
                     startActivity(intent);
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     private boolean checkData() {
@@ -98,13 +98,6 @@ public class ChecklistAlatKomunikasiActivity extends AppCompatActivity {
             cek2 = false;
         }
 
-
         return cek1 && cek2;
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }
