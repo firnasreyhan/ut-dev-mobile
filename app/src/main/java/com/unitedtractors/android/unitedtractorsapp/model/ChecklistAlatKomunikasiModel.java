@@ -1,5 +1,6 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class ChecklistAlatKomunikasiModel {
@@ -8,7 +9,6 @@ public class ChecklistAlatKomunikasiModel {
     private String tanggal;
     private String lokasi;
     private List<DetailChecklistAlatKomunikasi> pabx;
-    private List<DetailChecklistAlatKomunikasi> progData;
     private List<DetailChecklistAlatKomunikasi> repeater;
     private List<DetailChecklistAlatKomunikasi> radio;
     private String keterangan;
@@ -19,13 +19,12 @@ public class ChecklistAlatKomunikasiModel {
     private String deadLine;
     private String pic;
 
-    public ChecklistAlatKomunikasiModel(String idUser, String idMapping, String tanggal, String lokasi, List<DetailChecklistAlatKomunikasi> pabx, List<DetailChecklistAlatKomunikasi> progData, List<DetailChecklistAlatKomunikasi> repeater, List<DetailChecklistAlatKomunikasi> radio, String keterangan, String probIdentification, String rootCause, String correctAct, String preventAct, String deadLine, String pic) {
+    public ChecklistAlatKomunikasiModel(String idUser, String idMapping, String tanggal, String lokasi, List<DetailChecklistAlatKomunikasi> pabx, List<DetailChecklistAlatKomunikasi> repeater, List<DetailChecklistAlatKomunikasi> radio, String keterangan, String probIdentification, String rootCause, String correctAct, String preventAct, String deadLine, String pic) {
         this.idUser = idUser;
         this.idMapping = idMapping;
         this.tanggal = tanggal;
         this.lokasi = lokasi;
         this.pabx = pabx;
-        this.progData = progData;
         this.repeater = repeater;
         this.radio = radio;
         this.keterangan = keterangan;
@@ -75,14 +74,6 @@ public class ChecklistAlatKomunikasiModel {
 
     public void setPabx(List<DetailChecklistAlatKomunikasi> pabx) {
         this.pabx = pabx;
-    }
-
-    public List<DetailChecklistAlatKomunikasi> getProgData() {
-        return progData;
-    }
-
-    public void setProgData(List<DetailChecklistAlatKomunikasi> progData) {
-        this.progData = progData;
     }
 
     public List<DetailChecklistAlatKomunikasi> getRepeater() {
@@ -157,7 +148,7 @@ public class ChecklistAlatKomunikasiModel {
         this.pic = pic;
     }
 
-    public static class DetailChecklistAlatKomunikasi {
+    public static class DetailChecklistAlatKomunikasi implements Serializable {
         private String pertanyaan;
         private int status;
 

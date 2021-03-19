@@ -8,26 +8,28 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ChecklistAlatKomunikasiAdapter;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityPabxBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityRadioBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.ChecklistAlatKomunikasiModel;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PabxActivity extends AppCompatActivity {
-    private ActivityPabxBinding binding;
+public class RadioActivity extends AppCompatActivity {
+    private ActivityRadioBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPabxBinding.inflate(getLayoutInflater());
+        binding = ActivityRadioBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
         String tgl = getIntent().getStringExtra("TGL");
         String lokasi = getIntent().getStringExtra("LOKASI");
+        List<ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi> pabx = (List<ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi>) getIntent().getSerializableExtra("PABX");
+        List<ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi> repeater = (List<ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi>) getIntent().getSerializableExtra("REPEATER");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -36,63 +38,19 @@ public class PabxActivity extends AppCompatActivity {
 
         List<ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi> list = new ArrayList<>();
         list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card Ext & Direct / LC CO",
+                "Perangkat Radio",
                 1
         ));
         list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card Register",
+                "Power Supply",
                 1
         ));
         list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card dterm",
+                "Antena",
                 1
         ));
         list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card Consul",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card Tieline TLTR",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card switch change TDSW",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Card Interface",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Control Processing Unit CPU",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Alarm Control Card",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Billing System",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Voice Mail",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Incoming",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Out Going",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Vsat / Tie line",
-                1
-        ));
-        list.add(new ChecklistAlatKomunikasiModel.DetailChecklistAlatKomunikasi(
-                "Password",
+                "Kabel Coaxial",
                 1
         ));
 
@@ -103,11 +61,13 @@ public class PabxActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), RepeaterActivity.class);
+                Intent intent = new Intent(v.getContext(), TroublesInformationActivity.class);
                 intent.putExtra("ID_MAPPING", idMapping);
                 intent.putExtra("TGL", tgl);
                 intent.putExtra("LOKASI", lokasi);
-                intent.putExtra("PABX", (Serializable) ChecklistAlatKomunikasiAdapter.getList());
+                intent.putExtra("PABX", (Serializable) pabx);
+                intent.putExtra("REPEATER", (Serializable) repeater);
+                intent.putExtra("RADIO", (Serializable) ChecklistAlatKomunikasiAdapter.getList());
                 startActivity(intent);
             }
         });

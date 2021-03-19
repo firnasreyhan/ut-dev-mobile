@@ -8,7 +8,7 @@
     android:background="@color/background"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".view.activity.form.checklist_alat_komunikasi.RepeaterRadioActivity">
+    tools:context=".view.activity.form.checklist_alat_komunikasi.RepeaterActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

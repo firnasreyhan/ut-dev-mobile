@@ -176,6 +176,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         intent = new Intent(v.getContext(), ChecklistRuangMeetingActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
+                    //Inspection Checklist Alat Komunikasi
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_cfcceb6652a530555081d0b0883739a0")) {
+                        intent = new Intent(v.getContext(), ChecklistAlatKomunikasiActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
 //                        intent = new Intent(v.getContext(), PermintaanMobilDinasActivity.class);
 //                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
