@@ -35,8 +35,6 @@ public class KonfirmasiPermintaanMobilDinasActivity extends AppCompatActivity {
     private PermintaanMobilModel model;
     private ProgressDialog progressDialog;
 
-    private final int REQUEST_IMAGE_CAPTURE = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

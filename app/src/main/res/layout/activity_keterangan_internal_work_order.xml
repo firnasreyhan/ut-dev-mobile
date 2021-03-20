@@ -101,7 +101,7 @@
                             android:orientation="vertical">
 
                             <RadioButton
-                                android:id="@+id/radioButtonOK"
+                                android:id="@+id/radioButtonPenggantianBaru"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/text_color"
@@ -111,7 +111,7 @@
                                 android:checked="true"/>
 
                             <RadioButton
-                                android:id="@+id/radioButtonReplacement"
+                                android:id="@+id/radioButtonPenggantianSebagian"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/text_color"
@@ -120,7 +120,7 @@
                                 android:text="Penggantian Sebagian"/>
 
                             <RadioButton
-                                android:id="@+id/radioButtonService"
+                                android:id="@+id/radioButtonPerbaikanModifikasi"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/text_color"
@@ -131,7 +131,7 @@
                         </RadioGroup>
 
                         <EditText
-                            android:id="@+id/editTextCatatan"
+                            android:id="@+id/editTextKeterangan"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
                             android:backgroundTint="@color/hint_color"
@@ -173,6 +173,7 @@
                             android:lineSpacingExtra="@dimen/_3sdp"/>
 
                         <EditText
+                            android:id="@+id/editTextAlasanPerbaikan"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_75sdp"
                             android:layout_marginTop="@dimen/_13sdp"
@@ -225,7 +226,7 @@
                             android:orientation="horizontal">
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/materialButtonKurangJumlahTujuan"
+                                android:id="@+id/materialButtonKurangJumlahKebutuhan"
                                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                                 android:layout_width="@dimen/_14sdp"
                                 android:layout_height="wrap_content"
@@ -238,7 +239,7 @@
                                 android:textSize="@dimen/_10sdp" />
 
                             <EditText
-                                android:id="@+id/editTextJumlahTujuan"
+                                android:id="@+id/editTextJumlahKebutuhan"
                                 android:layout_width="@dimen/_25sdp"
                                 android:layout_height="@dimen/_25sdp"
                                 android:layout_marginStart="@dimen/_3sdp"
@@ -254,7 +255,7 @@
                                 android:textSize="@dimen/_8sdp" />
 
                             <com.google.android.material.button.MaterialButton
-                                android:id="@+id/materialButtonTambahJumlahTujuan"
+                                android:id="@+id/materialButtonTambahJumlahKebutuhan"
                                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                                 android:layout_width="@dimen/_14sdp"
                                 android:layout_height="wrap_content"

@@ -211,6 +211,12 @@ public interface ApiInterface {
             @Body String body
     );
 
+    @Headers("Content-Type: application/json")
+    @POST("formIWO")
+    Call<BaseResponse> postInternalWorkOrder(
+            @Body String body
+    );
+
     @GET("form")
     Call<FormResponse> getListForm(
             @Query("role") String role

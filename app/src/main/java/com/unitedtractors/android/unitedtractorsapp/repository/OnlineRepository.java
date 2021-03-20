@@ -564,6 +564,27 @@ public class OnlineRepository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postInternalWorkOrder(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postInternalWorkOrder(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postInternalWorkOrder", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> postSimMobilDinas(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postSimMobilDinas(

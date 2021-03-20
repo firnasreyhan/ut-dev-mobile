@@ -72,7 +72,7 @@
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonAjukan"
+            android:id="@+id/materialButtonSelanjutnya"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Ajukan"
+            android:text="Selanjutnya"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
             app:backgroundTint="@color/primary"

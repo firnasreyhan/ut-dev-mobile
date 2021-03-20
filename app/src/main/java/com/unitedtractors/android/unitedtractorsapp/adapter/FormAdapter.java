@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
+import com.unitedtractors.android.unitedtractorsapp.model.InternalWorkOrderModel;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_alat_komunikasi.ChecklistAlatKomunikasiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.ChecklistForGensetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
@@ -21,6 +22,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.identifikasi.IdentifikasiActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.internal_work_order.InternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
@@ -179,6 +181,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Inspection Checklist Alat Komunikasi
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_cfcceb6652a530555081d0b0883739a0")) {
                         intent = new Intent(v.getContext(), ChecklistAlatKomunikasiActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Internal Work Order
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_0c1e8b60c22ca5d4e433e0cecaafe6d6")) {
+                        intent = new Intent(v.getContext(), InternalWorkOrderActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

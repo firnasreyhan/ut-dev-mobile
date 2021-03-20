@@ -51,6 +51,7 @@
             android:visibility="gone">
 
             <EditText
+                android:id="@+id/editTextNamaBarang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
@@ -62,6 +63,7 @@
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextQty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
@@ -73,6 +75,7 @@
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextMusNo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
