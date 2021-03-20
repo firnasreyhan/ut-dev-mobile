@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".view.activity.form.material_used_slip.MaterialUsedSlipActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -31,73 +33,64 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="@dimen/_13sdp">
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginLeft="36dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginRight="36dp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_form_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardViewForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:strokeColor="@color/box_stroke"
+            app:strokeWidth="@dimen/_1sdp">
 
             <LinearLayout
-                android:id="@+id/linearLayoutKeterangan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Masukkan Detail"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Detail Informasi"
-                    android:textColor="@color/hint_color2"
-                    android:textSize="@dimen/_8sdp" />
-
-            </LinearLayout>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardViewForm"
-                android:layout_below="@+id/linearLayoutKeterangan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="@android:color/white"
-                app:cardCornerRadius="@dimen/_7sdp"
-                app:strokeColor="@color/box_stroke"
-                app:strokeWidth="@dimen/_1sdp">
+                android:orientation="vertical"
+                android:padding="@dimen/_13sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutForm"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/_13sdp">
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/linearLayoutForm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="horizontal">
 
                         <EditText
                             android:id="@+id/editTextTanggalMaterialUsedSlip"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/_3sdp"
                             android:layout_weight="1"
                             android:backgroundTint="@color/hint_color"
                             android:clickable="true"
@@ -112,102 +105,126 @@
                             android:textColorHint="@color/hint_color"
                             android:textSize="@dimen/_8sdp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="@dimen/_13sdp"
-                            android:background="@android:color/white"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/_50sdp"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/montserrat_medium"
-                                android:text="Banyaknya Barang"
-                                android:textColor="@color/text_color"
-                                android:textSize="@dimen/_8sdp" />
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:gravity="center"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/materialButtonKurangJumlahBarang"
-                                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                                    android:layout_width="@dimen/_14sdp"
-                                    android:layout_height="wrap_content"
-                                    android:minWidth="0dp"
-                                    android:minHeight="0dp"
-                                    android:fontFamily="@font/montserrat_semi_bold"
-                                    android:padding="0dp"
-                                    android:text="-"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                                <EditText
-                                    android:id="@+id/editTextJumlahBarang"
-                                    android:layout_width="@dimen/_25sdp"
-                                    android:layout_height="@dimen/_25sdp"
-                                    android:layout_marginStart="@dimen/_3sdp"
-                                    android:layout_marginLeft="@dimen/_3sdp"
-                                    android:layout_marginEnd="@dimen/_3sdp"
-                                    android:layout_marginRight="@dimen/_3sdp"
-                                    android:fontFamily="@font/montserrat_medium"
-                                    android:gravity="center"
-                                    android:inputType="number"
-                                    android:enabled="false"
-                                    android:text="0"
-                                    android:textColor="@color/text_color"
-                                    android:textSize="@dimen/_8sdp" />
-
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/materialButtonTambahJumlahBarang"
-                                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                                    android:layout_width="@dimen/_14sdp"
-                                    android:layout_height="wrap_content"
-                                    android:minWidth="0dp"
-                                    android:minHeight="0dp"
-                                    android:fontFamily="@font/montserrat_semi_bold"
-                                    android:padding="0dp"
-                                    android:text="+"
-                                    android:textColor="@android:color/white"
-                                    android:textSize="@dimen/_10sdp" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
                     </LinearLayout>
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
 
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_56sdp"
+            android:layout_marginStart="44dp"
+            android:layout_marginLeft="44dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="44dp"
+            android:layout_marginRight="44dp"
+            app:cardBackgroundColor="@color/box_stroke"
+            app:cardCornerRadius="@dimen/_7sdp"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewForm"
+            app:strokeColor="@color/box_stroke"
+            app:strokeWidth="@dimen/_1sdp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/_16sdp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_50sdp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Jumlah Orang"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButtonKurangJumlahBarang"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:padding="0dp"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <EditText
+                        android:id="@+id/editTextJumlahBarang"
+                        android:layout_width="@dimen/_25sdp"
+                        android:layout_height="@dimen/_25sdp"
+                        android:layout_marginStart="@dimen/_3sdp"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_marginEnd="@dimen/_3sdp"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="@color/text_color"
+                        android:enabled="false"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButtonTambahJumlahBarang"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="@dimen/_14sdp"
+                        android:layout_height="wrap_content"
+                        android:minHeight="0dp"
+                        android:minWidth="0dp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:padding="0dp"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonSelanjutnya"
-            android:layout_alignParentBottom="true"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_16sdp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="35dp"
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
             android:text="Selanjutnya"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/button_disable"
             android:enabled="false"
-            app:cornerRadius="@dimen/_11sdp" />
+            app:backgroundTint="@color/button_disable"
+            app:cornerRadius="@dimen/_11sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

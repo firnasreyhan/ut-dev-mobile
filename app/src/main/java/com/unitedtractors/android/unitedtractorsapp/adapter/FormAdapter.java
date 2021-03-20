@@ -26,6 +26,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.internal_
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.material_used_slip.MaterialUsedSlipActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan.PerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.NewPermintaanCateringRegulerActivity;
@@ -186,6 +187,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Internal Work Order
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_0c1e8b60c22ca5d4e433e0cecaafe6d6")) {
                         intent = new Intent(v.getContext(), InternalWorkOrderActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Material Used Slip
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_949aaa4c11a8a6cf1b5497ac3ffa6135")) {
+                        intent = new Intent(v.getContext(), MaterialUsedSlipActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

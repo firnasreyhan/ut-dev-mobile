@@ -60,12 +60,6 @@ public interface ApiInterface {
     );
 
     @Headers("Content-Type: application/json")
-    @POST("formMaterialUsedSlip")
-    Call<BaseResponse> postMaterialUsedSlip(
-            @Body String body
-    );
-
-    @Headers("Content-Type: application/json")
     @POST("formOrderCatering")
     Call<BaseResponse> postOrderCatering(
             @Body String body
@@ -214,6 +208,12 @@ public interface ApiInterface {
     @Headers("Content-Type: application/json")
     @POST("formIWO")
     Call<BaseResponse> postInternalWorkOrder(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formMaterial")
+    Call<BaseResponse> postMaterialUsedSlip(
             @Body String body
     );
 

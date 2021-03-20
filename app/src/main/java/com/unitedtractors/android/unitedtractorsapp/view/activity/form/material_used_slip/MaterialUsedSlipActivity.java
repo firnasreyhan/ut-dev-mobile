@@ -105,21 +105,7 @@ public class MaterialUsedSlipActivity extends AppCompatActivity {
                     intent.putExtra("TGL_MATERIAL_SERVER", tglMaterialServer);
                     intent.putExtra("BANYAK_BARANG", banyakBarang);
                     startActivity(intent);
-                } else {
-//                    new AlertDialog.Builder(v.getContext())
-//                            .setTitle("Pesan")
-//                            .setMessage("Terdapat data yang kosong, mohon untuk diisi.")
-//                            .setCancelable(false)
-//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            })
-//                            .create()
-//                            .show();
                 }
-
             }
         });
     }
@@ -132,19 +118,13 @@ public class MaterialUsedSlipActivity extends AppCompatActivity {
 
     private boolean checkData() {
         boolean cek1 = true;
-        boolean cek2 = true;
 
         if (binding.editTextTanggalMaterialUsedSlip.getText().toString().isEmpty()) {
             binding.editTextTanggalMaterialUsedSlip.setError("Mohon isi data berikut");
             cek1 = false;
         }
 
-        if (binding.editTextJumlahBarang.getText().toString().isEmpty()) {
-            binding.editTextJumlahBarang.setError("Mohon isi data berikut");
-            cek1 = false;
-        }
-
-        return cek1 && cek2;
+        return cek1;
     }
 }
 

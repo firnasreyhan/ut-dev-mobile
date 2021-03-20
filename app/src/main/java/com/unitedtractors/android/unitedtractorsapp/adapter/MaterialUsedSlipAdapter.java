@@ -36,10 +36,7 @@ public class MaterialUsedSlipAdapter  extends RecyclerView.Adapter<MaterialUsedS
 
     @Override
     public void onBindViewHolder(@NonNull MaterialUsedSlipAdapter.ViewHolder holder, int position) {
-        holder.editTextKeterangan.setText(list.get(position).getKeterangan());
-        holder.editTextDipergunakan.setText(list.get(position).getDipergunakan());
-        holder.editTextNamaBarang.setText(list.get(position).getNamaBarang());
-        holder.editTextJumlahBarang.setText(list.get(position).getJumlahBarang());
+
     }
 
     @Override
@@ -48,15 +45,12 @@ public class MaterialUsedSlipAdapter  extends RecyclerView.Adapter<MaterialUsedS
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         private final EditText editTextNamaBarang, editTextKeterangan, editTextJumlahBarang, editTextDipergunakan;
         int jumlahBarang;
-        MaterialButton materialButtonTambahJumlahBarang, materialButtonKurangJumlahBarang;
-
+        private final MaterialButton materialButtonTambahJumlahBarang, materialButtonKurangJumlahBarang;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             editTextNamaBarang = itemView.findViewById(R.id.editTextNamaBarang);
             editTextKeterangan = itemView.findViewById(R.id.editTextKeterangan);
             editTextJumlahBarang = itemView.findViewById(R.id.editTextJumlahBarang);
@@ -116,12 +110,12 @@ public class MaterialUsedSlipAdapter  extends RecyclerView.Adapter<MaterialUsedS
             });
 
             jumlahBarang = Integer.parseInt(String.valueOf(editTextJumlahBarang.getText().toString()));
-
             materialButtonTambahJumlahBarang.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     jumlahBarang++;
                     editTextJumlahBarang.setText(String.valueOf(jumlahBarang));
+                    list.get(getAdapterPosition()).setJumlahBarang(jumlahBarang);
                 }
             });
 
@@ -131,6 +125,7 @@ public class MaterialUsedSlipAdapter  extends RecyclerView.Adapter<MaterialUsedS
                     if (jumlahBarang > 0) {
                         jumlahBarang--;
                         editTextJumlahBarang.setText(String.valueOf(jumlahBarang));
+                        list.get(getAdapterPosition()).setJumlahBarang(jumlahBarang);
                     }
                 }
             });

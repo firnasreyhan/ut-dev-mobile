@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.form.internal_work_order.KonfirmasiInternalWorkOrderActivity"></activity>
+        <activity android:name=".view.activity.form.material_used_slip.KonfirmasiMaterialUsedSlipActivity"></activity>
+        <activity android:name=".view.activity.form.internal_work_order.KonfirmasiInternalWorkOrderActivity" />
         <activity android:name=".view.activity.form.checklist_alat_komunikasi.RadioActivity" />
         <activity android:name=".view.activity.form.permintaan_catering_reguler.NewKonfirmasiPermintaanCateringRegulerActivity" />
         <activity android:name=".view.activity.form.permintaan_catering_reguler.NewListPermintaanCateringRegulerActivity" />

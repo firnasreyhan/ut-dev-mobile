@@ -6,14 +6,12 @@ public class MaterialUsedSlipModel {
     private String idUser;
     private String idMapping;
     private String tanggal;
-    private int banyakBarang;
     private List<DetailMaterialUsedSlipModel> detailMaterialUsedSlipModelList;
 
-    public MaterialUsedSlipModel(String idUser, String idMapping, String tanggal, int banyakBarang, List<DetailMaterialUsedSlipModel> detailMaterialUsedSlipModelList) {
+    public MaterialUsedSlipModel(String idUser, String idMapping, String tanggal, List<DetailMaterialUsedSlipModel> detailMaterialUsedSlipModelList) {
         this.idUser = idUser;
         this.idMapping = idMapping;
         this.tanggal = tanggal;
-        this.banyakBarang = banyakBarang;
         this.detailMaterialUsedSlipModelList = detailMaterialUsedSlipModelList;
     }
 
@@ -39,14 +37,6 @@ public class MaterialUsedSlipModel {
 
     public void setTanggal(String tanggal) {
         this.tanggal = tanggal;
-    }
-
-    public int getBanyakBarang() {
-        return banyakBarang;
-    }
-
-    public void setBanyakBarang(int banyakBarang) {
-        this.banyakBarang = banyakBarang;
     }
 
     public List<DetailMaterialUsedSlipModel> getDetailMaterialUsedSlipModelList() {

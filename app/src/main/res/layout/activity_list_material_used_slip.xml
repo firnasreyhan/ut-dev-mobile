@@ -5,6 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/background"
     tools:context=".view.activity.form.material_used_slip.ListMaterialUsedSlipActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -20,6 +23,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:text="Material Used Slip"
@@ -36,35 +40,48 @@
         android:orientation="vertical"
         android:padding="@dimen/_13sdp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="Masukkan Detail"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/_10sdp" />
-
-        <TextView
-            android:id="@+id/textViewKeterangan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:fontFamily="@font/montserrat_medium"
-            android:text="Detail Informasi"
-            android:textColor="@color/hint_color2"
-            android:textSize="@dimen/_8sdp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:overScrollMode="never" />
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Masukkan Detail"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/textViewKeterangan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Detail Informasi"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:overScrollMode="never"/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonAjukan"
+            android:id="@+id/materialButtonSelanjutnya"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,11 +89,10 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Ajukan"
+            android:text="Selanjutnya"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            android:enabled="false"
-            app:backgroundTint="@color/button_disable"
+            app:backgroundTint="@color/primary"
             app:cornerRadius="@dimen/_11sdp" />
 
     </LinearLayout>

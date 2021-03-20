@@ -28,11 +28,7 @@ import java.util.List;
 
 public class ListMaterialUsedSlipActivity extends AppCompatActivity {
     private ActivityListMaterialUsedSlipBinding binding;
-    List<MaterialUsedSlipModel.DetailMaterialUsedSlipModel> list;
-
-    private MaterialUsedSlipViewModel viewModel;
-    private MaterialUsedSlipModel model;
-    private ProgressDialog progressDialog;
+    private List<MaterialUsedSlipModel.DetailMaterialUsedSlipModel> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +43,11 @@ public class ListMaterialUsedSlipActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         String idMapping = getIntent().getStringExtra("ID_MAPPING");
-        String tglPeminjamanView = getIntent().getStringExtra("TGL_MATERIAL_VIEW");
-        String tglPeminjamanServer = getIntent().getStringExtra("TGL_MATERIAL_SERVER");
+        String tglMaterialView = getIntent().getStringExtra("TGL_MATERIAL_VIEW");
+        String tglMaterialServer = getIntent().getStringExtra("TGL_MATERIAL_SERVER");
         int banyakBarang = getIntent().getIntExtra("BANYAK_BARANG", 0);
 
         list = new ArrayList<>();
-
         for (int i = 0; i < banyakBarang; i++) {
             list.add(new MaterialUsedSlipModel.DetailMaterialUsedSlipModel(
                     "",
@@ -65,68 +60,32 @@ public class ListMaterialUsedSlipActivity extends AppCompatActivity {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(new MaterialUsedSlipAdapter(list));
 
-//        binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (checkData()) {
-//                    progressDialog.show();
-//                    viewModel.postMaterialUsedSlip(
-//                            model
-//                    ).observe(ListMaterialUsedSlipActivity.this, new Observer<BaseResponse>() {
-//                        @Override
-//                        public void onChanged(BaseResponse baseResponse) {
-//                            if (progressDialog.isShowing()) {
-//                                progressDialog.dismiss();
-//                            }
-//
-//                            if (baseResponse != null) {
-//                                if (baseResponse.isStatus()) {
-//                                    startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
-//                                } else {
-//                                    new AlertDialog.Builder(v.getContext())
-//                                            .setTitle("Pesan")
-//                                            .setMessage(baseResponse.getMessage())
-//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                                @Override
-//                                                public void onClick(DialogInterface dialog, int which) {
-//                                                    dialog.dismiss();
-//                                                }
-//                                            })
-//                                            .create()
-//                                            .show();
-//                                }
-//                            } else {
-//                                new AlertDialog.Builder(v.getContext())
-//                                        .setTitle("Pesan")
-//                                        .setMessage("Terjadi kesalah pada server, silahkan coba beberapa saat lagi")
-//                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                            @Override
-//                                            public void onClick(DialogInterface dialog, int which) {
-//                                                dialog.dismiss();
-//                                            }
-//                                        })
-//                                        .create()
-//                                        .show();
-//                            }
-//                        }
-//                    });
-//                } else {
-//                    new AlertDialog.Builder(v.getContext())
-//                            .setTitle("Pesan")
-//                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
-//                            .setCancelable(false)
-//                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//                                    dialog.dismiss();
-//                                }
-//                            })
-//                            .create()
-//                            .show();
-//                }
-//
-//            }
-//        });
+        binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkData()) {
+                    Intent intent = new Intent(v.getContext(), KonfirmasiMaterialUsedSlipActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
+                    intent.putExtra("TGL_MATERIAL_VIEW", tglMaterialView);
+                    intent.putExtra("TGL_MATERIAL_SERVER", tglMaterialServer);
+                    startActivity(intent);
+                } else {
+                    new AlertDialog.Builder(v.getContext())
+                            .setTitle("Pesan")
+                            .setMessage("Terdapat data yang kosong, mohon untuk diisi")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
+
+            }
+        });
     }
 
     @Override

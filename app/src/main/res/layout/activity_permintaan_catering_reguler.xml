@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity">
-
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
