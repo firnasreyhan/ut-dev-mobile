@@ -217,6 +217,12 @@ public interface ApiInterface {
             @Body String body
     );
 
+    @Headers("Content-Type: application/json")
+    @POST("formEvaluasi")
+    Call<BaseResponse> postEvaluasiVendor(
+            @Body String body
+    );
+
     @GET("form")
     Call<FormResponse> getListForm(
             @Query("role") String role

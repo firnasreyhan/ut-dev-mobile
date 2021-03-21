@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public class MaterialUsedSlipActivity extends AppCompatActivity {
     private ActivityMaterialUsedSlipBinding binding;
-    Calendar calendar;
+    private Calendar calendar;
 
     private String idMapping;
     private String tglMaterialView;
