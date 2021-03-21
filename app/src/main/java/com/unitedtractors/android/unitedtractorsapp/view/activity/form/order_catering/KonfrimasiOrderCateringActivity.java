@@ -15,6 +15,7 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.OrderCateringAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.OrderCateringViewAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfrimasiOrderCateringBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.OrderCateringModel;
@@ -25,7 +26,6 @@ import com.unitedtractors.android.unitedtractorsapp.viewmodel.OrderCateringViewM
 public class KonfrimasiOrderCateringActivity extends AppCompatActivity {
     private ActivityKonfrimasiOrderCateringBinding binding;
     private OrderCateringViewModel viewModel;
-    private OrderCateringModel model;
     private ProgressDialog progressDialog;
 
     @Override
@@ -35,8 +35,9 @@ public class KonfrimasiOrderCateringActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        viewModel = ViewModelProviders.of(this).get(OrderCateringViewModel.class);
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
+        viewModel = ViewModelProviders.of(this).get(OrderCateringViewModel.class);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
@@ -46,19 +47,9 @@ public class KonfrimasiOrderCateringActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        String idMapping = getIntent().getStringExtra("ID_MAPPING");
-        String tglPeminjamanView = getIntent().getStringExtra("JUMLAH_ORDER");
-
-        model = new OrderCateringModel(
-                idMapping,
-                AppPreference.getUser(this).getIdUsers(),
-                "",
-                "",
-                "");
-
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recyclerView.setAdapter(new OrderCateringAdapter(OrderCateringAdapter.getList(), false));
+        binding.recyclerView.setAdapter(new OrderCateringViewAdapter(OrderCateringAdapter.getList()));
 
         binding.checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -77,6 +68,13 @@ public class KonfrimasiOrderCateringActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
+
+                OrderCateringModel model = new OrderCateringModel(
+                        AppPreference.getUser(v.getContext()).getIdUsers(),
+                        idMapping,
+                        OrderCateringAdapter.getList()
+                );
+
                 viewModel.postOrderCatering(
                         model
                 ).observe(KonfrimasiOrderCateringActivity.this, new Observer<BaseResponse>() {
@@ -117,8 +115,13 @@ public class KonfrimasiOrderCateringActivity extends AppCompatActivity {
                         }
                     }
                 });
-                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

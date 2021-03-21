@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@android:color/white"
     tools:context=".view.activity.form.order_catering.KonfrimasiOrderCateringActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -30,6 +31,11 @@
         </FrameLayout>
 
     </androidx.appcompat.widget.Toolbar>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2sdp"
+        android:background="@color/box_stroke"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -61,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:overScrollMode="never" />
 
@@ -78,12 +84,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_13sdp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:gravity="left|top"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan dan saya akan mematuhi beberapa peraturan berikut:\n\n1. Batas kecepatan tidak melibihi 120 Km/Jam\n2. Mematuhi rambu lalu lintas yang berlaku\n3. Menerapkan safety driving\n4. Dilarang menggunakan kendaraan dengan tidak tertib dan boros bahhan bakar"
                     android:textColor="@color/hint_color2"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
             </LinearLayout>
 

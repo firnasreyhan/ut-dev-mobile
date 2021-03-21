@@ -20,11 +20,10 @@ import java.util.Calendar;
 import java.util.List;
 
 public class ListOrderCateringActivity extends AppCompatActivity {
-    ActivityListOrderCateringBinding binding;
-    List<OrderCateringModel> list;
+    private ActivityListOrderCateringBinding binding;
+    private List<OrderCateringModel.DetailOrder> list;
 
-    String idMapping;
-    Calendar calendar;
+    private String idMapping;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,6 @@ public class ListOrderCateringActivity extends AppCompatActivity {
         idMapping = getIntent().getStringExtra("ID_MAPPING");
         int jumlahOrder = getIntent().getIntExtra("JUMLAH_ORDER", 0);
 
-        calendar = Calendar.getInstance();
-
         binding.materialButtonSelanjutnya.setEnabled(true);
         binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
 
@@ -47,22 +44,18 @@ public class ListOrderCateringActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         list = new ArrayList<>();
-
-        if (jumlahOrder > 0) {
-            for (int i = 0; i < jumlahOrder; i++) {
-                list.add(new OrderCateringModel(
-                        idMapping,
-                        AppPreference.getUser(this).getIdUsers(),
-                        "",
-                        "",
-                        ""
-                        ));
-            }
+        for (int i = 0; i < jumlahOrder; i++) {
+            list.add(new OrderCateringModel.DetailOrder(
+                            "",
+                            AppPreference.getUser(this).getDivUsers(),
+                            0
+                    )
+            );
         }
 
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new OrderCateringAdapter(list, true));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(new OrderCateringAdapter(list));
 
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +63,6 @@ public class ListOrderCateringActivity extends AppCompatActivity {
                 if (checkData()) {
                     Intent intent = new Intent(v.getContext(), KonfrimasiOrderCateringActivity.class);
                     intent.putExtra("ID_MAPPING", idMapping);
-                    intent.putExtra("JUMLAH_ORDER", jumlahOrder);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(v.getContext())
@@ -97,7 +89,7 @@ public class ListOrderCateringActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (OrderCateringModel model : OrderCateringAdapter.getList()) {
+        for (OrderCateringModel.DetailOrder model : OrderCateringAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

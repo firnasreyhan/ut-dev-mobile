@@ -14,7 +14,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_
 public class OrderCateringActivity extends AppCompatActivity {
     private ActivityOrderCateringBinding binding;
 
-    int jumlahOrder;
+    private int jumlahOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +22,8 @@ public class OrderCateringActivity extends AppCompatActivity {
         binding = ActivityOrderCateringBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -60,9 +62,16 @@ public class OrderCateringActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListOrderCateringActivity.class);
+                intent.putExtra("ID_MAPPING", idMapping);
                 intent.putExtra("JUMLAH_ORDER", jumlahOrder);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

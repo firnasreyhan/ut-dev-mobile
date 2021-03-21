@@ -25,12 +25,10 @@ import java.util.List;
 import java.util.Locale;
 
 public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdapter.ViewHolder>{
-    private static List<OrderCateringModel> list;
-    private static boolean isEditable;
+    private static List<OrderCateringModel.DetailOrder> list;
 
-    public OrderCateringAdapter(List<OrderCateringModel> list, boolean isEditable) {
+    public OrderCateringAdapter(List<OrderCateringModel.DetailOrder> list) {
         OrderCateringAdapter.list = list;
-        OrderCateringAdapter.isEditable = isEditable;
     }
 
     @Override
@@ -52,9 +50,6 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
     @Override
     public void onBindViewHolder(@NonNull OrderCateringAdapter.ViewHolder holder, int position) {
         holder.textViewUrutan.setText("Order " + (position + 1));
-        holder.editTextDivisi.setText(list.get(position).getDivisi());
-        holder.editTextTanggal.setText(list.get(position).getTanggal());
-        holder.editTextJumlahPesanan.setText(list.get(position).getJumlahPesanan());
     }
 
     @Override
@@ -63,15 +58,13 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
         private final ImageView imageViewExpand;
         private final LinearLayout linearLayoutForm;
         private final TextView textViewUrutan;
-        private final EditText editTextTanggal, editTextDivisi, editTextJumlahPesanan;
+        private final EditText editTextTanggal, editTextJumlahPesanan;
         private final MaterialButton materialButtonKurangJumlahPesanan, materialButtonTambahJumlahPesanan;
-        Calendar calendar;
-        int jumlahPesanan = 0;
-
+        private Calendar calendar;
+        private int jumlahPesanan = 0;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,16 +74,11 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
             linearLayoutForm = itemView.findViewById(R.id.linearLayoutForm);
             textViewUrutan = itemView.findViewById(R.id.textViewUrutan);
             editTextTanggal = itemView.findViewById(R.id.editTextTanggal);
-            editTextDivisi = itemView.findViewById(R.id.editTextDivisi);
             editTextJumlahPesanan = itemView.findViewById(R.id.editTextJumlahPesanan);
             materialButtonKurangJumlahPesanan = itemView.findViewById(R.id.materialButtonKurangJumlahPesanan);
             materialButtonTambahJumlahPesanan = itemView.findViewById(R.id.materialButtonTambahJumlahPesanan);
 
-            editTextTanggal.setEnabled(isEditable);
-            editTextDivisi.setEnabled(isEditable);
-            editTextJumlahPesanan.setEnabled(isEditable);
-
-            imageViewExpand.setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (linearLayoutForm.getVisibility() == View.GONE) {
@@ -103,6 +91,8 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
                 }
             });
 
+            SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
+            SimpleDateFormat simpleDateFormatServer = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -110,8 +100,9 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
                     calendar.set(Calendar.YEAR, year);
                     calendar.set(Calendar.MONTH, monthOfYear);
                     calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                    SimpleDateFormat simpleDateFormatView = new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID"));
                     editTextTanggal.setText(simpleDateFormatView.format(calendar.getTime()));
+                    list.get(getAdapterPosition()).setTgl(simpleDateFormatServer.format(calendar.getTime()));
+                    list.get(getAdapterPosition()).setTglView(simpleDateFormatView.format(calendar.getTime()));
                 }
             };
 
@@ -124,30 +115,12 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
                 }
             });
 
-            editTextDivisi.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setDivisi(editTextDivisi.getText().toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-                }
-            });
-
-            editTextJumlahPesanan.setText(jumlahPesanan +"");
-
             materialButtonTambahJumlahPesanan.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     jumlahPesanan++;
                     editTextJumlahPesanan.setText(String.valueOf(jumlahPesanan));
+                    list.get(getAdapterPosition()).setJml(jumlahPesanan);
                 }
             });
 
@@ -157,30 +130,14 @@ public class OrderCateringAdapter extends RecyclerView.Adapter<OrderCateringAdap
                     if (jumlahPesanan > 0) {
                         jumlahPesanan--;
                         editTextJumlahPesanan.setText(String.valueOf(jumlahPesanan));
+                        list.get(getAdapterPosition()).setJml(jumlahPesanan);
                     }
-                }
-            });
-
-            editTextJumlahPesanan.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setJumlahPesanan(editTextJumlahPesanan.getText().toString());
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
                 }
             });
         }
     }
 
-    public static List<OrderCateringModel> getList() {
+    public static List<OrderCateringModel.DetailOrder> getList() {
         return list;
     }
 }
