@@ -14,15 +14,16 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_
 public class HasilTestFoodCateringActivity extends AppCompatActivity {
     private ActivityHasilTestFoodCateringBinding binding;
 
-    int jumlahCatering;
+    private int jumlahCatering;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityHasilTestFoodCateringBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -30,7 +31,6 @@ public class HasilTestFoodCateringActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         jumlahCatering = Integer.parseInt(binding.editTextJumlahHasilCatering.getText().toString());
-
         binding.materialButtonTambahJumlahHasilCatering.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,9 +61,16 @@ public class HasilTestFoodCateringActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListHasilTestFoodCateringActivity.class);
-                intent.putExtra("jumlah_catering", jumlahCatering);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("JUMLAH_CATERING", jumlahCatering);
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

@@ -1,63 +1,100 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
+import java.util.List;
+
 public class HasilTestFoodCateringModel {
+    private String idUser;
+    private String idMapping;
+    private List<DetailTestFood> detTestfood;
 
-    String namaCatering;
-    int rasa, aroma, kebersihan, kualitas;
-
-    public HasilTestFoodCateringModel(String namaCatering, int rasa, int aroma, int kebersihan, int kualitas) {
-        this.namaCatering = namaCatering;
-        this.rasa = rasa;
-        this.aroma = aroma;
-        this.kebersihan = kebersihan;
-        this.kualitas = kualitas;
+    public HasilTestFoodCateringModel(String idUser, String idMapping, List<DetailTestFood> detTestfood) {
+        this.idUser = idUser;
+        this.idMapping = idMapping;
+        this.detTestfood = detTestfood;
     }
 
-    public String getNamaCatering() {
-        return namaCatering;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setNamaCatering(String namaCatering) {
-        this.namaCatering = namaCatering;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
-    public int getRasa() {
-        return rasa;
+    public String getIdMapping() {
+        return idMapping;
     }
 
-    public void setRasa(int rasa) {
-        this.rasa = rasa;
+    public void setIdMapping(String idMapping) {
+        this.idMapping = idMapping;
     }
 
-    public int getAroma() {
-        return aroma;
+    public List<DetailTestFood> getDetTestfood() {
+        return detTestfood;
     }
 
-    public void setAroma(int aroma) {
-        this.aroma = aroma;
+    public void setDetTestfood(List<DetailTestFood> detTestfood) {
+        this.detTestfood = detTestfood;
     }
 
-    public int getKebersihan() {
-        return kebersihan;
-    }
+    public static class DetailTestFood {
+        private String namaCatering;
+        private int rasa, aroma, kebersihan, kualitas;
 
-    public void setKebersihan(int kebersihan) {
-        this.kebersihan = kebersihan;
-    }
+        public DetailTestFood(String namaCatering, int rasa, int aroma, int kebersihan, int kualitas) {
+            this.namaCatering = namaCatering;
+            this.rasa = rasa;
+            this.aroma = aroma;
+            this.kebersihan = kebersihan;
+            this.kualitas = kualitas;
+        }
 
-    public int getKualitas() {
-        return kualitas;
-    }
+        public String getNamaCatering() {
+            return namaCatering;
+        }
 
-    public void setKualitas(int kualitas) {
-        this.kualitas = kualitas;
-    }
+        public void setNamaCatering(String namaCatering) {
+            this.namaCatering = namaCatering;
+        }
 
-    public boolean checkData()  {
-        if (!getNamaCatering().isEmpty() && getRasa() != 0 && getAroma() != 0 && getKebersihan() != 0 && getKualitas() != 0) {
-            return true;
-        } else {
-            return false;
+        public int getRasa() {
+            return rasa;
+        }
+
+        public void setRasa(int rasa) {
+            this.rasa = rasa;
+        }
+
+        public int getAroma() {
+            return aroma;
+        }
+
+        public void setAroma(int aroma) {
+            this.aroma = aroma;
+        }
+
+        public int getKebersihan() {
+            return kebersihan;
+        }
+
+        public void setKebersihan(int kebersihan) {
+            this.kebersihan = kebersihan;
+        }
+
+        public int getKualitas() {
+            return kualitas;
+        }
+
+        public void setKualitas(int kualitas) {
+            this.kualitas = kualitas;
+        }
+
+        public boolean checkData()  {
+            if (!getNamaCatering().isEmpty()) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }
