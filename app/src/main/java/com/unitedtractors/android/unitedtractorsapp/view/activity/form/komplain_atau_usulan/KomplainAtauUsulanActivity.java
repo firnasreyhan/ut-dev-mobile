@@ -22,13 +22,14 @@ public class KomplainAtauUsulanActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String idMapping = getIntent().getStringExtra("ID_MAPPING");
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         jumlahKomplain = Integer.parseInt(binding.editTextJumlahKomplainAtauUsulan.getText().toString());
-
         binding.materialButtonTambahJumlahKomplainAtauUsulan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +60,8 @@ public class KomplainAtauUsulanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListKomplainAtauUsulanActivity.class);
-                intent.putExtra("jumlah_komplain", jumlahKomplain);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("JUMLAH_KOMPLAIN", jumlahKomplain);
                 startActivity(intent);
             }
         });

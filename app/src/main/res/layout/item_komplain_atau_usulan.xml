@@ -46,43 +46,19 @@
             android:id="@+id/linearLayoutForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:orientation="vertical"
             android:visibility="gone">
 
             <EditText
-                android:id="@+id/editTextNama"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Nama"
-                android:inputType="text"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
-
-            <EditText
-                android:id="@+id/editTextDivisi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/hint_color"
-                android:fontFamily="@font/montserrat_medium"
-                android:hint="Divisi"
-                android:inputType="text"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/hint_color"
-                android:textSize="@dimen/_8sdp" />
-
-            <EditText
                 android:id="@+id/editTextKomplainAtauUsulan"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_75sdp"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Komplain atau Usulan"
                 android:inputType="textMultiLine"
-                android:maxLines="3"
+                android:gravity="left|top"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />

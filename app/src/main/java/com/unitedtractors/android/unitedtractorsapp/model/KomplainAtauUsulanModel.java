@@ -1,46 +1,63 @@
 package com.unitedtractors.android.unitedtractorsapp.model;
 
+import java.util.List;
+
 public class KomplainAtauUsulanModel {
+    private String idUser;
+    private String idMapping;
+    private List<DetailKomplain> detKomplain;
 
-    private String nama;
-    private String divisi;
-    private String komplainAtauUsulan;
-
-    public KomplainAtauUsulanModel(String nama, String divisi, String komplainAtauUsulan) {
-        this.nama = nama;
-        this.divisi = divisi;
-        this.komplainAtauUsulan = komplainAtauUsulan;
+    public KomplainAtauUsulanModel(String idUser, String idMapping, List<DetailKomplain> detKomplain) {
+        this.idUser = idUser;
+        this.idMapping = idMapping;
+        this.detKomplain = detKomplain;
     }
 
-    public String getNama() {
-        return nama;
+    public String getIdUser() {
+        return idUser;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setIdUser(String idUser) {
+        this.idUser = idUser;
     }
 
-    public String getDivisi() {
-        return divisi;
+    public String getIdMapping() {
+        return idMapping;
     }
 
-    public void setDivisi(String divisi) {
-        this.divisi = divisi;
+    public void setIdMapping(String idMapping) {
+        this.idMapping = idMapping;
     }
 
-    public String getKomplainAtauUsulan() {
-        return komplainAtauUsulan;
+    public List<DetailKomplain> getDetKomplain() {
+        return detKomplain;
     }
 
-    public void setKomplainAtauUsulan(String komplainAtauUsulan) {
-        this.komplainAtauUsulan = komplainAtauUsulan;
+    public void setDetKomplain(List<DetailKomplain> detKomplain) {
+        this.detKomplain = detKomplain;
     }
 
-    public boolean checkData()  {
-        if (!getNama().isEmpty() && !getDivisi().isEmpty() && !getKomplainAtauUsulan().isEmpty()) {
-            return true;
-        } else {
-            return false;
+    public static class DetailKomplain {
+        private String komplainUsul;
+
+        public DetailKomplain(String komplainUsul) {
+            this.komplainUsul = komplainUsul;
+        }
+
+        public String getKomplainUsul() {
+            return komplainUsul;
+        }
+
+        public void setKomplainUsul(String komplainUsul) {
+            this.komplainUsul = komplainUsul;
+        }
+
+        public boolean checkData()  {
+            if (!getKomplainUsul().isEmpty()) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 }

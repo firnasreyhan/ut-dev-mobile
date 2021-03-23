@@ -20,6 +20,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
@@ -36,26 +37,65 @@
         android:orientation="vertical"
         android:padding="@dimen/_13sdp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:overScrollMode="never"/>
-
-        <CheckBox
-            android:id="@+id/checkBox"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:fontFamily="@font/montserrat_medium"
-            android:textColor="@color/hint_color2"
-            android:textSize="@dimen/_8sdp"
-            android:gravity="left|top"
-            android:layout_marginBottom="@dimen/_13sdp"
-            android:text="Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet."/>
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Masukkan Komplain atau Usulan"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:text="Detail Informasi"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:layout_marginBottom="@dimen/_13sdp"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonAjukan"
