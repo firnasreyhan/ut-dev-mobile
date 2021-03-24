@@ -22,9 +22,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <EditText
+                android:id="@+id/editTextNoExtension"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/hint_color"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Nomor Extension"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:inputType="text"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/hint_color"
+                android:textSize="@dimen/_8sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
@@ -38,7 +53,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButtonBaikSekali"
+                    android:id="@+id/radioButtonAksesExisting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_13sdp"
@@ -49,7 +64,7 @@
                     android:checked="true"/>
 
                 <RadioButton
-                    android:id="@+id/radioButtonBaik"
+                    android:id="@+id/radioButtonAksesBaru"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/_13sdp"
@@ -70,6 +85,29 @@
                 android:text="Kontak Ke"/>
 
             <Spinner
+                android:id="@+id/spinnerKontakKe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:spinnerMode="dropdown"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/hint_color"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_8sdp"
+                android:text="Fasilitas"/>
+
+            <Spinner
+                android:id="@+id/spinnerFasilitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"

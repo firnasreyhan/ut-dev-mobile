@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,7 +8,7 @@
     android:background="@color/background"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".view.activity.form.deklarasi.ListDeklarasiActivity">
+    tools:context=".view.activity.form.permintaan_extension_dan_akses.ListPermintaanExtensionDanAksesActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,7 +28,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Deklarasi"/>
+                android:text="Permintaan Extension &amp; Akses"/>
 
         </FrameLayout>
 
@@ -53,27 +52,63 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_10sdp"
-                    android:text="Keperluan"/>
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Masukkan Detail"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Detail Informasi"
+                        android:textColor="@color/hint_color2"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:overScrollMode="never"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonSelanjutnya"
+            android:id="@+id/materialButtonAjukan"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,10 +116,11 @@
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Selanjutnya"
+            android:text="Ajukan"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            app:backgroundTint="@color/primary"
+            android:enabled="false"
+            app:backgroundTint="@color/button_disable"
             app:cornerRadius="@dimen/_11sdp" />
 
     </LinearLayout>

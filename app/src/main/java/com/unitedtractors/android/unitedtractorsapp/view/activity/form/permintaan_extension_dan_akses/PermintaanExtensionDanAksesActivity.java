@@ -24,18 +24,20 @@ public class PermintaanExtensionDanAksesActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        idMapping = getIntent().getStringExtra("ID_MAPPING");
+
         setSupportActionBar(binding.toolbar);
         setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        jumlahAkses = Integer.parseInt(String.valueOf(binding.editTextJumlahAkses.getText().toString()));
+        jumlahAkses = Integer.parseInt(String.valueOf(binding.editTextJumlahPermintaan.getText().toString()));
 
-        binding.materialButtonTambahJumlahAkses.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonTambahJumlahPermintaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 jumlahAkses++;
-                binding.editTextJumlahAkses.setText(String.valueOf(jumlahAkses));
+                binding.editTextJumlahPermintaan.setText(String.valueOf(jumlahAkses));
                 if (jumlahAkses > 0) {
                     binding.materialButtonSelanjutnya.setEnabled(true);
                     binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.primary));
@@ -43,12 +45,12 @@ public class PermintaanExtensionDanAksesActivity extends AppCompatActivity {
             }
         });
 
-        binding.materialButtonKurangJumlahAkses.setOnClickListener(new View.OnClickListener() {
+        binding.materialButtonKurangJumlahPermintaan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (jumlahAkses > 0) {
                     jumlahAkses--;
-                    binding.editTextJumlahAkses.setText(String.valueOf(jumlahAkses));
+                    binding.editTextJumlahPermintaan.setText(String.valueOf(jumlahAkses));
                     if (jumlahAkses == 0) {
                         binding.materialButtonSelanjutnya.setEnabled(false);
                         binding.materialButtonSelanjutnya.setBackgroundColor(getResources().getColor(R.color.button_disable));
@@ -60,11 +62,10 @@ public class PermintaanExtensionDanAksesActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkData()) {
-                    Intent intent = new Intent(v.getContext(), ListPermintaanMobilDinasActivity.class);
-                    intent.putExtra("JUMLAH_AKSES", jumlahAkses);
-                    startActivity(intent);
-                }
+                Intent intent = new Intent(v.getContext(), ListPermintaanExtensionDanAksesActivity.class);
+                intent.putExtra("ID_MAPPING", idMapping);
+                intent.putExtra("JUMLAH_AKSES", jumlahAkses);
+                startActivity(intent);
             }
         });
     }
@@ -73,16 +74,5 @@ public class PermintaanExtensionDanAksesActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private boolean checkData() {
-        boolean cek1 = true;
-
-        if (binding.editTextNomorExtension.getText().toString().isEmpty()) {
-            binding.editTextNomorExtension.setError("Mohon isi data berikut");
-            cek1 = false;
-        }
-
-        return cek1;
     }
 }

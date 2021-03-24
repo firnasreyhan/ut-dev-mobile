@@ -91,8 +91,8 @@ public class DeklarasiAdapter extends RecyclerView.Adapter<DeklarasiAdapter.View
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setBbm(Integer.parseInt(editTextBBM.getText().toString()));
-                    editTextJumlah.setText(String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
+                    list.get(getAdapterPosition()).setBbm(editTextBBM.getText().toString().isEmpty() ? 0 : Integer.parseInt(editTextBBM.getText().toString()));
+                    editTextJumlah.setText("Jumlah : " + String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
                 }
 
                 @Override
@@ -109,8 +109,8 @@ public class DeklarasiAdapter extends RecyclerView.Adapter<DeklarasiAdapter.View
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setTol(Integer.parseInt(editTextTolParkir.getText().toString()));
-                    editTextJumlah.setText(String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
+                    list.get(getAdapterPosition()).setTol(editTextTolParkir.getText().toString().isEmpty() ? 0 : Integer.parseInt(editTextTolParkir.getText().toString()));
+                    editTextJumlah.setText("Jumlah : " + String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
                 }
 
                 @Override
@@ -127,8 +127,8 @@ public class DeklarasiAdapter extends RecyclerView.Adapter<DeklarasiAdapter.View
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setGrab(Integer.parseInt(editTextGrab.getText().toString()));
-                    editTextJumlah.setText(String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
+                    list.get(getAdapterPosition()).setGrab(editTextGrab.getText().toString().isEmpty() ? 0 : Integer.parseInt(editTextGrab.getText().toString()));
+                    editTextJumlah.setText("Jumlah : " + String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
                 }
 
                 @Override
@@ -145,8 +145,8 @@ public class DeklarasiAdapter extends RecyclerView.Adapter<DeklarasiAdapter.View
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    list.get(getAdapterPosition()).setLain(Integer.parseInt(editTextLainLain.getText().toString()));
-                    editTextJumlah.setText(String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
+                    list.get(getAdapterPosition()).setLain(editTextLainLain.getText().toString().isEmpty() ? 0 : Integer.parseInt(editTextLainLain.getText().toString()));
+                    editTextJumlah.setText("Jumlah : " + String.valueOf(list.get(getAdapterPosition()).getBbm() + list.get(getAdapterPosition()).getTol() + list.get(getAdapterPosition()).getGrab() + list.get(getAdapterPosition()).getLain()));
                 }
 
                 @Override

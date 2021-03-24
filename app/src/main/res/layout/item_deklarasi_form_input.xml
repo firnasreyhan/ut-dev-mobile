@@ -104,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Jumlah"
+                android:text="Jumlah : 0"
                 android:inputType="number"
                 android:enabled="false"
                 android:textColor="@color/text_color"

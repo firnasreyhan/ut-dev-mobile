@@ -19,6 +19,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_air_bersih.ChecklistPompaAirBersihActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_pompa_pond.ChecklistPompaPondActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_ruang_meeting.ChecklistRuangMeetingActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.deklarasi.DeklarasiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.evaluasi_pekerjaan_vendor.EvaluasiPekerjaanVendorActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.external_work_order.ExternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity;
@@ -33,9 +34,12 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan.PerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.NewPermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_non_asset.PermintaanNonAssetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.sidak_catering.SidakCateringActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.surat_jalan.SuratJalanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.survery_kepuasan_pelanggan.DetailSurveyKepuasanPelangganActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.syarat_legalitas_catering.SyaratLegalitasCateringActivity;
 
@@ -214,6 +218,26 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Komplain Usulan
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_ebaebfa4bdce66436c0b7d342cdcbe0c")) {
                         intent = new Intent(v.getContext(), KomplainAtauUsulanActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Surat Jalan
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_10cc1e7a907e144f5fb1d6a2d5e288e8")) {
+                        intent = new Intent(v.getContext(), SuratJalanActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Deklarasi
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_0e328100091ecc17f48f72d220a9358a")) {
+                        intent = new Intent(v.getContext(), DeklarasiActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Permintaan Non Asset
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_efbf21fa60f0b05edceb7908955354bd")) {
+                        intent = new Intent(v.getContext(), PermintaanNonAssetActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Permintaan Extension dan Akses
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e8ae59c0c9b3f7e674f794cc7276ec7b")) {
+                        intent = new Intent(v.getContext(), PermintaanExtensionDanAksesActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

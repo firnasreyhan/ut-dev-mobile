@@ -312,6 +312,27 @@ public class OnlineRepository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postExtensionDanAkses(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postExtensionDanAkses(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postExtensionDanAkses", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> postMaterialUsedSlip(String body) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postMaterialUsedSlip(
