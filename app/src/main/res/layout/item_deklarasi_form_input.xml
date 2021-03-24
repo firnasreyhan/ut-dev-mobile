@@ -46,62 +46,67 @@
             android:id="@+id/linearLayoutForm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_19sdp"
+            android:layout_marginTop="@dimen/_13sdp"
             android:orientation="vertical"
             android:visibility="gone">
 
             <EditText
+                android:id="@+id/editTextBBM"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="BBM"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextTolParkir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Tol/Parkir"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextGrab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Grab"
-                android:inputType="text"
+                android:inputType="number"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextLainLain"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_75sdp"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Lain-lain"
-                android:gravity="left|top"
-                android:inputType="textMultiLine"
+                android:inputType="number"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />
 
             <EditText
+                android:id="@+id/editTextJumlah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:fontFamily="@font/montserrat_medium"
                 android:hint="Jumlah"
                 android:inputType="number"
+                android:enabled="false"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
                 android:textSize="@dimen/_8sdp" />

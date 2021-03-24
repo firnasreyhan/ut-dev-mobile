@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
@@ -93,33 +94,46 @@ public class SuratJalanActivity extends AppCompatActivity {
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.show();
+                if (checkData()) {
+                    progressDialog.show();
+                    SuratJalanModel model = new SuratJalanModel(
+                            AppPreference.getUser(v.getContext()).getIdUsers(),
+                            idMapping,
+                            tanggal,
+                            AppPreference.getUser(v.getContext()).getNamaUsers(),
+                            binding.editTextKendaraan.getText().toString(),
+                            binding.editTextKeperluan.getText().toString()
+                    );
 
-                SuratJalanModel model = new SuratJalanModel(
-                        AppPreference.getUser(v.getContext()).getIdUsers(),
-                        idMapping,
-                        tanggal,
-                        AppPreference.getUser(v.getContext()).getNamaUsers(),
-                        binding.editTextKendaraan.getText().toString(),
-                        binding.editTextKeperluan.getText().toString()
-                );
+                    viewModel.postSuratJalan(
+                            model
+                    ).observe(SuratJalanActivity.this, new Observer<BaseResponse>() {
+                        @Override
+                        public void onChanged(BaseResponse baseResponse) {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
 
-                viewModel.postSuratJalan(
-                        model
-                ).observe(SuratJalanActivity.this, new Observer<BaseResponse>() {
-                    @Override
-                    public void onChanged(BaseResponse baseResponse) {
-                        if (progressDialog.isShowing()) {
-                            progressDialog.dismiss();
-                        }
-
-                        if (baseResponse != null) {
-                            if (baseResponse.isStatus()) {
-                                startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                            if (baseResponse != null) {
+                                if (baseResponse.isStatus()) {
+                                    startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
+                                } else {
+                                    new AlertDialog.Builder(v.getContext())
+                                            .setTitle("Pesan")
+                                            .setMessage(baseResponse.getMessage())
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            })
+                                            .create()
+                                            .show();
+                                }
                             } else {
                                 new AlertDialog.Builder(v.getContext())
                                         .setTitle("Pesan")
-                                        .setMessage(baseResponse.getMessage())
+                                        .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -129,21 +143,9 @@ public class SuratJalanActivity extends AppCompatActivity {
                                         .create()
                                         .show();
                             }
-                        } else {
-                            new AlertDialog.Builder(v.getContext())
-                                    .setTitle("Pesan")
-                                    .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                        }
-                                    })
-                                    .create()
-                                    .show();
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     }
@@ -152,5 +154,28 @@ public class SuratJalanActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
+    }
+
+    private boolean checkData() {
+        boolean cek1 = true;
+        boolean cek2 = true;
+        boolean cek3 = true;
+
+        if (binding.editTextTanggal.getText().toString().isEmpty()) {
+            binding.editTextTanggal.setError("Mohon isi data berikut");
+            cek1 = false;
+        }
+
+        if (binding.editTextKendaraan.getText().toString().isEmpty()) {
+            binding.editTextKendaraan.setError("Mohon isi data berikut");
+            cek2 = false;
+        }
+
+        if (binding.editTextKeperluan.getText().toString().isEmpty()) {
+            binding.editTextKeperluan.setError("Mohon isi data berikut");
+            cek3 = false;
+        }
+
+        return cek1 && cek2 && cek3;
     }
 }

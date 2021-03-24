@@ -79,6 +79,7 @@
                         android:text="Tanggal"/>
 
                     <TextView
+                        android:id="@+id/textViewTanggal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -106,6 +107,7 @@
                         android:text="Devisi/Departement"/>
 
                     <TextView
+                        android:id="@+id/textViewDivisi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -133,6 +135,7 @@
                         android:text="No Polisi"/>
 
                     <TextView
+                        android:id="@+id/textViewNoPol"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
