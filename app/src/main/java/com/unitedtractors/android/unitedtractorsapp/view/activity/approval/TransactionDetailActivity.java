@@ -430,6 +430,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
     }
 
     private void approval(int isApprove, String keterangan) {
+        progressDialog.show();
         viewModel.putConfirm(
                 AppPreference.getUser(this).getUserUsers(),
                 idTrans,

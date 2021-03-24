@@ -51,14 +51,14 @@
             android:visibility="gone">
 
             <EditText
-                android:id="@+id/editTextHariTanggal"
+                android:id="@+id/editTextTanggal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/hint_color"
                 android:drawableEnd="@drawable/ic_outline_calendar"
                 android:drawableRight="@drawable/ic_outline_calendar"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Hari - Tanggal"
+                android:hint="Tanggal"
                 android:inputType="date"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/hint_color"
