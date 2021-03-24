@@ -108,6 +108,7 @@
                                 android:orientation="vertical">
 
                                 <EditText
+                                    android:id="@+id/editTextTanggal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -117,7 +118,7 @@
                                     android:drawableRight="@drawable/ic_outline_calendar"
                                     android:focusable="false"
                                     android:fontFamily="@font/montserrat_medium"
-                                    android:hint="Hari - Tanggal"
+                                    android:hint="Tanggal"
                                     android:paddingLeft="8dp"
                                     android:paddingRight="8dp"
                                     android:textColor="@color/text_color"
@@ -125,6 +126,7 @@
                                     android:textSize="@dimen/_8sdp" />
 
                                 <EditText
+                                    android:visibility="gone"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:backgroundTint="@color/hint_color"
@@ -138,6 +140,7 @@
                                     android:textSize="@dimen/_8sdp" />
 
                                 <EditText
+                                    android:id="@+id/editTextKendaraan"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:backgroundTint="@color/hint_color"
@@ -151,6 +154,7 @@
                                     android:textSize="@dimen/_8sdp" />
 
                                 <EditText
+                                    android:id="@+id/editTextKeperluan"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_75sdp"
                                     android:backgroundTint="@color/hint_color"
