@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.database.AppDAO;
 import com.unitedtractors.android.unitedtractorsapp.database.Database;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguMonitoringCateringEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguRuangMeetingEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguMonitoringCateringEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguRuangMeetingEntity;
 
@@ -150,6 +152,73 @@ public class OfflineRepository {
             @Override
             public void run() {
                 appDAO.updateAllMingguRuangMeeting(status);
+            }
+        });
+    }
+
+    //Monitoring Catring
+    public LiveData<List<MingguMonitoringCateringEntity>> getMonitoringCatering(){
+        return appDAO.getMingguMonitoringCatering();
+    }
+
+    public void insertMonitoringCatering(final MingguMonitoringCateringEntity mingguMonitoringCateringEntity){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.insertMonitoringCatering(mingguMonitoringCateringEntity);
+            }
+        });
+    }
+
+    public void updateMonitoringCatering(int id, boolean b){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.updateMingguMonitoringCatering(id, b);
+            }
+        });
+    }
+
+    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(int mingguKe){
+        return appDAO.getDetailMonitoringCatering(mingguKe);
+    }
+
+    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(){
+        return appDAO.getDetailMonitoringCatering();
+    }
+
+    public void insertDetailMonitoringCatering(final DetailMingguMonitoringCateringEntity detailMingguMonitoringCateringEntity){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.insertDetailMingguMonitoringCatering(detailMingguMonitoringCateringEntity);
+            }
+        });
+    }
+
+    public void deleteDetailMonitoringCatering(int mingguKe){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.deleteDetailMingguMonitoringCatering(mingguKe);
+            }
+        });
+    }
+
+    public void deleteDetailAllMonitoringCatering(){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.deleteDetailAllMingguMonitoringCatering();
+            }
+        });
+    }
+
+    public void updateAllMonitoringCatering(boolean status){
+        Database.executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                appDAO.updateAllMingguMonitoringCatering(status);
             }
         });
     }

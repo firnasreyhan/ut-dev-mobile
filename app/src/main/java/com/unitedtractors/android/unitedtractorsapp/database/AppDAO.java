@@ -5,8 +5,10 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguMonitoringCateringEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguRuangMeetingEntity;
+import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguMonitoringCateringEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.MingguRuangMeetingEntity;
 
@@ -69,4 +71,32 @@ public interface AppDAO {
 
     @Query("UPDATE MingguRuangMeetingEntity SET status = :status")
     void updateAllMingguRuangMeeting(boolean status);
+
+    //Monitoring Catering
+    @Query("SELECT * FROM MingguMonitoringCateringEntity")
+    LiveData<List<MingguMonitoringCateringEntity>> getMingguMonitoringCatering();
+
+    @Insert
+    void insertMonitoringCatering(MingguMonitoringCateringEntity mingguMonitoringCateringEntity);
+
+    @Query("UPDATE MingguMonitoringCateringEntity SET status = :status WHERE id = :id")
+    void updateMingguMonitoringCatering(int id, boolean status);
+
+    @Query("SELECT * FROM DetailMingguMonitoringCateringEntity WHERE mingguKe = :mingguKe")
+    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(int mingguKe);
+
+    @Query("SELECT * FROM DetailMingguMonitoringCateringEntity")
+    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering();
+
+    @Insert
+    void insertDetailMingguMonitoringCatering(DetailMingguMonitoringCateringEntity detailMingguMonitoringCateringEntity);
+
+    @Query("DELETE FROM DetailMingguMonitoringCateringEntity WHERE mingguKe = :mingguKe")
+    void deleteDetailMingguMonitoringCatering(int mingguKe);
+
+    @Query("DELETE FROM DetailMingguMonitoringCateringEntity")
+    void deleteDetailAllMingguMonitoringCatering();
+
+    @Query("UPDATE MingguMonitoringCateringEntity SET status = :status")
+    void updateAllMingguMonitoringCatering(boolean status);
 }
