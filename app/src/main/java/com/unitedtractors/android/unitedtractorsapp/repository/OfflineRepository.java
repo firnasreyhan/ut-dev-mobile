@@ -157,20 +157,20 @@ public class OfflineRepository {
     }
 
     //Monitoring Catring
-    public LiveData<List<MingguMonitoringCateringEntity>> getMonitoringCatering(){
+    public LiveData<List<MingguMonitoringCateringEntity>> getMingguMonitoringCatering(){
         return appDAO.getMingguMonitoringCatering();
     }
 
-    public void insertMonitoringCatering(final MingguMonitoringCateringEntity mingguMonitoringCateringEntity){
+    public void insertMingguMonitoringCatering(final MingguMonitoringCateringEntity mingguMonitoringCateringEntity){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
-                appDAO.insertMonitoringCatering(mingguMonitoringCateringEntity);
+                appDAO.insertMingguMonitoringCatering(mingguMonitoringCateringEntity);
             }
         });
     }
 
-    public void updateMonitoringCatering(int id, boolean b){
+    public void updateMingguMonitoringCatering(int id, boolean b){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -179,15 +179,15 @@ public class OfflineRepository {
         });
     }
 
-    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(int mingguKe){
-        return appDAO.getDetailMonitoringCatering(mingguKe);
+    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMingguMonitoringCatering(int mingguKe){
+        return appDAO.getDetailMingguMonitoringCatering(mingguKe);
     }
 
-    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(){
-        return appDAO.getDetailMonitoringCatering();
+    public LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMingguMonitoringCatering(){
+        return appDAO.getDetailMingguMonitoringCatering();
     }
 
-    public void insertDetailMonitoringCatering(final DetailMingguMonitoringCateringEntity detailMingguMonitoringCateringEntity){
+    public void insertDetailMingguMonitoringCatering(final DetailMingguMonitoringCateringEntity detailMingguMonitoringCateringEntity){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -196,7 +196,7 @@ public class OfflineRepository {
         });
     }
 
-    public void deleteDetailMonitoringCatering(int mingguKe){
+    public void deleteDetailMingguMonitoringCatering(int mingguKe){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -205,7 +205,7 @@ public class OfflineRepository {
         });
     }
 
-    public void deleteDetailAllMonitoringCatering(){
+    public void deleteDetailAllMingguMonitoringCatering(){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -214,7 +214,7 @@ public class OfflineRepository {
         });
     }
 
-    public void updateAllMonitoringCatering(boolean status){
+    public void updateAllMingguMonitoringCatering(boolean status){
         Database.executorService.execute(new Runnable() {
             @Override
             public void run() {

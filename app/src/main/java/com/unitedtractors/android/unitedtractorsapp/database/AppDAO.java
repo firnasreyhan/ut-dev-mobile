@@ -77,16 +77,16 @@ public interface AppDAO {
     LiveData<List<MingguMonitoringCateringEntity>> getMingguMonitoringCatering();
 
     @Insert
-    void insertMonitoringCatering(MingguMonitoringCateringEntity mingguMonitoringCateringEntity);
+    void insertMingguMonitoringCatering(MingguMonitoringCateringEntity mingguMonitoringCateringEntity);
 
     @Query("UPDATE MingguMonitoringCateringEntity SET status = :status WHERE id = :id")
     void updateMingguMonitoringCatering(int id, boolean status);
 
     @Query("SELECT * FROM DetailMingguMonitoringCateringEntity WHERE mingguKe = :mingguKe")
-    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering(int mingguKe);
+    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMingguMonitoringCatering(int mingguKe);
 
     @Query("SELECT * FROM DetailMingguMonitoringCateringEntity")
-    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMonitoringCatering();
+    LiveData<List<DetailMingguMonitoringCateringEntity>> getDetailMingguMonitoringCatering();
 
     @Insert
     void insertDetailMingguMonitoringCatering(DetailMingguMonitoringCateringEntity detailMingguMonitoringCateringEntity);

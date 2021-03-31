@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:background="@color/background"
     tools:context=".view.activity.form.monitoring_lapangan.MonitoringLapanganActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -35,138 +35,79 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginLeft="36dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="36dp"
-            android:layout_marginRight="36dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_form_start"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_56sdp"
-            android:layout_marginStart="44dp"
-            android:layout_marginLeft="44dp"
-            android:layout_marginTop="47dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginRight="44dp"
-            app:cardBackgroundColor="@color/box_stroke"
-            app:cardCornerRadius="@dimen/_7sdp"
-            app:cardElevation="0dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:strokeColor="@color/box_stroke"
-            app:strokeWidth="@dimen/_1sdp">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
-                android:padding="@dimen/_16sdp">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_50sdp"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/montserrat_medium"
-                    android:text="Jumlah Order"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_8sdp" />
-
-                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Weekly Report"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButtonKurangJumlahOrder"
-                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                        android:layout_width="@dimen/_14sdp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semi_bold"
-                        android:padding="0dp"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
-                        android:text="-"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_10sdp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"/>
 
-                    <EditText
-                        android:id="@+id/editTextJumlahOrder"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_marginStart="@dimen/_3sdp"
-                        android:layout_marginLeft="@dimen/_3sdp"
-                        android:layout_marginEnd="@dimen/_3sdp"
-                        android:layout_marginRight="@dimen/_3sdp"
-                        android:backgroundTint="@color/hint_color"
-                        android:enabled="false"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:gravity="center"
-                        android:inputType="number"
-                        android:text="0"
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/_8sdp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Persetujuan"/>
 
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/materialButtonTambahOrder"
-                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                        android:layout_width="@dimen/_14sdp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_semi_bold"
-                        android:padding="0dp"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
-                        android:text="+"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_10sdp" />
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:textColor="@color/hint_color2"
+                    android:textSize="@dimen/_8sdp"
+                    android:gravity="left|top"
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
-                </LinearLayout>
 
             </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
+        </androidx.core.widget.NestedScrollView>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonSelanjutnya"
+            android:id="@+id/materialButtonAjukan"
+            android:layout_alignParentBottom="true"
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="35dp"
+            android:layout_marginBottom="@dimen/_16sdp"
             android:fontFamily="@font/montserrat_semi_bold"
             android:paddingTop="@dimen/_11sdp"
             android:paddingBottom="@dimen/_11sdp"
-            android:text="Selanjutnya"
+            android:text="Ajukan"
             android:textAllCaps="false"
             android:textSize="@dimen/_10sdp"
-            android:enabled="false"
             app:backgroundTint="@color/button_disable"
-            app:cornerRadius="@dimen/_11sdp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:enabled="false"
+            app:cornerRadius="@dimen/_11sdp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>
