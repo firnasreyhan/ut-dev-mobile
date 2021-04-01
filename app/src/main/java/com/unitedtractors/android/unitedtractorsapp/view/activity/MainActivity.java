@@ -33,14 +33,16 @@ public class MainActivity extends NavigationActivity {
         LinkedHashMap<Integer, Fragment> rootFragment = new LinkedHashMap<>();
         if (AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Staff")
                 || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICM")
-                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICG")) {
+                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICG")
+                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Staff Catering")) {
             rootFragment.put(R.id.menu_beranda, new BerandaNoApprovalFragment());
         } else if (AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Section Head")
                 || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICA")) {
             rootFragment.put(R.id.menu_beranda, new BerandaMultipleApprovalFragment());
         } else if (AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICK")
                 || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Department Head")
-                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Division Head")) {
+                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("Division Head")
+                || AppPreference.getUser(this).getRoleUsers().equalsIgnoreCase("PICC")) {
             rootFragment.put(R.id.menu_beranda, new BerandaSingleApprovalFragment());
         }
         rootFragment.put(R.id.menu_task, new TaskFragment());

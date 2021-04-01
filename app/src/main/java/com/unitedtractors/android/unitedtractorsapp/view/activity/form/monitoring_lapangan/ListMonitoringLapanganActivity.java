@@ -3,28 +3,18 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity.form.monitori
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 
-import com.unitedtractors.android.unitedtractorsapp.adapter.MonitoringLapanganAdapter;
-import com.unitedtractors.android.unitedtractorsapp.adapter.Pertanyaan3Adapter;
 import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguMonitoringCateringEntity;
-import com.unitedtractors.android.unitedtractorsapp.database.entity.DetailMingguPompaAirBersihEntity;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListMonitoringLapanganBinding;
-import com.unitedtractors.android.unitedtractorsapp.model.MonitoringLapanganCatering;
-import com.unitedtractors.android.unitedtractorsapp.model.MonitoringLapanganModel;
-import com.unitedtractors.android.unitedtractorsapp.model.Pertanyaan3Model;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.ListMonitoringLapanganViewModel;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;

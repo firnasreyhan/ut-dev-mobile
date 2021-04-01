@@ -29,12 +29,14 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.material_used_slip.MaterialUsedSlipActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.monitoring_lapangan.MonitoringLapanganActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.order_catering.OrderCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan.PerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.NewPermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_layout_acara.PermintaanLayoutAcaraActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_non_asset.PermintaanNonAssetActivity;
@@ -238,6 +240,16 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     //Permintaan Extension dan Akses
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e8ae59c0c9b3f7e674f794cc7276ec7b")) {
                         intent = new Intent(v.getContext(), PermintaanExtensionDanAksesActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Monitoring
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_bb0ac8481270d3bb20c332076a749c24")) {
+                        intent = new Intent(v.getContext(), MonitoringLapanganActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
+                    //Permintaan Layout Acara
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_f88a488e782a3190c3b4604314066024")) {
+                        intent = new Intent(v.getContext(), PermintaanLayoutAcaraActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
 //                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {

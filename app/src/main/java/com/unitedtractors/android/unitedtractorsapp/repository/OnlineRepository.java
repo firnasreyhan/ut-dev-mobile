@@ -9,7 +9,7 @@ import com.unitedtractors.android.unitedtractorsapp.api.ApiInterface;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
@@ -333,6 +333,48 @@ public class OnlineRepository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> postMonitoringLapangan(String body) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postMonitoringLapangan(
+                body
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postMonitoringLapangan", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<IdTransResponse> postLayoutAcara(String body) {
+        MutableLiveData<IdTransResponse> data = new MutableLiveData<>();
+        apiInterface.postLayoutAcara(
+                body
+        ).enqueue(new Callback<IdTransResponse>() {
+            @Override
+            public void onResponse(Call<IdTransResponse> call, Response<IdTransResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<IdTransResponse> call, Throwable t) {
+                Log.e("postLayoutAcara", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> postMaterialUsedSlip(String body) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postMaterialUsedSlip(
@@ -354,20 +396,20 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<PostMobilResponse> postPermintaanMobilDinas(String body) {
-        MutableLiveData<PostMobilResponse> data = new MutableLiveData<>();
+    public MutableLiveData<IdTransResponse> postPermintaanMobilDinas(String body) {
+        MutableLiveData<IdTransResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilDinas(
                 body
-        ).enqueue(new Callback<PostMobilResponse>() {
+        ).enqueue(new Callback<IdTransResponse>() {
             @Override
-            public void onResponse(Call<PostMobilResponse> call, Response<PostMobilResponse> response) {
+            public void onResponse(Call<IdTransResponse> call, Response<IdTransResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<PostMobilResponse> call, Throwable t) {
+            public void onFailure(Call<IdTransResponse> call, Throwable t) {
                 Log.e("postPermintaanMobDin", t.getMessage());
                 data.postValue(null);
             }
@@ -375,20 +417,20 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<PostMobilResponse> postPermintaanMobilPribadi(String body) {
-        MutableLiveData<PostMobilResponse> data = new MutableLiveData<>();
+    public MutableLiveData<IdTransResponse> postPermintaanMobilPribadi(String body) {
+        MutableLiveData<IdTransResponse> data = new MutableLiveData<>();
         apiInterface.postPermintaanMobilPribadi(
                 body
-        ).enqueue(new Callback<PostMobilResponse>() {
+        ).enqueue(new Callback<IdTransResponse>() {
             @Override
-            public void onResponse(Call<PostMobilResponse> call, Response<PostMobilResponse> response) {
+            public void onResponse(Call<IdTransResponse> call, Response<IdTransResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<PostMobilResponse> call, Throwable t) {
+            public void onFailure(Call<IdTransResponse> call, Throwable t) {
                 Log.e("postPermintaanMobPri", t.getMessage());
                 data.postValue(null);
             }
@@ -726,6 +768,29 @@ public class OnlineRepository {
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 Log.e("postInternalWorkOrder", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postGambarLayoutAcara(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postGambarLayoutAcara(
+                idUser,
+                idTrans,
+                file
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postGambarLayoutAcara", t.getMessage());
                 data.postValue(null);
             }
         });

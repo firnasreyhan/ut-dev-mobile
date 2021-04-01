@@ -40,10 +40,10 @@ public class MonitoringLapanganViewAdapter extends RecyclerView.Adapter<Monitori
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewTanggal.setText(list.get(position).getTanggalView());
-        holder.textViewJumlahPesanan.setText(list.get(position).getJumlahPesanan());
-        holder.textViewActualBawa.setText(list.get(position).getActualBawa());
-        holder.textViewActualKupon.setText(list.get(position).getActualKupon());
+//        holder.textViewTanggal.setText(list.get(position).getTanggalView());
+//        holder.textViewJumlahPesanan.setText(list.get(position).getJumlahPesanan());
+//        holder.textViewActualBawa.setText(list.get(position).getActualBawa());
+//        holder.textViewActualKupon.setText(list.get(position).getActualKupon());
     }
 
     @Override

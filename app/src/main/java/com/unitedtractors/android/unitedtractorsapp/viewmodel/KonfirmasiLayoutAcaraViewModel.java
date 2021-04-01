@@ -14,6 +14,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
+import com.unitedtractors.android.unitedtractorsapp.model.LayoutAcaraModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
@@ -30,55 +31,48 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class KonfirmasiPermintaanMobilPribadiViewModel extends AndroidViewModel {
+public class KonfirmasiLayoutAcaraViewModel extends AndroidViewModel {
     private OnlineRepository onlineRepository;
     private Context context;
 
-    public KonfirmasiPermintaanMobilPribadiViewModel(@NonNull Application application) {
+    public KonfirmasiLayoutAcaraViewModel(@NonNull Application application) {
         super(application);
         onlineRepository = new OnlineRepository();
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<IdTransResponse> postPermintaanMobilPribadi(PermintaanMobilModel model) {
+    public MutableLiveData<IdTransResponse> postLayoutAcara(LayoutAcaraModel model) {
         JSONObject paramObject = new JSONObject();
         try {
             paramObject.put("idUser", model.getIdUser());
             paramObject.put("idMapping", model.getIdMapping());
-            paramObject.put("peminjam", model.getNamaPeminjam());
-            paramObject.put("pengemudi", model.getNamaPengemudi());
-            paramObject.put("tglPinjam", model.getTglPeminjaman());
-            paramObject.put("tglKembali", model.getTglPengembalian());
-            paramObject.put("divDept", model.getDivisi());
-            paramObject.put("nopol", model.getNoPolisi());
-            paramObject.put("jamBerangkat", model.getJamBerangkat());
-            paramObject.put("jamPulang", model.getJamPulang());
+            paramObject.put("namaAcara", model.getNamaAcara());
+            paramObject.put("lokasi", model.getLokasi());
+            paramObject.put("jam", model.getJam());
+            paramObject.put("tgl", model.getTgl());
+            paramObject.put("peserta", model.getPeserta());
+            paramObject.put("biaya", model.getBiaya());
+            paramObject.put("keterangan", model.getKeterangan());
 
-            return onlineRepository.postPermintaanMobilPribadi(paramObject.toString());
+            return onlineRepository.postLayoutAcara(paramObject.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return onlineRepository.postPermintaanMobilPribadi(null);
+        return onlineRepository.postLayoutAcara(null);
     }
 
-    public MutableLiveData<BaseResponse> postUploadSim(String idUsers_, String idTrans_, Uri file_) {
+    public MutableLiveData<BaseResponse> postGambarLayoutAcara(String idUsers_, String idTrans_, File file_) {
         RequestBody idUsers = RequestBody.create(MediaType.parse("text/plain"), idUsers_);
         RequestBody idTrans = RequestBody.create(MediaType.parse("text/plain"), idTrans_);
-        return onlineRepository.postSimMobilPribadi(
+        return onlineRepository.postGambarLayoutAcara(
                 idUsers,
                 idTrans,
-                compressFile(file_, "file")
+                MultipartBody.Part.createFormData("file", file_.getName(), RequestBody.create(MediaType.parse("image/*"), file_))
         );
     }
 
-    private File createTempFile(Uri uri) {
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public File createTempFile(Bitmap bitmap) {
         File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
                 , System.currentTimeMillis() +".JPEG");
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -94,20 +88,5 @@ public class KonfirmasiPermintaanMobilPribadiViewModel extends AndroidViewModel 
             e.printStackTrace();
         }
         return file;
-    }
-
-    private MultipartBody.Part compressFile(Uri uri, String path) {
-        File file = new File(uri.getPath());
-        try {
-            File fileCompress = new Compressor(context)
-                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                    .compressToFile(file);
-            File file1 = createTempFile(Uri.fromFile(fileCompress.getAbsoluteFile()));
-            Log.e("path", file1.getAbsolutePath());
-            return MultipartBody.Part.createFormData(path, file1.getName(), RequestBody.create(MediaType.parse("image/*"), file1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

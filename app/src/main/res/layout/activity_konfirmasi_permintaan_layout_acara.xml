@@ -79,6 +79,7 @@
                         android:text="Nama Acara"/>
 
                     <TextView
+                        android:id="@+id/textViewNamaAcara"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -106,6 +107,7 @@
                         android:text="Lokasi Acara"/>
 
                     <TextView
+                        android:id="@+id/textViewLokasiAcara"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -133,6 +135,7 @@
                         android:text="Jam"/>
 
                     <TextView
+                        android:id="@+id/textViewJam"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -160,6 +163,7 @@
                         android:text="Tanggal"/>
 
                     <TextView
+                        android:id="@+id/textViewTanggal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -187,6 +191,7 @@
                         android:text="Jumlah Peserta"/>
 
                     <TextView
+                        android:id="@+id/textViewJumlahPeserta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -214,6 +219,7 @@
                         android:text="Beban Biaya"/>
 
                     <TextView
+                        android:id="@+id/textViewBebanBiaya"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -230,7 +236,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_13sdp"
                     android:fontFamily="@font/montserrat_medium"
-                    android:text="Desain Layout Acara"
+                    android:text="Gambar Desain Layout Acara"
                     android:textColor="@color/text_color"
                     android:textSize="@dimen/_10sdp" />
 
@@ -249,98 +255,12 @@
                         android:padding="@dimen/_7sdp"
                         android:orientation="horizontal">
 
-                        <androidx.core.widget.NestedScrollView
+                        <ImageView
+                            android:id="@+id/imageViewGambarDesainLayoutAcara"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:scrollbars="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/_53sdp"
-                                    android:layout_height="@dimen/_53sdp"
-                                    android:layout_marginRight="@dimen/_7sdp"
-                                    app:cardCornerRadius="@dimen/_4sdp"
-                                    app:cardElevation="0dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:adjustViewBounds="true"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_no_image"/>
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/_53sdp"
-                                    android:layout_height="@dimen/_53sdp"
-                                    android:layout_marginRight="@dimen/_7sdp"
-                                    app:cardCornerRadius="@dimen/_4sdp"
-                                    app:cardElevation="0dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:adjustViewBounds="true"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_no_image"/>
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/_53sdp"
-                                    android:layout_height="@dimen/_53sdp"
-                                    android:layout_marginRight="@dimen/_7sdp"
-                                    app:cardCornerRadius="@dimen/_4sdp"
-                                    app:cardElevation="0dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:adjustViewBounds="true"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_no_image"/>
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/_53sdp"
-                                    android:layout_height="@dimen/_53sdp"
-                                    android:layout_marginRight="@dimen/_7sdp"
-                                    app:cardCornerRadius="@dimen/_4sdp"
-                                    app:cardElevation="0dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:adjustViewBounds="true"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_no_image"/>
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                                <com.google.android.material.card.MaterialCardView
-                                    android:layout_width="@dimen/_53sdp"
-                                    android:layout_height="@dimen/_53sdp"
-                                    app:cardCornerRadius="@dimen/_4sdp"
-                                    app:cardElevation="0dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:adjustViewBounds="true"
-                                        android:scaleType="centerCrop"
-                                        android:src="@drawable/ic_no_image"/>
-
-                                </com.google.android.material.card.MaterialCardView>
-
-                            </LinearLayout>
-
-                        </androidx.core.widget.NestedScrollView>
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_no_image"/>
 
                     </LinearLayout>
 
@@ -356,6 +276,7 @@
                     android:text="Keterangan"/>
 
                 <TextView
+                    android:id="@+id/textViewKeterangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_7sdp"
@@ -382,7 +303,7 @@
                     android:textColor="@color/hint_color2"
                     android:textSize="@dimen/_8sdp"
                     android:gravity="left|top"
-                    android:text="Dengan mencentang ini saya menyatakan bahwa data diisikan sudah benar dan dapat dipertanggungjawabkan."/>
+                    android:text="Dengan mencentang ini saya menyatakan bahwa data yang saya isikan sudah benar dan dapat dipertanggungjawabkan."/>
 
             </LinearLayout>
 

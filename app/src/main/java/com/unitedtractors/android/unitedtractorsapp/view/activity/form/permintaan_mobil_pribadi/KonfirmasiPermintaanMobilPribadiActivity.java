@@ -15,14 +15,12 @@ import android.view.View;
 import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
-import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinasAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKonfirmasiPermintaanMobilPribadiBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPermintaanMobilPribadiViewModel;
 
 public class KonfirmasiPermintaanMobilPribadiActivity extends AppCompatActivity {
@@ -103,9 +101,9 @@ public class KonfirmasiPermintaanMobilPribadiActivity extends AppCompatActivity 
                 progressDialog.show();
                 viewModel.postPermintaanMobilPribadi(
                         model
-                ).observe(KonfirmasiPermintaanMobilPribadiActivity.this, new Observer<PostMobilResponse>() {
+                ).observe(KonfirmasiPermintaanMobilPribadiActivity.this, new Observer<IdTransResponse>() {
                     @Override
-                    public void onChanged(PostMobilResponse baseResponse) {
+                    public void onChanged(IdTransResponse baseResponse) {
                         if (baseResponse != null) {
                             if (baseResponse.isStatus()) {
                                 viewModel.postUploadSim(

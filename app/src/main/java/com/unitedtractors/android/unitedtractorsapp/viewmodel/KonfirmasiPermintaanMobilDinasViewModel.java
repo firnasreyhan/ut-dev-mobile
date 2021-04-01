@@ -13,7 +13,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
@@ -41,7 +41,7 @@ public class KonfirmasiPermintaanMobilDinasViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<PostMobilResponse> postPermintaanMobilDinas(PermintaanMobilModel model) {
+    public MutableLiveData<IdTransResponse> postPermintaanMobilDinas(PermintaanMobilModel model) {
         try {
             JSONObject paramObject = new JSONObject();
             paramObject.put("idUser", model.getIdUser());

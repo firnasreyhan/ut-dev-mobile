@@ -3,7 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.api;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
-import com.unitedtractors.android.unitedtractorsapp.api.response.PostMobilResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.SignInResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
@@ -67,7 +67,7 @@ public interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("formMobdin")
-    Call<PostMobilResponse> postPermintaanMobilDinas(
+    Call<IdTransResponse> postPermintaanMobilDinas(
             @Body String body
     );
 
@@ -89,7 +89,7 @@ public interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("formMobpri")
-    Call<PostMobilResponse> postPermintaanMobilPribadi(
+    Call<IdTransResponse> postPermintaanMobilPribadi(
             @Body String body
     );
 
@@ -257,6 +257,26 @@ public interface ApiInterface {
     @POST("formExtension")
     Call<BaseResponse> postExtensionDanAkses(
             @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formMonitoring")
+    Call<BaseResponse> postMonitoringLapangan(
+            @Body String body
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formLayout")
+    Call<IdTransResponse> postLayoutAcara(
+            @Body String body
+    );
+
+    @Multipart
+    @POST("formLayout/upload")
+    Call<BaseResponse> postGambarLayoutAcara(
+            @Part("idUser") RequestBody idUser,
+            @Part("idTrans") RequestBody idTrans,
+            @Part MultipartBody.Part file
     );
 
     @GET("form")
