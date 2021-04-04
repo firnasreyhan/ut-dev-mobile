@@ -87,23 +87,37 @@ public class DokumenPVRVActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), KonfirmasiPVRVActivity.class);
-                intent.putExtra("ID_MAPPING", idMapping);
-                intent.putExtra("KOTA", kota);
-                intent.putExtra("TANGGAL", tanggal);
-                intent.putExtra("TANGGAL_VIEW", tanggalView);
-                intent.putExtra("DIBAYARKAN_KEPADA", dibayarkanKepada);
-                intent.putExtra("NRP_KARYAWAN", nrpKaryawan);
-                intent.putExtra("KEPERLUAN", keperluan);
-                intent.putExtra("NOMOR_PO", nomorPo);
-                intent.putExtra("NOMOR_INVOICE", nomorInvoice);
-                intent.putExtra("CARA_PEMBAYARAN_KODE", caraPembayaranKode);
-                intent.putExtra("CARA_PEMBAYARAN", caraPembayaran);
-                intent.putExtra("NO_PPN", noPpn);
-                intent.putExtra("NO_PPH", noPph);
-                intent.putExtra("PRESENTASE", presentase);
-                intent.putExtra("DOKUMEN", true);
-                startActivity(intent);
+                if (mediaFiles.size() > 0) {
+                    Intent intent = new Intent(v.getContext(), KonfirmasiPVRVActivity.class);
+                    intent.putExtra("ID_MAPPING", idMapping);
+                    intent.putExtra("KOTA", kota);
+                    intent.putExtra("TANGGAL", tanggal);
+                    intent.putExtra("TANGGAL_VIEW", tanggalView);
+                    intent.putExtra("DIBAYARKAN_KEPADA", dibayarkanKepada);
+                    intent.putExtra("NRP_KARYAWAN", nrpKaryawan);
+                    intent.putExtra("KEPERLUAN", keperluan);
+                    intent.putExtra("NOMOR_PO", nomorPo);
+                    intent.putExtra("NOMOR_INVOICE", nomorInvoice);
+                    intent.putExtra("CARA_PEMBAYARAN_KODE", caraPembayaranKode);
+                    intent.putExtra("CARA_PEMBAYARAN", caraPembayaran);
+                    intent.putExtra("NO_PPN", noPpn);
+                    intent.putExtra("NO_PPH", noPph);
+                    intent.putExtra("PRESENTASE", presentase);
+                    intent.putExtra("DOKUMEN", true);
+                    startActivity(intent);
+                } else {
+                    new AlertDialog.Builder(v.getContext())
+                            .setTitle("Pesan")
+                            .setMessage("Mohon untuk melampirkan dokumen")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
+                }
             }
         });
 

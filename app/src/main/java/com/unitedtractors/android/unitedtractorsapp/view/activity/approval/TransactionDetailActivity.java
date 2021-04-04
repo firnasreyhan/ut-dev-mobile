@@ -289,6 +289,37 @@ public class TransactionDetailActivity extends AppCompatActivity {
                     } else {
                         approval(1, "-");
                     }
+                } else if (idMapping.equalsIgnoreCase("MAPP_f396fb92a8cd60dc3edfabf349321882")) {
+                    final EditText input = new EditText(v.getContext());
+                    input.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+                    input.setHint("Keterangan");
+
+                    LinearLayout linearLayout = new LinearLayout(v.getContext());
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                    input.setLayoutParams(layoutParams);
+                    linearLayout.addView(input);
+                    linearLayout.setPadding(60, 0, 60, 0);
+
+                    new AlertDialog.Builder(v.getContext())
+                            .setTitle("Pesan")
+                            .setMessage("Masukkan keterangan/alasan")
+                            .setView(linearLayout)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    progressDialog.show();
+                                    approval(1, input.getText().toString());
+                                }
+                            })
+                            .setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .create()
+                            .show();
                 } else {
                     approval(1, "-");
                 }
@@ -463,7 +494,7 @@ public class TransactionDetailActivity extends AppCompatActivity {
                 AppPreference.getUser(this).getUserUsers(),
                 idTrans,
                 isApprove,
-                keterangan
+                keterangan.isEmpty() ? "-" : keterangan
         ).observe(TransactionDetailActivity.this, new Observer<BaseResponse>() {
             @Override
             public void onChanged(BaseResponse baseResponse) {
