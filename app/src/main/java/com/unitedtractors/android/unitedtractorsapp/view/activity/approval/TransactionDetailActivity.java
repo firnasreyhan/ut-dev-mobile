@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.activity.approval;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.InputType;
@@ -22,6 +23,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DokumenPendukungResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityTransactionDetailBinding;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -49,9 +51,9 @@ public class TransactionDetailActivity extends AppCompatActivity {
         progressDialog.setMessage("Mohon Tunggu Sebentar...");
         progressDialog.setCancelable(false);
 
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Mohon Tunggu Sebentar...");
-        progressDialog.setCancelable(false);
+//        ProgressDialog progressDialog = new ProgressDialog(this);
+//        progressDialog.setMessage("Mohon Tunggu Sebentar...");
+//        progressDialog.setCancelable(false);
 
         setSupportActionBar(binding.toolbar);
         setTitle("");
@@ -137,6 +139,32 @@ public class TransactionDetailActivity extends AppCompatActivity {
                         }
 
                         pdfView(transactionDetailResponse.getData().getPathTrans());
+
+                        if (idMapping.equalsIgnoreCase("MAPP_f396fb92a8cd60dc3edfabf349321882")) {
+                            viewModel.getDokumenPendukung(
+                                    AppPreference.getUser(TransactionDetailActivity.this).getIdUsers(),
+                                    idTrans
+                            ).observe(TransactionDetailActivity.this, new Observer<DokumenPendukungResponse>() {
+                                @Override
+                                public void onChanged(DokumenPendukungResponse dokumenPendukungResponse) {
+                                    if (dokumenPendukungResponse != null) {
+                                        if (dokumenPendukungResponse.isStatus()) {
+                                            if (dokumenPendukungResponse.getData().size() > 0) {
+                                                binding.materialButtonDokumenPendukung.setVisibility(View.VISIBLE);
+                                                binding.materialButtonDokumenPendukung.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        Intent intent = new Intent(v.getContext(), ListDokumenPendukungActivity.class);
+                                                        intent.putExtra("ID_TRANS", idTrans);
+                                                        startActivity(intent);
+                                                    }
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        }
 
 //                    binding.webView.invalidate();
 //                    binding.webView.getSettings().setJavaScriptEnabled(true);

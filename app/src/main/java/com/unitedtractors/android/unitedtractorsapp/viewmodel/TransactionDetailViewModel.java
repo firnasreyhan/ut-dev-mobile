@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DokumenPendukungResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionDetailResponse;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
@@ -32,5 +33,9 @@ public class TransactionDetailViewModel extends AndroidViewModel {
 
     public MutableLiveData<TransactionDetailResponse> getTransactionDetail(String username, String idTrans, boolean isApproval) {
         return onlineRepository.getTransactionDetail(username, idTrans, isApproval);
+    }
+
+    public MutableLiveData<DokumenPendukungResponse> getDokumenPendukung(String idUser, String idTrans) {
+        return onlineRepository.getDokumenPendukung(idUser, idTrans);
     }
 }

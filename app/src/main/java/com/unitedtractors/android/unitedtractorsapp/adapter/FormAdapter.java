@@ -40,6 +40,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaa
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_pribadi.PermintaanMobilPribadiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_non_asset.PermintaanNonAssetActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permohonan_pv_rv.PermohonanPVRVActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.sidak_catering.SidakCateringActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.surat_jalan.SuratJalanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.survery_kepuasan_pelanggan.DetailSurveyKepuasanPelangganActivity;
@@ -252,49 +253,11 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                         intent = new Intent(v.getContext(), PermintaanLayoutAcaraActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
-//                    if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e5302aac81de91ac1d48b2cf8bf438f8")) {
-//                        intent = new Intent(v.getContext(), PermintaanMobilDinasActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_e3afa323d691d218559593b2dd1d5935")) {
-//                        intent = new Intent(v.getContext(), PembelianSnackActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_4a1f600ad300b633f2f0c4a0b7b4acc6")) {
-//                        intent = new Intent(v.getContext(), PermintaanMobilPribadiActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_628426fdf153e5637a5c3970696d2ad2")) {
-//                        intent = new Intent(v.getContext(), KontrolHarianActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_ebaebfa4bdce66436c0b7d342cdcbe0c")) {
-//                        intent = new Intent(v.getContext(), KomplainAtauUsulanActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_fca21f3d1ef1ff4a32978f579e584954")) {
-//                        intent = new Intent(v.getContext(), IdentifikasiActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_fca21f3d1ef1ff4a32978f579e584954")) {
-//                        intent = new Intent(v.getContext(), IdentifikasiActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_120469065bef687d484e715365332000")) {
-//                        intent = new Intent(v.getContext(), ExternalWorkOrderActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_2641049dccfd7f3d0d232a3a420e2948")) {
-//                        intent = new Intent(v.getContext(), SidakCateringActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_9101a9689d1e9b937047799b09a68b8f")) {
-//                        intent = new Intent(v.getContext(), SyaratLegalitasCateringActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_f060d9b26e6dbe48b4bb84fd94b64bcb")) {
-//                        intent = new Intent(v.getContext(), HasilTestFoodCateringActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_347f0e1d0950dd8fd36f23d90b293ea9")) {
-//                        intent = new Intent(v.getContext(), ChecklistForGensetActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_ce2d8c52f4e18e8a5a8df940c611d1d2")) {
-//                        intent = new Intent(v.getContext(), LaporanPerbaikanActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    } else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_1484d4415442b0cd9cf7995e786e6142")) {
-//                        intent = new Intent(v.getContext(), PerbaikanActivity.class);
-//                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
-//                    }
+                    //PERMOHONAN PEMBUATAN PVRV
+                    else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_f396fb92a8cd60dc3edfabf349321882")) {
+                        intent = new Intent(v.getContext(), PermohonanPVRVActivity.class);
+                        intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
+                    }
                     v.getContext().startActivity(intent);
                 }
             });

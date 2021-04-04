@@ -1,6 +1,7 @@
 package com.unitedtractors.android.unitedtractorsapp.api;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DokumenPendukungResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
@@ -277,6 +278,29 @@ public interface ApiInterface {
             @Part("idUser") RequestBody idUser,
             @Part("idTrans") RequestBody idTrans,
             @Part MultipartBody.Part file
+    );
+
+    @Headers("Content-Type: application/json")
+    @POST("formPVRV")
+    Call<IdTransResponse> postPVRV(
+            @Body String body
+    );
+
+    @Multipart
+    @POST("formPVRV/upload")
+    Call<BaseResponse> postDokumenPVRV(
+            @Part("idUser") RequestBody idUser,
+            @Part("idTrans") RequestBody idTrans,
+            @Part("statUpload") RequestBody statUpload,
+            @Part("totalUpload") RequestBody totalUpload,
+            @Part MultipartBody.Part file
+    );
+
+
+    @GET("formPVRV/dokPend")
+    Call<DokumenPendukungResponse> getDokumenPendukung(
+            @Query("idUser") String idUser,
+            @Query("idTrans") String idTrans
     );
 
     @GET("form")

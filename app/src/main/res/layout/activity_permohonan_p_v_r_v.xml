@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:background="@color/background"
+    tools:context=".view.activity.form.permohonan_pv_rv.PermohonanPVRVActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@android:color/white">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/_11sdp"
+                android:text="Permohonan PV/RV"/>
+
+        </FrameLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/_13sdp">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutKeterangan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_10sdp"
+                        android:text="Masukkan Detail"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:text="Detail Informasi"
+                        android:textColor="@color/hint_color2"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/white"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:strokeColor="@color/box_stroke"
+                    app:strokeWidth="@dimen/_1sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_13sdp">
+
+                        <LinearLayout
+                            android:id="@+id/linearLayoutForm"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTextKota"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Kota"
+                                    android:inputType="text"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <EditText
+                                    android:id="@+id/editTextTanggal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:clickable="true"
+                                    android:drawableEnd="@drawable/ic_outline_calendar"
+                                    android:drawableRight="@drawable/ic_outline_calendar"
+                                    android:focusable="false"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Tanggal"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
+
+                            <EditText
+                                android:id="@+id/editTextDibayarkanKepada"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="Dibayarkan Kepada"
+                                android:inputType="textPersonName"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <EditText
+                                android:id="@+id/editTextNRPKaryawan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="NRP Karyawan"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <EditText
+                                android:id="@+id/editTextKeperluan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="Keperluan"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <EditText
+                                android:id="@+id/editTextNomorPO"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="Nomor PO"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <EditText
+                                android:id="@+id/editTextNomorInvoice"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="Nomor Invoice"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_7sdp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_semi_bold"
+                                android:textColor="@color/text_color"
+                                android:textSize="@dimen/_8sdp"
+                                android:text="Cara Pembayaran"/>
+
+                            <Spinner
+                                android:id="@+id/spinnerCaraPembayaran"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_6sdp"
+                                android:spinnerMode="dropdown"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
+                                android:background="@color/hint_color"/>
+
+                            <EditText
+                                android:id="@+id/editTextNoPPN"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_6sdp"
+                                android:layout_weight="1"
+                                android:backgroundTint="@color/hint_color"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:hint="No PPN"
+                                android:inputType="text"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:textColor="@color/text_color"
+                                android:textColorHint="@color/hint_color"
+                                android:textSize="@dimen/_8sdp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <EditText
+                                    android:id="@+id/editTextNoPPH"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginRight="@dimen/_3sdp"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="No PPH"
+                                    android:inputType="text"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <EditText
+                                    android:id="@+id/editTextPresentase"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:layout_marginLeft="@dimen/_3sdp"
+                                    android:backgroundTint="@color/hint_color"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:hint="Persentase"
+                                    android:inputType="number"
+                                    android:paddingLeft="8dp"
+                                    android:paddingRight="8dp"
+                                    android:textColor="@color/text_color"
+                                    android:textColorHint="@color/hint_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/_13sdp"
+                                android:background="@android:color/white"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/montserrat_medium"
+                                    android:text="Banyaknya Pembayaran"
+                                    android:textColor="@color/text_color"
+                                    android:textSize="@dimen/_8sdp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_10sdp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/materialButtonKurangJumlahPembayaran"
+                                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="wrap_content"
+                                        android:minWidth="0dp"
+                                        android:minHeight="0dp"
+                                        android:fontFamily="@font/montserrat_semi_bold"
+                                        android:padding="0dp"
+                                        android:text="-"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="@dimen/_10sdp" />
+
+                                    <EditText
+                                        android:id="@+id/editTextJumlahPembayaran"
+                                        android:layout_width="@dimen/_25sdp"
+                                        android:layout_height="@dimen/_25sdp"
+                                        android:layout_marginStart="@dimen/_3sdp"
+                                        android:layout_marginLeft="@dimen/_3sdp"
+                                        android:layout_marginEnd="@dimen/_3sdp"
+                                        android:layout_marginRight="@dimen/_3sdp"
+                                        android:fontFamily="@font/montserrat_medium"
+                                        android:gravity="center"
+                                        android:inputType="number"
+                                        android:enabled="false"
+                                        android:text="0"
+                                        android:textColor="@color/text_color"
+                                        android:textSize="@dimen/_8sdp" />
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/materialButtonTambahJumlahPembayaran"
+                                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                                        android:layout_width="@dimen/_14sdp"
+                                        android:layout_height="wrap_content"
+                                        android:minWidth="0dp"
+                                        android:minHeight="0dp"
+                                        android:fontFamily="@font/montserrat_semi_bold"
+                                        android:padding="0dp"
+                                        android:text="+"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="@dimen/_10sdp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButtonSelanjutnya"
+            android:layout_alignParentBottom="true"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:paddingTop="@dimen/_11sdp"
+            android:paddingBottom="@dimen/_11sdp"
+            android:text="Selanjutnya"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_10sdp"
+            app:backgroundTint="@color/button_disable"
+            android:enabled="false"
+            app:cornerRadius="@dimen/_11sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>

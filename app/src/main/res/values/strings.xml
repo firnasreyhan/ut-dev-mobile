@@ -13,4 +13,11 @@
     <string name="jam_berangkat">Jam Berangkat</string>
     <string name="jam_pulang">Jam Pulang</string>
     <string name="tujuan">Tujuan dan Keperluan</string>
+
+    <string name="uri">Uri : %1$s</string>
+    <string name="size">Size :  %1$d</string>
+    <string name="mime">Mime: %1$s</string>
+    <string name="type">Type : %1$d</string>
+    <string name="name">Name : %1$s</string>
+    <string name="bucketname">BucketName : %1$s</string>
 </resources>

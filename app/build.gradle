@@ -100,4 +100,7 @@ dependencies {
 
     //Month and Year Picker
     implementation 'com.github.dewinjm:monthyear-picker:1.0.2'
+
+    //FilePicker
+    implementation 'com.github.jaiselrahman:FilePicker:1.3.2'
 }

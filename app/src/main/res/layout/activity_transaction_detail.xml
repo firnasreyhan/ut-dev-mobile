@@ -72,7 +72,25 @@
             <WebView
                 android:id="@+id/webView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonDokumenPendukung"
+                android:visibility="gone"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:minHeight="0dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:paddingTop="@dimen/_11sdp"
+                android:paddingBottom="@dimen/_11sdp"
+                android:text="Dokumen Pendukung"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_10sdp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="@dimen/_11sdp" />
 
         </LinearLayout>
 
