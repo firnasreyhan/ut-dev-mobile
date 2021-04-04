@@ -27,6 +27,9 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedback
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.KonfirmasiPVRVViewModel;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class KonfirmasiPVRVActivity extends AppCompatActivity {
     private ActivityKonfirmasiPVRVBinding binding;
     private KonfirmasiPVRVViewModel viewModel;
@@ -79,7 +82,11 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
         binding.textViewNoPO.setText(nomorPo);
         binding.textViewNoInvoice.setText(nomorInvoice);
         binding.textViewCaraPembayaran.setText(caraPembayaran);
-        binding.textViewTotal.setText(String.valueOf(totalAmount()));
+
+        DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        decimalFormatSymbols.setDecimalSeparator(',');
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", decimalFormatSymbols);
+        binding.textViewTotal.setText("Rp. " + decimalFormat.format(totalAmount()));
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
