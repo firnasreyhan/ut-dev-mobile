@@ -69,7 +69,7 @@ public class DebitNoteAdapter extends RecyclerView.Adapter<DebitNoteAdapter.View
             holder.textViewStatusForm.setTextColor(holder.itemView.getResources().getColor(R.color.reject));
             holder.imageViewStatus.setImageResource(R.drawable.ic_reject);
         }
-        holder.textViewApplicantForm.setText("Pemohon: " + list.get(position).getEmailDebitNote());
+        holder.textViewApplicantForm.setText("Tenant: " + list.get(position).getEmailDebitNote());
 
         String nmyFormat = "dd MMMM yyyy"; //In which you need put here
         SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));

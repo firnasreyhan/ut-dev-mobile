@@ -108,7 +108,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(transactionResponse.getData()));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
                     } else {
                         binding.linearLayoutNoData.setVisibility(View.VISIBLE);
                     }
@@ -142,7 +142,7 @@ public class ListApprovalActivity extends AppCompatActivity {
                             }
                         }
                         binding.recyclerView.setVisibility(View.VISIBLE);
-                        binding.recyclerView.setAdapter(new ApprovalProgressAdapter(filterList));
+                        binding.recyclerView.setAdapter(new ApprovalAdapter(filterList));
 
                         if (filterList.isEmpty()) {
                             binding.linearLayoutNoData.setVisibility(View.VISIBLE);
