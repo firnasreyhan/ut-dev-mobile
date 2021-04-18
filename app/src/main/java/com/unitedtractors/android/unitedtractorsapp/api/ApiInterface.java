@@ -1,6 +1,8 @@
 package com.unitedtractors.android.unitedtractorsapp.api;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DebitNoteResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DetailDebitNoteResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.DokumenPendukungResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
@@ -58,6 +60,12 @@ public interface ApiInterface {
             @Path("username") String username,
             @Query("limit") int limit,
             @Query("isApproval") boolean isApproval
+    );
+
+    @GET("debitNoteApi/{username}")
+    Call<DebitNoteResponse> getDebitNote(
+            @Path("username") String username,
+            @Query("limit") int limit
     );
 
     @Headers("Content-Type: application/json")
@@ -317,6 +325,14 @@ public interface ApiInterface {
             @Field("keterangan") String keterangan
     );
 
+    @PUT("debitNoteApi/confirm")
+    @FormUrlEncoded
+    Call<BaseResponse> putConfirmDebitNote(
+            @Field("username") String username,
+            @Field("idDebitnote") String idDebitnote,
+            @Field("isApprove") int isApprove
+    );
+
     @GET("formSnack")
     Call<PembelianSnackResponse> getPembelianSnack(
             @Query("idTrans") String idTrans
@@ -327,5 +343,11 @@ public interface ApiInterface {
             @Query("username") String username,
             @Query("idTrans") String idTrans,
             @Query("isApproval") boolean isApproval
+    );
+
+    @GET("debitNoteApi/detail")
+    Call<DetailDebitNoteResponse> getDebitNoteDetail(
+            @Query("username") String username,
+            @Query("idDebitnote") String idDebitnote
     );
 }

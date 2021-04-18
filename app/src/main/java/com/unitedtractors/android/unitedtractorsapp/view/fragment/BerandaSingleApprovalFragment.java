@@ -14,12 +14,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.unitedtractors.android.unitedtractorsapp.adapter.ApprovalAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.DebitNoteAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.TaskAdapter;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DebitNoteResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.databinding.FragmentBerandaSingleApprovalBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.TaskModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ListApprovalActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.ListDebitNoteActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.MainViewModel;
 
 import java.util.ArrayList;
@@ -42,6 +45,8 @@ public class BerandaSingleApprovalFragment extends Fragment {
 
         binding.recyclerViewApproval.setHasFixedSize(true);
         binding.recyclerViewApproval.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerViewDebitNote.setHasFixedSize(true);
+        binding.recyclerViewDebitNote.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.recyclerViewTask.setHasFixedSize(true);
         binding.recyclerViewTask.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -60,19 +65,48 @@ public class BerandaSingleApprovalFragment extends Fragment {
             }
         });
 
-        binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                binding.recyclerViewApproval.setVisibility(View.GONE);
-                binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
-                getForm();
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        binding.swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
+        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
+            binding.linearLayoutDebitNote.setVisibility(View.VISIBLE);
+
+            binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    binding.recyclerViewApproval.setVisibility(View.GONE);
+                    binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+                    binding.recyclerViewDebitNote.setVisibility(View.GONE);
+                    binding.linearLayoutNoDataDebitNote.setVisibility(View.GONE);
+                    getForm();
+                    getDebitNote();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override public void run() {
+                            binding.swipeRefreshLayout.setRefreshing(false);
+                        }
+                    }, 3000);
+                }
+            });
+
+            binding.textViewAllDebitNote.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(new Intent(v.getContext(), ListDebitNoteActivity.class));
+                    startActivity(intent);
+                }
+            });
+        } else {
+            binding.swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    binding.recyclerViewApproval.setVisibility(View.GONE);
+                    binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
+                    getForm();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override public void run() {
+                            binding.swipeRefreshLayout.setRefreshing(false);
+                        }
+                    }, 3000);
+                }
+            });
+        }
 
         return view;
     }
@@ -88,13 +122,21 @@ public class BerandaSingleApprovalFragment extends Fragment {
         super.onResume();
         binding.recyclerViewApproval.setVisibility(View.GONE);
         binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
-
         getForm();
+
+        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
+            binding.recyclerViewDebitNote.setVisibility(View.GONE);
+            binding.linearLayoutNoDataDebitNote.setVisibility(View.GONE);
+            getDebitNote();
+        }
     }
 
     @Override
     public void onPause() {
         binding.shimmerFrameLayoutApproval.stopShimmer();
+        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
+            binding.shimmerFrameLayoutDebitNote.stopShimmer();
+        }
         super.onPause();
     }
 
@@ -138,6 +180,34 @@ public class BerandaSingleApprovalFragment extends Fragment {
                     }
                 } else {
                     binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+    }
+
+    public void getDebitNote() {
+        binding.shimmerFrameLayoutDebitNote.startShimmer();
+        binding.shimmerFrameLayoutDebitNote.setVisibility(View.VISIBLE);
+
+        viewModel.getDebitNote(
+                AppPreference.getUser(getActivity()).getUserUsers(),
+                2
+        ).observe(getActivity(), new Observer<DebitNoteResponse>() {
+            @Override
+            public void onChanged(DebitNoteResponse debitNoteResponse) {
+                binding.shimmerFrameLayoutDebitNote.stopShimmer();
+                binding.shimmerFrameLayoutDebitNote.setVisibility(View.GONE);
+                binding.linearLayoutNoDataDebitNote.setVisibility(View.GONE);
+                binding.recyclerViewDebitNote.setVisibility(View.GONE);
+                if (debitNoteResponse != null) {
+                    if (debitNoteResponse.isStatus()) {
+                        binding.recyclerViewDebitNote.setVisibility(View.VISIBLE);
+                        binding.recyclerViewDebitNote.setAdapter(new DebitNoteAdapter(debitNoteResponse.getData()));
+                    } else {
+                        binding.linearLayoutNoDataDebitNote.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    binding.linearLayoutNoDataDebitNote.setVisibility(View.VISIBLE);
                 }
             }
         });

@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData;
 import com.unitedtractors.android.unitedtractorsapp.api.ApiClient;
 import com.unitedtractors.android.unitedtractorsapp.api.ApiInterface;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DebitNoteResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DetailDebitNoteResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.DokumenPendukungResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.PembelianSnackResponse;
@@ -118,6 +120,28 @@ public class OnlineRepository {
             @Override
             public void onFailure(Call<TransactionResponse> call, Throwable t) {
                 Log.e("getTransaction", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<DebitNoteResponse> getDebitNote(String username, int limit) {
+        MutableLiveData<DebitNoteResponse> data = new MutableLiveData<>();
+        apiInterface.getDebitNote(
+                username,
+                limit
+        ).enqueue(new Callback<DebitNoteResponse>() {
+            @Override
+            public void onResponse(Call<DebitNoteResponse> call, Response<DebitNoteResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DebitNoteResponse> call, Throwable t) {
+                Log.e("getDebitNote", t.getMessage());
                 data.postValue(null);
             }
         });
@@ -982,6 +1006,29 @@ public class OnlineRepository {
         return data;
     }
 
+    public MutableLiveData<BaseResponse> putConfirmDebitNote(String username, String idTrans, int isApprove) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.putConfirmDebitNote(
+                username,
+                idTrans,
+                isApprove
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("putConfirmDebitNote", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<PembelianSnackResponse> getPembelianSnack(String idTrans) {
         MutableLiveData<PembelianSnackResponse> data = new MutableLiveData<>();
         apiInterface.getPembelianSnack(
@@ -1019,6 +1066,28 @@ public class OnlineRepository {
 
             @Override
             public void onFailure(Call<TransactionDetailResponse> call, Throwable t) {
+                Log.e("getTransactionDetail", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<DetailDebitNoteResponse> getDebitNoteDetail(String username, String idTrans) {
+        MutableLiveData<DetailDebitNoteResponse> data = new MutableLiveData<>();
+        apiInterface.getDebitNoteDetail(
+                username,
+                idTrans
+        ).enqueue(new Callback<DetailDebitNoteResponse>() {
+            @Override
+            public void onResponse(Call<DetailDebitNoteResponse> call, Response<DetailDebitNoteResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DetailDebitNoteResponse> call, Throwable t) {
                 Log.e("getTransactionDetail", t.getMessage());
                 data.postValue(null);
             }

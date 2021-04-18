@@ -18,7 +18,9 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UnitedTractorsApp">
-        <activity android:name=".view.activity.approval.DetailDokumenPendukungActivity"></activity>
+        <activity android:name=".view.activity.ListDebitNoteActivity"></activity>
+        <activity android:name=".view.activity.approval.DebitNoteDetailActivity" />
+        <activity android:name=".view.activity.approval.DetailDokumenPendukungActivity" />
         <activity android:name=".view.activity.approval.ListDokumenPendukungActivity" />
         <activity android:name=".view.activity.form.permohonan_pv_rv.KonfirmasiPVRVActivity" />
         <activity android:name=".view.activity.form.permohonan_pv_rv.DokumenPVRVActivity" />

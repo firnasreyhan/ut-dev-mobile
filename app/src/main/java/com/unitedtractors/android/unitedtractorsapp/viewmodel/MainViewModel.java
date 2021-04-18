@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.google.firebase.database.FirebaseDatabase;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
+import com.unitedtractors.android.unitedtractorsapp.api.response.DebitNoteResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.TransactionResponse;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
@@ -33,5 +34,9 @@ public class MainViewModel extends AndroidViewModel {
 
     public MutableLiveData<FormResponse> getForm(String role) {
         return onlineRepository.getListForm(role);
+    }
+
+    public MutableLiveData<DebitNoteResponse> getDebitNote(String username, int limit) {
+        return onlineRepository.getDebitNote(username, limit);
     }
 }
