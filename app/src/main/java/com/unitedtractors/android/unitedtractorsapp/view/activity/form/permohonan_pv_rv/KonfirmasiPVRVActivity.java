@@ -197,7 +197,11 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
     }
 
     public void postDokumenPVRV(String idTrans, int start, int end) {
+        Log.e("oldpath", DokumenPVRVAdapter.getMediaFiles().get(start).getUri().getPath());
         String path = DokumenPVRVAdapter.getMediaFiles().get(start).getUri().getPath().substring(18);
+        Log.e("path", path);
+        Log.e("idTrans", idTrans);
+        Log.e("idUser", AppPreference.getUser(this).getIdUsers());
         viewModel.postDokumenPVRV(
                 AppPreference.getUser(this).getIdUsers(),
                 idTrans,
@@ -207,12 +211,12 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
         ).observe(KonfirmasiPVRVActivity.this, new Observer<BaseResponse>() {
             @Override
             public void onChanged(BaseResponse baseResponse) {
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
                 if (baseResponse != null) {
                     if (baseResponse.isStatus()) {
                         if ((start + 1) == end) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
                             startActivity(new Intent(KonfirmasiPVRVActivity.this, ScreenFeedbackActivity.class));
                         } else {
                             postDokumenPVRV(idTrans, (start + 1), end);

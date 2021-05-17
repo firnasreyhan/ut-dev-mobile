@@ -1,4 +1,4 @@
-package com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian;
+package com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_catering_harian;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -16,19 +16,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.KontrolHarianAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
-import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKontrolHarianBinding;
+import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityKontrolCateringHarianBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.KontrolHarianModel;
 import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.ScreenFeedbackActivity;
 import com.unitedtractors.android.unitedtractorsapp.viewmodel.KontrolHarianViewModel;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
-public class KontrolHarianActivity extends AppCompatActivity {
-    private ActivityKontrolHarianBinding binding;
+public class KontrolCateringHarianActivity extends AppCompatActivity {
+    private ActivityKontrolCateringHarianBinding binding;
     private KontrolHarianViewModel viewModel;
     private ProgressDialog progressDialog;
     private KontrolHarianModel model;
@@ -36,7 +34,7 @@ public class KontrolHarianActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityKontrolHarianBinding.inflate(getLayoutInflater());
+        binding = ActivityKontrolCateringHarianBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
@@ -118,7 +116,7 @@ public class KontrolHarianActivity extends AppCompatActivity {
 
                 viewModel.postControlHarian(
                         model
-                ).observe(KontrolHarianActivity.this, new Observer<BaseResponse>() {
+                ).observe(KontrolCateringHarianActivity.this, new Observer<BaseResponse>() {
                     @Override
                     public void onChanged(BaseResponse baseResponse) {
                         if (progressDialog.isShowing()) {

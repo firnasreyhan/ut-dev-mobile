@@ -124,18 +124,22 @@ public class BerandaSingleApprovalFragment extends Fragment {
         binding.linearLayoutNoDataApproval.setVisibility(View.GONE);
         getForm();
 
-        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
-            binding.recyclerViewDebitNote.setVisibility(View.GONE);
-            binding.linearLayoutNoDataDebitNote.setVisibility(View.GONE);
-            getDebitNote();
+        if (AppPreference.getUser(getContext()) != null) {
+            if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
+                binding.recyclerViewDebitNote.setVisibility(View.GONE);
+                binding.linearLayoutNoDataDebitNote.setVisibility(View.GONE);
+                getDebitNote();
+            }
         }
     }
 
     @Override
     public void onPause() {
         binding.shimmerFrameLayoutApproval.stopShimmer();
-        if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
-            binding.shimmerFrameLayoutDebitNote.stopShimmer();
+        if (AppPreference.getUser(getContext()) != null) {
+            if (AppPreference.getUser(getContext()).getRoleUsers().equalsIgnoreCase("Department Head")) {
+                binding.shimmerFrameLayoutDebitNote.stopShimmer();
+            }
         }
         super.onPause();
     }
@@ -154,7 +158,13 @@ public class BerandaSingleApprovalFragment extends Fragment {
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
-                        binding.textViewJumlahForm.setText(transactionResponse.getData().size() + " Form");
+                        int i = 0;
+                        for (TransactionResponse.TransactionModel model : transactionResponse.getData()) {
+                            if (model.getStatTrans() == null) {
+                                i++;
+                            }
+                        }
+                        binding.textViewJumlahForm.setText(i + " Form");
                     }
                 }
             }

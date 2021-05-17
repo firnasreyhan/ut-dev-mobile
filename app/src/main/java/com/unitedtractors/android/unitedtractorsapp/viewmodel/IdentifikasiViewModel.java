@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.IdentifikasiModel;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
 import org.json.JSONArray;
@@ -37,7 +38,7 @@ public class IdentifikasiViewModel extends AndroidViewModel {
                 Log.e("tanggal", detailIdentifikasi.getTanggalView());
                 detailSnack.put("kategori", detailIdentifikasi.getKatergoriTemuan());
                 detailSnack.put("lokasi", detailIdentifikasi.getLokasi());
-                detailSnack.put("user", detailIdentifikasi.getUser());
+                detailSnack.put("user", AppPreference.getUser(getApplication().getApplicationContext()).getUserUsers());
                 jsonArray.put(detailSnack);
             }
             paramObject.put("detIdentifikasi", jsonArray);

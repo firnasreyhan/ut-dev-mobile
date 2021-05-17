@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
         ArrayAdapter<String> departmentAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, departments);
         binding.dropdownDepartment.setAdapter(departmentAdapter);
 
-        String[] divisons = new String[] {"Project Management", "General Service & Maintenance Management", "Budget, Asset & Building Management", "Others"};
+        String[] divisons = new String[] {"Corporate Finance", "Corporate Huma Capital & Corpu", "Corporate ESR, Security GA dan Communication", "Procurement And Investment", "Corporate Audit", "Group Legal", "Digitalization and Differentiation", "Cosporate Strategy and Technology", "Service Divison", "Parts Division", "Truck Mining Operation ", "Sales Operation Division", "Truck Sales Operation", "Marketing Division", "Board of Directon"};
         ArrayAdapter<String> divisionAdapter = new ArrayAdapter<>(this, R.layout.item_dropdown_text, divisons);
         binding.dropdownDivision.setAdapter(divisionAdapter);
 
@@ -82,8 +82,8 @@ public class SignUpActivity extends AppCompatActivity {
                         boolean cekDivisi = true;
                         boolean cekDepartemen = true;
 
-                        if (binding.textInputEditTextUsername.getText().toString().isEmpty()) {
-                            binding.textInputEditTextUsername.setError("Mohon isi data berikut");
+                        if (binding.textInputEditTextNRP.getText().toString().isEmpty()) {
+                            binding.textInputEditTextNRP.setError("Mohon isi data berikut");
                             cekUsername = false;
                         }
 
@@ -163,7 +163,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         viewModel.signUp(
-                binding.textInputEditTextUsername.getText().toString(),
+                binding.textInputEditTextNRP.getText().toString(),
                 binding.textInputEditTexNamaLengkap.getText().toString(),
                 role,
                 binding.dropdownDepartment.getText().toString(),

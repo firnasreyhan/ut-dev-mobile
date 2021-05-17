@@ -146,7 +146,13 @@ public class BerandaMultipleApprovalFragment extends Fragment {
             public void onChanged(TransactionResponse transactionResponse) {
                 if (transactionResponse != null) {
                     if (transactionResponse.isStatus()) {
-                        binding.textViewJumlahForm.setText(transactionResponse.getData().size() + " Form");
+                        int i = 0;
+                        for (TransactionResponse.TransactionModel model : transactionResponse.getData()) {
+                            if (model.getStatTrans() == null) {
+                                i++;
+                            }
+                        }
+                        binding.textViewJumlahForm.setText(i + " Form");
                     }
                 }
             }

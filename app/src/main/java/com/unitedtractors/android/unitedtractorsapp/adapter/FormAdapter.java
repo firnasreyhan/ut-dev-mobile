@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.api.response.FormResponse;
-import com.unitedtractors.android.unitedtractorsapp.model.InternalWorkOrderModel;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_alat_komunikasi.ChecklistAlatKomunikasiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_genset.ChecklistForGensetActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.checklist_for_hydrant.ChecklistForHydrantActivity;
@@ -26,7 +25,7 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.hasil_tes
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.identifikasi.IdentifikasiActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.internal_work_order.InternalWorkOrderActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_harian.KontrolHarianActivity;
+import com.unitedtractors.android.unitedtractorsapp.view.activity.form.kontrol_catering_harian.KontrolCateringHarianActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.laporan_perbaikan.LaporanPerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.material_used_slip.MaterialUsedSlipActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.monitoring_lapangan.MonitoringLapanganActivity;
@@ -34,7 +33,6 @@ import com.unitedtractors.android.unitedtractorsapp.view.activity.form.order_cat
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.pembelian_snack.PembelianSnackActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.perbaikan.PerbaikanActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.NewPermintaanCateringRegulerActivity;
-import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_catering_reguler.PermintaanCateringRegulerActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_extension_dan_akses.PermintaanExtensionDanAksesActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_layout_acara.PermintaanLayoutAcaraActivity;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.PermintaanMobilDinasActivity;
@@ -105,7 +103,7 @@ public class FormAdapter extends RecyclerView.Adapter<FormAdapter.ViewHolder> {
                     }
                     //Control Harian
                     else if (list.get(getAdapterPosition()).getIdMapping().equals("MAPP_628426fdf153e5637a5c3970696d2ad2")) {
-                        intent = new Intent(v.getContext(), KontrolHarianActivity.class);
+                        intent = new Intent(v.getContext(), KontrolCateringHarianActivity.class);
                         intent.putExtra("ID_MAPPING", list.get(getAdapterPosition()).getIdMapping());
                     }
                     //Permintaan Mobil Dinas

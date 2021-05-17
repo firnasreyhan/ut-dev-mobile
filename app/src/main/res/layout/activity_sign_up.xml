@@ -65,12 +65,36 @@
             app:startIconTint="@color/hint_color">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextUsername"
+                android:id="@+id/textInputEditTextNRP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_medium"
-                android:hint="Username"
+                android:hint="NRP"
                 android:inputType="textPersonName"
+                android:textColor="#333333"
+                android:textSize="@dimen/_8sdp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:boxCornerRadiusBottomEnd="@dimen/_7sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_7sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_7sdp"
+            app:boxCornerRadiusTopStart="@dimen/_7sdp"
+            app:hintEnabled="true"
+            app:startIconTint="@color/hint_color">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextTelepon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:hint="Telepon"
+                android:inputType="phone"
                 android:textColor="#333333"
                 android:textSize="@dimen/_8sdp" />
 
@@ -86,7 +110,8 @@
             app:boxCornerRadiusTopEnd="@dimen/_7sdp"
             app:boxCornerRadiusTopStart="@dimen/_7sdp"
             app:hintEnabled="true"
-            app:startIconTint="@color/hint_color">
+            app:startIconTint="@color/hint_color"
+            android:visibility="gone">
 
             <AutoCompleteTextView
                 android:id="@+id/dropdown_role"

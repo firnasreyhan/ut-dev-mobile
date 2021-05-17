@@ -275,20 +275,20 @@ public class OnlineRepository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> postTestFood(String body) {
-        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+    public MutableLiveData<IdTransResponse> postTestFood(String body) {
+        MutableLiveData<IdTransResponse> data = new MutableLiveData<>();
         apiInterface.postTestFood(
                 body
-        ).enqueue(new Callback<BaseResponse>() {
+        ).enqueue(new Callback<IdTransResponse>() {
             @Override
-            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+            public void onResponse(Call<IdTransResponse> call, Response<IdTransResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
+            public void onFailure(Call<IdTransResponse> call, Throwable t) {
                 Log.e("postTestFood", t.getMessage());
                 data.postValue(null);
             }
@@ -893,6 +893,29 @@ public class OnlineRepository {
     public MutableLiveData<BaseResponse> postSimMobilDinas(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterface.postSimMobilDinas(
+                idUser,
+                idTrans,
+                file
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.e("postSimMobilDinas", t.getMessage());
+                data.postValue(null);
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> postGambarTestFood(RequestBody idUser, RequestBody idTrans, MultipartBody.Part file) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterface.postGambarTestFood(
                 idUser,
                 idTrans,
                 file

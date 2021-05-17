@@ -27,6 +27,8 @@ public class DokumenPVRVActivity extends AppCompatActivity {
     private DokumenPVRVAdapter dokumenPVRVAdapter;
 
     private ArrayList<MediaFile> mediaFiles = new ArrayList<>();
+    private boolean isBiggerSize = false;
+    private boolean isTruePath = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class DokumenPVRVActivity extends AppCompatActivity {
         binding.materialCardViewDokumen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isBiggerSize = false;
+                isTruePath = false;
                 Intent intent = new Intent(v.getContext(), FilePickerActivity.class);
                 intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
                         .setSelectedMediaFiles(mediaFiles)
@@ -88,23 +92,51 @@ public class DokumenPVRVActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mediaFiles.size() > 0) {
-                    Intent intent = new Intent(v.getContext(), KonfirmasiPVRVActivity.class);
-                    intent.putExtra("ID_MAPPING", idMapping);
-                    intent.putExtra("KOTA", kota);
-                    intent.putExtra("TANGGAL", tanggal);
-                    intent.putExtra("TANGGAL_VIEW", tanggalView);
-                    intent.putExtra("DIBAYARKAN_KEPADA", dibayarkanKepada);
-                    intent.putExtra("NRP_KARYAWAN", nrpKaryawan);
-                    intent.putExtra("KEPERLUAN", keperluan);
-                    intent.putExtra("NOMOR_PO", nomorPo);
-                    intent.putExtra("NOMOR_INVOICE", nomorInvoice);
-                    intent.putExtra("CARA_PEMBAYARAN_KODE", caraPembayaranKode);
-                    intent.putExtra("CARA_PEMBAYARAN", caraPembayaran);
-                    intent.putExtra("NO_PPN", noPpn);
-                    intent.putExtra("NO_PPH", noPph);
-                    intent.putExtra("PRESENTASE", presentase);
-                    intent.putExtra("DOKUMEN", true);
-                    startActivity(intent);
+                    if (isTruePath) {
+                        if (!isBiggerSize) {
+                            Intent intent = new Intent(v.getContext(), KonfirmasiPVRVActivity.class);
+                            intent.putExtra("ID_MAPPING", idMapping);
+                            intent.putExtra("KOTA", kota);
+                            intent.putExtra("TANGGAL", tanggal);
+                            intent.putExtra("TANGGAL_VIEW", tanggalView);
+                            intent.putExtra("DIBAYARKAN_KEPADA", dibayarkanKepada);
+                            intent.putExtra("NRP_KARYAWAN", nrpKaryawan);
+                            intent.putExtra("KEPERLUAN", keperluan);
+                            intent.putExtra("NOMOR_PO", nomorPo);
+                            intent.putExtra("NOMOR_INVOICE", nomorInvoice);
+                            intent.putExtra("CARA_PEMBAYARAN_KODE", caraPembayaranKode);
+                            intent.putExtra("CARA_PEMBAYARAN", caraPembayaran);
+                            intent.putExtra("NO_PPN", noPpn);
+                            intent.putExtra("NO_PPH", noPph);
+                            intent.putExtra("PRESENTASE", presentase);
+                            intent.putExtra("DOKUMEN", true);
+                            startActivity(intent);
+                        } else {
+                            new AlertDialog.Builder(v.getContext())
+                                    .setTitle("Pesan")
+                                    .setMessage("Mohon pilih dokumen yang berukuran dibawah 1 MB")
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    })
+                                    .create()
+                                    .show();
+                        }
+                    } else {
+                        new AlertDialog.Builder(v.getContext())
+                                .setTitle("Pesan")
+                                .setMessage("Dokumen tidak terbaca, mohon pilih dokumen lain")
+                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create()
+                                .show();
+                    }
                 } else {
                     new AlertDialog.Builder(v.getContext())
                             .setTitle("Pesan")
@@ -158,6 +190,16 @@ public class DokumenPVRVActivity extends AppCompatActivity {
                 && resultCode == RESULT_OK
                 && data != null) {
             List<MediaFile> mediaFiles = data.<MediaFile>getParcelableArrayListExtra(FilePickerActivity.MEDIA_FILES);
+            for (MediaFile mediaFile : mediaFiles) {
+                Log.e("path", mediaFile.getUri().getPath());
+                if (mediaFile.getSize() > 1000000) {
+                    isBiggerSize = true;
+                }
+
+                if (mediaFile.getUri().getPath().contains("/document/primary:")) {
+                    isTruePath = true;
+                }
+            }
             if(mediaFiles != null) {
                 setMediaFiles(mediaFiles);
             } else {

@@ -162,7 +162,7 @@ public class ListPermintaanNonAssetActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        for (PermintaanMobilModel.TujuanMobilDinasModel model : PermintaanMobilDinasAdapter.getList()) {
+        for (NonAssetModel.DetNonAsset model : PermintaanNonAssetAdapter.getList()) {
             if (model.checkData() == false) {
                 return false;
             }

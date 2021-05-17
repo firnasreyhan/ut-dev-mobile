@@ -115,7 +115,7 @@
         <activity android:name=".view.activity.form.syarat_legalitas_catering.SyaratLegatitasCateringLanjutanActivity" />
         <activity android:name=".view.activity.form.hasil_test_food_catering.ListHasilTestFoodCateringActivity" />
         <activity android:name=".view.activity.form.hasil_test_food_catering.HasilTestFoodCateringActivity" />
-        <activity android:name=".view.activity.form.kontrol_harian.KontrolHarianActivity" />
+        <activity android:name=".view.activity.form.kontrol_catering_harian.KontrolCateringHarianActivity" />
         <activity android:name=".view.activity.form.komplain_atau_usulan.ListKomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.komplain_atau_usulan.KomplainAtauUsulanActivity" />
         <activity android:name=".view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity" />

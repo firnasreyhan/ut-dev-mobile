@@ -240,8 +240,16 @@ public interface ApiInterface {
 
     @Headers("Content-Type: application/json")
     @POST("formTestfood")
-    Call<BaseResponse> postTestFood(
+    Call<IdTransResponse> postTestFood(
             @Body String body
+    );
+
+    @Multipart
+    @POST("formTestfood/upload")
+    Call<BaseResponse> postGambarTestFood(
+            @Part("idUser") RequestBody idUser,
+            @Part("idTrans") RequestBody idTrans,
+            @Part MultipartBody.Part file
     );
 
     @Headers("Content-Type: application/json")
