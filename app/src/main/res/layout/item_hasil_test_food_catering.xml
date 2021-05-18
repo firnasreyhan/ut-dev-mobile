@@ -86,13 +86,24 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/rb_1_1"
+                        android:id="@+id/rb_1_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Baik sekali"
                         android:fontFamily="@font/montserrat_medium"
-                        android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="Kurang"
+                        android:layout_weight="1"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_1_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_8sdp"
+                        android:text="Cukup"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -106,25 +117,15 @@
                         android:layout_weight="1"/>
 
                     <RadioButton
-                        android:id="@+id/rb_1_3"
+                        android:id="@+id/rb_1_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="Baik sekali"
                         android:fontFamily="@font/montserrat_medium"
-                        android:textColor="@color/text_color"
                         android:textSize="@dimen/_8sdp"
-                        android:text="Cukup"
+                        android:textColor="@color/text_color"
                         android:layout_weight="1"/>
 
-                    <RadioButton
-                        android:id="@+id/rb_1_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textColor="@color/text_color"
-                        android:textSize="@dimen/_8sdp"
-                        android:text="Kurang"
-                        android:layout_weight="1"
-                        android:checked="true"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -150,13 +151,24 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/rb_2_1"
+                        android:id="@+id/rb_2_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Baik sekali"
+                        android:text="Kurang"
+                        android:layout_weight="1"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_8sdp"
+                        android:textColor="@color/text_color"
+                        android:text="Cukup"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -170,25 +182,15 @@
                         android:layout_weight="1"/>
 
                     <RadioButton
-                        android:id="@+id/rb_2_3"
+                        android:id="@+id/rb_2_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Cukup"
+                        android:text="Baik sekali"
                         android:layout_weight="1"/>
 
-                    <RadioButton
-                        android:id="@+id/rb_2_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="@dimen/_8sdp"
-                        android:textColor="@color/text_color"
-                        android:text="Kurang"
-                        android:layout_weight="1"
-                        android:checked="true"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -214,13 +216,24 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/rb_3_1"
+                        android:id="@+id/rb_3_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Baik sekali"
+                        android:text="Kurang"
+                        android:layout_weight="1"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_3_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_8sdp"
+                        android:textColor="@color/text_color"
+                        android:text="Cukup"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -234,25 +247,15 @@
                         android:layout_weight="1"/>
 
                     <RadioButton
-                        android:id="@+id/rb_3_3"
+                        android:id="@+id/rb_3_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Cukup"
+                        android:text="Baik sekali"
                         android:layout_weight="1"/>
 
-                    <RadioButton
-                        android:id="@+id/rb_3_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="@dimen/_8sdp"
-                        android:textColor="@color/text_color"
-                        android:text="Kurang"
-                        android:layout_weight="1"
-                        android:checked="true"/>
                 </RadioGroup>
 
             </LinearLayout>
@@ -278,13 +281,24 @@
                     android:layout_height="wrap_content">
 
                     <RadioButton
-                        android:id="@+id/rb_4_1"
+                        android:id="@+id/rb_4_4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Baik sekali"
+                        android:text="Kurang"
+                        android:layout_weight="1"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_4_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_medium"
+                        android:textSize="@dimen/_8sdp"
+                        android:textColor="@color/text_color"
+                        android:text="Cukup"
                         android:layout_weight="1"/>
 
                     <RadioButton
@@ -298,25 +312,15 @@
                         android:layout_weight="1"/>
 
                     <RadioButton
-                        android:id="@+id/rb_4_3"
+                        android:id="@+id/rb_4_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_medium"
                         android:textSize="@dimen/_8sdp"
                         android:textColor="@color/text_color"
-                        android:text="Cukup"
+                        android:text="Baik sekali"
                         android:layout_weight="1"/>
 
-                    <RadioButton
-                        android:id="@+id/rb_4_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_medium"
-                        android:textSize="@dimen/_8sdp"
-                        android:textColor="@color/text_color"
-                        android:text="Kurang"
-                        android:layout_weight="1"
-                        android:checked="true"/>
                 </RadioGroup>
 
             </LinearLayout>

@@ -157,6 +157,8 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                                                 }
                                             }
                                         });
+                                    } else {
+                                        startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
                                     }
                                 } else {
                                     new AlertDialog.Builder(v.getContext())

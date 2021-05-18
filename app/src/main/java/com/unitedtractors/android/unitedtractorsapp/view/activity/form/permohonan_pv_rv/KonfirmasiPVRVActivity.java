@@ -135,7 +135,7 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
                                 if (dokumen) {
                                     postDokumenPVRV(
                                             idTransResponse.getIdTrans(),
-                                            0,
+                                            1,
                                             DokumenPVRVAdapter.getMediaFiles().size()
                                     );
                                 } else {
@@ -197,8 +197,8 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
     }
 
     public void postDokumenPVRV(String idTrans, int start, int end) {
-        Log.e("oldpath", DokumenPVRVAdapter.getMediaFiles().get(start).getUri().getPath());
-        String path = DokumenPVRVAdapter.getMediaFiles().get(start).getUri().getPath().substring(18);
+        Log.e("oldpath", DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath());
+        String path = DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath().substring(18);
         Log.e("path", path);
         Log.e("idTrans", idTrans);
         Log.e("idUser", AppPreference.getUser(this).getIdUsers());
@@ -216,7 +216,7 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
                 }
                 if (baseResponse != null) {
                     if (baseResponse.isStatus()) {
-                        if ((start + 1) == end) {
+                        if (start == end) {
                             startActivity(new Intent(KonfirmasiPVRVActivity.this, ScreenFeedbackActivity.class));
                         } else {
                             postDokumenPVRV(idTrans, (start + 1), end);
