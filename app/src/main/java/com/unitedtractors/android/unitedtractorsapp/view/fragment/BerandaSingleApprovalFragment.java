@@ -3,6 +3,7 @@ package com.unitedtractors.android.unitedtractorsapp.view.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -185,6 +186,7 @@ public class BerandaSingleApprovalFragment extends Fragment {
                     if (transactionResponse.isStatus()) {
                         binding.recyclerViewApproval.setVisibility(View.VISIBLE);
                         binding.recyclerViewApproval.setAdapter(new ApprovalAdapter(transactionResponse.getData()));
+                        Log.e("dataSize", String.valueOf(transactionResponse.getData().size()));
                     } else {
                         binding.linearLayoutNoDataApproval.setVisibility(View.VISIBLE);
                     }

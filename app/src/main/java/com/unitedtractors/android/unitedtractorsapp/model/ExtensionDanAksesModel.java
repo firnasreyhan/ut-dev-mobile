@@ -42,18 +42,18 @@ public class ExtensionDanAksesModel {
         private String nrp;
         private String noExtension;
         private String div;
-        private String jenPermintaan;
-        private String fasilitas;
-        private String ct;
+        private String aksesExisting;
+        private String aksesBaru;
+        private ContactTo contactTo;
 
-        public DetExtension(String nama, String nrp, String noExtension, String div, String jenPermintaan, String fasilitas, String ct) {
+        public DetExtension(String nama, String nrp, String noExtension, String div, String aksesExisting, String aksesBaru, ContactTo contactTo) {
             this.nama = nama;
             this.nrp = nrp;
             this.noExtension = noExtension;
             this.div = div;
-            this.jenPermintaan = jenPermintaan;
-            this.fasilitas = fasilitas;
-            this.ct = ct;
+            this.aksesExisting = aksesExisting;
+            this.aksesBaru = aksesBaru;
+            this.contactTo = contactTo;
         }
 
         public String getNama() {
@@ -88,28 +88,28 @@ public class ExtensionDanAksesModel {
             this.div = div;
         }
 
-        public String getJenPermintaan() {
-            return jenPermintaan;
+        public String getAksesExisting() {
+            return aksesExisting;
         }
 
-        public void setJenPermintaan(String jenPermintaan) {
-            this.jenPermintaan = jenPermintaan;
+        public void setAksesExisting(String aksesExisting) {
+            this.aksesExisting = aksesExisting;
         }
 
-        public String getFasilitas() {
-            return fasilitas;
+        public String getAksesBaru() {
+            return aksesBaru;
         }
 
-        public void setFasilitas(String fasilitas) {
-            this.fasilitas = fasilitas;
+        public void setAksesBaru(String aksesBaru) {
+            this.aksesBaru = aksesBaru;
         }
 
-        public String getCt() {
-            return ct;
+        public ContactTo getContactTo() {
+            return contactTo;
         }
 
-        public void setCt(String ct) {
-            this.ct = ct;
+        public void setContactTo(ContactTo contactTo) {
+            this.contactTo = contactTo;
         }
 
         public boolean checkData()  {
@@ -117,6 +117,92 @@ public class ExtensionDanAksesModel {
                 return true;
             } else {
                 return false;
+            }
+        }
+
+        public static class ContactTo {
+            private boolean principle;
+            private boolean uthi;
+            private boolean cabang;
+            private boolean partner;
+            private boolean customer;
+            private boolean vendor;
+            private boolean subCont;
+            private boolean hotel;
+
+            public ContactTo(boolean principle, boolean uthi, boolean cabang, boolean partner, boolean customer, boolean vendor, boolean subCont, boolean hotel) {
+                this.principle = principle;
+                this.uthi = uthi;
+                this.cabang = cabang;
+                this.partner = partner;
+                this.customer = customer;
+                this.vendor = vendor;
+                this.subCont = subCont;
+                this.hotel = hotel;
+            }
+
+            public boolean isPrinciple() {
+                return principle;
+            }
+
+            public void setPrinciple(boolean principle) {
+                this.principle = principle;
+            }
+
+            public boolean isUthi() {
+                return uthi;
+            }
+
+            public void setUthi(boolean uthi) {
+                this.uthi = uthi;
+            }
+
+            public boolean isCabang() {
+                return cabang;
+            }
+
+            public void setCabang(boolean cabang) {
+                this.cabang = cabang;
+            }
+
+            public boolean isPartner() {
+                return partner;
+            }
+
+            public void setPartner(boolean partner) {
+                this.partner = partner;
+            }
+
+            public boolean isCustomer() {
+                return customer;
+            }
+
+            public void setCustomer(boolean customer) {
+                this.customer = customer;
+            }
+
+            public boolean isVendor() {
+                return vendor;
+            }
+
+            public void setVendor(boolean vendor) {
+                this.vendor = vendor;
+            }
+
+            public boolean isSubCont() {
+                return subCont;
+            }
+
+            public void setSubCont(boolean subCont) {
+                this.subCont = subCont;
+            }
+
+            public boolean isHotel() {
+                return hotel;
+            }
+
+            public void setHotel(boolean hotel) {
+                this.hotel = hotel;
             }
         }
     }

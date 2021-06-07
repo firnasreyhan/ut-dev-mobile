@@ -112,10 +112,6 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                     ).observe(ListHasilTestFoodCateringActivity.this, new Observer<IdTransResponse>() {
                         @Override
                         public void onChanged(IdTransResponse idTransResponse) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-
                             if (idTransResponse != null) {
                                 if (idTransResponse.isStatus()) {
                                     if (buktiCatering != null) {
@@ -128,8 +124,14 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                                             public void onChanged(BaseResponse baseResponse) {
                                                 if (baseResponse != null) {
                                                     if (baseResponse.isStatus()) {
+                                                        if (progressDialog.isShowing()) {
+                                                            progressDialog.dismiss();
+                                                        }
                                                         startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
                                                     } else {
+                                                        if (progressDialog.isShowing()) {
+                                                            progressDialog.dismiss();
+                                                        }
                                                         new AlertDialog.Builder(v.getContext())
                                                                 .setTitle("Pesan")
                                                                 .setMessage(baseResponse.getMessage())
@@ -143,6 +145,9 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                                                                 .show();
                                                     }
                                                 } else {
+                                                    if (progressDialog.isShowing()) {
+                                                        progressDialog.dismiss();
+                                                    }
                                                     new AlertDialog.Builder(v.getContext())
                                                             .setTitle("Pesan")
                                                             .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")
@@ -158,9 +163,15 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                                             }
                                         });
                                     } else {
+                                        if (progressDialog.isShowing()) {
+                                            progressDialog.dismiss();
+                                        }
                                         startActivity(new Intent(v.getContext(), ScreenFeedbackActivity.class));
                                     }
                                 } else {
+                                    if (progressDialog.isShowing()) {
+                                        progressDialog.dismiss();
+                                    }
                                     new AlertDialog.Builder(v.getContext())
                                             .setTitle("Pesan")
                                             .setMessage(idTransResponse.getMessage())
@@ -174,6 +185,9 @@ public class ListHasilTestFoodCateringActivity extends AppCompatActivity {
                                             .show();
                                 }
                             } else {
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
                                 new AlertDialog.Builder(v.getContext())
                                         .setTitle("Pesan")
                                         .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")

@@ -31,15 +31,15 @@ public class KonfirmasiLaporanPerbaikanViewModel extends AndroidViewModel {
             paramObject.put("tglOutPerbaikan", model.getTglOutPerbaikan());
 
             JSONArray jsonArray = new JSONArray();
-            for (LaporanPerbaikanModel.DetailLaporanPerbaikan snackModel: model.getDetPerbaikan()) {
+            for (LaporanPerbaikanModel.DetailLaporanPerbaikan detailLaporanPerbaikan: model.getDetPerbaikan()) {
                 JSONObject object = new JSONObject();
-                object.put("laporanPerbaikan", snackModel.getLaporanPerbaikan());
-                object.put("kategoriPerbaikan", snackModel.getKategoriPerbaikan());
-                object.put("lokasiPerbaikan", snackModel.getLokasiPerbaikan());
-                object.put("userPerbaikan", snackModel.getUserPerbaikan());
-                object.put("picPerbaikan", snackModel.getPicPerbaikan());
-                object.put("durasiPerbaikan", snackModel.getDurasiPerbaikan());
-                object.put("statusPerbaikan", snackModel.getStatusPerbaikan());
+                object.put("laporanPerbaikan", detailLaporanPerbaikan.getLaporanPerbaikan());
+                object.put("kategoriPerbaikan", detailLaporanPerbaikan.getKategoriPerbaikan());
+                object.put("lokasiPerbaikan", detailLaporanPerbaikan.getLokasiPerbaikan());
+                object.put("userPerbaikan", detailLaporanPerbaikan.getUserPerbaikan());
+                object.put("picPerbaikan", detailLaporanPerbaikan.getPicPerbaikan());
+                object.put("durasiPerbaikan", detailLaporanPerbaikan.getDurasiPerbaikan());
+                object.put("statusPerbaikan", detailLaporanPerbaikan.getStatusPerbaikan());
                 jsonArray.put(object);
             }
             paramObject.put("detPerbaikan", jsonArray);

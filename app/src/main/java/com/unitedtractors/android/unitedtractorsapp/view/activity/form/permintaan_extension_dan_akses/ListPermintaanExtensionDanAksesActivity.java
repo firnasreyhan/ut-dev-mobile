@@ -58,14 +58,25 @@ public class ListPermintaanExtensionDanAksesActivity extends AppCompatActivity {
 
         List<ExtensionDanAksesModel.DetExtension> list = new ArrayList<>();
         for (int i = 0; i < jumlahAkses; i++) {
+            ExtensionDanAksesModel.DetExtension.ContactTo contactTo = new ExtensionDanAksesModel.DetExtension.ContactTo(
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+            );
+
             list.add(new ExtensionDanAksesModel.DetExtension(
                     AppPreference.getUser(this).getNamaUsers(),
                     "171111001",
                     "",
                     AppPreference.getUser(this).getDivUsers(),
-                    "1",
                     "I",
-                    "1"
+                    "I",
+                    contactTo
             ));
         }
 

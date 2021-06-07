@@ -75,26 +75,63 @@
 
             </RadioGroup>
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/linearLayoutExisting"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/montserrat_semi_bold"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/_8sdp"
-                android:text="Kontak Ke"/>
+                android:orientation="vertical">
 
-            <Spinner
-                android:id="@+id/spinnerKontakKe"
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Fasilitas Existing"/>
+
+                <Spinner
+                    android:id="@+id/spinnerFasilitasExisting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:spinnerMode="dropdown"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/hint_color"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:spinnerMode="dropdown"/>
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/hint_color"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Fasilitas Baru"/>
+
+                <Spinner
+                    android:id="@+id/spinnerFasilitasBaru"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:spinnerMode="dropdown"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/hint_color"/>
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -104,19 +141,104 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_8sdp"
-                android:text="Fasilitas"/>
+                android:text="Kontak Ke"/>
 
-            <Spinner
-                android:id="@+id/spinnerFasilitas"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:spinnerMode="dropdown"/>
+                android:orientation="horizontal">
 
-            <View
+                <CheckBox
+                    android:id="@+id/checkBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Principle"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="UTHI"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Cabang / Site"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/hint_color"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Partner"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Customer"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Vendor"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Subcont"/>
+
+                <CheckBox
+                    android:id="@+id/checkBox8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_6sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_8sdp"
+                    android:text="Hotel"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

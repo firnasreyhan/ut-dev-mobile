@@ -96,7 +96,7 @@ public class TroublesInformationActivity extends AppCompatActivity {
         binding.materialButtonAjukan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkData()) {
+//                if (checkData()) {
                     progressDialog.show();
 
                     model = new ChecklistForGensetModel(
@@ -113,12 +113,12 @@ public class TroublesInformationActivity extends AppCompatActivity {
                             list(unitEngine),
                             list(controlSystem),
                             list(k5),
-                            binding.editTextProblemIdentification.getText().toString(),
-                            binding.editTextRootCause.getText().toString(),
-                            binding.editTextCorrectiveAction.getText().toString(),
-                            binding.editTextPreventiveAction.getText().toString(),
-                            binding.editTextDeadlinePIC.getText().toString(),
-                            binding.editTextStatus.getText().toString(),
+                            binding.editTextProblemIdentification.getText().toString().isEmpty() ? "-" : binding.editTextProblemIdentification.getText().toString(),
+                            binding.editTextRootCause.getText().toString().isEmpty() ? "-" : binding.editTextRootCause.getText().toString(),
+                            binding.editTextCorrectiveAction.getText().toString().isEmpty() ? "-" : binding.editTextCorrectiveAction.getText().toString(),
+                            binding.editTextPreventiveAction.getText().toString().isEmpty() ? "-" : binding.editTextPreventiveAction.getText().toString(),
+                            binding.editTextDeadlinePIC.getText().toString().isEmpty() ? "-" : binding.editTextDeadlinePIC.getText().toString(),
+                            binding.editTextStatus.getText().toString().isEmpty() ? "-" : binding.editTextStatus.getText().toString(),
                             String.valueOf(keadaanGenset)
                     );
 
@@ -162,7 +162,7 @@ public class TroublesInformationActivity extends AppCompatActivity {
                             }
                         }
                     });
-                }
+//                }
             }
         });
     }

@@ -14,6 +14,7 @@ import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanMobilDinas
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListLaporanPerbaikanBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.LaporanPerbaikanModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanMobilModel;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_mobil_dinas.KonfirmasiPermintaanMobilDinasActivity;
 
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class ListLaporanPerbaikanActivity extends AppCompatActivity {
                     "",
                     "",
                     "",
-                    "",
+                    AppPreference.getUser(this).getNamaUsers(),
                     "",
                     "",
                     ""));

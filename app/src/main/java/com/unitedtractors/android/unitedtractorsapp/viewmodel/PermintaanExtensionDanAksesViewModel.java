@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.model.ExtensionDanAksesModel;
+import com.unitedtractors.android.unitedtractorsapp.model.MonitoringLapanganModel;
 import com.unitedtractors.android.unitedtractorsapp.model.NonAssetModel;
 import com.unitedtractors.android.unitedtractorsapp.repository.OnlineRepository;
 
@@ -48,11 +49,28 @@ public class PermintaanExtensionDanAksesViewModel extends AndroidViewModel {
             object.put("nrp", detExtension.getNrp());
             object.put("noExtension", detExtension.getNoExtension());
             object.put("div", detExtension.getDiv());
-            object.put("jenPermintaan", detExtension.getJenPermintaan());
-            object.put("fasilitas", detExtension.getFasilitas());
-            object.put("ct", detExtension.getCt());
+            object.put("aksesExisting", detExtension.getAksesExisting());
+            object.put("aksesBaru", detExtension.getAksesBaru());
+            object.put("ct", contactTo(detExtension.getContactTo()));
             jsonArray.put(object);
         }
         return jsonArray;
+    }
+
+    private JSONObject contactTo(ExtensionDanAksesModel.DetExtension.ContactTo contactTo) {
+        JSONObject object = new JSONObject();
+        try {
+            object.put("principle", contactTo.isPrinciple());
+            object.put("uthi", contactTo.isUthi());
+            object.put("cabang", contactTo.isCabang());
+            object.put("partner", contactTo.isPartner());
+            object.put("customer", contactTo.isCustomer());
+            object.put("vendor", contactTo.isVendor());
+            object.put("subCont", contactTo.isSubCont());
+            object.put("hotel", contactTo.isHotel());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return object;
     }
 }

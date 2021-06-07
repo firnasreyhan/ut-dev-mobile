@@ -38,7 +38,7 @@ public class IdentifikasiViewModel extends AndroidViewModel {
                 Log.e("tanggal", detailIdentifikasi.getTanggalView());
                 detailSnack.put("kategori", detailIdentifikasi.getKatergoriTemuan());
                 detailSnack.put("lokasi", detailIdentifikasi.getLokasi());
-                detailSnack.put("user", AppPreference.getUser(getApplication().getApplicationContext()).getUserUsers());
+                detailSnack.put("user", detailIdentifikasi.getUser());
                 jsonArray.put(detailSnack);
             }
             paramObject.put("detIdentifikasi", jsonArray);

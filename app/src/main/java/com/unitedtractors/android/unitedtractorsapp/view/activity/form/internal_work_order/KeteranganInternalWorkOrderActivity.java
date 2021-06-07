@@ -89,7 +89,7 @@ public class KeteranganInternalWorkOrderActivity extends AppCompatActivity {
         binding.materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkData()) {
+//                if (checkData()) {
                     Intent intent = new Intent(v.getContext(), ListInternalWorkOrderActivity.class);
                     intent.putExtra("ID_MAPPING", idMapping);
                     intent.putExtra("NOMOR_TROUBLE_TIKET", nomorTroubleTiket);
@@ -104,11 +104,11 @@ public class KeteranganInternalWorkOrderActivity extends AppCompatActivity {
                     intent.putExtra("EXTENSION_PEMOHON", extensionPemohon);
                     intent.putExtra("NAMA_PENERIMA", namaPenerima);
                     intent.putExtra("JENIS_PERBAIKAN", jenisPerbaikan);
-                    intent.putExtra("KETERANGAN", binding.editTextKeterangan.getText().toString());
-                    intent.putExtra("ALASAN_PERBAIKAN", binding.editTextAlasanPerbaikan.getText().toString());
+                    intent.putExtra("KETERANGAN", binding.editTextKeterangan.getText().toString().isEmpty() ? "-" : binding.editTextKeterangan.getText().toString());
+                    intent.putExtra("ALASAN_PERBAIKAN", binding.editTextAlasanPerbaikan.getText().toString().isEmpty() ? "-" : binding.editTextAlasanPerbaikan.getText().toString());
                     intent.putExtra("JUMLAH_KEBUTUHAN", jumlahKebutuhan);
                     startActivity(intent);
-                }
+//                }
             }
         });
     }

@@ -17,6 +17,7 @@ import android.widget.CompoundButton;
 
 import com.unitedtractors.android.unitedtractorsapp.R;
 import com.unitedtractors.android.unitedtractorsapp.adapter.DokumenPVRVAdapter;
+import com.unitedtractors.android.unitedtractorsapp.adapter.NewDokumenPVRVAdapter;
 import com.unitedtractors.android.unitedtractorsapp.adapter.PVRVAdapter;
 import com.unitedtractors.android.unitedtractorsapp.api.response.BaseResponse;
 import com.unitedtractors.android.unitedtractorsapp.api.response.IdTransResponse;
@@ -136,7 +137,7 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
                                     postDokumenPVRV(
                                             idTransResponse.getIdTrans(),
                                             1,
-                                            DokumenPVRVAdapter.getMediaFiles().size()
+                                            NewDokumenPVRVAdapter.getMediaFiles().size()
                                     );
                                 } else {
                                     if (progressDialog.isShowing()) {
@@ -197,31 +198,34 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
     }
 
     public void postDokumenPVRV(String idTrans, int start, int end) {
-        Log.e("oldpath", DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath());
-        String path = DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath().substring(18);
-        Log.e("path", path);
-        Log.e("idTrans", idTrans);
-        Log.e("idUser", AppPreference.getUser(this).getIdUsers());
+//        Log.e("oldpath", DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath());
+//        String path = DokumenPVRVAdapter.getMediaFiles().get(start-1).getUri().getPath().substring(18);
+//        Log.e("path", path);
+//        Log.e("idTrans", idTrans);
+//        Log.e("idUser", AppPreference.getUser(this).getIdUsers());
         viewModel.postDokumenPVRV(
                 AppPreference.getUser(this).getIdUsers(),
                 idTrans,
                 String.valueOf(start),
                 String.valueOf(end),
-                "/storage/emulated/0/" + path
+                NewDokumenPVRVAdapter.getMediaFiles().get(start-1).getPath()
         ).observe(KonfirmasiPVRVActivity.this, new Observer<BaseResponse>() {
             @Override
             public void onChanged(BaseResponse baseResponse) {
-                if (progressDialog.isShowing()) {
-                    progressDialog.dismiss();
-                }
                 if (baseResponse != null) {
                     if (baseResponse.isStatus()) {
                         if (start == end) {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
                             startActivity(new Intent(KonfirmasiPVRVActivity.this, ScreenFeedbackActivity.class));
                         } else {
                             postDokumenPVRV(idTrans, (start + 1), end);
                         }
                     } else {
+                        if (progressDialog.isShowing()) {
+                            progressDialog.dismiss();
+                        }
                         new AlertDialog.Builder(KonfirmasiPVRVActivity.this)
                                 .setTitle("Pesan")
                                 .setMessage(baseResponse.getMessage())
@@ -235,6 +239,9 @@ public class KonfirmasiPVRVActivity extends AppCompatActivity {
                                 .show();
                     }
                 } else {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
                     new AlertDialog.Builder(KonfirmasiPVRVActivity.this)
                             .setTitle("Pesan")
                             .setMessage("Terjadi kesalahan pada server, silahkan coba beberapa saat lagi")

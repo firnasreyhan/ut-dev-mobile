@@ -29,7 +29,7 @@
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/_11sdp"
-                android:text="Permohonan PV/RV"/>
+                android:text="Permohonan PP/RV"/>
 
         </FrameLayout>
 

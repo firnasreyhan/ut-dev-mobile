@@ -15,6 +15,7 @@ import com.unitedtractors.android.unitedtractorsapp.adapter.PermintaanAssetAdapt
 import com.unitedtractors.android.unitedtractorsapp.databinding.ActivityListIdentifikasiBinding;
 import com.unitedtractors.android.unitedtractorsapp.model.IdentifikasiModel;
 import com.unitedtractors.android.unitedtractorsapp.model.PermintaanAssetModel;
+import com.unitedtractors.android.unitedtractorsapp.preference.AppPreference;
 import com.unitedtractors.android.unitedtractorsapp.view.activity.form.permintaan_asset.KonfirmasiPermintaanAssetActivity;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class ListIdentifikasiActivity extends AppCompatActivity {
                         "",
                         "",
                         "",
-                        ""
+                        AppPreference.getUser(this).getNamaUsers()
                 ));
             }
         }
